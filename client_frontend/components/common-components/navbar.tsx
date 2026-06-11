@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, MapPin, Phone, Clock, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, MapPin, Phone, Clock, ChevronDown, ChevronRight, Target } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,24 +14,32 @@ const Navbar = () => {
 
   const menuItems = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '#'},
-    { name: 'Services', href: '#'},
+    { name: 'About Us', href: '/about-us'},
+    { name: 'Services', href: '/services'},
     { name: 'Testimonials', href: '/testimonials' },
     { 
       name: 'Menu List', 
       href: '/menu',
       submenu: [
-        { name: 'Why Choose Us?', href: '#' },
-        { name: 'How We Recruit?', href: '#' },
-        { name: 'FAQs', href: '#' },
-        { name: 'VSF Resource Library', href: '#' },
-        { name: 'VSF Three Divisions', href: '#' },
-        { name: 'VSF Goes Nationwide!', href: '#' },
-        { name: 'Employment', href: '#' },
+        { name: 'Why Choose Us?', href: '/menu/why-choose-us' },
+        { name: 'How We Recruit?', href: '/menu/how-we-recruit' },
+        { name: 'FAQs', href: '/menu/faqs' },
+        { name: 'VSF Resource Library', href: '/menu/vsf-resource-library' },
+        { name: 'VSF Three Divisions', href: '/menu/vsf-three-divisions' },
+        { name: 'VSF Goes Nationwide!', href: '/menu/vsf-goes-nationwide' },
+        { name: 'Employment', href: '/menu/employment' },
       ]
     },
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Employment Application', href: '/careers/apply' },
+    {
+      name: 'Forms',
+      href: '#',
+      submenu: [
+        { name: 'Service Request (For Existing Clients)', href: '/forms/service-request' },
+        { name: 'Contracting Oppertunities', href: '/forms/contracting-opportunity' },
+        { name: 'Employment Application', href: 'https://jetsign.com/f/u3s6PFUR', target:'_blank' },
+      ]
+    },
+    { name: 'Contact Us', href: '/contact-us' },
   ];
 
   const socialLinks = [
@@ -201,7 +209,7 @@ const Navbar = () => {
                     <button
                       onClick={() => toggleDropdown(item.name)}
                       className="flex items-center px-2 xl:px-3 2xl:px-4 py-1.5 xl:py-2 text-gray-200 hover:text-yellow-400 transition-all duration-200 font-medium whitespace-nowrap
-                        text-[11px] xl:text-[12px] 2xl:text-[13px] uppercase tracking-wider"
+                        text-[16px] xl:text-[16px] 2xl:text-[16px] uppercase tracking-wider cursor-pointer"
                     >
                       {item.name}
                       <ChevronDown className="ml-0.5 xl:ml-1 h-3 w-3 xl:h-3.5 xl:w-3.5" />
@@ -210,7 +218,7 @@ const Navbar = () => {
                     <Link
                       href={item.href}
                       className="flex items-center px-2 xl:px-3 2xl:px-4 py-1.5 xl:py-2 text-gray-200 hover:text-yellow-400 transition-all duration-200 font-medium whitespace-nowrap
-                        text-[11px] xl:text-[12px] 2xl:text-[13px] uppercase tracking-wider"
+                        text-[16px] xl:text-[16px] 2xl:text-[16px] uppercase tracking-wider"
                     >
                       {item.name}
                     </Link>
@@ -222,13 +230,15 @@ const Navbar = () => {
                         ? 'opacity-100 visible translate-y-0' 
                         : 'opacity-0 invisible -translate-y-2'
                     }`}>
-                      <div className="bg-black/95 backdrop-blur-sm border border-yellow-500/20 rounded-lg shadow-2xl py-1.5 min-w-[200px] xl:min-w-[220px] 2xl:min-w-[240px]">
+                      <div className="bg-black/95 backdrop-blur-sm border border-yellow-500/20 rounded-lg shadow-2xl py-1.5 min-w-[320px] xl:min-w-[320px] 2xl:min-w-[300px]">
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 xl:px-5 2xl:px-6 py-2 xl:py-2.5 2xl:py-3 text-gray-300 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors duration-150
-                              text-[11px] xl:text-[12px] 2xl:text-[13px]"
+                            target={subItem.target}
+                            rel={subItem.target === '_blank' ? 'noopener noreferrer' : undefined}
+                            className="block px-4 py-2 xl:py-2.5 2xl:py-3 text-gray-300 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors duration-150
+                              text-[11px] xl:text-[12px] 2xl:text-[14px]"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {subItem.name}
@@ -245,7 +255,7 @@ const Navbar = () => {
                 href="/request-quote"
                 className="ml-2 xl:ml-3 2xl:ml-4 bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-600 hover:to-yellow-500 text-black font-semibold 
                   px-4 xl:px-5 2xl:px-6 py-1.5 xl:py-2 rounded-full whitespace-nowrap
-                  text-[11px] xl:text-[12px] 2xl:text-[13px] uppercase tracking-wider transition-all duration-200 hover:shadow-lg hover:shadow-yellow-500/25"
+                  text-[14px] xl:text-[14px] 2xl:text-[14px] uppercase tracking-wider transition-all duration-200 hover:shadow-lg hover:shadow-yellow-500/25"
               >
                 Request A Quote
               </Link>
@@ -312,6 +322,8 @@ const Navbar = () => {
                                   <Link
                                     key={subItem.name}
                                     href={subItem.href}
+                                    target={subItem.target}
+                                    rel={subItem.target === '_blank' ? 'noopener noreferrer' : undefined}
                                     className="block py-1.5 sm:py-2 text-gray-400 hover:text-yellow-400 text-xs sm:text-sm transition-colors"
                                     onClick={() => {
                                       setIsMenuOpen(false);

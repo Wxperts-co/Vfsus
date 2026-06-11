@@ -130,7 +130,7 @@ const IndustriesSection = () => {
                   {'Protecting'.split('').map((char, index) => (
                     <span 
                       key={index} 
-                      className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300"
+                      className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300 heading-font"
                       style={{ animationDelay: `${index * 0.03}s` }}
                     >
                       {char}
@@ -141,7 +141,7 @@ const IndustriesSection = () => {
                   {'Diverse Sectors'.split('').map((char, index) => (
                     <span 
                       key={index} 
-                      className="inline-block relative animate-char-fade-up hover:text-white transition-colors duration-300"
+                      className="inline-block relative animate-char-fade-up hover:text-white transition-colors duration-300 heading-font"
                       style={{ animationDelay: `${(index + 9) * 0.03}s` }}
                     >
                       {char}

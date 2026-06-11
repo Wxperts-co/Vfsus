@@ -240,12 +240,12 @@ const AboutSection = () => {
 
                             <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10">
                                 {/* Line 1 */}
-                                <span className="block text-[#eab308]">
+                                <span className="block text-[#eab308] heading-font">
                                     Delivering Protection
                                 </span>
 
                                 {/* Line 2 */}
-                                <span className="block text-[#002147] lg:text-3xl">
+                                <span className="block text-[#002147] lg:text-3xl heading-font">
                                     That Builds Trust &amp; Peace of Mind
                                 </span>
                             </h2>

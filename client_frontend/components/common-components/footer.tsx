@@ -21,47 +21,47 @@ const Footer = () => {
                                     <h2 className="sisf-m-title text-white sis-text-anime-style-3 text-4xl md:text-5xl lg:text-6xl font-extrabold">
                                         <span className="sisf-e-colored">
                                             <span className="inline-block relative">
-                                                <span className="inline-block relative opacity-100 translate-y-0">R</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">e</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">a</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">d</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">y</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">R</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">e</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">a</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">d</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">y</span>
                                             </span>{' '}
                                             <span className="inline-block relative">
-                                                <span className="inline-block relative opacity-100 translate-y-0">t</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">o</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">t</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">o</span>
                                             </span>{' '}
                                             <span className="inline-block relative">
-                                                <span className="inline-block relative opacity-100 translate-y-0">S</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">e</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">c</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">u</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">r</span>
-                                                <span className="inline-block relative opacity-100 translate-y-0">e</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">S</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">e</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">c</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">u</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">r</span>
+                                                <span className="inline-block relative opacity-100 translate-y-0 heading-font">e</span>
                                             </span>
                                         </span>{' '}
                                         <span className="inline-block relative">
-                                            <span className="inline-block relative opacity-100 translate-y-0">W</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">h</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">a</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">t</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">W</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">h</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">a</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">t</span>
                                         </span>
                                         <br />
                                         <span className="inline-block relative">
-                                            <span className="inline-block relative opacity-100 translate-y-0">M</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">a</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">t</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">t</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">e</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">r</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">s</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">M</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">a</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">t</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">t</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">e</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">r</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">s</span>
                                         </span>{' '}
                                         <span className="inline-block relative">
-                                            <span className="inline-block relative opacity-100 translate-y-0">M</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">o</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">s</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">t</span>
-                                            <span className="inline-block relative opacity-100 translate-y-0">?</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">M</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">o</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">s</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">t</span>
+                                            <span className="inline-block relative opacity-100 translate-y-0 heading-font">?</span>
                                         </span>
                                     </h2>
 
@@ -74,13 +74,13 @@ const Footer = () => {
 
                                     <div className="button-group pt-4 flex items-center justify-center gap-4">
                                         <div className="sisf-m-button aos-init aos-animate" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">
-                                            <Link href="/about-us" className="sis-btn-default inline-flex items-center gap-2 bg-[#eab308] text-[#002147] px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition">
+                                            <Link href="/request-quote" className="sis-btn-default inline-flex items-center gap-2 bg-[#eab308] text-[#002147] px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition">
                                                 Request a Quote
                                                 <i className="fa-solid fa-arrow-right"></i>
                                             </Link>
                                         </div>
                                         <div className="sisf-m-button aos-init aos-animate" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1200">
-                                            <Link href="/contact" className="sis-btn-default btn-dark inline-flex items-center gap-2 bg-[#eab308] text-[#002147] px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition">
+                                            <Link href="/contact-us" className="sis-btn-default btn-dark inline-flex items-center gap-2 bg-[#eab308] text-[#002147] px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition">
                                                 Contact Us
                                                 <i className="fa-solid fa-arrow-right"></i>
                                             </Link>
@@ -93,7 +93,7 @@ const Footer = () => {
                                     <div className="flex whitespace-nowrap animate-scroll">
                                         <div className="sis-scroll-content flex">
                                             <div className="sis-footer-content pr-10">
-                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text"
+                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text heading-font"
                                                     style={{
                                                         WebkitTextStroke: '1px white',
                                                         maskImage: 'linear-gradient(180deg, rgba(255,255,255,0.8) -9.11%, rgba(19,61,60,0) 126.82%)',
@@ -105,7 +105,7 @@ const Footer = () => {
                                                 </span>
                                             </div>
                                             <div className="sis-footer-content pr-10">
-                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text"
+                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text heading-font"
                                                     style={{
                                                         WebkitTextStroke: '1px white',
                                                         maskImage: 'linear-gradient(180deg, rgba(255,255,255,0.8) -9.11%, rgba(19,61,60,0) 126.82%)',
@@ -119,7 +119,7 @@ const Footer = () => {
                                         </div>
                                         <div className="sis-scroll-content flex ms-4">
                                             <div className="sis-footer-content pr-10">
-                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text"
+                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text heading-font"
                                                     style={{
                                                         WebkitTextStroke: '1px white',
                                                         maskImage: 'linear-gradient(180deg, rgba(255,255,255,0.8) -9.11%, rgba(19,61,60,0) 126.82%)',
@@ -131,7 +131,7 @@ const Footer = () => {
                                                 </span>
                                             </div>
                                             <div className="sis-footer-content pr-10">
-                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text"
+                                                <span className="text-[50px] font-black uppercase font-heading leading-none text-transparent bg-clip-text heading-font"
                                                     style={{
                                                         WebkitTextStroke: '1px white',
                                                         maskImage: 'linear-gradient(180deg, rgba(255,255,255,0.8) -9.11%, rgba(19,61,60,0) 126.82%)',
@@ -206,22 +206,10 @@ const Footer = () => {
                                         <h3 className="text-[#002147] text-2xl font-extrabold font-heading mb-6">Quick Links</h3>
                                         <ul className="list-disc pl-6 space-y-2">
                                             <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="/service-single" className="text-[#002147] hover:text-[#002147]/80">Home</Link>
+                                                <Link href="https://www.activitysuite.com/login.aspx?T=AoWqDv4E4WGqBtHsEBEMrg==" className="text-[#002147] hover:text-[#002147]/80" target="_blank">Client / Site Login</Link>
                                             </li>
                                             <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="/service-single" className="text-[#002147] hover:text-[#002147]/80">About Us</Link>
-                                            </li>
-                                            <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="/service-single" className="text-[#002147] hover:text-[#002147]/80">Services</Link>
-                                            </li>
-                                            <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="/service-single" className="text-[#002147] hover:text-[#002147]/80">Testimonials</Link>
-                                            </li>
-                                            <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="/service-single" className="text-[#002147] hover:text-[#002147]/80">Contact Us</Link>
-                                            </li>
-                                            <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="/service-single" className="text-[#002147] hover:text-[#002147]/80">Employment Application</Link>
+                                                <Link href="#" className="text-[#002147] hover:text-[#002147]/80">Pay Now</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -245,69 +233,69 @@ const Footer = () => {
                                 </div>
 
                                 {/* Social Links Column */}
-                               <div className="lg:col-span-1">
-    <h3 className="text-[#002147] text-2xl font-extrabold font-heading mb-6 pl-0 lg:pl-4 text-left lg:text-left">
-        Follow Us
-    </h3>
+                                <div className="lg:col-span-1">
+                                    <h3 className="text-[#002147] text-2xl font-extrabold font-heading mb-6 pl-0 lg:pl-4 text-left lg:text-left">
+                                        Follow Us
+                                    </h3>
 
-    <ul className="flex justify-start lg:justify-center gap-6">
-        <li>
-            <a
-                href="https://www.facebook.com/pages/VSF/160758390617323?__mref=message_bubble"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img
-                    src="/images/facebook-img.png"
-                    alt="Facebook"
-                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
-                />
-            </a>
-        </li>
+                                    <ul className="flex justify-start lg:justify-center gap-6">
+                                        <li>
+                                            <a
+                                                href="https://www.facebook.com/pages/VSF/160758390617323?__mref=message_bubble"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="/images/facebook-img.png"
+                                                    alt="Facebook"
+                                                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
+                                                />
+                                            </a>
+                                        </li>
 
-        <li>
-            <a
-                href="https://twitter.com/vsfus"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img
-                    src="/images/twitter-img.png"
-                    alt="Twitter"
-                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
-                />
-            </a>
-        </li>
+                                        <li>
+                                            <a
+                                                href="https://twitter.com/vsfus"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="/images/twitter-img.png"
+                                                    alt="Twitter"
+                                                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
+                                                />
+                                            </a>
+                                        </li>
 
-        <li>
-            <a
-                href="https://www.linkedin.com/company/virginia-surveillance-force"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img
-                    src="/images/linkedin-img.png"
-                    alt="LinkedIn"
-                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
-                />
-            </a>
-        </li>
+                                        <li>
+                                            <a
+                                                href="https://www.linkedin.com/company/virginia-surveillance-force"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="/images/linkedin-img.png"
+                                                    alt="LinkedIn"
+                                                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
+                                                />
+                                            </a>
+                                        </li>
 
-        <li>
-            <a
-                href="https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img
-                    src="/images/youtube-img.png"
-                    alt="YouTube"
-                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
-                />
-            </a>
-        </li>
-    </ul>
-</div>
+                                        <li>
+                                            <a
+                                                href="https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src="/images/youtube-img.png"
+                                                    alt="YouTube"
+                                                    className="w-8 h-8 hover:scale-110 transition-transform duration-300"
+                                                />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
 
 
 

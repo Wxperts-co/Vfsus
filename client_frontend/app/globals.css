@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0b1120;
+  --navy-mid: #131e35;
+  --gold: #eab308;
+  --gold-light: #e8c97a;
+  --steel: #8898aa;
+  --white: #f4f6f8;
+  --red: #c0392b;
+  --heading-font: var(--font-bebas), cursive;
+  --default-font: var(--font-barlow), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  font-family: var(--font-barlow);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-font,
+.section-headline,
+.video-badge,
+.stat-label,
+.promise-card h4,
+.cta-btn {
+  font-family: var(--heading-font) !important;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--default-font);
+}
+
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-animate {
+  animation: letterReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

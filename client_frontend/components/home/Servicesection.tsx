@@ -93,7 +93,7 @@ const ServicesSection = () => {
                                     {'Our'.split('').map((char, index) => (
                                         <span
                                             key={index}
-                                            className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300"
+                                            className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300 heading-font"
                                             style={{ animationDelay: `${index * 0.03}s` }}
                                         >
                                             {char}
@@ -104,7 +104,7 @@ const ServicesSection = () => {
                                     {'Professional'.split('').map((char, index) => (
                                         <span
                                             key={index}
-                                            className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300"
+                                            className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300 heading-font"
                                             style={{ animationDelay: `${(index + 3) * 0.03}s` }}
                                         >
                                             {char}
@@ -115,7 +115,7 @@ const ServicesSection = () => {
                                     {'Security Services'.split('').map((char, index) => (
                                         <span
                                             key={index}
-                                            className="inline-block relative animate-char-fade-up hover:text-[#002147] transition-colors duration-300"
+                                            className="inline-block relative animate-char-fade-up hover:text-[#002147] transition-colors duration-300 heading-font"
                                             style={{ animationDelay: `${(index + 14) * 0.03}s` }}
                                         >
                                             {char}

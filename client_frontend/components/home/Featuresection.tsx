@@ -71,7 +71,7 @@ const FeaturesSection = () => {
             {/* Section Title */}
             <div className="sisf-sis-section-title sis-section-title mb-8">
               {/* Subtitle with Character Animation */}
-              <h5 className="sisf-m-subtitle white sisf-e-colored inline-block font-['Montserrat',sans-serif] text-sm md:text-base font-bold uppercase leading-6 tracking-normal mb-4 text-[#eab308] bg-[#FFD41D1A] px-4 py-2 rounded-[50px]">
+              <h5 className="sisf-m-subtitle white sisf-e-colored heading-font inline-block text-sm md:text-base font-bold uppercase leading-6 tracking-normal mb-4 text-[#eab308] bg-[#FFD41D1A] px-4 py-2 rounded-[50px]">
                 <span className="inline-block relative">
                   {'OUR FEATURES'.split('').map((char, index) => (
                     <span 
@@ -89,7 +89,7 @@ const FeaturesSection = () => {
               </h5>
               
               {/* Main Title with Character Animation */}
-              <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10 text-white">
+              <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10 text-white ">
                 <span className="block text-[#eab308] mb-2">
                   {'Core Security'.split('').map((char, index) => (
                     <span 
