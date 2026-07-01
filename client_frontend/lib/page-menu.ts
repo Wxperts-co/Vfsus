@@ -1,5 +1,14 @@
-// data/MenuList.ts
-// Single source of truth for all Menu List pages.
+// lib/page-menu.ts
+// Schema and default data for dynamic Menu List pages.
+
+export interface MenuPageData {
+  seo: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
+  menus: MenuListItem[];
+}
 
 export interface MenuSection {
   title: string;
@@ -26,6 +35,12 @@ export interface MenuListItem {
   slug: string;
   title: string;
   icon: string;
+  isVisible?: boolean; // Controls if it shows up on the frontend
+  seo?: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
   type: 'standard' | 'faq' | 'resource';
   intro: string[];
   sections?: MenuSection[];
@@ -374,9 +389,16 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
   }
 ];
 
-export default MENU_LIST_ITEMS;
+export const defaultMenuPageData: MenuPageData = {
+  seo: {
+    title: "Menu | Virginia Surveillance Force",
+    description: "Explore the various services and resources offered by Virginia Surveillance Force.",
+    keywords: "security menu, vsf services, why choose us, security resources, security faqs",
+  },
+  menus: MENU_LIST_ITEMS,
+};
 
-/** Find menu item by slug */
+/** Find menu item by slug (now redundant since data is dynamic, but kept for backward compat temporarily) */
 export function getMenuItemBySlug(slug: string): MenuListItem | undefined {
   return MENU_LIST_ITEMS.find((item) => item.slug === slug);
 }

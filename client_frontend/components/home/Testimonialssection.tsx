@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { HomeTestimonialsSection } from '@/lib/page-home';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -14,7 +15,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const TestimonialsSection = () => {
+const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
     const [testimonialSwiper, setTestimonialSwiper] = useState<SwiperType | null>(null);
     const [logoSliderSwiper, setLogoSliderSwiper] = useState<SwiperType | null>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,7 @@ const TestimonialsSection = () => {
         return () => observer.disconnect();
     }, []);
 
-    const testimonials = [
+    const testimonials = data?.testimonials || [
         {
             id: 1,
             description: "I initially hired VA. Surveillance Force during thanksgiving on a temporary basis, but the level of service quickly exceeded our expectations. The officers were professional, reliable, and consistently alert, with excellent communication and attention to detail. Their strong presence and proactive approach impressed our board so much that we decided to move forward with a permanent engagement. Highly recommended for dependable, high quality security services.",
@@ -69,7 +70,7 @@ const TestimonialsSection = () => {
         }
     ];
 
-    const logoSlides = [
+    const logoSlides = data?.logoSlides || [
         { id: 1, image: "/images/client-1111.jpg", alt: "Client Logo 1" },
         { id: 2, image: "/images/client-2.jpg", alt: "Client Logo 2" },
         { id: 3, image: "/images/client-3.jpg", alt: "Client Logo 3" },
@@ -97,8 +98,8 @@ const TestimonialsSection = () => {
             <div className="absolute inset-0 z-0">
                 {/* Background Image */}
                 <Image
-                    src="/images/about-bg-section.webp"
-                    alt="American Flag"
+                    src={data?.backgroundImage || "/images/about-bg-section.webp"}
+                    alt="Background Image"
                     fill
                     priority={false}
                     className="object-cover"
@@ -115,7 +116,7 @@ const TestimonialsSection = () => {
                     {/* ================= SECTION TITLE ================= */}
                     <div className="text-center mb-10">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] text-[#eab308] max-w-4xl mx-auto">
-                            <span className="text-[#002147] heading-font">Our </span> Happy Customers
+                            <span className="text-[#002147] heading-font">{data?.titlePart1 || "Our"} </span> {data?.titlePart2 || "Happy Customers"}
                         </h2>
                     </div>
 
@@ -123,7 +124,7 @@ const TestimonialsSection = () => {
                     <div className="flex items-center justify-center gap-6 mb-12">
                         <figure className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl">
                             <Image
-                                src="/images/google-review-logo.png"
+                                src={data?.googleReviewLogo || "/images/google-review-logo.png"}
                                 alt="Ratings"
                                 width={200}
                                 height={100}

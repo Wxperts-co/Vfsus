@@ -6,16 +6,19 @@ import Whychooseussection from "@/components/home/Whychooseussection";
 import Testimonialssection from "@/components/home/Testimonialssection"; 
 import Footersection from "@/components/common-components/footer"; 
 
- 
-export default function Page() {
+import { getHomePageData } from "@/lib/settings-server";
+
+export default async function Page() {
+  const data = await getHomePageData();
+
   return (
     <>
       <HeroSection />
-      <Aboutsection />
+      <Aboutsection data={data.aboutSection} />
       <Featuresection />
       <Servicesection />
-      <Whychooseussection />
-      <Testimonialssection/>
+      <Whychooseussection data={data.whyChooseUsSection} />
+      <Testimonialssection data={data.testimonialsSection} />
      </>
   );
 }

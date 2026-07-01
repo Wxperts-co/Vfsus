@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, MapPin, Phone, Clock, ChevronDown, ChevronRight, Target } from 'lucide-react';
+import { useSettings } from '@/components/common-components/SettingsProvider';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,11 +43,13 @@ const Navbar = () => {
     { name: 'Contact Us', href: '/contact-us' },
   ];
 
+  const settings = useSettings();
+
   const socialLinks = [
-    { icon: "/images/facebook-img.png", href: 'https://www.facebook.com/pages/VSF/160758390617323', label: 'Facebook' },
-    { icon: "/images/twitter-img.png", href: 'https://twitter.com/vsfus', label: 'Twitter' },
-    { icon: "/images/linkedin-img.png", href: 'https://www.linkedin.com/company/virginia-surveillance-force', label: 'LinkedIn' },
-    { icon: "/images/youtube-img.png", href: 'https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw', label: 'YouTube' },
+    { icon: "/images/facebook-img.png", href: settings.socialUrls.facebook, label: 'Facebook' },
+    { icon: "/images/twitter-img.png", href: settings.socialUrls.twitter, label: 'Twitter' },
+    { icon: "/images/linkedin-img.png", href: settings.socialUrls.linkedin, label: 'LinkedIn' },
+    { icon: "/images/youtube-img.png", href: settings.socialUrls.youtube, label: 'YouTube' },
   ];
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -109,20 +112,20 @@ const Navbar = () => {
               <div className="flex items-center space-x-1.5 xl:space-x-2">
                 <MapPin className="h-3.5 w-3.5 xl:h-4 xl:w-4 text-yellow-400" />
                 <a 
-                  href="https://maps.app.goo.gl/uSR8odXD56PMeaNC7" 
+                  href={settings.mapLink} 
                   target='_blank' 
                   className="text-gray-300 text-[11px] xl:text-[12px] 2xl:text-[13px] hover:text-yellow-400 transition-colors"
                 >
-                  7544 Diplomat Dr #101, Manassas, VA 20109
+                  {settings.location}
                 </a>
               </div>
               <div className="flex items-center space-x-1.5 xl:space-x-2">
                 <Phone className="h-3.5 w-3.5 xl:h-4 xl:w-4 text-yellow-400" />
                 <a 
-                  href="tel:8007860395" 
+                  href={`tel:${settings.contactNo.replace(/[^0-9]/g, "")}`}
                   className="text-gray-300 text-[11px] xl:text-[12px] 2xl:text-[13px] hover:text-yellow-400 transition-colors"
                 >
-                  (800) 786-0395
+                  {settings.contactNo}
                 </a>
               </div>
             </div>
@@ -134,7 +137,7 @@ const Navbar = () => {
                   {/* Desktop Logo */}
                   <div className="hidden lg:block relative w-[180px] xl:w-[200px] 2xl:w-[320px] h-auto">
                     <Image 
-                      src="/images/logo2.png" 
+                      src={settings.logoUrl}
                       alt="Company Logo"  
                       width={350}
                       height={80}
@@ -146,7 +149,7 @@ const Navbar = () => {
                   {/* Mobile Logo */}
                   <div className="lg:hidden relative w-[240px] sm:w-[160px] md:w-[180px] h-auto">
                     <Image 
-                      src="/images/logo2.png" 
+                      src={settings.logoUrl}
                       alt="Company Logo" 
                       width={180}
                       height={35}
@@ -373,20 +376,20 @@ const Navbar = () => {
                       <div className="flex items-start space-x-2">
                         <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                         <a 
-                          href="https://maps.app.goo.gl/uSR8odXD56PMeaNC7" 
+                          href={settings.mapLink}
                           target='_blank' 
                           className="text-gray-300 text-xs sm:text-sm hover:text-yellow-400"
                         >
-                          7544 Diplomat Dr #101, Manassas, VA 20109
+                          {settings.location}
                         </a>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 flex-shrink-0" />
                         <a 
-                          href="tel:8007860395" 
+                          href={`tel:${settings.contactNo.replace(/[^0-9]/g, "")}`}
                           className="text-gray-300 text-xs sm:text-sm hover:text-yellow-400"
                         >
-                          (800) 786-0395
+                          {settings.contactNo}
                         </a>
                       </div>
                       <div className="flex items-center space-x-2">

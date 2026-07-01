@@ -4,10 +4,12 @@ import React, { use } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
+import { useSettings } from '@/components/common-components/SettingsProvider';
 const currentYear = new Date().getFullYear();
 
 
 const Footer = () => {
+    const settings = useSettings();
     return (
         <footer className="main-footer">
             <div className="sisf-page-footer-inner-area br-radius sis-comman-background relative pb-2 mb-3">
@@ -209,7 +211,7 @@ const Footer = () => {
                                                 <Link href="https://www.activitysuite.com/login.aspx?T=AoWqDv4E4WGqBtHsEBEMrg==" className="text-[#002147] hover:text-[#002147]/80" target="_blank">Client / Site Login</Link>
                                             </li>
                                             <li className="hover:pl-4 transition-all duration-300">
-                                                <Link href="#" className="text-[#002147] hover:text-[#002147]/80">Pay Now</Link>
+                                                <Link href="/pay-now" className="text-[#002147] hover:text-[#002147]/80">Pay Now</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -225,9 +227,9 @@ const Footer = () => {
                                         <p className="text-[#002147] text-sm leading-relaxed mb-4">
                                             <strong>Virginia Surveillance Force</strong><br />
 
-                                            <strong>Address:</strong> 7544 Diplomat Dr #101, Manassas, VA 20109<br />
-                                            <strong>Tel:</strong> <a href="tel:8007860395" className="hover:underline">(800) 786-0395</a><br />
-                                            <strong>Fax:</strong> (800) 570-8290
+                                            <strong>Address:</strong> {settings.location}<br />
+                                            <strong>Tel:</strong> <a href={`tel:${settings.contactNo.replace(/[^0-9]/g, "")}`} className="hover:underline">{settings.contactNo}</a><br />
+                                            <strong>Email:</strong> {settings.email}
                                         </p>
                                     </div>
                                 </div>
@@ -241,7 +243,7 @@ const Footer = () => {
                                     <ul className="flex justify-start lg:justify-center gap-6">
                                         <li>
                                             <a
-                                                href="https://www.facebook.com/pages/VSF/160758390617323?__mref=message_bubble"
+                                                href={settings.socialUrls.facebook}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -255,7 +257,7 @@ const Footer = () => {
 
                                         <li>
                                             <a
-                                                href="https://twitter.com/vsfus"
+                                                href={settings.socialUrls.twitter}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -269,7 +271,7 @@ const Footer = () => {
 
                                         <li>
                                             <a
-                                                href="https://www.linkedin.com/company/virginia-surveillance-force"
+                                                href={settings.socialUrls.linkedin}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
@@ -283,7 +285,7 @@ const Footer = () => {
 
                                         <li>
                                             <a
-                                                href="https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw"
+                                                href={settings.socialUrls.youtube}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >

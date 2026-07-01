@@ -3,9 +3,9 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { HomeWhyChooseSection } from '@/lib/page-home';
 
-const IndustriesSection = () => {
+const IndustriesSection = ({ data }: { data?: HomeWhyChooseSection }) => {
   // Intersection Observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,7 +23,7 @@ const IndustriesSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const industries = [
+  const industries = data?.industries || [
     // Column 1
     {
       id: 1,
@@ -31,7 +31,7 @@ const IndustriesSection = () => {
       title: 'Corporate Offices',
       description: 'Executive protection and facility security',
       delay: '100',
-      column: 1
+      column: 1 as const
     },
     {
       id: 2,
@@ -39,7 +39,7 @@ const IndustriesSection = () => {
       title: 'Shopping Malls',
       description: 'Retail security and loss prevention',
       delay: '200',
-      column: 1
+      column: 1 as const
     },
     // Column 2
     {
@@ -48,7 +48,7 @@ const IndustriesSection = () => {
       title: 'Construction Sites',
       description: 'Asset protection and site monitoring',
       delay: '300',
-      column: 2
+      column: 2 as const
     },
     {
       id: 4,
@@ -56,7 +56,7 @@ const IndustriesSection = () => {
       title: 'Hotels & Resorts',
       description: 'Guest safety and property protection',
       delay: '400',
-      column: 2
+      column: 2 as const
     },
     // Column 3
     {
@@ -65,7 +65,7 @@ const IndustriesSection = () => {
       title: 'Hospitals',
       description: 'Healthcare facility security services',
       delay: '500',
-      column: 3
+      column: 3 as const
     },
     {
       id: 6,
@@ -73,7 +73,7 @@ const IndustriesSection = () => {
       title: 'Government Facilities',
       description: 'High-security government installations',
       delay: '600',
-      column: 3
+      column: 3 as const
     }
   ];
 
@@ -89,8 +89,8 @@ const IndustriesSection = () => {
       <div className="absolute inset-0 z-0 opacity-[0.03]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#002147]/80 to-[#002147]/90 z-10" />
         <Image
-          src="/images/american-flag.jpg"
-          alt="American Flag"
+          src={data?.backgroundImage || "/images/american-flag.jpg"}
+          alt="Background"
           fill
           className="object-cover"
           priority={false}
@@ -109,7 +109,7 @@ const IndustriesSection = () => {
               {/* Subtitle with Character Animation */}
               <h5 className="sisf-m-subtitle inline-block font-['Montserrat',sans-serif] text-sm md:text-base font-bold uppercase leading-6 tracking-normal mb-4 text-[#eab308] bg-[#FFD41D1A] px-4 py-2 rounded-[50px]">
                 <span className="inline-block relative">
-                  {'WHY CHOOSE US'.split('').map((char, index) => (
+                  {(data?.subtitle || 'WHY CHOOSE US').split('').map((char, index) => (
                     <span 
                       key={index} 
                       className="inline-block relative animate-char-fade-up"
@@ -127,24 +127,24 @@ const IndustriesSection = () => {
               {/* Main Title with Character Animation */}
               <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10 text-white">
                 <span className="inline-block mr-2">
-                  {'Protecting'.split('').map((char, index) => (
+                  {(data?.titleLine1 || 'Protecting').split('').map((char, index) => (
                     <span 
                       key={index} 
                       className="inline-block relative animate-char-fade-up hover:text-[#eab308] transition-colors duration-300 heading-font"
                       style={{ animationDelay: `${index * 0.03}s` }}
                     >
-                      {char}
+                      {char === ' ' ? '\u00A0' : char}
                     </span>
                   ))}
                 </span>
                 <span className="inline-block text-[#eab308]">
-                  {'Diverse Sectors'.split('').map((char, index) => (
+                  {(data?.titleLine2 || 'Diverse Sectors').split('').map((char, index) => (
                     <span 
                       key={index} 
                       className="inline-block relative animate-char-fade-up hover:text-white transition-colors duration-300 heading-font"
                       style={{ animationDelay: `${(index + 9) * 0.03}s` }}
                     >
-                      {char}
+                      {char === ' ' ? '\u00A0' : char}
                     </span>
                   ))}
                 </span>
@@ -153,7 +153,7 @@ const IndustriesSection = () => {
               {/* Description */}
               <div className="sisf-m-text max-w-2xl">
                 <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                 When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1994.
+                 {data?.description || "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1994."}
                 </p>
               </div>
             </div>
@@ -286,7 +286,7 @@ const IndustriesSection = () => {
               <figure className="sis-reveal relative overflow-hidden group">
                 <div className="relative overflow-hidden rounded-2xl">
                   <Image 
-                    src="/images/choose-section.jpg"
+                    src={data?.rightImage || "/images/choose-section.jpg"}
                     alt="Industries We Serve"
                     width={600}
                     height={500}

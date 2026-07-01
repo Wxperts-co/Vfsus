@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Play } from "lucide-react";
+import { HomeAboutSection } from '@/lib/page-home';
 
-const AboutSection = () => {
+const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     const counterRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -124,7 +125,7 @@ const AboutSection = () => {
                                 <div className="relative overflow-hidden w-full rounded-[20px]">
                                     <div className="relative w-[87%] aspect-video rounded-[20px] overflow-hidden">
                                         <iframe
-                                            src="https://fast.wistia.net/embed/iframe/bukr8v224n"
+                                            src={data?.videoUrl || "https://fast.wistia.net/embed/iframe/bukr8v224n"}
                                             allow="autoplay; fullscreen"
                                             allowFullScreen
                                             className="w-full h-full rounded-[20px]"
@@ -139,91 +140,52 @@ const AboutSection = () => {
                             </figure>
                         </div>
 
-                        {/* Section Title - Description */}
                         <div className="sisf-sis-section-title sis-section-title mb-12">
                             <div className="sisf-m-text">
                                 <p className="text-gray-700 text-base md:text-lg leading-relaxed font-sans">
-                                    Welcome to the American based firm working throughout the Washington DC DMV area. We provide Special Police, Concierge, Courier, Fire Watch, Armed & Unarmed officers, Vehicle Patrol, Investigative and Protective Services. Regardless of the type of service you need, you're looking for peace of mind. You want an authoritative presence that provides you with ultimate security. We believe in investing in our people, so they, in turn, invest in you. Whether you are a small or large business or government entity, whether your needs are immediate or long-term, we have the solutions to your security & business problems. We provide the peace of mind you are looking for.
+                                    {data?.description || "Welcome to the American based firm working throughout the Washington DC DMV area. We provide Special Police, Concierge, Courier, Fire Watch, Armed & Unarmed officers, Vehicle Patrol, Investigative and Protective Services. Regardless of the type of service you need, you're looking for peace of mind. You want an authoritative presence that provides you with ultimate security. We believe in investing in our people, so they, in turn, invest in you. Whether you are a small or large business or government entity, whether your needs are immediate or long-term, we have the solutions to your security & business problems. We provide the peace of mind you are looking for."}
                                 </p>
                             </div>
                         </div>
 
-                        {/* About Counters Section */}
                         <div className="sis-about-counter">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-
-                                {/* Counter Item 1 */}
-                                <div
-                                    className="counter-item"
-                                    data-aos="fade-up"
-                                    data-aos-delay="100"
-                                    data-aos-duration="1200"
-                                >
-                                    <div className="counter-title">
-                                        <h2 className="flex items-center justify-center text-4xl font-bold text-primary text-[#eab308] text-5xl">
-                                            <span className="counter">150</span>
-                                            <span className="ml-1">+</span>
-                                        </h2>
+                                {(data?.counters || [
+                                    { number: 150, symbol: "+", label: "Certified & Trained Guards" },
+                                    { number: 98, symbol: "%", label: "Client Retention Rate" },
+                                    { number: 500, symbol: "+", label: "Security Assignments Completed" }
+                                ]).map((counter, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="counter-item"
+                                        data-aos="fade-up"
+                                        data-aos-delay={(idx + 1) * 100}
+                                        data-aos-duration="1200"
+                                    >
+                                        <div className="counter-title">
+                                            <h2 className="flex items-center justify-center text-4xl font-bold text-primary text-[#eab308] text-5xl">
+                                                <span className="counter">{counter.number}</span>
+                                                <span className="ml-1">{counter.symbol}</span>
+                                            </h2>
+                                        </div>
+                                        <div className="counter-content mt-2">
+                                            <span className="text-gray-900 font-medium">
+                                                {counter.label}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="counter-content mt-2">
-                                        <span className="text-gray-900 font-medium">
-                                            Certified &amp; Trained Guards
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Counter Item 2 */}
-                                <div
-                                    className="counter-item"
-                                    data-aos="fade-up"
-                                    data-aos-delay="300"
-                                    data-aos-duration="1200"
-                                >
-                                    <div className="counter-title">
-                                        <h2 className="flex items-center justify-center text-4xl font-bold text-primary text-[#eab308] text-5xl">
-                                            <span className="counter">98</span>
-                                            <span className="ml-1">%</span>
-                                        </h2>
-                                    </div>
-                                    <div className="counter-content mt-2">
-                                        <span className="text-gray-900 font-medium">
-                                            Client Retention Rate
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Counter Item 3 */}
-                                <div
-                                    className="counter-item"
-                                    data-aos="fade-up"
-                                    data-aos-delay="600"
-                                    data-aos-duration="1200"
-                                >
-                                    <div className="counter-title">
-                                        <h2 className="flex items-center justify-center text-4xl font-bold text-primary text-[#eab308] text-5xl">
-                                            <span className="counter">500</span>
-                                            <span className="ml-1">+</span>
-                                        </h2>
-                                    </div>
-                                    <div className="counter-content mt-2">
-                                        <span className="text-gray-900 font-medium">
-                                            Security Assignments Completed
-                                        </span>
-                                    </div>
-                                </div>
-
+                                ))}
                             </div>
                         </div>
 
 
-                        {/* Learn More Button */}
                         <div className="sisf-m-button pt-4 leading-none">
                             <Link
-                                href="/about-us"
+                                href={data?.buttonLink || "/about-us"}
                                 className="sis-btn-default relative inline-block text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-7 py-3 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
                             >
                                 <span className="relative z-20 flex items-center">
-                                    Read More
+                                    {data?.buttonText || "Read More"}
                                     <i className="fa-solid fa-arrow-right ml-2.5 text-base transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
                                 </span>
                                 <span className="absolute left-[-15px] bottom-[-2px] w-0 h-[106%] bg-[#002147] transform skew-[30deg] group-hover:w-[120%] transition-all duration-300 z-0" />
@@ -241,12 +203,12 @@ const AboutSection = () => {
                             <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10">
                                 {/* Line 1 */}
                                 <span className="block text-[#eab308] heading-font">
-                                    Delivering Protection
+                                    {data?.titleLine1 || "Delivering Protection"}
                                 </span>
 
                                 {/* Line 2 */}
                                 <span className="block text-[#002147] lg:text-3xl heading-font">
-                                    That Builds Trust &amp; Peace of Mind
+                                    {data?.titleLine2 || "That Builds Trust & Peace of Mind"}
                                 </span>
                             </h2>
 
@@ -257,7 +219,7 @@ const AboutSection = () => {
                             <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px]">
                                 <div className="relative overflow-hidden w-full rounded-[20px]">
                                     <Image
-                                        src="/images/about-section-2.jpg"
+                                        src={data?.image || "/images/about-section-2.jpg"}
                                         alt="Row"
                                         width={600}
                                         height={400}
