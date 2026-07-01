@@ -59,10 +59,10 @@ export default function AdminMenu() {
 
   if (loading || !data) {
     return (
-      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
         <AdminSidebar />
         <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-[#6366f1]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#e8c97a]" />
         </div>
       </div>
     );
@@ -135,20 +135,20 @@ export default function AdminMenu() {
   const activeItem = editingIndex !== null ? data.menus[editingIndex] : null;
 
   return (
-    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
       <AdminSidebar />
 
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header */}
-        <header className="bg-white/[0.92] backdrop-blur-lg border-b border-black/[0.06] py-3.5 px-8 sticky top-0 z-40">
+        <header className="bg-[#131e35]/[0.92] backdrop-blur-lg border-b border-[rgba(201,168,76,0.12)] py-3.5 px-8 sticky top-0 z-40">
           <div className="flex justify-between items-center">
-            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-[#1e1b4b] m-0">
+            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-white m-0">
               Menu Pages Settings
             </h1>
             <button
               onClick={() => handleSave()}
               disabled={saving}
-              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
+              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#eab308] to-[#e8c97a] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
               {saving ? "Saving..." : "Save Changes"}
@@ -180,8 +180,8 @@ export default function AdminMenu() {
                   setEditingIndex(null);
                 }}
                 className={`flex items-center gap-2 px-5 py-3 rounded-t-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap -mb-px ${activeTab === tab.id
-                    ? "bg-white text-[#6366f1] border-t border-x border-black/5 border-b-transparent relative z-10"
-                    : "text-[#64748b] hover:text-[#334155] hover:bg-black/5 border-b-transparent"
+                    ? "bg-[#131e35] text-[#e8c97a] border-t border-x border-[rgba(201,168,76,0.12)] border-b-transparent relative z-10"
+                    : "text-[#8898aa] hover:text-[#e2e8f0] hover:bg-black/5 border-b-transparent"
                   }`}
               >
                 <tab.icon className="h-4 w-4" />
@@ -194,36 +194,36 @@ export default function AdminMenu() {
 
             {/* ── SEO TAB ── */}
             {activeTab === "seo" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Globe className="h-5 w-5 text-emerald-500" /> Menu Base SEO
                 </h3>
                 <div className="space-y-5 max-w-3xl">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Page Title</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Page Title</label>
                     <input
                       type="text"
                       value={data.seo.title}
                       onChange={(e) => updateMainData("seo", e.target.value, "title")}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Description</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Description</label>
                     <textarea
                       value={data.seo.description}
                       onChange={(e) => updateMainData("seo", e.target.value, "description")}
                       rows={3}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Keywords</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Keywords</label>
                     <input
                       type="text"
                       value={data.seo.keywords}
                       onChange={(e) => updateMainData("seo", e.target.value, "keywords")}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
@@ -232,9 +232,9 @@ export default function AdminMenu() {
 
             {/* ── MANAGE MENUS TAB ── */}
             {activeTab === "menus" && editingIndex === null && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                     <List className="h-5 w-5 text-indigo-500" /> All Menu Items ({data.menus.length})
                   </h3>
                   <div className="flex gap-2">
@@ -261,17 +261,17 @@ export default function AdminMenu() {
 
                 <div className="space-y-3">
                   {data.menus.map((item, index) => (
-                    <div key={index} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-4 flex items-center justify-between hover:border-[#818cf8] transition-colors group">
+                    <div key={index} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-4 flex items-center justify-between hover:border-[#818cf8] transition-colors group">
                       <div className="flex items-center gap-4">
-                        <span className="text-2xl w-10 h-10 bg-white border border-[#e2e8f0] flex items-center justify-center rounded-lg shadow-sm">{item.icon}</span>
+                        <span className="text-2xl w-10 h-10 bg-[#131e35] border border-[rgba(201,168,76,0.2)] flex items-center justify-center rounded-lg shadow-sm">{item.icon}</span>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h4 className="font-bold text-[#1e293b]">{item.title}</h4>
+                            <h4 className="font-bold text-[#f4f6f8]">{item.title}</h4>
                             <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">
                               {item.type}
                             </span>
                           </div>
-                          <span className="text-[11px] font-semibold text-[#818cf8] block mt-0.5">/{item.slug}</span>
+                          <span className="text-[11px] font-semibold text-[#eab308] block mt-0.5">/{item.slug}</span>
                         </div>
                       </div>
 
@@ -286,7 +286,7 @@ export default function AdminMenu() {
                         </div>
                         <button
                           onClick={() => setEditingIndex(index)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#e2e8f0] hover:border-[#818cf8] hover:text-[#818cf8] text-[#475569] rounded-md text-xs font-semibold transition-colors shadow-sm"
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#131e35] border border-[rgba(201,168,76,0.2)] hover:border-[#818cf8] hover:text-[#eab308] text-[#cbd5e1] rounded-md text-xs font-semibold transition-colors shadow-sm"
                         >
                           <Edit2 className="w-3.5 h-3.5" /> Edit
                         </button>
@@ -307,7 +307,7 @@ export default function AdminMenu() {
             {/* ── EDITING A SINGLE MENU ── */}
             {activeTab === "menus" && activeItem && (
               <div className="space-y-6">
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <button
                       onClick={() => {
@@ -319,13 +319,13 @@ export default function AdminMenu() {
                       <X className="w-5 h-5" />
                     </button>
                     <div>
-                      <h3 className="text-lg font-bold text-[#1e293b]">
-                        Editing: <span className="text-[#6366f1]">{activeItem.title}</span>
+                      <h3 className="text-lg font-bold text-[#f4f6f8]">
+                        Editing: <span className="text-[#e8c97a]">{activeItem.title}</span>
                         <span className="ml-3 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-slate-100 text-slate-600 align-middle">
                           TYPE: {activeItem.type}
                         </span>
                       </h3>
-                      <p className="text-xs text-[#64748b]">Configure menu content and details.</p>
+                      <p className="text-xs text-[#8898aa]">Configure menu content and details.</p>
                     </div>
                   </div>
                   <button
@@ -340,51 +340,51 @@ export default function AdminMenu() {
                 </div>
 
                 {/* Basic Info */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h4 className="text-sm font-bold text-[#1e293b] mb-5 flex items-center gap-2">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h4 className="text-sm font-bold text-[#f4f6f8] mb-5 flex items-center gap-2">
                     <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">1</span>
                     Basic Information
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title</label>
                       <input
                         type="text"
                         value={activeItem.title}
                         onChange={(e) => updateActiveMenu("title", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">URL Slug (e.g. why-choose-us)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">URL Slug (e.g. why-choose-us)</label>
                       <input
                         type="text"
                         value={activeItem.slug}
                         onChange={(e) => updateActiveMenu("slug", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Icon (Emoji or character)</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Icon (Emoji or character)</label>
                     <input
                       type="text"
                       value={activeItem.icon}
                       onChange={(e) => updateActiveMenu("icon", e.target.value)}
-                      className="w-full max-w-[200px] bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full max-w-[200px] bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
 
                 {/* Individual SEO Info */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] mt-6">
-                  <h4 className="text-sm font-bold text-[#1e293b] mb-5 flex items-center gap-2">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)] mt-6">
+                  <h4 className="text-sm font-bold text-[#f4f6f8] mb-5 flex items-center gap-2">
                     <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">SEO</span> 
                     Page Specific SEO
                   </h4>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Title (leave empty to use global)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Title (leave empty to use global)</label>
                       <input
                         type="text"
                         value={activeItem.seo?.title || ""}
@@ -392,12 +392,12 @@ export default function AdminMenu() {
                           const seo = { ...(activeItem.seo || { title: '', description: '', keywords: '' }), title: e.target.value };
                           updateActiveMenu("seo", seo);
                         }}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                         placeholder={`e.g. ${activeItem.title} | VSF`}
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Description</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Description</label>
                       <textarea
                         value={activeItem.seo?.description || ""}
                         onChange={(e) => {
@@ -405,11 +405,11 @@ export default function AdminMenu() {
                           updateActiveMenu("seo", seo);
                         }}
                         rows={2}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Keywords</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Keywords</label>
                       <input
                         type="text"
                         value={activeItem.seo?.keywords || ""}
@@ -417,16 +417,16 @@ export default function AdminMenu() {
                           const seo = { ...(activeItem.seo || { title: '', description: '', keywords: '' }), keywords: e.target.value };
                           updateActiveMenu("seo", seo);
                         }}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Intro Paragraphs */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                   <div className="flex justify-between items-center mb-5">
-                    <h4 className="text-sm font-bold text-[#1e293b] flex items-center gap-2">
+                    <h4 className="text-sm font-bold text-[#f4f6f8] flex items-center gap-2">
                       <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs">2</span>
                       Introductory Paragraphs
                     </h4>
@@ -435,7 +435,7 @@ export default function AdminMenu() {
                         const newIntro = [...(activeItem.intro || []), ""];
                         updateActiveMenu("intro", newIntro);
                       }}
-                      className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                      className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                     >
                       <Plus className="w-3.5 h-3.5" /> Add Paragraph
                     </button>
@@ -451,7 +451,7 @@ export default function AdminMenu() {
                             updateActiveMenu("intro", newIntro);
                           }}
                           rows={3}
-                          className="flex-1 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl px-4 py-3 text-sm text-[#1e293b] outline-none focus:border-[#818cf8] resize-none"
+                          className="flex-1 bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl px-4 py-3 text-sm text-[#f4f6f8] outline-none focus:border-[#818cf8] resize-none"
                         />
                         <button
                           onClick={() => {
@@ -469,9 +469,9 @@ export default function AdminMenu() {
                 </div>
 
                 {/* Specific Layout Details based on TYPE */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                   <div className="flex justify-between items-center mb-5">
-                    <h4 className="text-sm font-bold text-[#1e293b] flex items-center gap-2">
+                    <h4 className="text-sm font-bold text-[#f4f6f8] flex items-center gap-2">
                       <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs">3</span>
                       {activeItem.type === 'standard' && "Standard Sections"}
                       {activeItem.type === 'faq' && "FAQ Items"}
@@ -483,7 +483,7 @@ export default function AdminMenu() {
                       <button onClick={() => {
                         const s = [...(activeItem.sections || []), { title: "New Title", body: ["Content text..."] }];
                         updateActiveMenu("sections", s);
-                      }} className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                      }} className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
                         <Plus className="w-3.5 h-3.5" /> Add Section
                       </button>
                     )}
@@ -491,7 +491,7 @@ export default function AdminMenu() {
                       <button onClick={() => {
                         const f = [...(activeItem.faqItems || []), { id: "faq-" + Date.now(), question: "New Question?", answer: ["Answer..."] }];
                         updateActiveMenu("faqItems", f);
-                      }} className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                      }} className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
                         <Plus className="w-3.5 h-3.5" /> Add FAQ
                       </button>
                     )}
@@ -499,7 +499,7 @@ export default function AdminMenu() {
                       <button onClick={() => {
                         const r = [...(activeItem.resourceItems || []), { id: "res-" + Date.now(), title: "New Article", body: ["Body..."] }];
                         updateActiveMenu("resourceItems", r);
-                      }} className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                      }} className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
                         <Plus className="w-3.5 h-3.5" /> Add Article
                       </button>
                     )}
@@ -508,7 +508,7 @@ export default function AdminMenu() {
                   <div className="space-y-6">
                     {/* STANDARD SECTIONS */}
                     {activeItem.type === 'standard' && (activeItem.sections || []).map((sec, sIndex) => (
-                      <div key={sIndex} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 relative group">
+                      <div key={sIndex} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-5 relative group">
                         <button onClick={() => {
                           const s = [...activeItem.sections!];
                           s.splice(sIndex, 1);
@@ -524,7 +524,7 @@ export default function AdminMenu() {
                             s[sIndex].title = e.target.value;
                             updateActiveMenu("sections", s);
                           }}
-                          className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none mb-3 focus:border-[#818cf8]"
+                          className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none mb-3 focus:border-[#818cf8]"
                         />
                         <textarea
                           value={Array.isArray(sec.body) ? sec.body.join("\n\n") : sec.body}
@@ -535,14 +535,14 @@ export default function AdminMenu() {
                           }}
                           rows={4}
                           placeholder="Separate paragraphs with a blank line"
-                          className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none resize-none focus:border-[#818cf8]"
+                          className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none resize-none focus:border-[#818cf8]"
                         />
                       </div>
                     ))}
 
                     {/* FAQ ITEMS */}
                     {activeItem.type === 'faq' && (activeItem.faqItems || []).map((faq, fIndex) => (
-                      <div key={faq.id} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 relative group">
+                      <div key={faq.id} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-5 relative group">
                         <button onClick={() => {
                           const f = [...activeItem.faqItems!];
                           f.splice(fIndex, 1);
@@ -561,7 +561,7 @@ export default function AdminMenu() {
                               f[fIndex].question = e.target.value;
                               updateActiveMenu("faqItems", f);
                             }}
-                            className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
 
@@ -575,7 +575,7 @@ export default function AdminMenu() {
                               updateActiveMenu("faqItems", f);
                             }}
                             rows={3}
-                            className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none resize-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none resize-none focus:border-[#818cf8]"
                           />
                         </div>
 
@@ -600,7 +600,7 @@ export default function AdminMenu() {
                                   f[fIndex].bullets![bIdx] = e.target.value;
                                   updateActiveMenu("faqItems", f);
                                 }}
-                                className="flex-1 bg-white border border-[#e2e8f0] rounded-md px-2 py-1 text-sm outline-none focus:border-[#818cf8]"
+                                className="flex-1 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-md px-2 py-1 text-sm outline-none focus:border-[#818cf8]"
                               />
                               <button onClick={() => {
                                 const f = [...activeItem.faqItems!];
@@ -611,7 +611,7 @@ export default function AdminMenu() {
                           ))}
                         </div>
 
-                        <div className="flex items-center gap-4 mt-4 bg-white p-3 rounded-lg border border-[#e2e8f0]">
+                        <div className="flex items-center gap-4 mt-4 bg-[#131e35] p-3 rounded-lg border border-[rgba(201,168,76,0.2)]">
                           <label className="flex items-center gap-2 text-sm font-semibold text-slate-600 cursor-pointer">
                             <input
                               type="checkbox"
@@ -621,7 +621,7 @@ export default function AdminMenu() {
                                 f[fIndex].clientLogos = e.target.checked;
                                 updateActiveMenu("faqItems", f);
                               }}
-                              className="rounded border-slate-300 text-[#6366f1] focus:ring-[#6366f1]"
+                              className="rounded border-slate-300 text-[#e8c97a] focus:ring-[#6366f1]"
                             />
                             Show Client Logos
                           </label>
@@ -631,7 +631,7 @@ export default function AdminMenu() {
 
                     {/* RESOURCE ARTICLES */}
                     {activeItem.type === 'resource' && (activeItem.resourceItems || []).map((res, rIndex) => (
-                      <div key={res.id} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 relative group">
+                      <div key={res.id} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-5 relative group">
                         <button onClick={() => {
                           const r = [...activeItem.resourceItems!];
                           r.splice(rIndex, 1);
@@ -650,7 +650,7 @@ export default function AdminMenu() {
                               r[rIndex].title = e.target.value;
                               updateActiveMenu("resourceItems", r);
                             }}
-                            className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
 
@@ -664,7 +664,7 @@ export default function AdminMenu() {
                               updateActiveMenu("resourceItems", r);
                             }}
                             rows={4}
-                            className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none resize-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none resize-none focus:border-[#818cf8]"
                           />
                         </div>
 
@@ -689,7 +689,7 @@ export default function AdminMenu() {
                                   r[rIndex].bullets![bIdx] = e.target.value;
                                   updateActiveMenu("resourceItems", r);
                                 }}
-                                className="flex-1 bg-white border border-[#e2e8f0] rounded-md px-2 py-1 text-sm outline-none focus:border-[#818cf8]"
+                                className="flex-1 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-md px-2 py-1 text-sm outline-none focus:border-[#818cf8]"
                               />
                               <button onClick={() => {
                                 const r = [...activeItem.resourceItems!];

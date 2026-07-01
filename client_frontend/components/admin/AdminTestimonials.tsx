@@ -165,30 +165,30 @@ export default function AdminTestimonials() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
         <AdminSidebar />
         <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-[#6366f1]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#e8c97a]" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
       <AdminSidebar />
 
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header */}
-        <header className="bg-white/[0.92] backdrop-blur-lg border-b border-black/[0.06] py-3.5 px-8 sticky top-0 z-40">
+        <header className="bg-[#131e35]/[0.92] backdrop-blur-lg border-b border-[rgba(201,168,76,0.12)] py-3.5 px-8 sticky top-0 z-40">
           <div className="flex justify-between items-center">
-            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-[#1e1b4b] m-0">
+            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-white m-0">
               Testimonials Page Settings
             </h1>
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
+              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#eab308] to-[#e8c97a] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
             >
               {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
               {isSaving ? "Saving..." : "Save Changes"}
@@ -219,8 +219,8 @@ export default function AdminTestimonials() {
                 onClick={() => setActiveTab(tab.id as TabId)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-t-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap -mb-px ${
                   activeTab === tab.id
-                    ? "bg-white text-[#6366f1] border-t border-x border-black/5 border-b-transparent relative z-10"
-                    : "text-[#64748b] hover:text-[#334155] hover:bg-black/5 border-b-transparent"
+                    ? "bg-[#131e35] text-[#e8c97a] border-t border-x border-[rgba(201,168,76,0.12)] border-b-transparent relative z-10"
+                    : "text-[#8898aa] hover:text-[#e2e8f0] hover:bg-black/5 border-b-transparent"
                 }`}
               >
                 <tab.icon className="h-4 w-4" />
@@ -233,36 +233,36 @@ export default function AdminTestimonials() {
             
             {/* SEO Metadata */}
             {activeTab === "seo" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Globe className="h-5 w-5 text-emerald-500" /> Testimonials Page SEO
                 </h3>
                 <div className="space-y-5">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Page Title</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Page Title</label>
                     <input
                       type="text"
                       value={data.seo.title}
                       onChange={(e) => handleSeoChange("title", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Description</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Description</label>
                     <textarea
                       value={data.seo.description}
                       onChange={(e) => handleSeoChange("description", e.target.value)}
                       rows={3}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Keywords</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Keywords</label>
                     <input
                       type="text"
                       value={data.seo.keywords}
                       onChange={(e) => handleSeoChange("keywords", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                     <p className="text-[11px] text-[#94a3b8] mt-1">Comma separated</p>
                   </div>
@@ -272,11 +272,11 @@ export default function AdminTestimonials() {
 
             {/* Video Reviews */}
             {activeTab === "videos" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 {editingVideoId ? (
                   <div className="space-y-5">
-                    <div className="flex justify-between items-center mb-6 border-b border-[#e2e8f0] pb-4">
-                      <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                    <div className="flex justify-between items-center mb-6 border-b border-[rgba(201,168,76,0.2)] pb-4">
+                      <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                         <Edit2 className="h-5 w-5 text-purple-500" /> Edit Video Review
                       </h3>
                       <button onClick={() => setEditingVideoId(null)} className="flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors">
@@ -288,12 +288,12 @@ export default function AdminTestimonials() {
                       return (
                         <div key={vid.id || index} className="space-y-4">
                           <div>
-                            <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title (e.g. Client Name)</label>
-                            <input type="text" value={vid.title} onChange={(e) => handleVideoChange(index, "title", e.target.value)} className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title (e.g. Client Name)</label>
+                            <input type="text" value={vid.title} onChange={(e) => handleVideoChange(index, "title", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
                           </div>
                           <div>
-                            <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Wistia Embed URL</label>
-                            <input type="text" value={vid.src} onChange={(e) => handleVideoChange(index, "src", e.target.value)} className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia Embed URL</label>
+                            <input type="text" value={vid.src} onChange={(e) => handleVideoChange(index, "src", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
                           </div>
                           <div className="mt-4 pt-2">
                             <button 
@@ -312,7 +312,7 @@ export default function AdminTestimonials() {
                 ) : (
                   <>
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                      <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                      <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                         <Video className="h-5 w-5 text-purple-500" /> Video Reviews ({data.videos.length})
                       </h3>
                       <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -323,31 +323,31 @@ export default function AdminTestimonials() {
                             placeholder="Search videos..." 
                             value={searchQueryVideos}
                             onChange={(e) => setSearchQueryVideos(e.target.value)}
-                            className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 pl-9 pr-4 text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 pl-9 pr-4 text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
-                        <button onClick={handleAddVideo} className="flex shrink-0 items-center gap-1.5 text-xs font-bold text-[#6366f1] bg-[#eef2ff] hover:bg-[#e0e7ff] py-2 px-4 rounded-lg transition-colors">
+                        <button onClick={handleAddVideo} className="flex shrink-0 items-center gap-1.5 text-xs font-bold text-[#e8c97a] bg-[#eab308]/10 hover:bg-[#e0e7ff] py-2 px-4 rounded-lg transition-colors">
                           <Plus className="h-4 w-4" /> Add Video
                         </button>
                       </div>
                     </div>
 
-                    <div className="overflow-x-auto border border-[#e2e8f0] rounded-xl mb-4">
+                    <div className="overflow-x-auto border border-[rgba(201,168,76,0.2)] rounded-xl mb-4">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="bg-[#f8fafc] border-b border-[#e2e8f0]">
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[40%]">Title</th>
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[50%]">Wistia URL</th>
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[10%] text-right">Actions</th>
+                          <tr className="bg-[#1a2845] border-b border-[rgba(201,168,76,0.2)]">
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[40%]">Title</th>
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[50%]">Wistia URL</th>
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[10%] text-right">Actions</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-[#e2e8f0]">
                           {paginatedVideos.map((vid) => {
                             const originalIndex = data.videos.findIndex(v => v.id === vid.id);
                             return (
-                              <tr key={vid.id} className="hover:bg-[#f8fafc] transition-colors group">
-                                <td className="py-3 px-4 text-[13px] font-semibold text-[#1e293b]">{vid.title || "—"}</td>
-                                <td className="py-3 px-4 text-[13px] text-[#475569] truncate max-w-[300px]">
+                              <tr key={vid.id} className="hover:bg-[#1a2845] transition-colors group">
+                                <td className="py-3 px-4 text-[13px] font-semibold text-[#f4f6f8]">{vid.title || "—"}</td>
+                                <td className="py-3 px-4 text-[13px] text-[#cbd5e1] truncate max-w-[300px]">
                                   {vid.src || "—"}
                                 </td>
                                 <td className="py-3 px-4 text-right">
@@ -365,7 +365,7 @@ export default function AdminTestimonials() {
                           })}
                           {paginatedVideos.length === 0 && (
                             <tr>
-                              <td colSpan={3} className="py-8 text-center text-[13px] text-[#64748b]">
+                              <td colSpan={3} className="py-8 text-center text-[13px] text-[#8898aa]">
                                 {data.videos.length === 0 ? "No videos added yet." : "No videos match your search."}
                               </td>
                             </tr>
@@ -376,7 +376,7 @@ export default function AdminTestimonials() {
 
                     {/* Pagination */}
                     {totalVideoPages > 1 && (
-                      <div className="flex items-center justify-between border-t border-black/5 pt-4">
+                      <div className="flex items-center justify-between border-t border-[rgba(201,168,76,0.12)] pt-4">
                         <span className="text-[13px] text-slate-500">
                           Showing {(videoPage - 1) * ITEMS_PER_PAGE + 1} to {Math.min(videoPage * ITEMS_PER_PAGE, filteredVideos.length)} of {filteredVideos.length} entries
                         </span>
@@ -384,7 +384,7 @@ export default function AdminTestimonials() {
                           <button 
                             onClick={() => setVideoPage(p => Math.max(1, p - 1))}
                             disabled={videoPage === 1}
-                            className="p-1.5 rounded border border-[#e2e8f0] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="p-1.5 rounded border border-[rgba(201,168,76,0.2)] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronLeft className="h-4 w-4" />
                           </button>
@@ -394,7 +394,7 @@ export default function AdminTestimonials() {
                           <button 
                             onClick={() => setVideoPage(p => Math.min(totalVideoPages, p + 1))}
                             disabled={videoPage === totalVideoPages}
-                            className="p-1.5 rounded border border-[#e2e8f0] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="p-1.5 rounded border border-[rgba(201,168,76,0.2)] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronRight className="h-4 w-4" />
                           </button>
@@ -408,11 +408,11 @@ export default function AdminTestimonials() {
 
             {/* Recommendation Letters */}
             {activeTab === "letters" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 {editingLetterId ? (
                   <div className="space-y-5">
-                    <div className="flex justify-between items-center mb-6 border-b border-[#e2e8f0] pb-4">
-                      <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                    <div className="flex justify-between items-center mb-6 border-b border-[rgba(201,168,76,0.2)] pb-4">
+                      <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                         <Edit2 className="h-5 w-5 text-blue-500" /> Edit Recommendation Letter
                       </h3>
                       <button onClick={() => setEditingLetterId(null)} className="flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors">
@@ -424,19 +424,19 @@ export default function AdminTestimonials() {
                       return (
                         <div key={letItem.id || index} className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <div className="md:col-span-2">
-                            <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Client Name</label>
-                            <input type="text" value={letItem.name} onChange={(e) => handleLetterChange(index, "name", e.target.value)} className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Client Name</label>
+                            <input type="text" value={letItem.name} onChange={(e) => handleLetterChange(index, "name", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
                           </div>
                           <div>
-                            <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Date</label>
-                            <input type="text" value={letItem.date} onChange={(e) => handleLetterChange(index, "date", e.target.value)} className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Date</label>
+                            <input type="text" value={letItem.date} onChange={(e) => handleLetterChange(index, "date", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
                           </div>
                           <div>
-                            <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Role / Title</label>
-                            <input type="text" value={letItem.role} onChange={(e) => handleLetterChange(index, "role", e.target.value)} className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Role / Title</label>
+                            <input type="text" value={letItem.role} onChange={(e) => handleLetterChange(index, "role", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
                           </div>
                           <div className="md:col-span-2">
-                            <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Rich Text Content</label>
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Rich Text Content</label>
                             <TiptapEditor 
                               content={letItem.contentHtml} 
                               onChange={(val) => handleLetterChange(index, "contentHtml", val)} 
@@ -460,7 +460,7 @@ export default function AdminTestimonials() {
                 ) : (
                   <>
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                      <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                      <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                         <FileText className="h-5 w-5 text-blue-500" /> Recommendation Letters ({data.letters.length})
                       </h3>
                       <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -471,35 +471,35 @@ export default function AdminTestimonials() {
                             placeholder="Search letters..." 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 pl-9 pr-4 text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 pl-9 pr-4 text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
-                        <button onClick={handleAddLetter} className="flex shrink-0 items-center gap-1.5 text-xs font-bold text-[#6366f1] bg-[#eef2ff] hover:bg-[#e0e7ff] py-2 px-4 rounded-lg transition-colors">
+                        <button onClick={handleAddLetter} className="flex shrink-0 items-center gap-1.5 text-xs font-bold text-[#e8c97a] bg-[#eab308]/10 hover:bg-[#e0e7ff] py-2 px-4 rounded-lg transition-colors">
                           <Plus className="h-4 w-4" /> Add Letter
                         </button>
                       </div>
                     </div>
 
-                    <div className="overflow-x-auto border border-[#e2e8f0] rounded-xl">
+                    <div className="overflow-x-auto border border-[rgba(201,168,76,0.2)] rounded-xl">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="bg-[#f8fafc] border-b border-[#e2e8f0]">
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[25%]">Name</th>
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[25%]">Role</th>
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[15%]">Date</th>
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[25%]">Preview</th>
-                            <th className="py-3 px-4 text-[12px] font-bold text-[#475569] uppercase tracking-wider w-[10%] text-right">Actions</th>
+                          <tr className="bg-[#1a2845] border-b border-[rgba(201,168,76,0.2)]">
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[25%]">Name</th>
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[25%]">Role</th>
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[15%]">Date</th>
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[25%]">Preview</th>
+                            <th className="py-3 px-4 text-[12px] font-bold text-[#cbd5e1] uppercase tracking-wider w-[10%] text-right">Actions</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-[#e2e8f0]">
                           {paginatedLetters.map((letItem) => {
                             const originalIndex = data.letters.findIndex(l => l.id === letItem.id);
                             return (
-                              <tr key={letItem.id} className="hover:bg-[#f8fafc] transition-colors group">
-                                <td className="py-3 px-4 text-[13px] font-semibold text-[#1e293b]">{letItem.name || "—"}</td>
-                                <td className="py-3 px-4 text-[13px] text-[#475569]">{letItem.role || "—"}</td>
-                                <td className="py-3 px-4 text-[13px] text-[#475569]">{letItem.date || "—"}</td>
-                                <td className="py-3 px-4 text-[13px] text-[#475569] truncate max-w-[200px]">
+                              <tr key={letItem.id} className="hover:bg-[#1a2845] transition-colors group">
+                                <td className="py-3 px-4 text-[13px] font-semibold text-[#f4f6f8]">{letItem.name || "—"}</td>
+                                <td className="py-3 px-4 text-[13px] text-[#cbd5e1]">{letItem.role || "—"}</td>
+                                <td className="py-3 px-4 text-[13px] text-[#cbd5e1]">{letItem.date || "—"}</td>
+                                <td className="py-3 px-4 text-[13px] text-[#cbd5e1] truncate max-w-[200px]">
                                   {letItem.contentHtml.replace(/<[^>]+>/g, ' ').substring(0, 40) || "—"}...
                                 </td>
                                 <td className="py-3 px-4 text-right">
@@ -517,7 +517,7 @@ export default function AdminTestimonials() {
                           })}
                           {paginatedLetters.length === 0 && (
                             <tr>
-                              <td colSpan={5} className="py-8 text-center text-[13px] text-[#64748b]">
+                              <td colSpan={5} className="py-8 text-center text-[13px] text-[#8898aa]">
                                 {data.letters.length === 0 ? "No letters added yet." : "No letters match your search."}
                               </td>
                             </tr>
@@ -528,7 +528,7 @@ export default function AdminTestimonials() {
 
                     {/* Pagination */}
                     {totalLetterPages > 1 && (
-                      <div className="flex items-center justify-between border-t border-black/5 pt-4">
+                      <div className="flex items-center justify-between border-t border-[rgba(201,168,76,0.12)] pt-4">
                         <span className="text-[13px] text-slate-500">
                           Showing {(letterPage - 1) * ITEMS_PER_PAGE + 1} to {Math.min(letterPage * ITEMS_PER_PAGE, filteredLetters.length)} of {filteredLetters.length} entries
                         </span>
@@ -536,7 +536,7 @@ export default function AdminTestimonials() {
                           <button 
                             onClick={() => setLetterPage(p => Math.max(1, p - 1))}
                             disabled={letterPage === 1}
-                            className="p-1.5 rounded border border-[#e2e8f0] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="p-1.5 rounded border border-[rgba(201,168,76,0.2)] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronLeft className="h-4 w-4" />
                           </button>
@@ -546,7 +546,7 @@ export default function AdminTestimonials() {
                           <button 
                             onClick={() => setLetterPage(p => Math.min(totalLetterPages, p + 1))}
                             disabled={letterPage === totalLetterPages}
-                            className="p-1.5 rounded border border-[#e2e8f0] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="p-1.5 rounded border border-[rgba(201,168,76,0.2)] text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <ChevronRight className="h-4 w-4" />
                           </button>

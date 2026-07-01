@@ -124,30 +124,30 @@ export default function AdminAboutUs() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
         <AdminSidebar />
         <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-[#6366f1]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#e8c97a]" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
       <AdminSidebar />
 
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header */}
-        <header className="bg-white/[0.92] backdrop-blur-lg border-b border-black/[0.06] py-3.5 px-8 sticky top-0 z-40">
+        <header className="bg-[#131e35]/[0.92] backdrop-blur-lg border-b border-[rgba(201,168,76,0.12)] py-3.5 px-8 sticky top-0 z-40">
           <div className="flex justify-between items-center">
-            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-[#1e1b4b] m-0">
+            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-white m-0">
               About Us Page Settings
             </h1>
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
+              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#eab308] to-[#e8c97a] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
             >
               {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
               {isSaving ? "Saving..." : "Save Changes"}
@@ -181,8 +181,8 @@ export default function AdminAboutUs() {
                 onClick={() => setActiveTab(tab.id as TabId)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-t-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap -mb-px ${
                   activeTab === tab.id
-                    ? "bg-white text-[#6366f1] border-t border-x border-black/5 border-b-transparent relative z-10"
-                    : "text-[#64748b] hover:text-[#334155] hover:bg-black/5 border-b-transparent"
+                    ? "bg-[#131e35] text-[#e8c97a] border-t border-x border-[rgba(201,168,76,0.12)] border-b-transparent relative z-10"
+                    : "text-[#8898aa] hover:text-[#e2e8f0] hover:bg-black/5 border-b-transparent"
                 }`}
               >
                 <tab.icon className="h-4 w-4" />
@@ -195,36 +195,36 @@ export default function AdminAboutUs() {
             
             {/* SEO Metadata */}
             {activeTab === "seo" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Globe className="h-5 w-5 text-emerald-500" /> Page SEO
                 </h3>
                 <div className="space-y-5 max-w-3xl">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Page Title</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Page Title</label>
                     <input
                       type="text"
                       value={data.seo.title}
                       onChange={(e) => updateNested("seo", "title", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Description</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Description</label>
                     <textarea
                       value={data.seo.description}
                       onChange={(e) => updateNested("seo", "description", e.target.value)}
                       rows={3}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Meta Keywords</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Keywords</label>
                     <input
                       type="text"
                       value={data.seo.keywords}
                       onChange={(e) => updateNested("seo", "keywords", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
@@ -233,8 +233,8 @@ export default function AdminAboutUs() {
 
             {/* Intro */}
             {activeTab === "intro" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Info className="h-5 w-5 text-blue-500" /> Introduction Section
                 </h3>
                 
@@ -242,28 +242,28 @@ export default function AdminAboutUs() {
                   {/* Headline */}
                   <div className="md:col-span-2 grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Headline Left Part (White)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Headline Left Part (White)</label>
                       <input
                         type="text"
                         value={data.intro.headlineLeft}
                         onChange={(e) => updateNested("intro", "headlineLeft", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Headline Right Part (Gold)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Headline Right Part (Gold)</label>
                       <input
                         type="text"
                         value={data.intro.headlineRight}
                         onChange={(e) => updateNested("intro", "headlineRight", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
 
                   {/* Left Column Content */}
                   <div className="space-y-1.5">
-                    <label className="block text-[13px] font-semibold text-[#475569]">Left Column Content</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1]">Left Column Content</label>
                     <TiptapEditor 
                       content={data.intro.contentLeftHtml} 
                       onChange={(val) => updateNested("intro", "contentLeftHtml", val)} 
@@ -272,7 +272,7 @@ export default function AdminAboutUs() {
 
                   {/* Right Column Content */}
                   <div className="space-y-1.5">
-                    <label className="block text-[13px] font-semibold text-[#475569]">Right Column Content</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1]">Right Column Content</label>
                     <TiptapEditor 
                       content={data.intro.contentRightHtml} 
                       onChange={(val) => updateNested("intro", "contentRightHtml", val)} 
@@ -284,27 +284,27 @@ export default function AdminAboutUs() {
 
             {/* Video */}
             {activeTab === "video" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Video className="h-5 w-5 text-purple-500" /> Video Section
                 </h3>
                 <div className="space-y-5 max-w-3xl">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Badge Text (above video)</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Badge Text (above video)</label>
                     <input
                       type="text"
                       value={data.video.badgeText}
                       onChange={(e) => updateNested("video", "badgeText", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Wistia Embed URL</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia Embed URL</label>
                     <input
                       type="text"
                       value={data.video.wistiaUrl}
                       onChange={(e) => updateNested("video", "wistiaUrl", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
@@ -313,14 +313,14 @@ export default function AdminAboutUs() {
 
             {/* Stats */}
             {activeTab === "stats" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                     <BarChart2 className="h-5 w-5 text-indigo-500" /> Stats ({data.stats.length})
                   </h3>
                   <button 
                     onClick={() => addArrayItem("stats", { id: `s_${Date.now()}`, icon: "⭐", label: "New Stat" })}
-                    className="flex items-center gap-1.5 text-xs font-bold text-[#6366f1] bg-[#eef2ff] hover:bg-[#e0e7ff] py-1.5 px-3 rounded-lg transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-bold text-[#e8c97a] bg-[#eab308]/10 hover:bg-[#e0e7ff] py-1.5 px-3 rounded-lg transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" /> Add Stat
                   </button>
@@ -328,18 +328,18 @@ export default function AdminAboutUs() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {data.stats.map((stat, index) => (
-                    <div key={stat.id || index} className="p-4 border border-[#e2e8f0] rounded-xl bg-[#f8fafc] relative group">
+                    <div key={stat.id || index} className="p-4 border border-[rgba(201,168,76,0.2)] rounded-xl bg-[#1a2845] relative group">
                       <button onClick={() => removeArrayItem("stats", index)} className="absolute top-3 right-3 p-1 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors opacity-0 group-hover:opacity-100" title="Remove">
                         <Trash2 className="h-4 w-4" />
                       </button>
                       <div className="space-y-4 pr-6">
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">Emoji Icon</label>
-                          <input type="text" value={stat.icon} onChange={(e) => updateArrayItem("stats", index, "icon", e.target.value)} className="w-16 text-center bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-1.5 px-2 text-sm outline-none focus:border-[#818cf8]" />
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">Emoji Icon</label>
+                          <input type="text" value={stat.icon} onChange={(e) => updateArrayItem("stats", index, "icon", e.target.value)} className="w-16 text-center bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-1.5 px-2 text-sm outline-none focus:border-[#818cf8]" />
                         </div>
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">Label</label>
-                          <input type="text" value={stat.label} onChange={(e) => updateArrayItem("stats", index, "label", e.target.value)} className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-1.5 px-3 text-sm outline-none focus:border-[#818cf8]" />
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">Label</label>
+                          <input type="text" value={stat.label} onChange={(e) => updateArrayItem("stats", index, "label", e.target.value)} className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-1.5 px-3 text-sm outline-none focus:border-[#818cf8]" />
                         </div>
                       </div>
                     </div>
@@ -351,54 +351,54 @@ export default function AdminAboutUs() {
 
             {/* Promises */}
             {activeTab === "promises" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                     <ShieldCheck className="h-5 w-5 text-amber-500" /> Promises ({data.promises.items.length})
                   </h3>
                   <button 
                     onClick={() => addArrayItem("promises", { id: `p_${Date.now()}`, title: "New Promise", body: "Description goes here..." })}
-                    className="flex items-center gap-1.5 text-xs font-bold text-[#6366f1] bg-[#eef2ff] hover:bg-[#e0e7ff] py-1.5 px-3 rounded-lg transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-bold text-[#e8c97a] bg-[#eab308]/10 hover:bg-[#e0e7ff] py-1.5 px-3 rounded-lg transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" /> Add Promise
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b border-black/5">
+                <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b border-[rgba(201,168,76,0.12)]">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Headline Left Part (White)</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Headline Left Part (White)</label>
                     <input
                       type="text"
                       value={data.promises.headlineLeft}
                       onChange={(e) => updateNested("promises", "headlineLeft", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Headline Right Part (Gold)</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Headline Right Part (Gold)</label>
                     <input
                       type="text"
                       value={data.promises.headlineRight}
                       onChange={(e) => updateNested("promises", "headlineRight", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {data.promises.items.map((promise, index) => (
-                    <div key={promise.id || index} className="p-4 border border-[#e2e8f0] rounded-xl bg-[#f8fafc] relative group">
+                    <div key={promise.id || index} className="p-4 border border-[rgba(201,168,76,0.2)] rounded-xl bg-[#1a2845] relative group">
                       <button onClick={() => removeArrayItem("promises", index)} className="absolute top-3 right-3 p-1 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors opacity-0 group-hover:opacity-100" title="Remove">
                         <Trash2 className="h-4 w-4" />
                       </button>
                       <div className="space-y-4 pr-6">
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">Title</label>
-                          <input type="text" value={promise.title} onChange={(e) => updateArrayItem("promises", index, "title", e.target.value)} className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-1.5 px-3 text-sm outline-none focus:border-[#818cf8]" />
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">Title</label>
+                          <input type="text" value={promise.title} onChange={(e) => updateArrayItem("promises", index, "title", e.target.value)} className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-1.5 px-3 text-sm outline-none focus:border-[#818cf8]" />
                         </div>
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">Body Text</label>
-                          <textarea value={promise.body} onChange={(e) => updateArrayItem("promises", index, "body", e.target.value)} rows={3} className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-1.5 px-3 text-sm outline-none focus:border-[#818cf8] resize-none" />
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">Body Text</label>
+                          <textarea value={promise.body} onChange={(e) => updateArrayItem("promises", index, "body", e.target.value)} rows={3} className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-1.5 px-3 text-sm outline-none focus:border-[#818cf8] resize-none" />
                         </div>
                       </div>
                     </div>
@@ -410,14 +410,14 @@ export default function AdminAboutUs() {
 
             {/* Training */}
             {activeTab === "training" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] flex items-center gap-2">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2">
                     <BookOpen className="h-5 w-5 text-teal-500" /> Training Settings
                   </h3>
                   <button 
                     onClick={() => addArrayItem("training", { id: `t_${Date.now()}`, text: "New training item" })}
-                    className="flex items-center gap-1.5 text-xs font-bold text-[#6366f1] bg-[#eef2ff] hover:bg-[#e0e7ff] py-1.5 px-3 rounded-lg transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-bold text-[#e8c97a] bg-[#eab308]/10 hover:bg-[#e0e7ff] py-1.5 px-3 rounded-lg transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" /> Add Training Item
                   </button>
@@ -425,25 +425,25 @@ export default function AdminAboutUs() {
 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Headline Left Part (White)</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Headline Left Part (White)</label>
                     <input
                       type="text"
                       value={data.training.headlineLeft}
                       onChange={(e) => updateNested("training", "headlineLeft", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Headline Right Part (Gold)</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Headline Right Part (Gold)</label>
                     <input
                       type="text"
                       value={data.training.headlineRight}
                       onChange={(e) => updateNested("training", "headlineRight", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Introduction Paragraph</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Introduction Paragraph</label>
                     <TiptapEditor 
                       content={data.training.introHtml} 
                       onChange={(val) => updateNested("training", "introHtml", val)} 
@@ -451,7 +451,7 @@ export default function AdminAboutUs() {
                   </div>
                 </div>
 
-                <h4 className="font-semibold text-sm text-[#334155] mb-3 pb-2 border-b border-black/5">Training List Items ({data.training.items.length})</h4>
+                <h4 className="font-semibold text-sm text-[#e2e8f0] mb-3 pb-2 border-b border-[rgba(201,168,76,0.12)]">Training List Items ({data.training.items.length})</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {data.training.items.map((item, index) => (
                     <div key={item.id || index} className="flex gap-2">
@@ -459,7 +459,7 @@ export default function AdminAboutUs() {
                         type="text" 
                         value={item.text} 
                         onChange={(e) => updateArrayItem("training", index, "text", e.target.value)} 
-                        className="flex-1 bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]" 
+                        className="flex-1 bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]" 
                       />
                       <button onClick={() => removeArrayItem("training", index)} className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100" title="Remove">
                         <Trash2 className="h-4 w-4" />

@@ -195,30 +195,30 @@ export default function AdminHome() {
 
   if (loading || !data) {
     return (
-      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
         <AdminSidebar />
         <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-[#6366f1]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#e8c97a]" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
       <AdminSidebar />
 
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header */}
-        <header className="bg-white/[0.92] backdrop-blur-lg border-b border-black/[0.06] py-3.5 px-8 sticky top-0 z-40">
+        <header className="bg-[#131e35]/[0.92] backdrop-blur-lg border-b border-[rgba(201,168,76,0.12)] py-3.5 px-8 sticky top-0 z-40">
           <div className="flex justify-between items-center">
-            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-[#1e1b4b] m-0">
+            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-white m-0">
               Home Page Settings
             </h1>
             <button
               onClick={() => handleSave()}
               disabled={saving}
-              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
+              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#eab308] to-[#e8c97a] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
               {saving ? "Saving..." : "Save Changes"}
@@ -249,8 +249,8 @@ export default function AdminHome() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-t-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap -mb-px ${
                   activeTab === tab.id
-                    ? "bg-white text-[#6366f1] border-t border-x border-black/5 border-b-transparent relative z-10"
-                    : "text-[#64748b] hover:text-[#334155] hover:bg-black/5 border-b-transparent"
+                    ? "bg-[#131e35] text-[#e8c97a] border-t border-x border-[rgba(201,168,76,0.12)] border-b-transparent relative z-10"
+                    : "text-[#8898aa] hover:text-[#e2e8f0] hover:bg-black/5 border-b-transparent"
                 }`}
               >
                 <tab.icon className="h-4 w-4" />
@@ -266,80 +266,80 @@ export default function AdminHome() {
             <div className="space-y-6">
                 
                 {/* Text Content */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] mb-5">Content & Text</h3>
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-5">Content & Text</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title Line 1</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Line 1</label>
                       <input
                         type="text"
                         value={data.aboutSection.titleLine1}
                         onChange={(e) => updateAbout("titleLine1", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title Line 2</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Line 2</label>
                       <input
                         type="text"
                         value={data.aboutSection.titleLine2}
                         onChange={(e) => updateAbout("titleLine2", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
 
                   <div className="mb-5">
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Main Description</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Main Description</label>
                     <textarea
                       value={data.aboutSection.description}
                       onChange={(e) => updateAbout("description", e.target.value)}
                       rows={5}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-3 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-3 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                     />
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Button Text</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Button Text</label>
                       <input
                         type="text"
                         value={data.aboutSection.buttonText}
                         onChange={(e) => updateAbout("buttonText", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Button Link</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Button Link</label>
                       <input
                         type="text"
                         value={data.aboutSection.buttonLink}
                         onChange={(e) => updateAbout("buttonLink", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Media Content */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] mb-5">Media</h3>
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-5">Media</h3>
                   
                   <div className="mb-6">
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Video IFrame URL</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Video IFrame URL</label>
                     <input
                       type="text"
                       value={data.aboutSection.videoUrl}
                       onChange={(e) => updateAbout("videoUrl", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       placeholder="e.g. https://fast.wistia.net/embed/iframe/bukr8v224n"
                     />
                     <p className="text-xs text-slate-500 mt-1.5">This URL is embedded directly into the video player on the left side.</p>
                   </div>
 
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-2">Right Side Image</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-2">Right Side Image</label>
                     <div className="flex items-start gap-5">
                       {data.aboutSection.image && (
                         <div className="relative w-40 h-32 rounded-lg overflow-hidden border border-slate-200">
@@ -369,16 +369,16 @@ export default function AdminHome() {
                 </div>
 
                 {/* Counters */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                   <div className="flex justify-between items-center mb-5">
-                    <h3 className="font-bold text-[16px] text-[#1e293b]">Animated Counters</h3>
+                    <h3 className="font-bold text-[16px] text-[#f4f6f8]">Animated Counters</h3>
                     {data.aboutSection.counters.length < 4 && (
                       <button
                         onClick={() => {
                           const newCounters = [...data.aboutSection.counters, { number: 0, label: "New Counter", symbol: "+" }];
                           updateAbout("counters", newCounters);
                         }}
-                        className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                        className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                       >
                         <Plus className="w-3.5 h-3.5" /> Add Counter
                       </button>
@@ -387,7 +387,7 @@ export default function AdminHome() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                     {data.aboutSection.counters.map((counter, idx) => (
-                      <div key={idx} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-4 relative group">
+                      <div key={idx} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-4 relative group">
                         <button 
                           onClick={() => {
                             const newCounters = [...data.aboutSection.counters];
@@ -410,7 +410,7 @@ export default function AdminHome() {
                                 newCounters[idx].number = parseInt(e.target.value) || 0;
                                 updateAbout("counters", newCounters);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                           <div>
@@ -423,7 +423,7 @@ export default function AdminHome() {
                                 newCounters[idx].symbol = e.target.value;
                                 updateAbout("counters", newCounters);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                         </div>
@@ -438,7 +438,7 @@ export default function AdminHome() {
                               newCounters[idx].label = e.target.value;
                               updateAbout("counters", newCounters);
                             }}
-                            className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
                       </div>
@@ -454,58 +454,58 @@ export default function AdminHome() {
               <div className="space-y-6">
                 
                 {/* Text Content */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] mb-5">Content & Text</h3>
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-5">Content & Text</h3>
                   
                   <div className="mb-5">
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Subtitle</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Subtitle</label>
                     <input
                       type="text"
                       value={data.whyChooseUsSection.subtitle}
                       onChange={(e) => updateWhyChooseUs("subtitle", e.target.value)}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title Line 1</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Line 1</label>
                       <input
                         type="text"
                         value={data.whyChooseUsSection.titleLine1}
                         onChange={(e) => updateWhyChooseUs("titleLine1", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title Line 2</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Line 2</label>
                       <input
                         type="text"
                         value={data.whyChooseUsSection.titleLine2}
                         onChange={(e) => updateWhyChooseUs("titleLine2", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Description</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Description</label>
                     <textarea
                       value={data.whyChooseUsSection.description}
                       onChange={(e) => updateWhyChooseUs("description", e.target.value)}
                       rows={5}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-3 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-3 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                     />
                   </div>
                 </div>
 
                 {/* Media Content */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] mb-5">Media</h3>
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-5">Media</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-2">Background Image</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-2">Background Image</label>
                       <div className="flex flex-col gap-3">
                         {data.whyChooseUsSection.backgroundImage && (
                           <div className="relative w-full h-32 rounded-lg overflow-hidden border border-slate-200">
@@ -532,7 +532,7 @@ export default function AdminHome() {
                     </div>
 
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-2">Right Side Image</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-2">Right Side Image</label>
                       <div className="flex flex-col gap-3">
                         {data.whyChooseUsSection.rightImage && (
                           <div className="relative w-full h-32 rounded-lg overflow-hidden border border-slate-200">
@@ -561,16 +561,16 @@ export default function AdminHome() {
                 </div>
 
                 {/* Industries */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                   <div className="flex justify-between items-center mb-5">
-                    <h3 className="font-bold text-[16px] text-[#1e293b]">Industries / Sectors</h3>
+                    <h3 className="font-bold text-[16px] text-[#f4f6f8]">Industries / Sectors</h3>
                     <button
                       onClick={() => {
                         const newId = Date.now();
                         const newIndustries = [...data.whyChooseUsSection.industries, { id: newId, title: "New Industry", description: "Description", icon: "", delay: "100", column: 1 as const }];
                         updateWhyChooseUs("industries", newIndustries);
                       }}
-                      className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                      className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                     >
                       <Plus className="w-3.5 h-3.5" /> Add Industry
                     </button>
@@ -578,12 +578,12 @@ export default function AdminHome() {
                   
                   <div className="grid grid-cols-1 gap-4">
                     {data.whyChooseUsSection.industries.map((industry, idx) => (
-                      <div key={industry.id || idx} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-4 flex gap-4 items-start relative group">
+                      <div key={industry.id || idx} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-4 flex gap-4 items-start relative group">
                         
                         {/* Icon Upload Area */}
                         <div className="flex-shrink-0 w-[60px]">
                           <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Icon</label>
-                          <div className="w-[50px] h-[50px] rounded-lg bg-white border border-slate-200 flex items-center justify-center relative overflow-hidden group-hover/icon cursor-pointer">
+                          <div className="w-[50px] h-[50px] rounded-lg bg-[#131e35] border border-slate-200 flex items-center justify-center relative overflow-hidden group-hover/icon cursor-pointer">
                             {industry.icon ? (
                               <img src={industry.icon} alt="icon" className="w-[30px] h-[30px] object-contain" />
                             ) : (
@@ -615,7 +615,7 @@ export default function AdminHome() {
                                 newIndustries[idx].title = e.target.value;
                                 updateWhyChooseUs("industries", newIndustries);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                           <div>
@@ -628,7 +628,7 @@ export default function AdminHome() {
                                 newIndustries[idx].description = e.target.value;
                                 updateWhyChooseUs("industries", newIndustries);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                           <div>
@@ -640,7 +640,7 @@ export default function AdminHome() {
                                 newIndustries[idx].column = parseInt(e.target.value) as 1 | 2 | 3;
                                 updateWhyChooseUs("industries", newIndustries);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] text-sm outline-none focus:border-[#818cf8]"
                             >
                               <option value={1}>Column 1</option>
                               <option value={2}>Column 2</option>
@@ -657,7 +657,7 @@ export default function AdminHome() {
                                 newIndustries[idx].delay = e.target.value;
                                 updateWhyChooseUs("industries", newIndustries);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none focus:border-[#818cf8]"
                               placeholder="e.g. 100"
                             />
                           </div>
@@ -687,38 +687,38 @@ export default function AdminHome() {
               <div className="space-y-6">
                 
                 {/* Text Content */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] mb-5">Section Title</h3>
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-5">Section Title</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title Part 1 (e.g. Our)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Part 1 (e.g. Our)</label>
                       <input
                         type="text"
                         value={data.testimonialsSection.titlePart1}
                         onChange={(e) => updateTestimonials("titlePart1", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">Title Part 2 (e.g. Happy Customers)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Part 2 (e.g. Happy Customers)</label>
                       <input
                         type="text"
                         value={data.testimonialsSection.titlePart2}
                         onChange={(e) => updateTestimonials("titlePart2", e.target.value)}
-                        className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Media Content */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <h3 className="font-bold text-[16px] text-[#1e293b] mb-5">Media</h3>
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                  <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-5">Media</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-2">Background Image</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-2">Background Image</label>
                       <div className="flex flex-col gap-3">
                         {data.testimonialsSection.backgroundImage && (
                           <div className="relative w-full h-32 rounded-lg overflow-hidden border border-slate-200">
@@ -745,7 +745,7 @@ export default function AdminHome() {
                     </div>
 
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#475569] mb-2">Google Review Logo</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-2">Google Review Logo</label>
                       <div className="flex flex-col gap-3">
                         {data.testimonialsSection.googleReviewLogo && (
                           <div className="relative w-full h-32 rounded-lg overflow-hidden border border-slate-200">
@@ -774,16 +774,16 @@ export default function AdminHome() {
                 </div>
 
                 {/* Customer Reviews */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                   <div className="flex justify-between items-center mb-5">
-                    <h3 className="font-bold text-[16px] text-[#1e293b]">Customer Reviews</h3>
+                    <h3 className="font-bold text-[16px] text-[#f4f6f8]">Customer Reviews</h3>
                     <button
                       onClick={() => {
                         const newId = Date.now();
                         const newReviews = [...data.testimonialsSection.testimonials, { id: newId, name: "New Customer", description: "Review text here...", rating: 5 }];
                         updateTestimonials("testimonials", newReviews);
                       }}
-                      className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                      className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                     >
                       <Plus className="w-3.5 h-3.5" /> Add Review
                     </button>
@@ -791,7 +791,7 @@ export default function AdminHome() {
                   
                   <div className="grid grid-cols-1 gap-4">
                     {data.testimonialsSection.testimonials.map((review, idx) => (
-                      <div key={review.id || idx} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-4 flex flex-col gap-3 relative group">
+                      <div key={review.id || idx} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-4 flex flex-col gap-3 relative group">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           <div>
                             <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Customer Name</label>
@@ -803,7 +803,7 @@ export default function AdminHome() {
                                 newReviews[idx].name = e.target.value;
                                 updateTestimonials("testimonials", newReviews);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#1e293b] font-bold text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                           <div>
@@ -817,7 +817,7 @@ export default function AdminHome() {
                                 newReviews[idx].rating = parseInt(e.target.value);
                                 updateTestimonials("testimonials", newReviews);
                               }}
-                              className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                         </div>
@@ -831,7 +831,7 @@ export default function AdminHome() {
                               updateTestimonials("testimonials", newReviews);
                             }}
                             rows={3}
-                            className="w-full bg-white border border-[#e2e8f0] rounded-lg px-3 py-2 text-[#475569] text-sm outline-none focus:border-[#818cf8] resize-none"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none focus:border-[#818cf8] resize-none"
                           />
                         </div>
 
@@ -852,16 +852,16 @@ export default function AdminHome() {
                 </div>
 
                 {/* Client Logos */}
-                <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                   <div className="flex justify-between items-center mb-5">
-                    <h3 className="font-bold text-[16px] text-[#1e293b]">Client Logos Carousel</h3>
+                    <h3 className="font-bold text-[16px] text-[#f4f6f8]">Client Logos Carousel</h3>
                     <button
                       onClick={() => {
                         const newId = Date.now();
                         const newLogos = [...data.testimonialsSection.logoSlides, { id: newId, image: "", alt: "New Client" }];
                         updateTestimonials("logoSlides", newLogos);
                       }}
-                      className="text-xs font-semibold bg-[#f8fafc] border border-[#e2e8f0] hover:bg-[#f1f5f9] text-[#475569] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                      className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                     >
                       <Plus className="w-3.5 h-3.5" /> Add Logo
                     </button>
@@ -869,10 +869,10 @@ export default function AdminHome() {
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                     {data.testimonialsSection.logoSlides.map((logo, idx) => (
-                      <div key={logo.id || idx} className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-3 flex flex-col gap-2 relative group">
+                      <div key={logo.id || idx} className="bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl p-3 flex flex-col gap-2 relative group">
                         
                         {/* Logo Upload Area */}
-                        <div className="w-full h-[60px] rounded-lg bg-white border border-slate-200 flex items-center justify-center relative overflow-hidden group-hover/icon cursor-pointer">
+                        <div className="w-full h-[60px] rounded-lg bg-[#131e35] border border-slate-200 flex items-center justify-center relative overflow-hidden group-hover/icon cursor-pointer">
                           {logo.image ? (
                             <img src={logo.image} alt={logo.alt} className="w-[80%] h-[80%] object-contain" />
                           ) : (
@@ -901,7 +901,7 @@ export default function AdminHome() {
                             updateTestimonials("logoSlides", newLogos);
                           }}
                           placeholder="Alt text"
-                          className="w-full bg-white border border-[#e2e8f0] rounded-md px-2 py-1 text-[#1e293b] text-xs outline-none focus:border-[#818cf8]"
+                          className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-md px-2 py-1 text-[#f4f6f8] text-xs outline-none focus:border-[#818cf8]"
                         />
 
                         {/* Delete Button */}
@@ -911,7 +911,7 @@ export default function AdminHome() {
                             newLogos.splice(idx, 1);
                             updateTestimonials("logoSlides", newLogos);
                           }} 
-                          className="absolute -top-2 -right-2 p-1 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 bg-white shadow-sm border border-slate-100 rounded-full"
+                          className="absolute -top-2 -right-2 p-1 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 bg-[#131e35] shadow-sm border border-slate-100 rounded-full"
                         >
                           <Trash2 className="w-3 h-3" />
                         </button>

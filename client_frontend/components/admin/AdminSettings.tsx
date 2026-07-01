@@ -119,30 +119,30 @@ export default function AdminSettings() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+      <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
         <AdminSidebar />
         <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-[#6366f1]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#e8c97a]" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#f0f2f7]">
+    <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
       <AdminSidebar />
 
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header */}
-        <header className="bg-white/[0.92] backdrop-blur-lg border-b border-black/[0.06] py-3.5 px-8 sticky top-0 z-40">
+        <header className="bg-[#131e35]/[0.92] backdrop-blur-lg border-b border-[rgba(201,168,76,0.12)] py-3.5 px-8 sticky top-0 z-40">
           <div className="flex justify-between items-center">
-            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-[#1e1b4b] m-0">
+            <h1 className="font-[family-name:var(--font-bebas)] text-[22px] tracking-[2px] text-white m-0">
               Global Settings
             </h1>
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
+              className="flex items-center gap-2 py-2 px-5 rounded-[10px] border-none bg-gradient-to-br from-[#eab308] to-[#e8c97a] text-white text-[13px] font-bold cursor-pointer transition-all duration-200 hover:shadow-[0_4px_14px_rgba(102,126,234,0.3)] disabled:opacity-70"
             >
               {isSaving ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -178,8 +178,8 @@ export default function AdminSettings() {
                 onClick={() => setActiveTab(tab.id as TabId)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-t-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap -mb-px ${
                   activeTab === tab.id
-                    ? "bg-white text-[#6366f1] border-t border-x border-black/5 border-b-transparent relative z-10"
-                    : "text-[#64748b] hover:text-[#334155] hover:bg-black/5 border-b-transparent"
+                    ? "bg-[#131e35] text-[#e8c97a] border-t border-x border-[rgba(201,168,76,0.12)] border-b-transparent relative z-10"
+                    : "text-[#8898aa] hover:text-[#e2e8f0] hover:bg-black/5 border-b-transparent"
                 }`}
               >
                 <tab.icon className="h-4 w-4" />
@@ -192,14 +192,14 @@ export default function AdminSettings() {
           <div className="grid grid-cols-1 gap-6">
             {/* General Settings */}
             {activeTab === "general" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
-                  <ImageIcon className="h-5 w-5 text-[#6366f1]" /> General
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
+                  <ImageIcon className="h-5 w-5 text-[#e8c97a]" /> General
                   Identity
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-3">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-3">
                       Website Logo
                     </label>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -251,7 +251,7 @@ export default function AdminSettings() {
                               setIsSaving(false);
                             }
                           }}
-                          className="w-full text-sm text-[#475569] file:mr-4 file:py-2.5 file:px-5 file:rounded-xl file:border-0 file:text-[13px] file:font-bold file:bg-[#eef2ff] file:text-[#6366f1] hover:file:bg-[#e0e7ff] cursor-pointer focus:outline-none"
+                          className="w-full text-sm text-[#cbd5e1] file:mr-4 file:py-2.5 file:px-5 file:rounded-xl file:border-0 file:text-[13px] file:font-bold file:bg-[#eab308]/10 file:text-[#e8c97a] hover:file:bg-[#e0e7ff] cursor-pointer focus:outline-none"
                         />
                         <p className="text-[11px] text-[#94a3b8] mt-2 font-medium">
                           Recommended: PNG with transparent background.
@@ -265,14 +265,14 @@ export default function AdminSettings() {
 
             {/* Contact Information */}
             {activeTab === "contact" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Phone className="h-5 w-5 text-[#8b5cf6]" /> Contact
                   Information
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <Phone className="h-3.5 w-3.5" /> Phone Number
                     </label>
                     <input
@@ -281,11 +281,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange(null, "contactNo", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <Mail className="h-3.5 w-3.5" /> Email Address
                     </label>
                     <input
@@ -294,11 +294,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange(null, "email", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <MapPin className="h-3.5 w-3.5" /> Physical Address
                     </label>
                     <input
@@ -307,11 +307,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange(null, "location", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">
                       Google Maps URL Link
                     </label>
                     <input
@@ -320,7 +320,7 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange(null, "mapLink", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
@@ -329,8 +329,8 @@ export default function AdminSettings() {
 
             {/* Contact Cards (Locations) */}
             {activeTab === "locations" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-red-500" /> Location Cards
                   (Contact Us Page)
                 </h3>
@@ -338,14 +338,14 @@ export default function AdminSettings() {
                   {settings.contactCards?.map((card, index) => (
                     <div
                       key={card.id || index}
-                      className="p-5 border border-[#e2e8f0] rounded-xl bg-[#f8fafc]"
+                      className="p-5 border border-[rgba(201,168,76,0.2)] rounded-xl bg-[#1a2845]"
                     >
-                      <h4 className="font-semibold text-[14px] text-[#334155] mb-4 border-b border-[#e2e8f0] pb-2">
+                      <h4 className="font-semibold text-[14px] text-[#e2e8f0] mb-4 border-b border-[rgba(201,168,76,0.2)] pb-2">
                         Card {index + 1}
                       </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">
                             Badge Label
                           </label>
                           <input
@@ -354,11 +354,11 @@ export default function AdminSettings() {
                             onChange={(e) =>
                               handleCardChange(index, "label", e.target.value)
                             }
-                            className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">
                             Location Name
                           </label>
                           <input
@@ -367,11 +367,11 @@ export default function AdminSettings() {
                             onChange={(e) =>
                               handleCardChange(index, "name", e.target.value)
                             }
-                            className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
                         <div className="md:col-span-2">
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">
                             Address Lines (comma separated)
                           </label>
                           <input
@@ -380,11 +380,11 @@ export default function AdminSettings() {
                             onChange={(e) =>
                               handleCardChange(index, "address", e.target.value)
                             }
-                            className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
                         <div>
-                          <label className="block text-[12px] font-semibold text-[#475569] mb-1">
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">
                             Telephone
                           </label>
                           <input
@@ -393,12 +393,12 @@ export default function AdminSettings() {
                             onChange={(e) =>
                               handleCardChange(index, "tel", e.target.value)
                             }
-                            className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
                           />
                         </div>
                         <div className="flex gap-3">
                           <div className="flex-1">
-                            <label className="block text-[12px] font-semibold text-[#475569] mb-1">
+                            <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">
                               Extra Info Label (e.g. Fax)
                             </label>
                             <input
@@ -411,11 +411,11 @@ export default function AdminSettings() {
                                   e.target.value,
                                 )
                               }
-                              className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                           <div className="flex-1">
-                            <label className="block text-[12px] font-semibold text-[#475569] mb-1">
+                            <label className="block text-[12px] font-semibold text-[#cbd5e1] mb-1">
                               Extra Info Value
                             </label>
                             <input
@@ -424,7 +424,7 @@ export default function AdminSettings() {
                               onChange={(e) =>
                                 handleCardChange(index, "extra", e.target.value)
                               }
-                              className="w-full bg-white text-[#1e293b] border border-[#e2e8f0] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
+                              className="w-full bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-2 px-3 text-sm outline-none focus:border-[#818cf8]"
                             />
                           </div>
                         </div>
@@ -437,13 +437,13 @@ export default function AdminSettings() {
 
             {/* Social Media */}
             {activeTab === "social" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Globe className="h-5 w-5 text-[#3b82f6]" /> Social Links
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <Facebook className="h-3.5 w-3.5 text-[#1877F2]" />{" "}
                       Facebook
                     </label>
@@ -453,11 +453,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange("socialUrls", "facebook", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <Twitter className="h-3.5 w-3.5 text-[#1DA1F2]" /> Twitter
                     </label>
                     <input
@@ -466,11 +466,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange("socialUrls", "twitter", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <Linkedin className="h-3.5 w-3.5 text-[#0A66C2]" />{" "}
                       LinkedIn
                     </label>
@@ -480,11 +480,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange("socialUrls", "linkedin", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
                       <Youtube className="h-3.5 w-3.5 text-[#FF0000]" /> YouTube
                     </label>
                     <input
@@ -493,7 +493,7 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange("socialUrls", "youtube", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>
@@ -502,13 +502,13 @@ export default function AdminSettings() {
 
             {/* SEO Metadata */}
             {activeTab === "seo" && (
-              <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#1e293b] mb-4 flex items-center gap-2">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                   <Globe className="h-5 w-5 text-emerald-500" /> SEO & Meta Tags
                 </h3>
                 <div className="space-y-5">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">
                       Default Page Title
                     </label>
                     <input
@@ -517,11 +517,11 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange("seo", "title", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">
                       Meta Description
                     </label>
                     <textarea
@@ -530,11 +530,11 @@ export default function AdminSettings() {
                         handleChange("seo", "description", e.target.value)
                       }
                       rows={3}
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">
                       Meta Keywords
                     </label>
                     <input
@@ -543,14 +543,14 @@ export default function AdminSettings() {
                       onChange={(e) =>
                         handleChange("seo", "keywords", e.target.value)
                       }
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                     <p className="text-[11px] text-[#94a3b8] mt-1">
                       Comma separated
                     </p>
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#475569] mb-1.5">
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">
                       Google Site Verification Content Code
                     </label>
                     <input
@@ -564,7 +564,7 @@ export default function AdminSettings() {
                         )
                       }
                       placeholder="e.g. dsf789dsf78dsf789ds"
-                      className="w-full bg-[#f8fafc] text-[#1e293b] border border-[#e2e8f0] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />
                   </div>
                 </div>

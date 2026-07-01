@@ -57,14 +57,14 @@ export default function AdminSidebar() {
   ];
 
   return (
-    <aside className="hidden md:flex w-[260px] flex-col justify-between bg-gradient-to-b from-[#1e1b4b] to-[#1e293b] sticky top-0 h-screen z-30 overflow-hidden shrink-0">
+    <aside className="hidden md:flex w-[260px] flex-col justify-between bg-gradient-to-b from-[#0b1120] to-[#131e35] sticky top-0 h-screen z-30 overflow-hidden shrink-0">
       {/* Decorative circles */}
       <div className="absolute -top-15 -right-15 w-[180px] h-[180px] rounded-full bg-[rgba(129,140,248,0.08)] pointer-events-none" />
       <div className="absolute -bottom-10 -left-10 w-[120px] h-[120px] rounded-full bg-[rgba(244,114,182,0.06)] pointer-events-none" />
 
       <div className="relative z-[1] overflow-y-auto">
         {/* Brand */}
-        <div className="p-5 pb-[18px] border-b border-white/[0.06] sticky top-0 bg-[#1e1b4b] z-10">
+        <div className="p-5 pb-[18px] border-b border-white/[0.06] sticky top-0 bg-[#0b1120] z-10">
           <img
             src="/images/logo2.png"
             alt="VSF Admin Console"
@@ -89,14 +89,14 @@ export default function AdminSidebar() {
                       onClick={() => router.push(item.href)}
                       className={`flex items-center justify-between w-full py-2.5 px-3 rounded-[10px] cursor-pointer text-[13px] font-[family-name:var(--font-barlow)] transition-all duration-200 border ${
                         isActive
-                          ? "bg-white/[0.12] border-white/10 text-white font-semibold shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
-                          : "bg-transparent border-transparent text-white/50 font-normal hover:bg-white/[0.08] hover:text-white/80"
+                          ? "bg-[#131e35]/[0.12] border-white/10 text-white font-semibold shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+                          : "bg-transparent border-transparent text-white/50 font-normal hover:bg-[#131e35]/[0.08] hover:text-white/80"
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
                         <Icon
                           className={`h-4 w-4 ${
-                            isActive ? "text-[#818cf8]" : "text-white/30"
+                            isActive ? "text-[#eab308]" : "text-white/30"
                           }`}
                         />
                         <span>{item.label}</span>
@@ -111,7 +111,7 @@ export default function AdminSidebar() {
       </div>
 
       {/* Bottom profile */}
-      <div className="relative z-[1] p-4 pb-[22px] border-t border-white/[0.06] bg-[#1e293b]">
+      <div className="relative z-[1] p-4 pb-[22px] border-t border-white/[0.06] bg-[#131e35]">
         <div className="flex items-center gap-2.5 mb-3.5 px-1">
           <div className="h-[34px] w-[34px] rounded-[10px] bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center text-xs font-extrabold text-white shadow-[0_4px_10px_rgba(129,140,248,0.3)]">
             A
