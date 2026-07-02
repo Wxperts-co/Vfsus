@@ -27,8 +27,8 @@ export function verifyToken(token: string): { email: string } | null {
 }
 
 export async function getAdminFromSession(): Promise<{ email: string } | null> {
+  const cookieStore = await cookies();
   try {
-    const cookieStore = await cookies();
     const token = cookieStore.get('admin_token')?.value;
     if (!token) return null;
     return verifyToken(token);

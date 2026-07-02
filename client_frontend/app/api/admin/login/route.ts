@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     if (adminCount === 0) {
       const defaultEmail = process.env.ADMIN_EMAIL || "johnabdus2025@gmail.com"; 
       // Seed the default admin
-      await adminsCollection.insertOne({
+      await adminsCollection.insertOne({                                                                                                                             
         email: defaultEmail.toLowerCase().trim(),
         password: hashPassword("VfsusAdmin2026!"),
         createdAt: new Date(),
