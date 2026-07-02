@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     // Auto-seeding: Check if there are any admins in the system
     const adminCount = await adminsCollection.countDocuments();
     if (adminCount === 0) {
-      const defaultEmail = process.env.ADMIN_EMAIL || "johnabdus2025@gmail.com"; 
+      const defaultEmail = process.env.ADMIN_EMAIL || "info@vsfus.com"; 
       // Seed the default admin
       await adminsCollection.insertOne({                                                                                                                             
         email: defaultEmail.toLowerCase().trim(),
