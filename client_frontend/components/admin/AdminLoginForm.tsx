@@ -141,7 +141,7 @@ export default function AdminLoginForm() {
                   placeholder="admin@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-xl border-2 border-[rgba(201,168,76,0.2)] bg-[#1a2845] py-3 pl-11 pr-3.5 text-sm font-[family-name:var(--font-barlow)] text-[#f4f6f8] outline-none transition-all duration-200 focus:border-[#818cf8] focus:shadow-[0_0_0_3px_rgba(129,140,248,0.12)] focus:bg-[#fafaff] box-border"
+                  className="w-full rounded-xl border-2 border-[rgba(201,168,76,0.2)] bg-[#1a2845] py-3 pl-11 pr-3.5 text-sm font-[family-name:var(--font-barlow)] text-[#f4f6f8] outline-none transition-all duration-200 focus:border-[#818cf8] focus:shadow-[0_0_0_3px_rgba(129,140,248,0.12)] box-border"
                 />
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function AdminLoginForm() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-xl border-2 border-[rgba(201,168,76,0.2)] bg-[#1a2845] py-3 pl-11 pr-11 text-sm font-[family-name:var(--font-barlow)] text-[#f4f6f8] outline-none transition-all duration-200 focus:border-[#818cf8] focus:shadow-[0_0_0_3px_rgba(129,140,248,0.12)] focus:bg-[#fafaff] box-border"
+                  className="w-full rounded-xl border-2 border-[rgba(201,168,76,0.2)] bg-[#1a2845] py-3 pl-11 pr-11 text-sm font-[family-name:var(--font-barlow)] text-[#f4f6f8] outline-none transition-all duration-200 focus:border-[#818cf8] focus:shadow-[0_0_0_3px_rgba(129,140,248,0.12)] box-border"
                 />
                 <button
                   type="button"
