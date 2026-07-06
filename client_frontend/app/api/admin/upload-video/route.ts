@@ -11,26 +11,26 @@ export async function POST(req: Request) {
     }
 
     const formData = await req.formData();
-    const file = (formData.get("file") || formData.get("image")) as File | null;
+    const file = (formData.get("video") || formData.get("file")) as File | null;
     if (!file) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const ext = path.extname(file.name) || ".jpg";
-    const filename = `image-${Date.now()}${ext}`;
+    const ext = path.extname(file.name) || ".mp4";
+    const filename = `video-${Date.now()}${ext}`;
     
-    const folder = (formData.get("folder") as string) || "services";
+    const folder = (formData.get("folder") as string) || "videos";
     const uploadDir = path.join(process.cwd(), "public", "uploads", folder);
     await fs.mkdir(uploadDir, { recursive: true });
     
     const filepath = path.join(uploadDir, filename);
     await fs.writeFile(filepath, buffer);
 
-    const imageUrl = `/uploads/${folder}/${filename}`;
-    return NextResponse.json({ url: imageUrl });
+    const videoUrl = `/uploads/${folder}/${filename}`;
+    return NextResponse.json({ url: videoUrl });
   } catch (error: any) {
-    console.error("Error uploading image:", error);
+    console.error("Error uploading video:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

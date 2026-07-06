@@ -101,12 +101,12 @@ const Navbar = () => {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-black/90 backdrop-blur-md py-1.5 lg:py-2 shadow-xl' 
-          : 'bg-black/50 backdrop-blur-sm py-1 lg:py-1.5'
+          ? 'bg-black/90 backdrop-blur-md py-0 lg:py-0.5 shadow-xl' 
+          : 'bg-black/50 backdrop-blur-sm py-0 lg:py-0.5'
       }`}>
         <div className="container mx-auto px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8">
           {/* Top Row */}
-          <div className="flex items-center justify-between py-0.5 lg:py-1 border-b border-gray-700">
+          <div className="flex items-center justify-between py-0 border-b border-gray-700">
             {/* Left Side - Address & Phone */}
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8">
               <div className="flex items-center space-x-1.5 xl:space-x-2">
@@ -135,24 +135,24 @@ const Navbar = () => {
               <Link href="/" className="flex items-center">
                 <div className="relative">
                   {/* Desktop Logo */}
-                  <div className="hidden lg:block relative w-[180px] xl:w-[200px] 2xl:w-[320px] h-auto">
+                  <div className="hidden lg:block relative w-[120px] xl:w-[140px] 2xl:w-[120px] h-auto">
                     <Image 
                       src={settings.logoUrl}
                       alt="Company Logo"  
-                      width={350}
-                      height={80}
-     
+                      width={220}
+                      height={60}
+                      className="object-contain w-full h-auto"
                       priority
                     />
                   </div>
                   
                   {/* Mobile Logo */}
-                  <div className="lg:hidden relative w-[240px] sm:w-[160px] md:w-[180px] h-auto">
+                  <div className="lg:hidden relative w-[140px] sm:w-[120px] md:w-[140px] h-auto">
                     <Image 
                       src={settings.logoUrl}
                       alt="Company Logo" 
-                      width={180}
-                      height={35}
+                      width={140}
+                      height={38}
                       className="object-contain w-full h-auto"
                       priority
                     />
@@ -204,14 +204,14 @@ const Navbar = () => {
           </div>
 
           {/* Bottom Row - Navigation - Responsive for all screen sizes */}
-          <div className="hidden lg:flex justify-center py-2 xl:py-3 2xl:py-4">
+          <div className="hidden lg:flex justify-center py-0 xl:py-0.5 2xl:py-1">
             <nav className="flex items-center space-x-0.5 xl:space-x-1 2xl:space-x-2">
               {menuItems.map((item) => (
                 <div key={item.name} className="relative group" ref={mobileMenuRef}>
                   {item.submenu ? (
                     <button
                       onClick={() => toggleDropdown(item.name)}
-                      className="flex items-center px-2 xl:px-3 2xl:px-4 py-1.5 xl:py-2 text-gray-200 hover:text-yellow-400 transition-all duration-200 font-medium whitespace-nowrap
+                      className="flex items-center px-2 xl:px-3 2xl:px-4 py-1 xl:py-1.5 text-gray-200 hover:text-yellow-400 transition-all duration-200 font-medium whitespace-nowrap
                         text-[16px] xl:text-[16px] 2xl:text-[16px] uppercase tracking-wider cursor-pointer"
                     >
                       {item.name}
@@ -220,7 +220,7 @@ const Navbar = () => {
                   ) : (
                     <Link
                       href={item.href}
-                      className="flex items-center px-2 xl:px-3 2xl:px-4 py-1.5 xl:py-2 text-gray-200 hover:text-yellow-400 transition-all duration-200 font-medium whitespace-nowrap
+                      className="flex items-center px-2 xl:px-3 2xl:px-4 py-1 xl:py-1.5 text-gray-200 hover:text-yellow-400 transition-all duration-200 font-medium whitespace-nowrap
                         text-[16px] xl:text-[16px] 2xl:text-[16px] uppercase tracking-wider"
                     >
                       {item.name}

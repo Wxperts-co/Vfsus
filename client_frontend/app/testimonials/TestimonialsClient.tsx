@@ -80,13 +80,25 @@ function VideoCard({ src, title, delay }: TestimonialVideo & { delay: number }) 
       }}
     >
       <div className="video-inner relative w-full aspect-video bg-black">
-        <iframe
-          src={src}
-          title={title}
-          allowFullScreen
-          scrolling="no"
-          className="absolute inset-0 w-full h-full border-none"
-        />
+        {src && (src.startsWith('/uploads/') || src.split('?')[0].toLowerCase().endsWith('.mp4') || src.split('?')[0].toLowerCase().endsWith('.webm') || src.split('?')[0].toLowerCase().endsWith('.ogg')) ? (
+          <video
+            src={src}
+            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover border-none"
+          />
+        ) : (
+          <iframe
+            src={src}
+            title={title}
+            allowFullScreen
+            scrolling="no"
+            className="absolute inset-0 w-full h-full border-none"
+          />
+        )}
       </div>
       <p className="video-label font-['Bebas_Neue',sans-serif] text-[0.95rem] tracking-[1.5px] text-[#8898aa] py-3 px-[18px] m-0 border-t border-[rgba(201,168,76,0.1)]">
         {title}

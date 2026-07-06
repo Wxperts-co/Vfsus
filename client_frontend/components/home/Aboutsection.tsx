@@ -124,12 +124,24 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                             <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px]">
                                 <div className="relative overflow-hidden w-full rounded-[20px]">
                                     <div className="relative w-[87%] aspect-video rounded-[20px] overflow-hidden">
-                                        <iframe
-                                            src={data?.videoUrl || "https://fast.wistia.net/embed/iframe/bukr8v224n"}
-                                            allow="autoplay; fullscreen"
-                                            allowFullScreen
-                                            className="w-full h-full rounded-[20px]"
-                                        />
+                                        {data?.videoUrl && (data.videoUrl.startsWith('/uploads/') || data.videoUrl.split('?')[0].toLowerCase().endsWith('.mp4') || data.videoUrl.split('?')[0].toLowerCase().endsWith('.webm') || data.videoUrl.split('?')[0].toLowerCase().endsWith('.ogg')) ? (
+                                            <video
+                                                src={data.videoUrl}
+                                                controls
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                className="w-full h-full rounded-[20px] object-cover"
+                                            />
+                                        ) : (
+                                            <iframe
+                                                src={data?.videoUrl || "https://fast.wistia.net/embed/iframe/bukr8v224n"}
+                                                allow="autoplay; fullscreen"
+                                                allowFullScreen
+                                                className="w-full h-full rounded-[20px]"
+                                            />
+                                        )}
                                     </div>
                                 </div>
 

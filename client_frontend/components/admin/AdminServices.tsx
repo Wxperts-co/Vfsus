@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ServicesPageData, ServiceData, ServiceSection } from "@/lib/page-services";
 import TiptapEditor from "../common-components/TiptapEditor";
 import AdminSidebar from "./AdminSidebar";
@@ -16,6 +16,8 @@ export default function AdminServices() {
   // For editing a specific service
   const [editingServiceIndex, setEditingServiceIndex] = useState<number | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const videoInputRef = useRef<HTMLInputElement>(null);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -168,6 +170,36 @@ export default function AdminServices() {
     }
   };
 
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingVideo(true);
+    const formData = new FormData();
+    formData.append("video", file);
+    formData.append("folder", "services");
+
+    try {
+      const res = await fetch("/api/admin/upload-video", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const { url } = await res.json();
+        updateMainData("video", url, "wistiaUrl");
+        if (videoInputRef.current) videoInputRef.current.value = "";
+      } else {
+        alert("Failed to upload video");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error uploading video");
+    } finally {
+      setUploadingVideo(false);
+    }
+  };
+
   return (
     <div className="flex min-h-screen font-[family-name:var(--font-barlow)] bg-[#0b1120]">
       <AdminSidebar />
@@ -308,13 +340,32 @@ export default function AdminServices() {
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia / YouTube URL</label>
-                      <input
-                        type="text"
-                        value={data.video.wistiaUrl}
-                        onChange={(e) => updateMainData("video", e.target.value, "wistiaUrl")}
-                        className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
-                      />
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia / YouTube URL / File</label>
+                      <div className="flex gap-3">
+                        <input
+                          type="text"
+                          value={data.video.wistiaUrl}
+                          onChange={(e) => updateMainData("video", e.target.value, "wistiaUrl")}
+                          className="flex-1 bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                          placeholder="e.g. Wistia/YouTube URL or uploaded video path"
+                        />
+                        <input
+                          type="file"
+                          accept="video/*"
+                          className="hidden"
+                          ref={videoInputRef}
+                          onChange={handleVideoUpload}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => videoInputRef.current?.click()}
+                          disabled={uploadingVideo}
+                          className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
+                        >
+                          {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                          {uploadingVideo ? "Uploading..." : "Upload Video"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Save,
   Globe,
@@ -37,6 +37,10 @@ export default function AdminTestimonials() {
   const [searchQueryVideos, setSearchQueryVideos] = useState("");
   const [editingVideoId, setEditingVideoId] = useState<string | null>(null);
   const [videoPage, setVideoPage] = useState(1);
+
+  const videoInputRef = useRef<HTMLInputElement>(null);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+  const [uploadingVideoIndex, setUploadingVideoIndex] = useState<number | null>(null);
 
   const ITEMS_PER_PAGE = 10;
 
@@ -84,6 +88,38 @@ export default function AdminTestimonials() {
       newVideos[index] = { ...newVideos[index], [field]: value };
       return { ...prev, videos: newVideos };
     });
+  };
+
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingVideo(true);
+    setUploadingVideoIndex(index);
+    const formData = new FormData();
+    formData.append("video", file);
+    formData.append("folder", "testimonials");
+
+    try {
+      const res = await fetch("/api/admin/upload-video", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const { url } = await res.json();
+        handleVideoChange(index, "src", url);
+        if (videoInputRef.current) videoInputRef.current.value = "";
+      } else {
+        alert("Failed to upload video");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error uploading video");
+    } finally {
+      setUploadingVideo(false);
+      setUploadingVideoIndex(null);
+    }
   };
 
   const handleRemoveVideo = (index: number) => {
@@ -291,9 +327,33 @@ export default function AdminTestimonials() {
                             <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title (e.g. Client Name)</label>
                             <input type="text" value={vid.title} onChange={(e) => handleVideoChange(index, "title", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
                           </div>
-                          <div>
-                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia Embed URL</label>
-                            <input type="text" value={vid.src} onChange={(e) => handleVideoChange(index, "src", e.target.value)} className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" />
+                           <div>
+                            <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia Embed URL / File</label>
+                            <div className="flex gap-3">
+                              <input 
+                                type="text" 
+                                value={vid.src} 
+                                onChange={(e) => handleVideoChange(index, "src", e.target.value)} 
+                                className="flex-1 bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]" 
+                                placeholder="Wistia URL or uploaded video path"
+                              />
+                              <input
+                                type="file"
+                                accept="video/*"
+                                className="hidden"
+                                ref={videoInputRef}
+                                onChange={(e) => handleVideoUpload(e, index)}
+                              />
+                              <button
+                                type="button"
+                                onClick={() => videoInputRef.current?.click()}
+                                disabled={uploadingVideo}
+                                className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
+                              >
+                                {uploadingVideo && uploadingVideoIndex === index ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                                {uploadingVideo && uploadingVideoIndex === index ? "Uploading..." : "Upload Video"}
+                              </button>
+                            </div>
                           </div>
                           <div className="mt-4 pt-2">
                             <button 
