@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { getAdminFromSession } from "@/lib/auth";
-import fs from "fs/promises";
-import path from "path";
 
 export async function POST(req: Request) {
   try {
@@ -17,17 +15,10 @@ export async function POST(req: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const ext = path.extname(file.name) || ".jpg";
-    const filename = `image-${Date.now()}${ext}`;
-    
-    const folder = (formData.get("folder") as string) || "services";
-    const uploadDir = path.join(process.cwd(), "public", "uploads", folder);
-    await fs.mkdir(uploadDir, { recursive: true });
-    
-    const filepath = path.join(uploadDir, filename);
-    await fs.writeFile(filepath, buffer);
+    const base64 = buffer.toString("base64");
+    const mimeType = file.type || "image/jpeg";
+    const imageUrl = `data:${mimeType};base64,${base64}`;
 
-    const imageUrl = `/uploads/${folder}/${filename}`;
     return NextResponse.json({ url: imageUrl });
   } catch (error: any) {
     console.error("Error uploading image:", error);
