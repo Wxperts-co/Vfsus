@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { getAdminFromSession } from "@/lib/auth";
-import fs from "fs/promises";
-import path from "path";
 
 export async function POST(req: Request) {
   try {
@@ -17,16 +15,10 @@ export async function POST(req: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const ext = path.extname(file.name) || ".png";
-    const filename = `logo-${Date.now()}${ext}`;
-    
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    await fs.mkdir(uploadDir, { recursive: true });
-    
-    const filepath = path.join(uploadDir, filename);
-    await fs.writeFile(filepath, buffer);
+    const base64 = buffer.toString("base64");
+    const mimeType = file.type || "image/png";
+    const logoUrl = `data:${mimeType};base64,${base64}`;
 
-    const logoUrl = `/uploads/${filename}`;
     return NextResponse.json({ url: logoUrl });
   } catch (error: any) {
     console.error("Error uploading logo:", error);
