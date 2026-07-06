@@ -17,6 +17,7 @@ export default function AdminAboutUs() {
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [activeTab, setActiveTab] = useState<TabId>("seo");
   const videoInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef2 = useRef<HTMLInputElement>(null);
   const [uploadingVideo, setUploadingVideo] = useState(false);
 
   useEffect(() => {
@@ -71,7 +72,10 @@ export default function AdminAboutUs() {
     }));
   };
 
-  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVideoUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: "wistiaUrl" | "wistiaUrl2"
+  ) => {
     if (!e.target.files || e.target.files.length === 0) return;
     
     setUploadingVideo(true);
@@ -88,8 +92,9 @@ export default function AdminAboutUs() {
       if (!res.ok) throw new Error("Upload failed");
 
       const result = await res.json();
-      updateNested("video", "wistiaUrl", result.url);
-      if (videoInputRef.current) videoInputRef.current.value = "";
+      updateNested("video", field, result.url);
+      if (field === "wistiaUrl" && videoInputRef.current) videoInputRef.current.value = "";
+      if (field === "wistiaUrl2" && videoInputRef2.current) videoInputRef2.current.value = "";
     } catch (error) {
       console.error("Video upload error:", error);
       alert("Failed to upload video. Please try again.");
@@ -328,7 +333,7 @@ export default function AdminAboutUs() {
                     />
                   </div>
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia Embed URL / File</label>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">First Video URL / File</label>
                     <div className="flex items-center gap-3">
                       <input
                         type="text"
@@ -342,7 +347,7 @@ export default function AdminAboutUs() {
                         accept="video/*"
                         className="hidden"
                         ref={videoInputRef}
-                        onChange={handleVideoUpload}
+                        onChange={(e) => handleVideoUpload(e, "wistiaUrl")}
                       />
                       <button
                         type="button"
@@ -351,7 +356,36 @@ export default function AdminAboutUs() {
                         className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
                       >
                         {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
-                        {uploadingVideo ? "Uploading..." : "Upload Video"}
+                        {uploadingVideo ? "Uploading..." : "Upload Video 1"}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Second Video URL / File (Optional)</label>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="text"
+                        value={data.video.wistiaUrl2 || ""}
+                        onChange={(e) => updateNested("video", "wistiaUrl2", e.target.value)}
+                        className="flex-1 bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                        placeholder="e.g. https://fast.wistia.net/embed/iframe/... or uploaded video path"
+                      />
+                      <input
+                        type="file"
+                        accept="video/*"
+                        className="hidden"
+                        ref={videoInputRef2}
+                        onChange={(e) => handleVideoUpload(e, "wistiaUrl2")}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => videoInputRef2.current?.click()}
+                        disabled={uploadingVideo}
+                        className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
+                      >
+                        {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                        {uploadingVideo ? "Uploading..." : "Upload Video 2"}
                       </button>
                     </div>
                   </div>

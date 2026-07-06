@@ -13,6 +13,7 @@ export interface AboutUsPageData {
   video: {
     badgeText: string;
     wistiaUrl: string;
+    wistiaUrl2?: string;
   };
   stats: Array<{
     id: string;
@@ -60,6 +61,7 @@ export const defaultAboutUsData: AboutUsPageData = {
   video: {
     badgeText: "Live Operations",
     wistiaUrl: "//fast.wistia.net/embed/iframe/6p58wy1zta",
+    wistiaUrl2: "",
   },
   stats: [
     { id: "s1", icon: "🕐", label: "24 / 7 / 365 Operations" },
