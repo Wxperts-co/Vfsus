@@ -18,7 +18,8 @@ export default function AdminAboutUs() {
   const [activeTab, setActiveTab] = useState<TabId>("seo");
   const videoInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef2 = useRef<HTMLInputElement>(null);
-  const [uploadingVideo, setUploadingVideo] = useState(false);
+  const [uploadingVideo1, setUploadingVideo1] = useState(false);
+  const [uploadingVideo2, setUploadingVideo2] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +79,10 @@ export default function AdminAboutUs() {
   ) => {
     if (!e.target.files || e.target.files.length === 0) return;
     
-    setUploadingVideo(true);
+    const isVal1 = field === "wistiaUrl";
+    if (isVal1) setUploadingVideo1(true);
+    else setUploadingVideo2(true);
+    
     const formData = new FormData();
     formData.append("video", e.target.files[0]);
     formData.append("folder", "about-us"); // Save in /public/uploads/about-us/
@@ -89,17 +93,34 @@ export default function AdminAboutUs() {
         body: formData,
       });
 
-      if (!res.ok) throw new Error("Upload failed");
+      if (!res.ok) {
+        let errorMsg = "Upload failed";
+        try {
+          const errData = await res.json();
+          errorMsg = errData.error || errorMsg;
+        } catch (_) {
+          if (res.status === 413) {
+            errorMsg = "File is too large. Please upload a smaller video or configure your server's payload size limit.";
+          } else {
+            errorMsg = `Server error (${res.status}). Please check your server configurations.`;
+          }
+        }
+        throw new Error(errorMsg);
+      }
 
       const result = await res.json();
       updateNested("video", field, result.url);
-      if (field === "wistiaUrl" && videoInputRef.current) videoInputRef.current.value = "";
-      if (field === "wistiaUrl2" && videoInputRef2.current) videoInputRef2.current.value = "";
-    } catch (error) {
+    } catch (error: any) {
       console.error("Video upload error:", error);
-      alert("Failed to upload video. Please try again.");
+      alert(error.message || "Failed to upload video. Please try again.");
     } finally {
-      setUploadingVideo(false);
+      if (isVal1) {
+        setUploadingVideo1(false);
+        if (videoInputRef.current) videoInputRef.current.value = "";
+      } else {
+        setUploadingVideo2(false);
+        if (videoInputRef2.current) videoInputRef2.current.value = "";
+      }
     }
   };
 
@@ -352,11 +373,11 @@ export default function AdminAboutUs() {
                       <button
                         type="button"
                         onClick={() => videoInputRef.current?.click()}
-                        disabled={uploadingVideo}
+                        disabled={uploadingVideo1 || uploadingVideo2}
                         className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
                       >
-                        {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
-                        {uploadingVideo ? "Uploading..." : "Upload Video 1"}
+                        {uploadingVideo1 ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                        {uploadingVideo1 ? "Uploading..." : "Upload Video 1"}
                       </button>
                     </div>
                   </div>
@@ -381,11 +402,11 @@ export default function AdminAboutUs() {
                       <button
                         type="button"
                         onClick={() => videoInputRef2.current?.click()}
-                        disabled={uploadingVideo}
+                        disabled={uploadingVideo1 || uploadingVideo2}
                         className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
                       >
-                        {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
-                        {uploadingVideo ? "Uploading..." : "Upload Video 2"}
+                        {uploadingVideo2 ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                        {uploadingVideo2 ? "Uploading..." : "Upload Video 2"}
                       </button>
                     </div>
                   </div>

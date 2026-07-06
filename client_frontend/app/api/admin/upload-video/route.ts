@@ -12,8 +12,8 @@ export async function POST(req: Request) {
 
     const formData = await req.formData();
     const file = (formData.get("video") || formData.get("file")) as File | null;
-    if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+    if (!file || typeof file === "string" || !(file instanceof Blob)) {
+      return NextResponse.json({ error: "No file uploaded or invalid file format" }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
