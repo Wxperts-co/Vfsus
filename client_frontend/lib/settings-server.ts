@@ -51,7 +51,14 @@ export async function getAboutUsPageData(): Promise<AboutUsPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      return { ...defaultAboutUsData, ...rest };
+      return { 
+        ...defaultAboutUsData, 
+        ...rest,
+        video: {
+          ...defaultAboutUsData.video,
+          ...(rest.video || {})
+        }
+      };
     }
   } catch (error) {
     console.error("Failed to fetch about us page settings:", error);
