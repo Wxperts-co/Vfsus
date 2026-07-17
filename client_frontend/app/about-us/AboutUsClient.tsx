@@ -124,7 +124,6 @@ export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
                         <video
                           src={data.video.wistiaUrl}
                           controls
-                          autoPlay
                           muted
                           loop
                           playsInline
@@ -146,7 +145,6 @@ export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
                           <video
                             src={data.video.wistiaUrl2}
                             controls
-                            autoPlay
                             muted
                             loop
                             playsInline
@@ -175,7 +173,6 @@ export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
                           <video
                             src={data.video.wistiaUrl3}
                             controls
-                            autoPlay
                             muted
                             loop
                             playsInline
