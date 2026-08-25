@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import clientPromise from "@/lib/mongodb";
 import { getAdminFromSession } from "@/lib/auth";
 import { getTestimonialsPageData } from "@/lib/settings-server";
@@ -36,6 +37,13 @@ export async function PUT(req: Request) {
       { $set: updateData },
       { upsert: true }
     );
+
+    try {
+      revalidatePath("/testimonials");
+      revalidatePath("/");
+    } catch (revalidateErr) {
+      console.warn("Revalidation warning:", revalidateErr);
+    }
 
     return NextResponse.json({ success: true, message: "Testimonials page data updated successfully" });
   } catch (error: any) {

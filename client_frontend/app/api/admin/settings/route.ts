@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import clientPromise from "@/lib/mongodb";
 import { getAdminFromSession } from "@/lib/auth";
 import { getGlobalSettings } from "@/lib/settings-server";
@@ -44,6 +45,12 @@ export async function PUT(req: Request) {
       { $set: updateDoc },
       { upsert: true }
     );
+
+    try {
+      revalidatePath("/", "layout");
+    } catch (revalidateErr) {
+      console.warn("Revalidation warning:", revalidateErr);
+    }
 
     return NextResponse.json({ success: true, message: "Settings updated successfully" });
   } catch (error: any) {

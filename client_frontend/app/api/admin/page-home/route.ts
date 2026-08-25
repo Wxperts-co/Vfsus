@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getAdminFromSession } from "@/lib/auth";
 import clientPromise from "@/lib/mongodb";
 import { getHomePageData } from "@/lib/settings-server";
@@ -34,6 +35,13 @@ export async function POST(req: Request) {
       { $set: body },
       { upsert: true }
     );
+
+    try {
+      revalidatePath("/");
+      revalidatePath("/admin/pages/home");
+    } catch (revalidateErr) {
+      console.warn("Revalidation warning:", revalidateErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

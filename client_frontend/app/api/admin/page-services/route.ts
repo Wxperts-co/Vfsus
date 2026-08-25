@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import clientPromise from "@/lib/mongodb";
 import { getAdminFromSession } from "@/lib/auth";
 import { getServicesPageData } from "@/lib/settings-server";
@@ -35,6 +36,14 @@ export async function POST(req: Request) {
       { $set: data },
       { upsert: true }
     );
+
+    try {
+      revalidatePath("/services");
+      revalidatePath("/services/[slug]", "page");
+      revalidatePath("/");
+    } catch (revalidateErr) {
+      console.warn("Revalidation warning:", revalidateErr);
+    }
 
     return NextResponse.json({ success: true, message: "Services page data updated successfully" });
   } catch (error: any) {

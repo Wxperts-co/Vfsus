@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { getServicesPageData } from "@/lib/settings-server";
 import ServicesClient from "./ServicesClient";
 
-// Revalidate this page every 60 seconds or force dynamic if needed
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getServicesPageData();

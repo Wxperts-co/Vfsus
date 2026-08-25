@@ -112,7 +112,26 @@ export async function getHomePageData(): Promise<HomePageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      return { ...defaultHomePageData, ...rest };
+      return { 
+        ...defaultHomePageData, 
+        ...rest,
+        aboutSection: {
+          ...defaultHomePageData.aboutSection,
+          ...(rest.aboutSection || {})
+        },
+        whyChooseUsSection: {
+          ...defaultHomePageData.whyChooseUsSection,
+          ...(rest.whyChooseUsSection || {})
+        },
+        testimonialsSection: {
+          ...defaultHomePageData.testimonialsSection,
+          ...(rest.testimonialsSection || {})
+        },
+        seo: {
+          ...defaultHomePageData.seo,
+          ...(rest.seo || {})
+        }
+      };
     }
   } catch (error) {
     console.error("Failed to fetch home page settings:", error);
