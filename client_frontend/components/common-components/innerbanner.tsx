@@ -20,7 +20,7 @@ const PageBanner: React.FC<PageBannerProps> = ({ title, breadcrumb }) => {
       {/* Banner Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/breadcrum-img.jpg"
+          src="/images/breadcrum-image.png"
           alt={title}
           fill
           className="object-cover"
