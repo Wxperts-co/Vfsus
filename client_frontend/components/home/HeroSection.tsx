@@ -9,13 +9,13 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   }, []);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      
+
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/30 z-10" />
@@ -34,7 +34,7 @@ const HeroSection = () => {
       {/* Content Overlay – Centered for both desktop and mobile */}
       <div className="relative z-20 min-h-screen flex items-center justify-center px-4 py-23 sm:py-0">
         <div className="w-full max-w-4xl text-center">
-          
+
           {/* Badge */}
           <div className="inline-block bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 sm:px-5 py-2 mb-6 sm:mb-8">
             <span className="text-yellow-400 text-xs sm:text-sm heading-font  uppercase tracking-widest">
@@ -65,7 +65,7 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="mt-8 sm:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-xl sm:max-w-full mx-auto">
             {[
-              ['32+', 'Years Experience'],
+              ['40+', 'Years Experience'],
               ['500+', 'Clients Protected'],
               ['24/7', 'Support'],
               ['100%', 'Satisfaction'],
@@ -106,7 +106,7 @@ const HeroSection = () => {
       `}</style>
 
       <div className="bg-[#eab308] py-3 sm:py-4 w-full overflow-hidden flex items-center whitespace-nowrap relative z-20 -mt-11 sm:-mt-12 md:-mt-14">
-        
+
         {/* First Row */}
         <div className="flex-shrink-0 flex items-center gap-4 sm:gap-6 animate-scroll-x">
           {[...Array(3)].map((_, rowIndex) => (
