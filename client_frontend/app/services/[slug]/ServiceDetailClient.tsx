@@ -62,7 +62,9 @@ function ServicesSidebar({ currentSlug, services, onServiceClick }: ServicesSide
         <aside className="sidebar-wrap">
             <div className="sidebar-label">All Services</div>
             <nav className="sidebar-nav">
-                {services.map((s: ServiceData) => {
+                {services
+                    .filter((s: ServiceData) => !(s.slug?.startsWith("new-service-") && s.title === "New Service"))
+                    .map((s: ServiceData) => {
                     const active = s.slug === currentSlug;
                     return (
                         <Link

@@ -201,9 +201,11 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
               </AnimatedSection>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {data.services.map((item: ServiceData, i: number) => (
-                  <ServiceCard key={item.slug} item={item} index={i} />
-                ))}
+                {data.services
+                  .filter((item: ServiceData) => !(item.slug?.startsWith("new-service-") && item.title === "New Service"))
+                  .map((item: ServiceData, i: number) => (
+                    <ServiceCard key={item.slug} item={item} index={i} />
+                  ))}
               </div>
             </div>
           </section>

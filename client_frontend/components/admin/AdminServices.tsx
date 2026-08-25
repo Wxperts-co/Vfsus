@@ -114,15 +114,14 @@ export default function AdminServices() {
     const newService: ServiceData = {
       slug: "new-service-" + Date.now(),
       title: "New Service",
-      icon: "✨",
-      image: "/images/services/placeholder.jpg",
+      icon: "🛡️",
+      image: "/images/services/services-1.jpg",
       excerpt: "Short description of the new service.",
       intro: ["First introductory paragraph."],
     };
     const newServices = [...data.services, newService];
     const newData = { ...data, services: newServices };
     setData(newData);
-    handleSave(newData);
     setEditingServiceIndex(newServices.length - 1);
   };
 
