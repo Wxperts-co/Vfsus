@@ -74,10 +74,10 @@ const FeaturesSection = () => {
               <h5 className="sisf-m-subtitle white sisf-e-colored heading-font inline-block text-sm md:text-base font-bold uppercase leading-6 tracking-normal mb-4 text-[#eab308] bg-[#FFD41D1A] px-4 py-2 rounded-[50px]">
                 <span className="inline-block relative">
                   {'OUR FEATURES'.split('').map((char, index) => (
-                    <span 
-                      key={index} 
+                    <span
+                      key={index}
                       className="inline-block relative animate-char-fade-up"
-                      style={{ 
+                      style={{
                         animationDelay: `${index * 0.03}s`,
                         animationFillMode: 'forwards'
                       }}
@@ -87,13 +87,13 @@ const FeaturesSection = () => {
                   ))}
                 </span>
               </h5>
-              
+
               {/* Main Title with Character Animation */}
               <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10 text-white ">
                 <span className="block text-[#eab308] mb-2">
                   {'Core Security'.split('').map((char, index) => (
-                    <span 
-                      key={index} 
+                    <span
+                      key={index}
                       className="inline-block relative animate-char-fade-up hover:scale-110 transition-all duration-300"
                       style={{ animationDelay: `${index * 0.03}s` }}
                     >
@@ -104,13 +104,13 @@ const FeaturesSection = () => {
                 <span className="block text-white">
                   {'Features That Set Us Apart'.split(' ').map((word, wordIndex) => (
                     <span key={wordIndex} className="inline-block mr-2 overflow-hidden">
-                      <span 
-                        className="inline-block animate-word-slide-up" 
+                      <span
+                        className="inline-block animate-word-slide-up"
                         style={{ animationDelay: `${wordIndex * 0.1 + 0.8}s` }}
                       >
                         {word.split('').map((char, charIndex) => (
-                          <span 
-                            key={`${wordIndex}-${charIndex}`} 
+                          <span
+                            key={`${wordIndex}-${charIndex}`}
                             className="inline-block hover:text-[#eab308] transition-colors duration-300"
                           >
                             {char}
@@ -121,26 +121,26 @@ const FeaturesSection = () => {
                   ))}
                 </span>
               </h2>
-              
+
               {/* Description */}
               <div className="sisf-m-text max-w-2xl">
                 <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                  Explore our professional security capabilities designed to deliver safety, 
+                  Explore our professional security capabilities designed to deliver safety,
                   rapid response, and complete peace of mind.
                 </p>
               </div>
             </div>
           </div>
-          
+
           {/* Learn More Button */}
           <div className="w-full lg:w-2/12 px-[15px] text-left lg:text-right">
             <div className="sisf-m-button pt-4 lg:pt-0 leading-none">
-              <Link 
-                href="/about-us" 
+              <Link
+                href="/about-us"
                 className="sis-btn-default relative inline-block text-base md:text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-6 md:px-7 py-3 md:py-3.5 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
               >
                 <span className="relative z-20 flex items-center">
-                  Read More 
+                  Read More
                   <i className="fa-solid fa-arrow-right ml-2 md:ml-2.5 text-sm md:text-base transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
                 </span>
                 <span className="absolute left-[-15px] bottom-[-2px] w-0 h-[106%] bg-[#002147] transform skew-[30deg] group-hover:w-[120%] transition-all duration-500 z-0" />
@@ -156,8 +156,8 @@ const FeaturesSection = () => {
             <div className="sis-features-image-left">
               <figure className="sis-reveal relative overflow-hidden rounded-2xl group">
                 <div className="relative overflow-hidden w-full rounded-2xl">
-                  <Image 
-                    src="/images/feature-section.jpg"
+                  <Image
+                    src="/images/feature-section-1.jpeg"
                     alt="Security Features"
                     width={600}
                     height={500}
@@ -175,7 +175,7 @@ const FeaturesSection = () => {
           {/* Right Column - Features List */}
           <div className="w-full lg:w-1/2 px-[15px]">
             {features.map((feature, index) => (
-              <div 
+              <div
                 key={index}
                 className="sisf-sis-icon-with-text--hover other features sisf--bottom aos-init mb-6 last:mb-0"
                 data-aos="fade-up"
@@ -183,15 +183,15 @@ const FeaturesSection = () => {
                 data-aos-duration="1200"
               >
                 <div className="sisf-e-inner relative bg-transparent p-6 border border-white/10 rounded-2xl overflow-hidden transition-all duration-600 group hover:border-[#eab308] hover:shadow-xl">
-                  
+
                   {/* Hover Background Effect */}
                   <div className="absolute inset-0 w-full h-0 bg-[#eab308] group-hover:h-full transition-all duration-600 ease-in-out z-0" />
-                  
+
                   {/* Icon and Title */}
                   <div className="relative z-10 flex items-center gap-3 mb-2">
                     <div className="sisf-sis-icon-image w-[50px] h-[50px] min-w-[50px] bg-[#002147] rounded-full flex items-center justify-center border border-white/10 group-hover:bg-[#002147] transition-all duration-400">
                       <figure className="m-0">
-                        <Image 
+                        <Image
                           src={feature.icon}
                           alt={feature.title}
                           width={30}
