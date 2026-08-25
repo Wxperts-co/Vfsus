@@ -140,19 +140,19 @@ const ServicesSection = () => {
                     {services.map((service) => (
                         <div
                             key={service.id}
-                            className="w-full lg:w-1/3 md:w-1/2 px-[15px]"
+                            className="w-full lg:w-1/3 md:w-1/2 px-[15px] flex"
                         >
                             <div
-                                className="sisf-sis-e-service-list page aos-init mb-[30px] group"
+                                className="sisf-sis-e-service-list page aos-init mb-[30px] group w-full flex flex-col"
                                 data-aos="fade-up"
                                 data-aos-delay={service.delay}
                                 data-aos-duration="1300"
                             >
-                                <div className="sisf-e-inner relative bg-[#002147] rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                                <div className="sisf-e-inner relative bg-[#002147] rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col flex-1 h-full">
 
                                     {/* Service Image */}
-                                    <div className="sisf-e-service-image relative overflow-hidden">
-                                        <Link href="/service-single" className="sisf-sis-page-link block">
+                                    <div className="sisf-e-service-image relative overflow-hidden shrink-0">
+                                        <Link href="/services" className="sisf-sis-page-link block">
                                             <figure className="sis-image-anime relative overflow-hidden">
                                                 <div className="relative overflow-hidden">
                                                     <Image
@@ -174,18 +174,18 @@ const ServicesSection = () => {
                                     </div>
 
                                     {/* Service Content */}
-                                    <div className="sisf-e-content p-5 bg-[#002147]">
-                                        <div className="sisf-sis-e-title mb-2">
-                                            <h4 className="sisf-e-title text-white text-xl md:text-1xl font-bold leading-tight">
+                                    <div className="sisf-e-content p-5 bg-[#002147] flex flex-col flex-1 justify-between">
+                                        <div className="sisf-sis-e-title mb-2 min-h-[2.8rem] flex items-center">
+                                            <h4 className="sisf-e-title text-white text-xl md:text-1xl font-bold leading-tight line-clamp-2">
                                                 <Link
-                                                    href="/service-single"
+                                                    href="/services"
                                                     className="text-white hover:text-[#eab308] transition-colors duration-400"
                                                 >
                                                     {service.title}
                                                 </Link>
                                             </h4>
                                         </div>
-                                        <div className="sisf-e-text">
+                                        <div className="sisf-e-text flex-1">
                                             <p className="text-gray-300 text-base mb-0 line-clamp-3 group-hover:text-white transition-colors duration-400">
                                                 {service.description}
                                             </p>

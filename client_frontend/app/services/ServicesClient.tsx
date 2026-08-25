@@ -63,6 +63,7 @@ function ServiceCard({ item, index }: { item: ServiceData; index: number }) {
   return (
     <div
       ref={ref}
+      className="h-full flex flex-col"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0) scale(1)" : "translateY(32px) scale(0.95)",
@@ -71,13 +72,13 @@ function ServiceCard({ item, index }: { item: ServiceData; index: number }) {
     >
       <Link
         href={`/services/${item.slug}`}
-        className="group block relative rounded-md overflow-hidden bg-[#131e35] border border-[rgba(201,168,76,0.15)] transition-all duration-300 hover:border-[rgba(201,168,76,0.55)] hover:shadow-[0_16px_56px_rgba(0,0,0,0.55),0_0_28px_rgba(201,168,76,0.08)] hover:-translate-y-1"
+        className="group flex flex-col h-full relative rounded-md overflow-hidden bg-[#131e35] border border-[rgba(201,168,76,0.15)] transition-all duration-300 hover:border-[rgba(201,168,76,0.55)] hover:shadow-[0_16px_56px_rgba(0,0,0,0.55),0_0_28px_rgba(201,168,76,0.08)] hover:-translate-y-1"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{ textDecoration: "none" }}
       >
         {/* Image */}
-        <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#1a2845]">
+        <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#1a2845] shrink-0">
           <img
             src={item.image}
             alt={item.title}
@@ -99,19 +100,21 @@ function ServiceCard({ item, index }: { item: ServiceData; index: number }) {
         </div>
 
         {/* Caption */}
-        <div className="p-4 pb-[18px] min-h-[72px] flex flex-col justify-center gap-1.5">
+        <div className="p-4 pb-[18px] flex-1 flex flex-col justify-between gap-2">
           <h3
-            className="font-['Bebas_Neue',sans-serif] text-[1.05rem] tracking-[1.5px] leading-tight m-0 transition-colors duration-300"
+            className="font-['Bebas_Neue',sans-serif] text-[1.1rem] tracking-[1.5px] leading-tight m-0 transition-colors duration-300 line-clamp-2 min-h-[2.8rem] flex items-center"
             style={{ color: hovered ? "#c9a84c" : "#f4f6f8" }}
           >
             {item.title}
           </h3>
-          <span
-            className="text-[0.78rem] text-[#c9a84c] tracking-[1px] transition-all duration-300"
-            style={{ opacity: hovered ? 1 : 0, transform: hovered ? "translateX(0)" : "translateX(-8px)" }}
-          >
-            View Details →
-          </span>
+          <div className="pt-1.5 border-t border-[rgba(201,168,76,0.08)] mt-auto flex items-center justify-between">
+            <span
+              className="text-[0.78rem] text-[#c9a84c] tracking-[1px] transition-all duration-300 font-medium"
+              style={{ opacity: hovered ? 1 : 0.8, transform: hovered ? "translateX(3px)" : "translateX(0)" }}
+            >
+              View Details →
+            </span>
+          </div>
         </div>
 
         {/* Gold bottom border */}
@@ -200,7 +203,7 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
                 <div className="w-12 h-[3px] bg-gradient-to-r from-[#c9a84c] to-[#e8c97a] rounded mb-10" />
               </AnimatedSection>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-stretch">
                 {data.services
                   .filter((item: ServiceData) => !(item.slug?.startsWith("new-service-") && item.title === "New Service"))
                   .map((item: ServiceData, i: number) => (
