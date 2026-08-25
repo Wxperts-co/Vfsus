@@ -26,21 +26,21 @@ const ServicesSection = () => {
     const services = [
         {
             id: 1,
-            image: '/images/homepage-service-1.jpg',
+            image: '/images/homepage-services-1.jpeg',
             title: 'Permanent or Temporary Security',
             description: 'Virginia Surveillance Force understands that We live in a world where the concerns for safety and security are escalating on a daily basis.',
             delay: '100'
         },
         {
             id: 2,
-            image: '/images/homepage-service-2.jpg',
+            image: '/images/homepage-services-2.jpeg',
             title: 'Office & Corporate Security',
             description: 'Virginia Surveillance Force uniformed and plain clothed officers are experts when it comes to protect office buildings and corporations. ',
             delay: '300'
         },
         {
             id: 3,
-            image: '/images/homepage-service-3.jpg',
+            image: '/images/homepage-services-3.jpeg',
             title: 'Vehicle Patrol',
             description: 'Virginia Surveillance Force patrol program include a wide variety of techniques designed to provide effective deterrent agents.',
             delay: '500'
@@ -170,7 +170,7 @@ const ServicesSection = () => {
                                             </figure>
                                         </Link>
 
-                                       
+
                                     </div>
 
                                     {/* Service Content */}
