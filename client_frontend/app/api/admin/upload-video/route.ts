@@ -34,3 +34,28 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const admin = await getAdminFromSession();
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { url } = await req.json();
+    if (url && typeof url === "string" && url.startsWith("/uploads/")) {
+      const sanitized = url.replace(/^\/+/, "");
+      const filepath = path.join(process.cwd(), "public", sanitized);
+      try {
+        await fs.unlink(filepath);
+      } catch (err: any) {
+        console.warn("Could not remove file from disk (may not exist):", err.message);
+      }
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error("Error deleting video:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}

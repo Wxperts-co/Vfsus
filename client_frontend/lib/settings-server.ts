@@ -51,12 +51,19 @@ export async function getAboutUsPageData(): Promise<AboutUsPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
+      const dbVideo = rest.video || {};
+      const videosList = Array.isArray(dbVideo.videos)
+        ? dbVideo.videos
+        : [dbVideo.wistiaUrl, dbVideo.wistiaUrl2, dbVideo.wistiaUrl3].filter(Boolean);
+
       return { 
         ...defaultAboutUsData, 
         ...rest,
         video: {
-          ...defaultAboutUsData.video,
-          ...(rest.video || {})
+          badgeText: dbVideo.badgeText || defaultAboutUsData.video.badgeText,
+          videos: videosList,
+          wistiaUrl: dbVideo.wistiaUrl || videosList[0] || "",
+          wistiaUrl2: dbVideo.wistiaUrl2 || videosList[1] || "",
         }
       };
     }
@@ -76,12 +83,19 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
+      const dbVideo = rest.video || {};
+      const videosList = Array.isArray(dbVideo.videos)
+        ? dbVideo.videos
+        : [dbVideo.wistiaUrl, dbVideo.wistiaUrl2].filter(Boolean);
+
       return { 
         ...defaultServicesPageData, 
         ...rest,
         video: {
-          ...defaultServicesPageData.video,
-          ...(rest.video || {})
+          badgeText: dbVideo.badgeText || defaultServicesPageData.video.badgeText,
+          videos: videosList,
+          wistiaUrl: dbVideo.wistiaUrl || videosList[0] || "",
+          wistiaUrl2: dbVideo.wistiaUrl2 || videosList[1] || "",
         }
       };
     }

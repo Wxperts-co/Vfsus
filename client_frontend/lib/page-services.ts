@@ -34,10 +34,26 @@ export interface ServicesPageData {
   };
   video: {
     badgeText: string;
+    videos?: string[];
     wistiaUrl: string;
     wistiaUrl2?: string;
   };
   services: ServiceData[];
+}
+
+export function extractServicesVideoList(video?: {
+  badgeText?: string;
+  videos?: string[];
+  wistiaUrl?: string;
+  wistiaUrl2?: string;
+}): string[] {
+  if (!video) return [];
+  if (Array.isArray(video.videos)) {
+    return video.videos.filter((v) => typeof v === "string" && v.trim() !== "");
+  }
+  return [video.wistiaUrl, video.wistiaUrl2].filter(
+    (v): v is string => Boolean(v && typeof v === "string" && v.trim() !== "")
+  );
 }
 
 export const defaultServicesPageData: ServicesPageData = {
@@ -52,6 +68,10 @@ export const defaultServicesPageData: ServicesPageData = {
   },
   video: {
     badgeText: "Live Operations",
+    videos: [
+      "https://fast.wistia.net/embed/iframe/zpq664bxly",
+      "/images/about-3.mp4",
+    ],
     wistiaUrl: "https://fast.wistia.net/embed/iframe/zpq664bxly",
     wistiaUrl2: "/images/about-3.mp4",
   },

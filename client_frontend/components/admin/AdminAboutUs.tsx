@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import AdminSidebar from "./AdminSidebar";
 import TiptapEditor from "../common-components/TiptapEditor";
-import { AboutUsPageData, defaultAboutUsData } from "@/lib/page-about-us";
+import { AboutUsPageData, defaultAboutUsData, extractVideoList } from "@/lib/page-about-us";
 
 type TabId = "seo" | "intro" | "video" | "stats" | "promises" | "training";
 
@@ -16,10 +16,9 @@ export default function AdminAboutUs() {
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [activeTab, setActiveTab] = useState<TabId>("seo");
-  const videoInputRef = useRef<HTMLInputElement>(null);
-  const videoInputRef2 = useRef<HTMLInputElement>(null);
-  const [uploadingVideo1, setUploadingVideo1] = useState(false);
-  const [uploadingVideo2, setUploadingVideo2] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadingVideoIndex, setUploadingVideoIndex] = useState<number | null>(null);
+  const [targetUploadIndex, setTargetUploadIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,10 +43,21 @@ export default function AdminAboutUs() {
     setIsSaving(true);
     setMessage(null);
     try {
+      const vList = extractVideoList(data.video);
+      const dataToSave = {
+        ...data,
+        video: {
+          ...data.video,
+          videos: vList,
+          wistiaUrl: vList[0] || "",
+          wistiaUrl2: vList[1] || "",
+        }
+      };
+
       const res = await fetch("/api/admin/page-about-us", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataToSave),
       });
       const result = await res.json();
       if (res.ok) {
@@ -73,19 +83,81 @@ export default function AdminAboutUs() {
     }));
   };
 
-  const handleVideoUpload = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-    field: "wistiaUrl" | "wistiaUrl2"
-  ) => {
-    if (!e.target.files || e.target.files.length === 0) return;
+  const getVideosList = () => {
+    return extractVideoList(data.video);
+  };
+
+  const addVideoItem = () => {
+    const currentList = getVideosList();
+    const updated = [...currentList, ""];
+    setData((prev) => ({
+      ...prev,
+      video: {
+        ...prev.video,
+        videos: updated,
+        wistiaUrl: updated[0] || "",
+        wistiaUrl2: updated[1] || "",
+      },
+    }));
+  };
+
+  const removeVideoItem = async (index: number) => {
+    const currentList = getVideosList();
+    const videoToRemove = currentList[index];
+    if (videoToRemove && videoToRemove.startsWith("/uploads/")) {
+      try {
+        await fetch("/api/admin/upload-video", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: videoToRemove }),
+        });
+      } catch (err) {
+        console.warn("Could not delete video file from server:", err);
+      }
+    }
+    const updated = currentList.filter((_, i) => i !== index);
+    setData((prev) => ({
+      ...prev,
+      video: {
+        ...prev.video,
+        videos: updated,
+        wistiaUrl: updated[0] || "",
+        wistiaUrl2: updated[1] || "",
+      },
+    }));
+  };
+
+  const updateVideoItem = (index: number, val: string) => {
+    const currentList = [...getVideosList()];
+    while (currentList.length <= index) currentList.push("");
+    currentList[index] = val;
+    setData((prev) => ({
+      ...prev,
+      video: {
+        ...prev.video,
+        videos: currentList,
+        wistiaUrl: currentList[0] || "",
+        wistiaUrl2: currentList[1] || "",
+      },
+    }));
+  };
+
+  const triggerUpload = (index: number) => {
+    setTargetUploadIndex(index);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0 || targetUploadIndex === null) return;
     
-    const isVal1 = field === "wistiaUrl";
-    if (isVal1) setUploadingVideo1(true);
-    else setUploadingVideo2(true);
-    
+    const idx = targetUploadIndex;
+    setUploadingVideoIndex(idx);
     const formData = new FormData();
     formData.append("video", e.target.files[0]);
-    formData.append("folder", "about-us"); // Save in /public/uploads/about-us/
+    formData.append("folder", "about-us");
 
     try {
       const res = await fetch("/api/admin/upload-video", {
@@ -98,29 +170,19 @@ export default function AdminAboutUs() {
         try {
           const errData = await res.json();
           errorMsg = errData.error || errorMsg;
-        } catch (_) {
-          if (res.status === 413) {
-            errorMsg = "File is too large. Please upload a smaller video or configure your server's payload size limit.";
-          } else {
-            errorMsg = `Server error (${res.status}). Please check your server configurations.`;
-          }
-        }
+        } catch (_) {}
         throw new Error(errorMsg);
       }
 
       const result = await res.json();
-      updateNested("video", field, result.url);
+      updateVideoItem(idx, result.url);
     } catch (error: any) {
       console.error("Video upload error:", error);
       alert(error.message || "Failed to upload video. Please try again.");
     } finally {
-      if (isVal1) {
-        setUploadingVideo1(false);
-        if (videoInputRef.current) videoInputRef.current.value = "";
-      } else {
-        setUploadingVideo2(false);
-        if (videoInputRef2.current) videoInputRef2.current.value = "";
-      }
+      setUploadingVideoIndex(null);
+      setTargetUploadIndex(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     }
   };
 
@@ -339,77 +401,140 @@ export default function AdminAboutUs() {
 
             {/* Video */}
             {activeTab === "video" && (
-              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
-                  <Video className="h-5 w-5 text-purple-500" /> Video Section
-                </h3>
-                <div className="space-y-5 max-w-3xl">
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-6">
+                <div className="flex justify-between items-center pb-4 border-b border-[rgba(201,168,76,0.12)]">
                   <div>
-                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Badge Text (above video)</label>
-                    <input
-                      type="text"
-                      value={data.video.badgeText}
-                      onChange={(e) => updateNested("video", "badgeText", e.target.value)}
-                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
-                    />
+                    <h3 className="font-bold text-[16px] text-[#f4f6f8] flex items-center gap-2 m-0">
+                      <Video className="h-5 w-5 text-purple-500" /> Video Section ({getVideosList().length} Videos)
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-1 mb-0">Manage videos displayed on the About Us page. You can add, edit, preview, and delete videos.</p>
                   </div>
-                  <div>
-                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">First Video URL / File</label>
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="text"
-                        value={data.video.wistiaUrl}
-                        onChange={(e) => updateNested("video", "wistiaUrl", e.target.value)}
-                        className="flex-1 bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
-                        placeholder="e.g. https://fast.wistia.net/embed/iframe/... or uploaded video path"
-                      />
-                      <input
-                        type="file"
-                        accept="video/*"
-                        className="hidden"
-                        ref={videoInputRef}
-                        onChange={(e) => handleVideoUpload(e, "wistiaUrl")}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => videoInputRef.current?.click()}
-                        disabled={uploadingVideo1 || uploadingVideo2}
-                        className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
-                      >
-                        {uploadingVideo1 ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
-                        {uploadingVideo1 ? "Uploading..." : "Upload Video 1"}
-                      </button>
-                    </div>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={addVideoItem}
+                    className="flex items-center gap-1.5 text-xs font-bold text-[#e8c97a] bg-[#eab308]/10 hover:bg-[#eab308]/20 border border-[rgba(201,168,76,0.3)] py-2 px-4 rounded-xl transition-colors cursor-pointer"
+                  >
+                    <Plus className="h-4 w-4" /> Add Video
+                  </button>
+                </div>
 
-                  <div>
-                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Second Video URL / File (Optional)</label>
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="text"
-                        value={data.video.wistiaUrl2 || ""}
-                        onChange={(e) => updateNested("video", "wistiaUrl2", e.target.value)}
-                        className="flex-1 bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
-                        placeholder="e.g. https://fast.wistia.net/embed/iframe/... or uploaded video path"
-                      />
-                      <input
-                        type="file"
-                        accept="video/*"
-                        className="hidden"
-                        ref={videoInputRef2}
-                        onChange={(e) => handleVideoUpload(e, "wistiaUrl2")}
-                      />
+                <div className="max-w-md">
+                  <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Badge Text (above videos)</label>
+                  <input
+                    type="text"
+                    value={data.video.badgeText}
+                    onChange={(e) => updateNested("video", "badgeText", e.target.value)}
+                    className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                    placeholder="e.g. Live Operations"
+                  />
+                </div>
+
+                <input
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                  ref={fileInputRef}
+                  onChange={handleFileInputChange}
+                />
+
+                <div className="space-y-4">
+                  {getVideosList().map((videoUrl, idx) => {
+                    const isDirect =
+                      videoUrl.startsWith("/uploads/") ||
+                      videoUrl.split("?")[0].toLowerCase().endsWith(".mp4") ||
+                      videoUrl.split("?")[0].toLowerCase().endsWith(".webm") ||
+                      videoUrl.split("?")[0].toLowerCase().endsWith(".ogg") ||
+                      videoUrl.startsWith("/images/");
+
+                    return (
+                      <div
+                        key={idx}
+                        className="p-5 border border-[rgba(201,168,76,0.2)] rounded-xl bg-[#1a2845] space-y-4 relative group hover:border-[rgba(201,168,76,0.45)] transition-all"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-['Bebas_Neue',sans-serif] tracking-[1.5px] text-base text-[#e8c97a] flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-full bg-[#131e35] border border-[rgba(201,168,76,0.3)] text-xs flex items-center justify-center text-[#f4f6f8]">
+                              {idx + 1}
+                            </span>
+                            Video #{idx + 1}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => removeVideoItem(idx)}
+                            className="flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                            title="Delete this video"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                            <span className="font-semibold">Delete</span>
+                          </button>
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-[12px] font-semibold text-[#cbd5e1]">Video URL or Upload File</label>
+                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <input
+                              type="text"
+                              value={videoUrl}
+                              onChange={(e) => updateVideoItem(idx, e.target.value)}
+                              className="flex-1 bg-[#131e35] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                              placeholder="Paste Wistia / YouTube / MP4 URL or click upload..."
+                            />
+                            <button
+                              type="button"
+                              onClick={() => triggerUpload(idx)}
+                              disabled={uploadingVideoIndex === idx}
+                              className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#131e35] hover:bg-[#0b1120] border border-[rgba(201,168,76,0.3)] text-[#e8c97a] rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0 cursor-pointer"
+                            >
+                              {uploadingVideoIndex === idx ? (
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                              ) : (
+                                <Video className="w-4 h-4" />
+                              )}
+                              {uploadingVideoIndex === idx ? "Uploading..." : "Upload Video"}
+                            </button>
+                          </div>
+                        </div>
+
+                        {videoUrl && (
+                          <div className="pt-3 border-t border-[rgba(201,168,76,0.1)]">
+                            <div className="text-xs text-[#cbd5e1] font-semibold mb-2">Live Preview:</div>
+                            <div className="max-w-md h-[180px] rounded-lg overflow-hidden border border-[rgba(201,168,76,0.2)] bg-black">
+                              {isDirect ? (
+                                <video
+                                  src={videoUrl}
+                                  controls
+                                  playsInline
+                                  preload="metadata"
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <iframe
+                                  src={videoUrl}
+                                  scrolling="no"
+                                  allowFullScreen
+                                  className="w-full h-full border-none"
+                                />
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+
+                  {getVideosList().length === 0 && (
+                    <div className="text-center py-10 bg-[#1a2845]/50 border border-dashed border-[rgba(201,168,76,0.2)] rounded-xl">
+                      <Video className="w-10 h-10 text-slate-500 mx-auto mb-2" />
+                      <p className="text-slate-400 text-sm mb-3">No videos currently configured on About Us page.</p>
                       <button
                         type="button"
-                        onClick={() => videoInputRef2.current?.click()}
-                        disabled={uploadingVideo1 || uploadingVideo2}
-                        className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
+                        onClick={addVideoItem}
+                        className="px-4 py-2 bg-[#eab308]/20 hover:bg-[#eab308]/30 text-[#e8c97a] rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1.5 cursor-pointer"
                       >
-                        {uploadingVideo2 ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
-                        {uploadingVideo2 ? "Uploading..." : "Upload Video 2"}
+                        <Plus className="w-3.5 h-3.5" /> Add First Video
                       </button>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             )}

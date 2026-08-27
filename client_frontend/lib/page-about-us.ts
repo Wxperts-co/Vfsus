@@ -12,8 +12,10 @@ export interface AboutUsPageData {
   };
   video: {
     badgeText: string;
-    wistiaUrl: string;
+    videos?: string[];
+    wistiaUrl?: string;
     wistiaUrl2?: string;
+    wistiaUrl3?: string;
   };
   stats: Array<{
     id: string;
@@ -40,6 +42,22 @@ export interface AboutUsPageData {
   };
 }
 
+export function extractVideoList(video?: {
+  badgeText?: string;
+  videos?: string[];
+  wistiaUrl?: string;
+  wistiaUrl2?: string;
+  wistiaUrl3?: string;
+}): string[] {
+  if (!video) return [];
+  if (Array.isArray(video.videos)) {
+    return video.videos.filter((v) => typeof v === "string" && v.trim() !== "");
+  }
+  return [video.wistiaUrl, video.wistiaUrl2, video.wistiaUrl3].filter(
+    (v): v is string => Boolean(v && typeof v === "string" && v.trim() !== "")
+  );
+}
+
 export const defaultAboutUsData: AboutUsPageData = {
   seo: {
     title: "About Us | Virginia Surveillance Force",
@@ -60,6 +78,9 @@ export const defaultAboutUsData: AboutUsPageData = {
   },
   video: {
     badgeText: "Live Operations",
+    videos: [
+      "//fast.wistia.net/embed/iframe/6p58wy1zta",
+    ],
     wistiaUrl: "//fast.wistia.net/embed/iframe/6p58wy1zta",
     wistiaUrl2: "",
   },

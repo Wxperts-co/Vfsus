@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Video } from "lucide-react";
 import PageBanner from "@/components/common-components/innerbanner";
-import type { ServiceData, ServicesPageData } from "@/lib/page-services";
+import { ServiceData, ServicesPageData, extractServicesVideoList } from "@/lib/page-services";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface AnimatedSectionProps {
@@ -168,65 +168,68 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
                 />
               </AnimatedSection>
 
-              <section className="video-section relative py-14 bg-[#0b1120] before:content-[''] before:absolute before:inset-0 before:bg-repeating-linear before:pointer-events-none">
-                <div className="container mx-auto px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8 relative z-10">
-                  <AnimatedSection delay={0}>
-                    <div className="video-badge inline-flex items-center gap-2 bg-[rgba(201,168,76,0.12)] border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[2px] py-1.5 px-4 rounded mb-5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#c0392b] animate-pulse" /> {data.video.badgeText}
-                    </div>
-                  </AnimatedSection>
-                  <AnimatedSection delay={0.1}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="video-frame-wrapper relative rounded overflow-hidden shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_24px_80px_rgba(0,0,0,0.7),0_0_60px_rgba(201,168,76,0.07)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[rgba(201,168,76,0.08)] before:to-transparent before:pointer-events-none before:z-[1]">
-                        {data.video.wistiaUrl && (data.video.wistiaUrl.startsWith('/uploads/') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.mp4') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.webm') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.ogg')) ? (
-                          <video
-                            src={data.video.wistiaUrl}
-                            controls
-                            playsInline
-                            preload="metadata"
-                            className="block w-full h-[380px] border-none relative z-0 object-cover"
-                          />
-                        ) : (
-                          <iframe
-                            src={data.video.wistiaUrl}
-                            scrolling="no"
-                            allowFullScreen
-                            title="VSF Live Operations 1"
-                            className="block w-full h-[380px] border-none relative z-0"
-                          />
-                        )}
-                      </div>
-                      {data.video.wistiaUrl2 ? (
-                        <div className="video-frame-wrapper relative rounded overflow-hidden shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_24px_80px_rgba(0,0,0,0.7),0_0_60px_rgba(201,168,76,0.07)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[rgba(201,168,76,0.08)] before:to-transparent before:pointer-events-none before:z-[1]">
-                          {data.video.wistiaUrl2.startsWith('/uploads/') || data.video.wistiaUrl2.split('?')[0].toLowerCase().endsWith('.mp4') || data.video.wistiaUrl2.split('?')[0].toLowerCase().endsWith('.webm') || data.video.wistiaUrl2.split('?')[0].toLowerCase().endsWith('.ogg') ? (
-                            <video
-                              src={data.video.wistiaUrl2}
-                              controls
-                              playsInline
-                              preload="metadata"
-                              className="block w-full h-[380px] border-none relative z-0 object-cover"
-                            />
-                          ) : (
-                            <iframe
-                              src={data.video.wistiaUrl2}
-                              scrolling="no"
-                              allowFullScreen
-                              title="VSF Live Operations 2"
-                              className="block w-full h-[380px] border-none relative z-0"
-                            />
-                          )}
+              {extractServicesVideoList(data.video).length > 0 && (
+                <section className="video-section relative py-14 bg-[#0b1120] before:content-[''] before:absolute before:inset-0 before:bg-repeating-linear before:pointer-events-none">
+                  <div className="container mx-auto px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8 relative z-10">
+                    {data.video.badgeText && (
+                      <AnimatedSection delay={0}>
+                        <div className="video-badge inline-flex items-center gap-2 bg-[rgba(201,168,76,0.12)] border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[2px] py-1.5 px-4 rounded mb-5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#c0392b] animate-pulse" /> {data.video.badgeText}
                         </div>
-                      ) : (
-                        <div className="flex flex-col items-center justify-center bg-[#131e35] border border-[rgba(201,168,76,0.18)] rounded-[20px] h-[380px] text-slate-400">
-                          <Video className="w-12 h-12 text-[#c9a84c] mb-3 animate-pulse" />
-                          <span className="font-['Bebas_Neue',sans-serif] tracking-[2px] text-lg text-white">Live Operations 2</span>
-                          <span className="text-xs text-slate-500 mt-1">Configure this video in the admin panel</span>
-                        </div>
-                      )}
-                    </div>
-                  </AnimatedSection>
-                </div>
-              </section>
+                      </AnimatedSection>
+                    )}
+                    <AnimatedSection delay={0.1}>
+                      {(() => {
+                        const videos = extractServicesVideoList(data.video);
+                        const gridClass =
+                          videos.length === 1
+                            ? "grid-cols-1 max-w-3xl mx-auto"
+                            : videos.length === 3
+                            ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                            : "grid-cols-1 md:grid-cols-2";
+
+                        return (
+                          <div className={`grid gap-8 ${gridClass}`}>
+                            {videos.map((url, index) => {
+                              const isDirect =
+                                url.startsWith("/uploads/") ||
+                                url.split("?")[0].toLowerCase().endsWith(".mp4") ||
+                                url.split("?")[0].toLowerCase().endsWith(".webm") ||
+                                url.split("?")[0].toLowerCase().endsWith(".ogg") ||
+                                url.startsWith("/images/");
+
+                              return (
+                                <div
+                                  key={index}
+                                  className="video-frame-wrapper relative rounded overflow-hidden shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_24px_80px_rgba(0,0,0,0.7),0_0_60px_rgba(201,168,76,0.07)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[rgba(201,168,76,0.08)] before:to-transparent before:pointer-events-none before:z-[1]"
+                                >
+                                  {isDirect ? (
+                                    <video
+                                      src={url}
+                                      controls
+                                      playsInline
+                                      preload="metadata"
+                                      className="block w-full h-[380px] border-none relative z-0 object-cover"
+                                    />
+                                  ) : (
+                                    <iframe
+                                      src={url}
+                                      scrolling="no"
+                                      allowFullScreen
+                                      title={`VSF Live Operations ${index + 1}`}
+                                      className="block w-full h-[380px] border-none relative z-0"
+                                    />
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        );
+                      })()}
+                    </AnimatedSection>
+                  </div>
+                </section>
+              )}
             </div>
           </section>
 
