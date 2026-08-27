@@ -35,6 +35,7 @@ export interface ServicesPageData {
   video: {
     badgeText: string;
     wistiaUrl: string;
+    wistiaUrl2?: string;
   };
   services: ServiceData[];
 }
@@ -52,6 +53,7 @@ export const defaultServicesPageData: ServicesPageData = {
   video: {
     badgeText: "Live Operations",
     wistiaUrl: "https://fast.wistia.net/embed/iframe/zpq664bxly",
+    wistiaUrl2: "/images/about-3.mp4",
   },
   services: [
     // 1 ── CONCIERGE & FRONTDESK ─────────────────────────────────────────────

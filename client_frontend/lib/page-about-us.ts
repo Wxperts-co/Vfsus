@@ -14,7 +14,6 @@ export interface AboutUsPageData {
     badgeText: string;
     wistiaUrl: string;
     wistiaUrl2?: string;
-    wistiaUrl3?: string;
   };
   stats: Array<{
     id: string;
@@ -63,7 +62,6 @@ export const defaultAboutUsData: AboutUsPageData = {
     badgeText: "Live Operations",
     wistiaUrl: "//fast.wistia.net/embed/iframe/6p58wy1zta",
     wistiaUrl2: "",
-    wistiaUrl3: "/images/about-3.mp4",
   },
   stats: [
     { id: "s1", icon: "🕐", label: "24 / 7 / 365 Operations" },

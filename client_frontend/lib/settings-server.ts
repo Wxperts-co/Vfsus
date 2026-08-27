@@ -76,7 +76,14 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      return { ...defaultServicesPageData, ...rest };
+      return { 
+        ...defaultServicesPageData, 
+        ...rest,
+        video: {
+          ...defaultServicesPageData.video,
+          ...(rest.video || {})
+        }
+      };
     }
   } catch (error) {
     console.error("Failed to fetch services page settings:", error);

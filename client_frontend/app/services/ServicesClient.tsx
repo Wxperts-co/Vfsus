@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { Video } from "lucide-react";
 import PageBanner from "@/components/common-components/innerbanner";
 import type { ServiceData, ServicesPageData } from "@/lib/page-services";
 
@@ -134,6 +135,15 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap');
         :root { --navy:#0b1120; --navy-mid:#131e35; --navy-light:#1a2845; --gold:#c9a84c; --gold-light:#e8c97a; --steel:#8898aa; --white:#f4f6f8; }
+        .bg-repeating-linear {
+          background-image: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(201, 168, 76, 0.04) 39px,
+            rgba(201, 168, 76, 0.04) 40px
+          );
+        }
       `}</style>
 
       <PageBanner title="Services" />
@@ -166,25 +176,52 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
                     </div>
                   </AnimatedSection>
                   <AnimatedSection delay={0.1}>
-                    <div className="video-frame-wrapper relative rounded overflow-hidden shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_24px_80px_rgba(0,0,0,0.7),0_0_60px_rgba(201,168,76,0.07)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[rgba(201,168,76,0.08)] before:to-transparent before:pointer-events-none before:z-[1]">
-                      {data.video.wistiaUrl && (data.video.wistiaUrl.startsWith('/uploads/') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.mp4') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.webm') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.ogg')) ? (
-                        <video
-                          src={data.video.wistiaUrl}
-                          controls
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          className="block w-full h-[380px] border-none relative z-0 object-cover"
-                        />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="video-frame-wrapper relative rounded overflow-hidden shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_24px_80px_rgba(0,0,0,0.7),0_0_60px_rgba(201,168,76,0.07)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[rgba(201,168,76,0.08)] before:to-transparent before:pointer-events-none before:z-[1]">
+                        {data.video.wistiaUrl && (data.video.wistiaUrl.startsWith('/uploads/') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.mp4') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.webm') || data.video.wistiaUrl.split('?')[0].toLowerCase().endsWith('.ogg')) ? (
+                          <video
+                            src={data.video.wistiaUrl}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="block w-full h-[380px] border-none relative z-0 object-cover"
+                          />
+                        ) : (
+                          <iframe
+                            src={data.video.wistiaUrl}
+                            scrolling="no"
+                            allowFullScreen
+                            title="VSF Live Operations 1"
+                            className="block w-full h-[380px] border-none relative z-0"
+                          />
+                        )}
+                      </div>
+                      {data.video.wistiaUrl2 ? (
+                        <div className="video-frame-wrapper relative rounded overflow-hidden shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_24px_80px_rgba(0,0,0,0.7),0_0_60px_rgba(201,168,76,0.07)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-[rgba(201,168,76,0.08)] before:to-transparent before:pointer-events-none before:z-[1]">
+                          {data.video.wistiaUrl2.startsWith('/uploads/') || data.video.wistiaUrl2.split('?')[0].toLowerCase().endsWith('.mp4') || data.video.wistiaUrl2.split('?')[0].toLowerCase().endsWith('.webm') || data.video.wistiaUrl2.split('?')[0].toLowerCase().endsWith('.ogg') ? (
+                            <video
+                              src={data.video.wistiaUrl2}
+                              controls
+                              playsInline
+                              preload="metadata"
+                              className="block w-full h-[380px] border-none relative z-0 object-cover"
+                            />
+                          ) : (
+                            <iframe
+                              src={data.video.wistiaUrl2}
+                              scrolling="no"
+                              allowFullScreen
+                              title="VSF Live Operations 2"
+                              className="block w-full h-[380px] border-none relative z-0"
+                            />
+                          )}
+                        </div>
                       ) : (
-                        <iframe
-                          src={data.video.wistiaUrl}
-                          scrolling="no"
-                          allowFullScreen
-                          title="VSF Introduction"
-                          className="block w-full h-[380px] border-none relative z-0"
-                        />
+                        <div className="flex flex-col items-center justify-center bg-[#131e35] border border-[rgba(201,168,76,0.18)] rounded-[20px] h-[380px] text-slate-400">
+                          <Video className="w-12 h-12 text-[#c9a84c] mb-3 animate-pulse" />
+                          <span className="font-['Bebas_Neue',sans-serif] tracking-[2px] text-lg text-white">Live Operations 2</span>
+                          <span className="text-xs text-slate-500 mt-1">Configure this video in the admin panel</span>
+                        </div>
                       )}
                     </div>
                   </AnimatedSection>

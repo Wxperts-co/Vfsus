@@ -17,7 +17,9 @@ export default function AdminServices() {
   const [editingServiceIndex, setEditingServiceIndex] = useState<number | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
   const videoInputRef = useRef<HTMLInputElement>(null);
-  const [uploadingVideo, setUploadingVideo] = useState(false);
+  const videoInputRef2 = useRef<HTMLInputElement>(null);
+  const [uploadingVideo1, setUploadingVideo1] = useState(false);
+  const [uploadingVideo2, setUploadingVideo2] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -169,11 +171,17 @@ export default function AdminServices() {
     }
   };
 
-  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVideoUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: "wistiaUrl" | "wistiaUrl2"
+  ) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setUploadingVideo(true);
+    const isVal1 = field === "wistiaUrl";
+    if (isVal1) setUploadingVideo1(true);
+    else setUploadingVideo2(true);
+
     const formData = new FormData();
     formData.append("video", file);
     formData.append("folder", "services");
@@ -186,8 +194,9 @@ export default function AdminServices() {
 
       if (res.ok) {
         const { url } = await res.json();
-        updateMainData("video", url, "wistiaUrl");
-        if (videoInputRef.current) videoInputRef.current.value = "";
+        updateMainData("video", url, field);
+        if (isVal1 && videoInputRef.current) videoInputRef.current.value = "";
+        if (!isVal1 && videoInputRef2.current) videoInputRef2.current.value = "";
       } else {
         alert("Failed to upload video");
       }
@@ -195,7 +204,8 @@ export default function AdminServices() {
       console.error(err);
       alert("Error uploading video");
     } finally {
-      setUploadingVideo(false);
+      if (isVal1) setUploadingVideo1(false);
+      else setUploadingVideo2(false);
     }
   };
 
@@ -328,9 +338,9 @@ export default function AdminServices() {
                   <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
                     <Video className="h-5 w-5 text-purple-500" /> Video Section
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-5 max-w-3xl">
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Badge Text</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Badge Text (above video)</label>
                       <input
                         type="text"
                         value={data.video.badgeText}
@@ -339,8 +349,8 @@ export default function AdminServices() {
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Wistia / YouTube URL / File</label>
-                      <div className="flex gap-3">
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">First Video URL / File</label>
+                      <div className="flex items-center gap-3">
                         <input
                           type="text"
                           value={data.video.wistiaUrl}
@@ -353,16 +363,45 @@ export default function AdminServices() {
                           accept="video/*"
                           className="hidden"
                           ref={videoInputRef}
-                          onChange={handleVideoUpload}
+                          onChange={(e) => handleVideoUpload(e, "wistiaUrl")}
                         />
                         <button
                           type="button"
                           onClick={() => videoInputRef.current?.click()}
-                          disabled={uploadingVideo}
+                          disabled={uploadingVideo1 || uploadingVideo2}
                           className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
                         >
-                          {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
-                          {uploadingVideo ? "Uploading..." : "Upload Video"}
+                          {uploadingVideo1 ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                          {uploadingVideo1 ? "Uploading..." : "Upload Video 1"}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Second Video URL / File (Optional)</label>
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="text"
+                          value={data.video.wistiaUrl2 || ""}
+                          onChange={(e) => updateMainData("video", e.target.value, "wistiaUrl2")}
+                          className="flex-1 bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                          placeholder="e.g. Wistia/YouTube URL or uploaded video path"
+                        />
+                        <input
+                          type="file"
+                          accept="video/*"
+                          className="hidden"
+                          ref={videoInputRef2}
+                          onChange={(e) => handleVideoUpload(e, "wistiaUrl2")}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => videoInputRef2.current?.click()}
+                          disabled={uploadingVideo1 || uploadingVideo2}
+                          className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
+                        >
+                          {uploadingVideo2 ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
+                          {uploadingVideo2 ? "Uploading..." : "Upload Video 2"}
                         </button>
                       </div>
                     </div>
