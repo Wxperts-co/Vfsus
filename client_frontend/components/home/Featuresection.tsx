@@ -102,6 +102,7 @@ const FeaturesSection = () => {
             <div className="sisf-m-button pt-4 lg:pt-0 leading-none">
               <Link
                 href="/about-us"
+                aria-label="Read More About Our Security Features"
                 className="sis-btn-default relative inline-flex items-center gap-2 text-base md:text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-6 md:px-7 py-3 md:py-3.5 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
               >
                 <span className="relative z-20 flex items-center gap-2">
@@ -122,11 +123,11 @@ const FeaturesSection = () => {
               <figure className="sis-reveal relative overflow-hidden rounded-2xl group">
                 <div className="relative overflow-hidden w-full rounded-2xl">
                   <Image
-                    src="/images/feature-section-1.jpeg"
+                    src="/images/feature-section-1.webp"
                     alt="Security Features"
-                    width={600}
-                    height={500}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    width={500}
+                    height={400}
+                    sizes="(max-width: 768px) 360px, 500px"
                     className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>

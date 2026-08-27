@@ -243,11 +243,11 @@ const IndustriesSection = ({ data }: { data?: HomeWhyChooseSection }) => {
               <figure className="sis-reveal relative overflow-hidden group m-0">
                 <div className="relative overflow-hidden rounded-2xl">
                   <Image 
-                    src={data?.rightImage || "/images/choose-section.jpg"}
+                    src={data?.rightImage || "/images/choose-section.webp"}
                     alt="Industries We Serve"
-                    width={600}
-                    height={500}
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    width={500}
+                    height={400}
+                    sizes="(max-width: 768px) 360px, 600px"
                     className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Overlay Effect */}

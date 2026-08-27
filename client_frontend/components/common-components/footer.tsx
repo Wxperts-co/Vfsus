@@ -49,7 +49,7 @@ const Footer = () => {
 
                             {/* Scroll Content - GPU Accelerated */}
                             <div className="sis-scroll-container mt-16 mb-8 overflow-hidden">
-                                <div className="flex whitespace-nowrap animate-scroll">
+                                <div className="flex whitespace-nowrap animate-scroll-footer">
                                     {[...Array(4)].map((_, idx) => (
                                         <div key={idx} className="sis-footer-content px-8">
                                             <span
@@ -212,20 +212,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Hardware-Accelerated Marquee */}
-            <style jsx>{`
-                @keyframes scrollFooter {
-                    0% { transform: translate3d(0, 0, 0); }
-                    100% { transform: translate3d(-50%, 0, 0); }
-                }
-                .animate-scroll {
-                    animation: scrollFooter 25s linear infinite;
-                    will-change: transform;
-                }
-                .animate-scroll:hover {
-                    animation-play-state: paused;
-                }
-            `}</style>
         </footer>
     );
 };

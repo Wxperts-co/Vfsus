@@ -152,6 +152,7 @@ const Navbar = () => {
                       alt="Company Logo"
                       width={140}
                       height={38}
+                      sizes="140px"
                       className="object-contain w-full h-auto"
                       priority
                     />
@@ -291,8 +292,8 @@ const Navbar = () => {
                         alt="Company Logo"
                         width={140}
                         height={38}
+                        sizes="140px"
                         className="object-contain w-full h-auto"
-                        priority
                       />
                     </div>
                     <span className="text-white font-bold uppercase tracking-wide heading-font text-xs sm:text-sm">

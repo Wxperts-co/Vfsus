@@ -1,33 +1,8 @@
-// components/HeroSection.tsx
-'use client';
-
-import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import DesktopHeroVideo from './DesktopHeroVideo';
 
-const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [loadVideo, setLoadVideo] = useState(false);
-
-  useEffect(() => {
-    // Only load background video on desktop devices to preserve mobile bandwidth and guarantee instant LCP
-    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-      // Defer video loading until after initial page paint and idle
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(() => setLoadVideo(true));
-      } else {
-        const timer = setTimeout(() => setLoadVideo(true), 800);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (loadVideo && videoRef.current) {
-      videoRef.current.play().catch(() => { });
-    }
-  }, [loadVideo]);
-
+export default function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0b1120]">
 
@@ -44,20 +19,8 @@ const HeroSection = () => {
           className="object-cover"
         />
 
-        {/* Video only loaded on desktop to save mobile data & eliminate mobile LCP/TBT delays */}
-        {loadVideo && (
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000"
-          >
-            <source src="/images/bg-video-flag.mp4" type="video/mp4" />
-          </video>
-        )}
+        {/* Video only loaded on desktop via deferred client component */}
+        <DesktopHeroVideo />
       </div>
 
       {/* Content Overlay – Centered for both desktop and mobile */}
@@ -85,6 +48,7 @@ const HeroSection = () => {
           <div className="mb-8 sm:mb-12">
             <Link
               href="/request-quote"
+              aria-label="Get Free Security Quote"
               className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-all duration-200 hover:shadow-2xl hover:shadow-yellow-500/30 transform hover:-translate-y-1"
             >
               Get Free Quote
@@ -119,22 +83,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scrolling Text Banner - Hardware Accelerated */}
-      <style jsx>{`
-        @keyframes scrollX {
-          0% {
-            transform: translate3d(0, 0, 0);
-          }
-          100% {
-            transform: translate3d(-50%, 0, 0);
-          }
-        }
-        .animate-scroll-x {
-          animation: scrollX 45s linear infinite;
-          will-change: transform;
-        }
-      `}</style>
-
+      {/* Scrolling Text Banner */}
       <div className="bg-[#eab308] py-3 sm:py-4 w-full overflow-hidden flex items-center whitespace-nowrap relative z-20 -mt-11 sm:-mt-12 md:-mt-14">
         <div className="flex-shrink-0 flex items-center gap-6 animate-scroll-x">
           {[...Array(4)].map((_, idx) => (
@@ -157,6 +106,4 @@ const HeroSection = () => {
       </div>
     </div>
   );
-};
-
-export default HeroSection;
+}

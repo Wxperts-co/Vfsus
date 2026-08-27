@@ -11,14 +11,16 @@ const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
   variable: '--font-bebas',
   display: 'swap',
+  fallback: ['Impact', 'Arial', 'sans-serif'],
   preload: true,
 })
 
 const barlow = Barlow({
-  weight: ['400', '600', '700'],
+  weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-barlow',
   display: 'swap',
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
   preload: true,
 })
 

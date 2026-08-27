@@ -115,7 +115,7 @@ const ServicesSection = () => {
                                                         alt={service.title}
                                                         width={400}
                                                         height={250}
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                        sizes="(max-width: 640px) 340px, (max-width: 1024px) 300px, 400px"
                                                         className="w-full h-[240px] object-cover transition-transform duration-500 group-hover:scale-105"
                                                     />
                                                 </div>

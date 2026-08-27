@@ -103,14 +103,14 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                                                 className="relative w-full h-full cursor-pointer group/facade overflow-hidden"
                                                 role="button"
                                                 tabIndex={0}
-                                                aria-label="Play video"
+                                                aria-label="Watch Video"
                                                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setShowPlayer(true); }}
                                             >
                                                 <Image
-                                                    src="/images/about-section-1.jpg"
+                                                    src="/images/about-section-1.webp"
                                                     alt="Watch About Us Video"
                                                     fill
-                                                    sizes="(max-width: 768px) 100vw, 500px"
+                                                    sizes="(max-width: 768px) 340px, 500px"
                                                     className="object-cover transition-transform duration-500 group-hover/facade:scale-105 opacity-90"
                                                 />
                                                 <div className="absolute inset-0 bg-black/40 group-hover/facade:bg-black/20 transition-colors" />
@@ -185,6 +185,7 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                         <div className="sisf-m-button pt-6 leading-none">
                             <Link
                                 href={data?.buttonLink || "/about-us"}
+                                aria-label="Read More About Virginia Surveillance Force"
                                 className="sis-btn-default relative inline-flex items-center gap-2 text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-7 py-3 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
                             >
                                 <span className="relative z-20 flex items-center gap-2">
@@ -219,11 +220,11 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                             <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px] m-0">
                                 <div className="relative overflow-hidden w-full rounded-[20px]">
                                     <Image
-                                        src={data?.image || "/images/about-section-2.jpg"}
+                                        src={data?.image || "/images/about-section-2.webp"}
                                         alt="Virginia Surveillance Force Security Officers"
-                                        width={600}
-                                        height={400}
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        width={500}
+                                        height={350}
+                                        sizes="(max-width: 768px) 360px, 600px"
                                         className="w-full h-auto object-cover origin-left rounded-[20px] transition-transform duration-700 group-hover:scale-105"
                                     />
                                 </div>

@@ -8,8 +8,8 @@
   --steel: #8898aa;
   --white: #f4f6f8;
   --red: #c0392b;
-  --heading-font: var(--font-bebas), cursive;
-  --default-font: var(--font-barlow), sans-serif;
+  --heading-font: var(--font-bebas), Impact, 'Arial Narrow Bold', sans-serif;
+  --default-font: var(--font-barlow), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
@@ -57,6 +57,18 @@ h6,
 @keyframes float-delayed {
   0%, 100% { transform: translate3d(0, 0px, 0) scale(1.03); }
   50% { transform: translate3d(0, 20px, 0) scale(1); }
+}
+
+@keyframes scrollFooter {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.animate-scroll-footer {
+  animation: scrollFooter 25s linear infinite;
+  will-change: transform;
+}
+.animate-scroll-footer:hover {
+  animation-play-state: paused;
 }
 .animate-float-slow {
   animation: float-slow 15s ease-in-out infinite;
