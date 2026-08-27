@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import clientPromise from "@/lib/mongodb";
 import { getAdminFromSession } from "@/lib/auth";
-import { getGlobalSettings } from "@/lib/settings-server";
+import { getGlobalSettings, invalidateSettingsCache } from "@/lib/settings-server";
 
 export async function GET() {
   try {
@@ -47,6 +47,7 @@ export async function PUT(req: Request) {
     );
 
     try {
+      invalidateSettingsCache("global_settings");
       revalidatePath("/", "layout");
     } catch (revalidateErr) {
       console.warn("Revalidation warning:", revalidateErr);

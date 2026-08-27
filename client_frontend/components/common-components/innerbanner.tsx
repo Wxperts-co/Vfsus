@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { ChevronRight } from "lucide-react";
 
 interface PageBannerProps {
@@ -12,29 +11,27 @@ interface PageBannerProps {
 }
 
 const PageBanner: React.FC<PageBannerProps> = ({ title, breadcrumb }) => {
-  const words = title.split(" ");
-  let globalCharCount = 0;
-
   return (
     <div className="relative overflow-hidden w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]">
       {/* Banner Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/breadcrum-image.png"
+          src="/images/breadcrum-img.jpg"
           alt={title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Page Title Overlay */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="container mx-auto px-4 text-center mt-12 sm:mt-16">
           {/* Breadcrumbs */}
-          <div className="flex items-center justify-center mt-20 gap-2 mb-3 text-sm sm:text-base md:text-lg">
+          <div className="flex items-center justify-center mt-16 gap-2 mb-3 text-sm sm:text-base md:text-lg">
             <Link
               href="/"
               className="group text-gray-300 font-normal relative hover:text-white transition-colors duration-200"
@@ -51,26 +48,9 @@ const PageBanner: React.FC<PageBannerProps> = ({ title, breadcrumb }) => {
             </span>
           </div>
 
-          {/* Animated Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-extrabold leading-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] uppercase tracking-wide">
-            {words.map((word, wordIdx) => (
-              <div key={wordIdx} className="inline-block relative mr-3 last:mr-0">
-                {word.split("").map((char, charIdx) => {
-                  const currentIdx = globalCharCount++;
-                  return (
-                    <span
-                      key={charIdx}
-                      className="letter-animate inline-block relative opacity-0"
-                      style={{
-                        animationDelay: `${currentIdx * 40}ms`,
-                      }}
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
-              </div>
-            ))}
+          {/* Title */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-extrabold leading-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] uppercase tracking-wide heading-font animate-fade-down">
+            {title}
           </h1>
         </div>
       </div>

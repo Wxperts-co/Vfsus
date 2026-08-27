@@ -1,43 +1,72 @@
 // components/HeroSection.tsx
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [loadVideo, setLoadVideo] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => { });
+    // Only load background video on desktop devices to preserve mobile bandwidth and guarantee instant LCP
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      // Defer video loading until after initial page paint and idle
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => setLoadVideo(true));
+      } else {
+        const timer = setTimeout(() => setLoadVideo(true), 800);
+        return () => clearTimeout(timer);
+      }
     }
   }, []);
 
-  return (
-    <div className="relative min-h-screen overflow-hidden">
+  useEffect(() => {
+    if (loadVideo && videoRef.current) {
+      videoRef.current.play().catch(() => { });
+    }
+  }, [loadVideo]);
 
-      {/* Video Background */}
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-[#0b1120]">
+
+      {/* Hero Background - Fast LCP Priority Image for Mobile & Desktop */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/30 z-10" />
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/images/bg-video-flag.mp4" type="video/mp4" />
-        </video>
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <Image
+          src="/images/about-bg-section.webp"
+          alt="Virginia Surveillance Force"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover"
+        />
+
+        {/* Video only loaded on desktop to save mobile data & eliminate mobile LCP/TBT delays */}
+        {loadVideo && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000"
+          >
+            <source src="/images/bg-video-flag.mp4" type="video/mp4" />
+          </video>
+        )}
       </div>
 
       {/* Content Overlay – Centered for both desktop and mobile */}
-      <div className="relative z-20 min-h-screen flex items-center justify-center px-4 py-23 sm:py-0">
+      <div className="relative z-20 min-h-screen flex items-center justify-center px-4 py-24 sm:py-0">
         <div className="w-full max-w-4xl text-center">
 
           {/* Badge */}
-          <div className="inline-block bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 sm:px-5 py-2 mb-6 sm:mb-8">
-            <span className="text-yellow-400 text-xs sm:text-sm heading-font  uppercase tracking-widest">
+          <div className="inline-block bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 sm:px-5 py-2 mb-6 sm:mb-8 backdrop-blur-sm">
+            <span className="text-yellow-400 text-xs sm:text-sm heading-font uppercase tracking-widest">
               Trusted Security Since 1994
             </span>
           </div>
@@ -56,7 +85,7 @@ const HeroSection = () => {
           <div className="mb-8 sm:mb-12">
             <Link
               href="/request-quote"
-              className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-all duration-200 hover:shadow-2xl hover:shadow-yellow-500/30 transform hover:-translate-y-1 "
+              className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-all duration-200 hover:shadow-2xl hover:shadow-yellow-500/30 transform hover:-translate-y-1"
             >
               Get Free Quote
             </Link>
@@ -82,7 +111,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 ">
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
         <div className="animate-bounce">
           <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-yellow-400 rounded-full flex justify-center">
             <div className="w-1 h-2 sm:h-3 bg-yellow-400 rounded-full mt-2" />
@@ -90,67 +119,38 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scrolling Text Banner - All CSS included inline */}
+      {/* Scrolling Text Banner - Hardware Accelerated */}
       <style jsx>{`
         @keyframes scrollX {
           0% {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
           100% {
-            transform: translateX(-100%);
+            transform: translate3d(-50%, 0, 0);
           }
         }
         .animate-scroll-x {
-          animation: scrollX 75s linear infinite;
+          animation: scrollX 45s linear infinite;
+          will-change: transform;
         }
       `}</style>
 
       <div className="bg-[#eab308] py-3 sm:py-4 w-full overflow-hidden flex items-center whitespace-nowrap relative z-20 -mt-11 sm:-mt-12 md:-mt-14">
-
-        {/* First Row */}
-        <div className="flex-shrink-0 flex items-center gap-4 sm:gap-6 animate-scroll-x">
-          {[...Array(3)].map((_, rowIndex) => (
-            <div key={rowIndex} className="flex items-center gap-4 sm:gap-6">
-              <div className="flex items-center">
-                <h4 className="leading-none flex items-center">
-                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-[#002147]">
-                    Ensuring Safety & Security
-                  </span>
-                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pl-3 sm:pl-4 text-[#002147]">★</span>
-                </h4>
-              </div>
-              <div className="flex items-center">
-                <h4 className="leading-none flex items-center">
-                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-[#002147]">
-                    Emergency (24/7) Response
-                  </span>
-                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pl-3 sm:pl-4 text-[#002147]">★</span>
-                </h4>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Second Row - Duplicate for seamless loop */}
-        <div className="flex-shrink-0 flex items-center gap-4 sm:gap-6 ml-4 animate-scroll-x">
-          {[...Array(3)].map((_, rowIndex) => (
-            <div key={rowIndex} className="flex items-center gap-4 sm:gap-6">
-              <div className="flex items-center">
-                <h4 className="leading-none flex items-center">
-                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-[#002147]">
-                    Ensuring Safety & Security
-                  </span>
-                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pl-3 sm:pl-4 text-[#002147]">★</span>
-                </h4>
-              </div>
-              <div className="flex items-center">
-                <h4 className="leading-none flex items-center">
-                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-[#002147]">
-                    Emergency (24/7) Response
-                  </span>
-                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pl-3 sm:pl-4 text-[#002147]">★</span>
-                </h4>
-              </div>
+        <div className="flex-shrink-0 flex items-center gap-6 animate-scroll-x">
+          {[...Array(4)].map((_, idx) => (
+            <div key={idx} className="flex items-center gap-6">
+              <h4 className="leading-none flex items-center m-0">
+                <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                  Ensuring Safety & Security
+                </span>
+                <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+              </h4>
+              <h4 className="leading-none flex items-center m-0">
+                <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                  Emergency (24/7) Response
+                </span>
+                <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+              </h4>
             </div>
           ))}
         </div>

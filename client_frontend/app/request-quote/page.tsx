@@ -383,8 +383,6 @@ export default function QuoteRequest() {
   return (
     <>
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap");
-
         body {
           background: #0b1120;
         }

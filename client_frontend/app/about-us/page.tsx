@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { getAboutUsPageData } from "@/lib/settings-server";
 import AboutUsClient from "./AboutUsClient";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getAboutUsPageData();

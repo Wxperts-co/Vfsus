@@ -133,7 +133,6 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap');
         :root { --navy:#0b1120; --navy-mid:#131e35; --navy-light:#1a2845; --gold:#c9a84c; --gold-light:#e8c97a; --steel:#8898aa; --white:#f4f6f8; }
         .bg-repeating-linear {
           background-image: repeating-linear-gradient(

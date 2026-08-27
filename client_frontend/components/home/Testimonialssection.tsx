@@ -1,39 +1,36 @@
 // components/TestimonialsSection.tsx
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { HomeTestimonialsSection } from '@/lib/page-home';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
-    const [testimonialSwiper, setTestimonialSwiper] = useState<SwiperType | null>(null);
-    const [logoSliderSwiper, setLogoSliderSwiper] = useState<SwiperType | null>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
 
-    // Intersection Observer for AOS animations
+    // Scoped Intersection Observer
     useEffect(() => {
+        const node = sectionRef.current;
+        if (!node) return;
+
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('aos-animate');
-                    }
-                });
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    node.classList.add('aos-animate');
+                    observer.disconnect();
+                }
             },
             { threshold: 0.1 }
         );
 
-        document.querySelectorAll('.aos-init').forEach((el) => observer.observe(el));
+        observer.observe(node);
         return () => observer.disconnect();
     }, []);
 
@@ -92,86 +89,76 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
     return (
         <div
             ref={sectionRef}
-            className="sis-testimonial-section relative br-radius section py-[80px] md:py-[100px] overflow-hidden"
+            className="sis-testimonial-section relative section py-[80px] md:py-[100px] overflow-hidden"
         >
-            {/* ================= BACKGROUND IMAGE + BLACK OVERLAY ================= */}
-            <div className="absolute inset-0 z-0">
-                {/* Background Image */}
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
                 <Image
                     src={data?.backgroundImage || "/images/about-bg-section.webp"}
-                    alt="Background Image"
+                    alt="Testimonials Background"
                     fill
+                    sizes="100vw"
                     priority={false}
                     className="object-cover"
                 />
-
-                {/* Black Overlay */}
-                <div className="absolute inset-0 bg-black/10"></div>
+                <div className="absolute inset-0 bg-black/20" />
             </div>
 
-            {/* ================= CONTENT ================= */}
-            <div className="sis-testimonial-part relative z-20 pt-[60px]">
+            {/* Content */}
+            <div className="sis-testimonial-part relative z-20 pt-[20px]">
                 <div className="container max-w-[1400px] mx-auto px-[15px]">
 
-                    {/* ================= SECTION TITLE ================= */}
-                    <div className="text-center mb-10">
+                    {/* Section Title */}
+                    <div className="text-center mb-8">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] text-[#eab308] max-w-4xl mx-auto">
                             <span className="text-[#002147] heading-font">{data?.titlePart1 || "Our"} </span> {data?.titlePart2 || "Happy Customers"}
                         </h2>
                     </div>
 
-                    {/* ================= RATING SECTION ================= */}
-                    <div className="flex items-center justify-center gap-6 mb-12">
-                        <figure className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl">
+                    {/* Rating Section */}
+                    <div className="flex items-center justify-center gap-6 mb-10">
+                        <figure className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl m-0">
                             <Image
                                 src={data?.googleReviewLogo || "/images/google-review-logo.png"}
-                                alt="Ratings"
-                                width={200}
-                                height={100}
+                                alt="Google Ratings"
+                                width={180}
+                                height={90}
+                                className="w-auto h-auto max-h-[70px] object-contain"
                             />
                         </figure>
                     </div>
 
-                    {/* ================= TESTIMONIAL SLIDER - FIXED HEIGHT & PAGINATION SPACE ================= */}
+                    {/* Testimonials Slider */}
                     <Swiper
                         modules={[Autoplay, Pagination]}
                         spaceBetween={20}
                         slidesPerView={1}
                         loop
-                        autoplay={{ delay: 4000 }}
+                        autoplay={{ delay: 5000, disableOnInteraction: false }}
                         pagination={{
                             clickable: true,
-                            dynamicBullets: true // Optional: makes bullets dynamic and takes less space
+                            dynamicBullets: true
                         }}
                         breakpoints={{
                             640: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
                         }}
-                        className="testimonial-swiper pb-12" // FIX: Added padding bottom for pagination
+                        className="testimonial-swiper pb-12"
                     >
                         {testimonials.map((testimonial) => (
                             <SwiperSlide key={testimonial.id}>
-                                <div className="p-6 bg-black/60 backdrop-blur-md border border-white/20 rounded-2xl h-[380px] flex flex-col hover:border-[#eab308] transition"> {/* FIX: Reduced height to accommodate pagination */}
-
-                                    {/* Content area with flex-1 and overflow */}
+                                <div className="p-6 bg-black/60 backdrop-blur-md border border-white/20 rounded-2xl h-[360px] flex flex-col hover:border-[#eab308] transition-colors duration-300">
                                     <div className="flex-1 overflow-y-auto custom-scrollbar mb-4">
-                                        <h5 className="text-white text-base leading-relaxed">
+                                        <p className="text-white text-base leading-relaxed font-sans m-0">
                                             “{testimonial.description}”
-                                        </h5>
+                                        </p>
                                     </div>
 
-                                    {/* Footer section - always at bottom */}
                                     <div className="flex justify-between items-center border-t border-white/20 pt-4 mt-auto">
-                                        <div className="flex items-center gap-4">
-                                            <div>
-                                                <p className="text-white font-semibold">
-                                                    {testimonial.name}
-                                                </p>
-
-                                            </div>
-                                        </div>
-
-                                        <span className="text-[#eab308] text-4xl opacity-100 leading-none">
+                                        <p className="text-white font-semibold m-0">
+                                            {testimonial.name}
+                                        </p>
+                                        <span className="text-[#eab308] text-3xl opacity-100 leading-none">
                                             ❝
                                         </span>
                                     </div>
@@ -180,14 +167,14 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                         ))}
                     </Swiper>
 
-                    {/* ================= LOGO SLIDER ================= */}
-                    <div className="mt-16 bg-white/5 backdrop-blur-md py-8 rounded-3xl">
+                    {/* Logo Slider */}
+                    <div className="mt-14 bg-white/5 backdrop-blur-md py-6 px-4 rounded-3xl">
                         <Swiper
                             modules={[Autoplay]}
-                            spaceBetween={30}
+                            spaceBetween={24}
                             slidesPerView={2}
                             loop
-                            autoplay={{ delay: 3000 }}
+                            autoplay={{ delay: 3500, disableOnInteraction: false }}
                             breakpoints={{
                                 480: { slidesPerView: 3 },
                                 640: { slidesPerView: 4 },
@@ -197,13 +184,14 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                             className="logo-swiper"
                         >
                             {logoSlides.map((logo) => (
-                                <SwiperSlide key={logo.id}>
+                                <SwiperSlide key={logo.id} className="flex items-center justify-center">
                                     <Image
                                         src={logo.image}
                                         alt={logo.alt}
-                                        width={150}
-                                        height={60}
-                                        className="mx-auto opacity-100 hover:opacity-100 transition"
+                                        width={140}
+                                        height={55}
+                                        sizes="(max-width: 768px) 30vw, 15vw"
+                                        className="mx-auto max-h-[50px] object-contain opacity-90 hover:opacity-100 transition-opacity"
                                     />
                                 </SwiperSlide>
                             ))}
@@ -213,7 +201,6 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                 </div>
             </div>
 
-            {/* Add custom scrollbar and pagination styles */}
             <style jsx>{`
             .custom-scrollbar::-webkit-scrollbar {
                 width: 4px;
@@ -226,46 +213,19 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                 background: rgba(234, 179, 8, 0.5);
                 border-radius: 10px;
             }
-            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background: rgba(234, 179, 8, 0.8);
-            }
-            
-            /* FIX: Style pagination to be more visible and properly positioned */
             .testimonial-swiper {
-                padding-bottom: 50px !important;
+                padding-bottom: 45px !important;
             }
-            
-            .testimonial-swiper .swiper-pagination {
-                bottom: 0 !important;
+            :global(.testimonial-swiper .swiper-pagination-bullet) {
+                background: rgba(255, 255, 255, 0.5) !important;
+                opacity: 1 !important;
             }
-            
-            .testimonial-swiper .swiper-pagination-bullet {
-                background: rgba(255, 255, 255, 0.5);
-                opacity: 1;
-                width: 10px;
-                height: 10px;
-                margin: 0 6px !important;
-            }
-            
-            .testimonial-swiper .swiper-pagination-bullet-active {
-                background: #eab308;
-                width: 12px;
-                height: 12px;
-            }
-            
-            /* Optional: If you want dynamic bullets to be styled */
-            .testimonial-swiper .swiper-pagination-bullet-active-main {
+            :global(.testimonial-swiper .swiper-pagination-bullet-active) {
                 background: #eab308 !important;
             }
-            
-            .testimonial-swiper .swiper-pagination-bullet-active-prev,
-            .testimonial-swiper .swiper-pagination-bullet-active-next {
-                background: rgba(234, 179, 8, 0.5) !important;
-            }
-        `}</style>
+            `}</style>
         </div>
     );
-
 };
 
 export default TestimonialsSection;

@@ -94,7 +94,7 @@ export const defaultHomePageData: HomePageData = {
     titleLine1: "Protecting",
     titleLine2: "Diverse Sectors",
     description: "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1994.",
-    backgroundImage: "/images/american-flag.jpg",
+    backgroundImage: "/images/about-bg-section.webp",
     rightImage: "/images/choose-section.jpg",
     industries: [
       { id: 1, icon: "/images/industry-icon1.svg", title: "Corporate Offices", description: "Executive protection and facility security", delay: "100", column: 1 },

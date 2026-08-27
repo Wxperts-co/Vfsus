@@ -56,8 +56,6 @@ export default function PayNowPage() {
     return (
         <>
             <style jsx global>{`
-                @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap');
-
                 :root {
                   --navy: #0b1120;
                   --navy-mid: #131e35;

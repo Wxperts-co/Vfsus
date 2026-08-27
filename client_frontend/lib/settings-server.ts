@@ -6,25 +6,59 @@ import { ServicesPageData, defaultServicesPageData } from "./page-services";
 import { MenuPageData, defaultMenuPageData } from "./page-menu";
 import { HomePageData, defaultHomePageData } from "./page-home";
 
+// In-memory cache to eliminate document request latency and remote DB round-trips
+const memoryCache = new Map<string, { data: any; expiry: number }>();
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds
+
+function getFromCache<T>(key: string): T | null {
+  const item = memoryCache.get(key);
+  if (item && item.expiry > Date.now()) {
+    return item.data as T;
+  }
+  return null;
+}
+
+function setToCache<T>(key: string, data: T, ttl: number = CACHE_TTL_MS): void {
+  memoryCache.set(key, { data, expiry: Date.now() + ttl });
+}
+
+export function invalidateSettingsCache(key?: string): void {
+  if (key) {
+    memoryCache.delete(key);
+  } else {
+    memoryCache.clear();
+  }
+}
+
 export async function getGlobalSettings(): Promise<SiteSettings> {
+  const cacheKey = "global_settings";
+  const cached = getFromCache<SiteSettings>(cacheKey);
+  if (cached) return cached;
+
   try {
     const client = await clientPromise;
     const db = client.db();
     const settings = await db.collection("settings").findOne({ _id: "global_settings" } as any);
     
     if (!settings) {
+      setToCache(cacheKey, defaultSettings);
       return defaultSettings;
     }
     
-    return { ...defaultSettings, ...settings, _id: settings._id.toString() } as unknown as SiteSettings;
+    const result = { ...defaultSettings, ...settings, _id: settings._id.toString() } as unknown as SiteSettings;
+    setToCache(cacheKey, result);
+    return result;
   } catch (error) {
     console.error("Error fetching settings from MongoDB, falling back to defaults", error);
     return defaultSettings;
   }
 }
 
-
 export async function getTestimonialsPageData(): Promise<TestimonialsPageData> {
+  const cacheKey = "page_testimonials";
+  const cached = getFromCache<TestimonialsPageData>(cacheKey);
+  if (cached) return cached;
+
   try {
     const client = await clientPromise;
     const db = client.db();
@@ -33,16 +67,23 @@ export async function getTestimonialsPageData(): Promise<TestimonialsPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      return { ...defaultTestimonialsData, ...rest };
+      const result = { ...defaultTestimonialsData, ...rest };
+      setToCache(cacheKey, result);
+      return result;
     }
   } catch (error) {
     console.error("Failed to fetch testimonials page settings:", error);
   }
   
+  setToCache(cacheKey, defaultTestimonialsData);
   return defaultTestimonialsData;
 }
 
 export async function getAboutUsPageData(): Promise<AboutUsPageData> {
+  const cacheKey = "page_about_us";
+  const cached = getFromCache<AboutUsPageData>(cacheKey);
+  if (cached) return cached;
+
   try {
     const client = await clientPromise;
     const db = client.db();
@@ -56,7 +97,7 @@ export async function getAboutUsPageData(): Promise<AboutUsPageData> {
         ? dbVideo.videos
         : [dbVideo.wistiaUrl, dbVideo.wistiaUrl2, dbVideo.wistiaUrl3].filter(Boolean);
 
-      return { 
+      const result: AboutUsPageData = { 
         ...defaultAboutUsData, 
         ...rest,
         video: {
@@ -66,15 +107,22 @@ export async function getAboutUsPageData(): Promise<AboutUsPageData> {
           wistiaUrl2: dbVideo.wistiaUrl2 || videosList[1] || "",
         }
       };
+      setToCache(cacheKey, result);
+      return result;
     }
   } catch (error) {
     console.error("Failed to fetch about us page settings:", error);
   }
   
+  setToCache(cacheKey, defaultAboutUsData);
   return defaultAboutUsData;
 }
 
 export async function getServicesPageData(): Promise<ServicesPageData> {
+  const cacheKey = "page_services";
+  const cached = getFromCache<ServicesPageData>(cacheKey);
+  if (cached) return cached;
+
   try {
     const client = await clientPromise;
     const db = client.db();
@@ -88,7 +136,7 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
         ? dbVideo.videos
         : [dbVideo.wistiaUrl, dbVideo.wistiaUrl2].filter(Boolean);
 
-      return { 
+      const result: ServicesPageData = { 
         ...defaultServicesPageData, 
         ...rest,
         video: {
@@ -98,15 +146,22 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
           wistiaUrl2: dbVideo.wistiaUrl2 || videosList[1] || "",
         }
       };
+      setToCache(cacheKey, result);
+      return result;
     }
   } catch (error) {
     console.error("Failed to fetch services page settings:", error);
   }
   
+  setToCache(cacheKey, defaultServicesPageData);
   return defaultServicesPageData;
 }
 
 export async function getMenuPageData(): Promise<MenuPageData> {
+  const cacheKey = "page_menu";
+  const cached = getFromCache<MenuPageData>(cacheKey);
+  if (cached) return cached;
+
   try {
     const client = await clientPromise;
     const db = client.db();
@@ -115,16 +170,23 @@ export async function getMenuPageData(): Promise<MenuPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      return { ...defaultMenuPageData, ...rest };
+      const result = { ...defaultMenuPageData, ...rest };
+      setToCache(cacheKey, result);
+      return result;
     }
   } catch (error) {
     console.error("Failed to fetch menu page settings:", error);
   }
   
+  setToCache(cacheKey, defaultMenuPageData);
   return defaultMenuPageData;
 }
 
 export async function getHomePageData(): Promise<HomePageData> {
+  const cacheKey = "page_home";
+  const cached = getFromCache<HomePageData>(cacheKey);
+  if (cached) return cached;
+
   try {
     const client = await clientPromise;
     const db = client.db();
@@ -133,7 +195,7 @@ export async function getHomePageData(): Promise<HomePageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      return { 
+      const result: HomePageData = { 
         ...defaultHomePageData, 
         ...rest,
         aboutSection: {
@@ -153,11 +215,13 @@ export async function getHomePageData(): Promise<HomePageData> {
           ...(rest.seo || {})
         }
       };
+      setToCache(cacheKey, result);
+      return result;
     }
   } catch (error) {
     console.error("Failed to fetch home page settings:", error);
   }
   
+  setToCache(cacheKey, defaultHomePageData);
   return defaultHomePageData;
 }
-

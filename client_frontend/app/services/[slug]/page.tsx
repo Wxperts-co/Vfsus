@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getServicesPageData } from "@/lib/settings-server";
 import ServiceDetailClient from "./ServiceDetailClient";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 // Dynamic metadata generation
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

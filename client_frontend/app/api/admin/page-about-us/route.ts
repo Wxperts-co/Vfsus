@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import clientPromise from "@/lib/mongodb";
 import { getAdminFromSession } from "@/lib/auth";
-import { getAboutUsPageData } from "@/lib/settings-server";
+import { getAboutUsPageData, invalidateSettingsCache } from "@/lib/settings-server";
 
 export async function GET(req: Request) {
   try {
@@ -39,6 +39,7 @@ export async function PUT(req: Request) {
     );
 
     try {
+      invalidateSettingsCache("page_about_us");
       revalidatePath("/about-us");
       revalidatePath("/");
     } catch (revalidateErr) {

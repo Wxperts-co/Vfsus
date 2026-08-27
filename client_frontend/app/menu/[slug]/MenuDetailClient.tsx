@@ -212,8 +212,6 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
-
         :root {
           --navy:       #0b1120;
           --navy-mid:   #131e35;

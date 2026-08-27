@@ -4,112 +4,85 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Play } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { HomeAboutSection } from '@/lib/page-home';
 
 const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
-    const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
-    const counterRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const animatedRef = useRef(false);
+    const [showPlayer, setShowPlayer] = useState(false);
 
-    // Counter animation function
+    // Smooth counter animation using requestAnimationFrame
     const animateCounter = (element: HTMLElement, target: number) => {
-        let current = 0;
-        const increment = target / 50; // Smooth animation
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target.toString();
-                clearInterval(timer);
+        const duration = 1000;
+        const startTime = performance.now();
+
+        const update = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.floor(easeOut * target);
+            element.textContent = currentVal.toString();
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
             } else {
-                element.textContent = Math.floor(current).toString();
+                element.textContent = target.toString();
             }
-        }, 20);
+        };
+
+        requestAnimationFrame(update);
     };
 
     // Intersection Observer for animations
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('aos-animate');
+        const node = sectionRef.current;
+        if (!node) return;
 
-                        // Animate counters when section is visible
-                        if (entry.target.classList.contains('sis-about-counter')) {
-                            const counterSpans = entry.target.querySelectorAll('.counter');
-                            counterSpans.forEach((span, index) => {
-                                const targetValues = [150, 98, 500];
-                                animateCounter(span as HTMLElement, targetValues[index]);
-                            });
-                        }
-                    }
-                });
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !animatedRef.current) {
+                    animatedRef.current = true;
+                    node.classList.add('aos-animate');
+
+                    const counterSpans = node.querySelectorAll('.counter');
+                    const targetValues = [150, 98, 500];
+                    counterSpans.forEach((span, index) => {
+                        const target = targetValues[index] || 100;
+                        animateCounter(span as HTMLElement, target);
+                    });
+                }
             },
-            { threshold: 0.1 }
+            { threshold: 0.15 }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
+        observer.observe(node);
         return () => observer.disconnect();
     }, []);
 
-    // Video popup functionality
-    const openVideoPopup = (e: React.MouseEvent, videoUrl: string) => {
-        e.preventDefault();
-        // Create modal for video
-        const modal = document.createElement('div');
-        modal.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
-        modal.innerHTML = `
-      <div class="relative w-full max-w-4xl mx-4">
-        <button class="absolute -top-10 right-0 text-white text-2xl hover:text-yellow-500">&times;</button>
-        <video src="${videoUrl}" controls autoplay class="w-full"></video>
-      </div>
-    `;
-
-        modal.querySelector('button')?.addEventListener('click', () => modal.remove());
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.remove();
-        });
-
-        document.body.appendChild(modal);
-    };
+    const videoUrl = data?.videoUrl || "https://fast.wistia.net/embed/iframe/bukr8v224n";
+    const isDirectVideo = videoUrl.startsWith('/uploads/') || 
+                          videoUrl.split('?')[0].toLowerCase().endsWith('.mp4') || 
+                          videoUrl.split('?')[0].toLowerCase().endsWith('.webm') || 
+                          videoUrl.split('?')[0].toLowerCase().endsWith('.ogg');
 
     return (
         <div
             ref={sectionRef}
-            className="sis-about-us-section relative py-[100px] px-0 pb-[70px] overflow-hidden"
+            className="sis-about-us-section relative py-[80px] md:py-[100px] px-0 pb-[70px] overflow-hidden"
         >
             {/* American Flag Background */}
-            <div className="absolute inset-0 z-0 opacity-100">
+            <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/80 z-10" />
                 <Image
                     src="/images/about-bg-section.webp"
                     alt="American Flag"
                     fill
+                    sizes="100vw"
                     className="object-cover"
                     priority={false}
                 />
-            </div>
-
-            {/* Top Right Image with AOS */}
-            <div
-                className="sisf-sis-top-right-image absolute right-0 top-0 w-[150px] z-20 opacity-0 translate-x-[100px] transition-all duration-1200 ease-out aos-init"
-                data-aos="fade-left"
-                data-aos-delay="300"
-                data-aos-duration="1200"
-            >
-                <figure className="m-0">
-                    <Image
-                        src="/images/security-logo.svg"
-                        alt="Row"
-                        width={150}
-                        height={150}
-                        className="max-w-full h-auto"
-                    />
-                </figure>
             </div>
 
             <div className="container max-w-[1400px] mx-auto px-[15px] relative z-10">
@@ -118,36 +91,58 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                     {/* Left Column - Col LG 6 */}
                     <div className="col-lg-6 w-full lg:w-1/2 px-[15px]">
 
-                        {/* Inner Image with Video Button */}
+                        {/* Video Section with Facade Pattern for Zero Initial CPU / Network Penalty */}
                         <div className="sisf-sis-about-inner-image relative mb-8">
-                            {/* Video Section */}
-                            <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px]">
+                            <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px] m-0">
                                 <div className="relative overflow-hidden w-full rounded-[20px]">
-                                    <div className="relative w-[87%] aspect-video rounded-[20px] overflow-hidden">
-                                        {data?.videoUrl && (data.videoUrl.startsWith('/uploads/') || data.videoUrl.split('?')[0].toLowerCase().endsWith('.mp4') || data.videoUrl.split('?')[0].toLowerCase().endsWith('.webm') || data.videoUrl.split('?')[0].toLowerCase().endsWith('.ogg')) ? (
+                                    <div className="relative w-[87%] aspect-video rounded-[20px] overflow-hidden bg-[#0b1120] shadow-2xl">
+                                        {!showPlayer ? (
+                                            /* High-performance Video Facade */
+                                            <div 
+                                                onClick={() => setShowPlayer(true)}
+                                                className="relative w-full h-full cursor-pointer group/facade overflow-hidden"
+                                                role="button"
+                                                tabIndex={0}
+                                                aria-label="Play video"
+                                                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setShowPlayer(true); }}
+                                            >
+                                                <Image
+                                                    src="/images/about-section-1.jpg"
+                                                    alt="Watch About Us Video"
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 500px"
+                                                    className="object-cover transition-transform duration-500 group-hover/facade:scale-105 opacity-90"
+                                                />
+                                                <div className="absolute inset-0 bg-black/40 group-hover/facade:bg-black/20 transition-colors" />
+                                                
+                                                {/* Play Button */}
+                                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10">
+                                                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#eab308] text-[#002147] flex items-center justify-center shadow-2xl transform group-hover/facade:scale-110 transition-transform duration-300">
+                                                        <Play className="w-6 h-6 md:w-7 md:h-7 fill-[#002147] ml-1" />
+                                                    </div>
+                                                    <span className="text-white text-xs md:text-sm font-bold uppercase tracking-wider bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm">
+                                                        Watch Video
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ) : isDirectVideo ? (
                                             <video
-                                                src={data.videoUrl}
+                                                src={videoUrl}
                                                 controls
                                                 autoPlay
-                                                muted
-                                                loop
                                                 playsInline
                                                 className="w-full h-full rounded-[20px] object-cover"
                                             />
                                         ) : (
                                             <iframe
-                                                src={data?.videoUrl || "https://fast.wistia.net/embed/iframe/bukr8v224n"}
+                                                src={`${videoUrl}${videoUrl.includes('?') ? '&' : '?'}autoPlay=true`}
                                                 allow="autoplay; fullscreen"
                                                 allowFullScreen
-                                                className="w-full h-full rounded-[20px]"
+                                                title="VSF About Us Video"
+                                                className="w-full h-full rounded-[20px] border-none"
                                             />
                                         )}
                                     </div>
-                                </div>
-
-                                {/* Optional Hover Overlay Effect */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                                    <div className="absolute w-[200%] h-0 left-1/2 top-1/2 bg-white/20 transform -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:h-[200%] transition-all duration-700" />
                                 </div>
                             </figure>
                         </div>
@@ -170,9 +165,6 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                                     <div
                                         key={idx}
                                         className="counter-item"
-                                        data-aos="fade-up"
-                                        data-aos-delay={(idx + 1) * 100}
-                                        data-aos-duration="1200"
                                     >
                                         <div className="counter-title">
                                             <h2 className="flex items-center justify-center text-4xl font-bold text-primary text-[#eab308] text-5xl">
@@ -190,15 +182,14 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                             </div>
                         </div>
 
-
-                        <div className="sisf-m-button pt-4 leading-none">
+                        <div className="sisf-m-button pt-6 leading-none">
                             <Link
                                 href={data?.buttonLink || "/about-us"}
-                                className="sis-btn-default relative inline-block text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-7 py-3 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
+                                className="sis-btn-default relative inline-flex items-center gap-2 text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-7 py-3 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
                             >
-                                <span className="relative z-20 flex items-center">
+                                <span className="relative z-20 flex items-center gap-2">
                                     {data?.buttonText || "Read More"}
-                                    <i className="fa-solid fa-arrow-right ml-2.5 text-base transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
+                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                                 </span>
                                 <span className="absolute left-[-15px] bottom-[-2px] w-0 h-[106%] bg-[#002147] transform skew-[30deg] group-hover:w-[120%] transition-all duration-300 z-0" />
                             </Link>
@@ -208,10 +199,8 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                     {/* Right Column - Col LG 6 */}
                     <div className="col-lg-6 w-full lg:w-1/2 px-[15px] mt-10 lg:mt-0">
 
-                        {/* Section Title with Character Animation */}
-                        <div className="sisf-sis-section-title sis-section-title mb-10 p-8 ">
-
-
+                        {/* Section Title */}
+                        <div className="sisf-sis-section-title sis-section-title mb-10 p-8">
                             <h2 className="sisf-m-title text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] mb-5 relative z-10">
                                 {/* Line 1 */}
                                 <span className="block text-[#eab308] heading-font">
@@ -223,23 +212,23 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                                     {data?.titleLine2 || "That Builds Trust & Peace of Mind"}
                                 </span>
                             </h2>
-
                         </div>
 
                         {/* Right Side Image */}
                         <div className="sis-about-image-right shadow-xl rounded-[20px]">
-                            <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px]">
+                            <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px] m-0">
                                 <div className="relative overflow-hidden w-full rounded-[20px]">
                                     <Image
                                         src={data?.image || "/images/about-section-2.jpg"}
-                                        alt="Row"
+                                        alt="Virginia Surveillance Force Security Officers"
                                         width={600}
                                         height={400}
-                                        className="w-full radius h-auto object-cover origin-left rounded-[20px] transition-transform duration-700 group-hover:scale-105"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        className="w-full h-auto object-cover origin-left rounded-[20px] transition-transform duration-700 group-hover:scale-105"
                                     />
                                 </div>
                                 {/* Image Reveal Animation Overlay */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                                     <div className="absolute w-[200%] h-0 left-1/2 top-1/2 bg-white/30 transform -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:h-[200%] transition-all duration-700" />
                                 </div>
                             </figure>
@@ -247,84 +236,6 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                     </div>
                 </div>
             </div>
-
-            {/* Additional CSS Animations */}
-            <style jsx>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes ping-slow {
-          75%, 100% {
-            transform: scale(1.2);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 15s linear infinite;
-        }
-        
-        .animate-ping-slow {
-          animation: ping-slow 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        
-        .animation-delay-300 {
-          animation-delay: 0.3s;
-        }
-        
-        .scale-60 {
-          scale: 0.6;
-        }
-        
-        .animate-fade-in-up {
-          animation: fadeInUp 0.6s ease-out forwards;
-          opacity: 0;
-        }
-        
-        .aos-init {
-          opacity: 0;
-          transform: translateY(20px) translateX(0);
-          transition-property: opacity, transform;
-        }
-        
-        .aos-init.aos-animate {
-          opacity: 1;
-          transform: translateY(0) translateX(0);
-        }
-        
-        [data-aos="fade-left"].aos-init {
-          transform: translateX(100px);
-        }
-        
-        [data-aos="fade-left"].aos-init.aos-animate {
-          transform: translateX(0);
-        }
-        
-        [data-aos="fade-up"].aos-init {
-          transform: translateY(20px);
-        }
-        
-        [data-aos="fade-up"].aos-init.aos-animate {
-          transform: translateY(0);
-        }
-        
-        .duration-1200 {
-          transition-duration: 1200ms;
-        }
-      `}</style>
         </div>
     );
 };

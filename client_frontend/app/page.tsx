@@ -1,15 +1,16 @@
 import { Metadata } from "next";
+import dynamicImport from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import Aboutsection from "@/components/home/Aboutsection";
 import Featuresection from "@/components/home/Featuresection";
 import Servicesection from "@/components/home/Servicesection";
-import Whychooseussection from "@/components/home/Whychooseussection";
-import Testimonialssection from "@/components/home/Testimonialssection"; 
-import Footersection from "@/components/common-components/footer"; 
-
 import { getHomePageData } from "@/lib/settings-server";
 
-export const dynamic = "force-dynamic";
+// Below-the-fold heavy components loaded dynamically
+const Whychooseussection = dynamicImport(() => import("@/components/home/Whychooseussection"));
+const Testimonialssection = dynamicImport(() => import("@/components/home/Testimonialssection"));
+
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getHomePageData();
@@ -31,6 +32,6 @@ export default async function Page() {
       <Servicesection />
       <Whychooseussection data={data.whyChooseUsSection} />
       <Testimonialssection data={data.testimonialsSection} />
-     </>
+    </>
   );
 }

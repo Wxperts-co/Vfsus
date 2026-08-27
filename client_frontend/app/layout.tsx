@@ -10,15 +10,19 @@ const bebasNeue = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-bebas',
+  display: 'swap',
+  preload: true,
 })
 
 const barlow = Barlow({
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['400', '600', '700'],
   subsets: ['latin'],
   variable: '--font-barlow',
+  display: 'swap',
+  preload: true,
 })
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getGlobalSettings();
@@ -51,4 +55,4 @@ export default async function RootLayout({
       </body>
     </html>
   )
-}
+}
