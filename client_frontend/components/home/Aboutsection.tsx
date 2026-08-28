@@ -150,9 +150,12 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
 
                         <div className="sisf-sis-section-title sis-section-title mb-12">
                             <div className="sisf-m-text">
-                                <p className="text-gray-700 text-base md:text-lg leading-relaxed font-sans">
-                                    {data?.description || "Welcome to the American based firm working throughout the Washington DC DMV area. We provide Special Police, Concierge, Courier, Fire Watch, Armed & Unarmed officers, Vehicle Patrol, Investigative and Protective Services. Regardless of the type of service you need, you're looking for peace of mind. You want an authoritative presence that provides you with ultimate security. We believe in investing in our people, so they, in turn, invest in you. Whether you are a small or large business or government entity, whether your needs are immediate or long-term, we have the solutions to your security & business problems. We provide the peace of mind you are looking for."}
-                                </p>
+                                <div 
+                                    className="text-gray-700 text-base md:text-lg leading-relaxed font-sans [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:ml-5 [&_ol]:list-decimal [&_ol]:ml-5 [&_blockquote]:border-l-4 [&_blockquote]:border-[#eab308] [&_blockquote]:pl-4 [&_blockquote]:italic [&_strong]:font-bold [&_strong]:text-gray-900"
+                                    dangerouslySetInnerHTML={{ 
+                                        __html: data?.description || "Welcome to the American based firm working throughout the Washington DC DMV area. We provide Special Police, Concierge, Courier, Fire Watch, Armed & Unarmed officers, Vehicle Patrol, Investigative and Protective Services. Regardless of the type of service you need, you're looking for peace of mind. You want an authoritative presence that provides you with ultimate security. We believe in investing in our people, so they, in turn, invest in you. Whether you are a small or large business or government entity, whether your needs are immediate or long-term, we have the solutions to your security & business problems. We provide the peace of mind you are looking for."
+                                    }}
+                                />
                             </div>
                         </div>
 

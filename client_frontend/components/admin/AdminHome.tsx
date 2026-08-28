@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { HomePageData } from "@/lib/page-home";
 import AdminSidebar from "./AdminSidebar";
 import { Save, Globe, Image as ImageIcon, Loader2, CheckCircle2, AlertCircle, PlayCircle, Plus, Trash2, Star } from "lucide-react";
+import TiptapEditor from "../common-components/TiptapEditor";
 
 export default function AdminHome() {
   const [data, setData] = useState<HomePageData | null>(null);
@@ -326,11 +327,10 @@ export default function AdminHome() {
 
                   <div className="mb-5">
                     <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Main Description</label>
-                    <textarea
-                      value={data.aboutSection.description}
-                      onChange={(e) => updateAbout("description", e.target.value)}
-                      rows={5}
-                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-3 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                    <TiptapEditor
+                      content={data.aboutSection.description || ""}
+                      onChange={(val) => updateAbout("description", val)}
+                      placeholder="Write main description..."
                     />
                   </div>
                   
