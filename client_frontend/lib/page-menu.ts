@@ -42,7 +42,7 @@ export interface MenuListItem {
     keywords: string;
   };
   type: 'standard' | 'faq' | 'resource';
-  intro: string[];
+  intro: string | string[];
   sections?: MenuSection[];
   faqItems?: FAQListItem[];
   resourceItems?: ResourceArticle[];

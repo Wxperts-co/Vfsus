@@ -574,9 +574,24 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
             {/* Intro paragraph */}
             <FadeIn delay={0.05}>
               <div className="gold-bar" />
-              {menuItem.intro.map((para: string, idx: number) => (
-                <p key={idx} className="menu-body">{para}</p>
-              ))}
+              {typeof menuItem.intro === "string" ? (
+                <div 
+                  className="prose prose-invert max-w-none text-[1.05rem] font-light leading-[1.85] text-[rgba(244,246,248,0.85)] mb-6"
+                  dangerouslySetInnerHTML={{ __html: menuItem.intro }} 
+                />
+              ) : Array.isArray(menuItem.intro) ? (
+                menuItem.intro.map((para: string, idx: number) => (
+                  para.startsWith("<") ? (
+                    <div 
+                      key={idx}
+                      className="prose prose-invert max-w-none text-[1.05rem] font-light leading-[1.85] text-[rgba(244,246,248,0.85)] mb-6"
+                      dangerouslySetInnerHTML={{ __html: para }} 
+                    />
+                  ) : (
+                    <p key={idx} className="menu-body">{para}</p>
+                  )
+                ))
+              ) : null}
             </FadeIn>
 
             {/* Render Section Standard Layout */}
@@ -586,13 +601,30 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                   <FadeIn key={idx} delay={idx * 0.08}>
                     <div className="menu-section-card">
                       <h3>{section.title}</h3>
-                      {Array.isArray(section.body) ? (
+                      {typeof section.body === "string" ? (
+                        section.body.startsWith("<") ? (
+                          <div 
+                            className="prose prose-invert max-w-none text-[0.98rem] font-light leading-[1.8] text-[rgba(244,246,248,0.8)]"
+                            dangerouslySetInnerHTML={{ __html: section.body }} 
+                          />
+                        ) : (
+                          section.body.split("\n\n").map((pText: string, pIdx: number) => (
+                            <p key={pIdx}>{pText}</p>
+                          ))
+                        )
+                      ) : Array.isArray(section.body) ? (
                         section.body.map((pText: string, pIdx: number) => (
-                          <p key={pIdx}>{pText}</p>
+                          pText.startsWith("<") ? (
+                            <div 
+                              key={pIdx}
+                              className="prose prose-invert max-w-none text-[0.98rem] font-light leading-[1.8] text-[rgba(244,246,248,0.8)]"
+                              dangerouslySetInnerHTML={{ __html: pText }} 
+                            />
+                          ) : (
+                            <p key={pIdx}>{pText}</p>
+                          )
                         ))
-                      ) : (
-                        <p>{section.body}</p>
-                      )}
+                      ) : null}
                     </div>
                   </FadeIn>
                 ))}

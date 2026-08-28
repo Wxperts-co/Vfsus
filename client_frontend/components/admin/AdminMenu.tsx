@@ -4,6 +4,16 @@ import { useState, useEffect } from "react";
 import { MenuPageData, MenuListItem, MenuSection, FAQListItem, ResourceArticle } from "@/lib/page-menu";
 import AdminSidebar from "./AdminSidebar";
 import { Save, Plus, Trash2, Edit2, X, MoveUp, MoveDown, Globe, List, Loader2, CheckCircle2, AlertCircle, FileText, HelpCircle, BookOpen } from "lucide-react";
+import TiptapEditor from "../common-components/TiptapEditor";
+
+const toHtml = (val: string | string[] | undefined): string => {
+  if (!val) return "";
+  if (typeof val === "string") return val;
+  if (Array.isArray(val)) {
+    return val.map((p) => (p.startsWith("<") ? p : `<p>${p}</p>`)).join("");
+  }
+  return "";
+};
 
 export default function AdminMenu() {
   const [data, setData] = useState<MenuPageData | null>(null);
@@ -423,49 +433,17 @@ export default function AdminMenu() {
                   </div>
                 </div>
 
-                {/* Intro Paragraphs */}
+                {/* Intro Content */}
                 <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                  <div className="flex justify-between items-center mb-5">
-                    <h4 className="text-sm font-bold text-[#f4f6f8] flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs">2</span>
-                      Introductory Paragraphs
-                    </h4>
-                    <button
-                      onClick={() => {
-                        const newIntro = [...(activeItem.intro || []), ""];
-                        updateActiveMenu("intro", newIntro);
-                      }}
-                      className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
-                    >
-                      <Plus className="w-3.5 h-3.5" /> Add Paragraph
-                    </button>
-                  </div>
-                  <div className="space-y-4">
-                    {(activeItem.intro || []).map((para, pIndex) => (
-                      <div key={pIndex} className="flex gap-3 relative group">
-                        <textarea
-                          value={para}
-                          onChange={(e) => {
-                            const newIntro = [...activeItem.intro];
-                            newIntro[pIndex] = e.target.value;
-                            updateActiveMenu("intro", newIntro);
-                          }}
-                          rows={3}
-                          className="flex-1 bg-[#1a2845] border border-[rgba(201,168,76,0.2)] rounded-xl px-4 py-3 text-sm text-[#f4f6f8] outline-none focus:border-[#818cf8] resize-none"
-                        />
-                        <button
-                          onClick={() => {
-                            const newIntro = [...activeItem.intro];
-                            newIntro.splice(pIndex, 1);
-                            updateActiveMenu("intro", newIntro);
-                          }}
-                          className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors h-fit self-start mt-1"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
+                  <h4 className="text-sm font-bold text-[#f4f6f8] mb-3 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs">2</span>
+                    Introductory Content
+                  </h4>
+                  <TiptapEditor
+                    content={toHtml(activeItem.intro)}
+                    onChange={(val) => updateActiveMenu("intro", val)}
+                    placeholder="Write introductory content..."
+                  />
                 </div>
 
                 {/* Specific Layout Details based on TYPE */}
@@ -481,7 +459,7 @@ export default function AdminMenu() {
                     {/* Add Buttons based on type */}
                     {activeItem.type === 'standard' && (
                       <button onClick={() => {
-                        const s = [...(activeItem.sections || []), { title: "New Title", body: ["Content text..."] }];
+                        const s = [...(activeItem.sections || []), { title: "New Title", body: "<p>Content text...</p>" }];
                         updateActiveMenu("sections", s);
                       }} className="text-xs font-semibold bg-[#1a2845] border border-[rgba(201,168,76,0.2)] hover:bg-[#1a2845] text-[#cbd5e1] px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
                         <Plus className="w-3.5 h-3.5" /> Add Section
@@ -513,30 +491,35 @@ export default function AdminMenu() {
                           const s = [...activeItem.sections!];
                           s.splice(sIndex, 1);
                           updateActiveMenu("sections", s);
-                        }} className="absolute top-3 right-3 p-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 rounded-md">
+                        }} className="absolute top-3 right-3 p-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 rounded-md z-10" title="Delete Section">
                           <Trash2 className="w-4 h-4" />
                         </button>
-                        <input
-                          type="text"
-                          value={sec.title}
-                          onChange={(e) => {
-                            const s = [...activeItem.sections!];
-                            s[sIndex].title = e.target.value;
-                            updateActiveMenu("sections", s);
-                          }}
-                          className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none mb-3 focus:border-[#818cf8]"
-                        />
-                        <textarea
-                          value={Array.isArray(sec.body) ? sec.body.join("\n\n") : sec.body}
-                          onChange={(e) => {
-                            const s = [...activeItem.sections!];
-                            s[sIndex].body = e.target.value.split("\n\n");
-                            updateActiveMenu("sections", s);
-                          }}
-                          rows={4}
-                          placeholder="Separate paragraphs with a blank line"
-                          className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none resize-none focus:border-[#818cf8]"
-                        />
+                        <div className="mb-4 pr-8">
+                          <label className="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Section Title</label>
+                          <input
+                            type="text"
+                            value={sec.title}
+                            onChange={(e) => {
+                              const s = [...activeItem.sections!];
+                              s[sIndex].title = e.target.value;
+                              updateActiveMenu("sections", s);
+                            }}
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3.5 py-2.5 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            placeholder="e.g. Quality People & Professional Standards"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Section Body (Rich Text)</label>
+                          <TiptapEditor
+                            content={toHtml(sec.body)}
+                            onChange={(val) => {
+                              const s = [...activeItem.sections!];
+                              s[sIndex].body = val;
+                              updateActiveMenu("sections", s);
+                            }}
+                            placeholder="Write section content here..."
+                          />
+                        </div>
                       </div>
                     ))}
 
