@@ -79,9 +79,9 @@ export const defaultHomePageData: HomePageData = {
     videoUrl: "https://fast.wistia.net/embed/iframe/bukr8v224n",
     description: "Welcome to the American based firm working throughout the Washington DC DMV area. We provide Special Police, Concierge, Courier, Fire Watch, Armed & Unarmed officers, Vehicle Patrol, Investigative and Protective Services. Regardless of the type of service you need, you're looking for peace of mind. You want an authoritative presence that provides you with ultimate security. We believe in investing in our people, so they, in turn, invest in you. Whether you are a small or large business or government entity, whether your needs are immediate or long-term, we have the solutions to your security & business problems. We provide the peace of mind you are looking for.",
     counters: [
-      { number: 150, symbol: "+", label: "Certified & Trained Guards" },
+      { number: 700, symbol: "+", label: "Certified & Trained Officers" },
       { number: 98, symbol: "%", label: "Client Retention Rate" },
-      { number: 500, symbol: "+", label: "Security Assignments Completed" }
+      { number: 2500, symbol: "+", label: "Security Assignments Completed" }
     ],
     titleLine1: "Delivering Protection",
     titleLine2: "That Builds Trust & Peace of Mind",
@@ -93,7 +93,7 @@ export const defaultHomePageData: HomePageData = {
     subtitle: "WHY CHOOSE US",
     titleLine1: "Protecting",
     titleLine2: "Diverse Sectors",
-    description: "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1994.",
+    description: "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1987.",
     backgroundImage: "/images/about-bg-section.webp",
     rightImage: "/images/choose-section.jpg",
     industries: [

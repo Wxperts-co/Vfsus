@@ -36,7 +36,7 @@ const FeaturesSection = () => {
     },
     {
       icon: '/images/features-icon2.svg',
-      title: 'Trained & Certified Guards',
+      title: 'Trained & Certified Officers',
       description: 'All personnel are professionally trained, licensed, and background-verified.',
     },
     {

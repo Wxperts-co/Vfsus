@@ -30,7 +30,7 @@ export default function HeroSection() {
           {/* Badge */}
           <div className="inline-block bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 sm:px-5 py-2 mb-6 sm:mb-8 backdrop-blur-sm">
             <span className="text-yellow-400 text-xs sm:text-sm heading-font uppercase tracking-widest">
-              Trusted Security Since 1994
+              Trusted Security Since 1987
             </span>
           </div>
 
@@ -59,7 +59,7 @@ export default function HeroSection() {
           <div className="mt-8 sm:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-xl sm:max-w-full mx-auto">
             {[
               ['40+', 'Years Experience'],
-              ['500+', 'Clients Protected'],
+              ['850+', 'Clients Protected'],
               ['24/7', 'Support'],
               ['100%', 'Satisfaction'],
             ].map(([value, label]) => (

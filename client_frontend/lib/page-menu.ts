@@ -57,7 +57,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     type: "standard",
     intro: [
       "Dear Business Owners, Executives & Management Staff",
-      "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1994."
+      "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1987."
     ],
     sections: [
       {
@@ -325,7 +325,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     icon: "🇺🇸",
     type: "standard",
     intro: [
-      "Since 1994, Virginia Surveillance Force has been a trusted regional leader in security.",
+      "Since 1987, Virginia Surveillance Force has been a trusted regional leader in security.",
       "Today, we are proud to offer nationwide coverage for permanent services, allowing companies with multi-state operations to secure their assets through a single, dependable partner."
     ],
     sections: [

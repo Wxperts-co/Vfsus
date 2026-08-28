@@ -119,7 +119,7 @@ const IndustriesSection = ({ data }: { data?: HomeWhyChooseSection }) => {
               {/* Description */}
               <div className="sisf-m-text max-w-2xl">
                 <p className="text-gray-300 text-base md:text-lg leading-relaxed font-sans">
-                 {data?.description || "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1994."}
+                 {data?.description || "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1987."}
                 </p>
               </div>
             </div>

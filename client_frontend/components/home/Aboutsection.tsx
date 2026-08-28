@@ -47,10 +47,11 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                     node.classList.add('aos-animate');
 
                     const counterSpans = node.querySelectorAll('.counter');
-                    const targetValues = [150, 98, 500];
-                    counterSpans.forEach((span, index) => {
-                        const target = targetValues[index] || 100;
-                        animateCounter(span as HTMLElement, target);
+                    counterSpans.forEach((span) => {
+                        const target = parseInt(span.getAttribute('data-target') || span.textContent || '0', 10);
+                        if (!isNaN(target) && target > 0) {
+                            animateCounter(span as HTMLElement, target);
+                        }
                     });
                 }
             },
@@ -158,9 +159,9 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                         <div className="sis-about-counter">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                                 {(data?.counters || [
-                                    { number: 150, symbol: "+", label: "Certified & Trained Guards" },
+                                    { number: 700, symbol: "+", label: "Certified & Trained Officers" },
                                     { number: 98, symbol: "%", label: "Client Retention Rate" },
-                                    { number: 500, symbol: "+", label: "Security Assignments Completed" }
+                                    { number: 2500, symbol: "+", label: "Security Assignments Completed" }
                                 ]).map((counter, idx) => (
                                     <div
                                         key={idx}
@@ -168,7 +169,7 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                                     >
                                         <div className="counter-title">
                                             <h2 className="flex items-center justify-center text-4xl font-bold text-primary text-[#eab308] text-5xl">
-                                                <span className="counter">{counter.number}</span>
+                                                <span className="counter" data-target={counter.number}>{counter.number}</span>
                                                 <span className="ml-1">{counter.symbol}</span>
                                             </h2>
                                         </div>

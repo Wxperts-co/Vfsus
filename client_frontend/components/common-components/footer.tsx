@@ -190,7 +190,7 @@ const Footer = () => {
                     {/* Bottom Area */}
                     <div className="sisf-page-footer-bottom-area py-4">
                         <p className="text-[#002147] text-xs sm:text-sm leading-relaxed text-center font-sans m-0">
-                            © 1994–{currentYear} Virginia Surveillance Force. All Rights Reserved.
+                            © 1987–{currentYear} Virginia Surveillance Force. All Rights Reserved.
                             <br />
                             <a href="https://www.wxperts.co/website-development.php" target="_blank" rel="noopener noreferrer" className="hover:underline">Website Development</a> |{" "}
                             <a href="https://www.wxperts.co/" target="_blank" rel="noopener noreferrer" className="hover:underline">Hosting</a> |{" "}
