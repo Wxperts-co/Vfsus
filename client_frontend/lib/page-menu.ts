@@ -18,7 +18,7 @@ export interface MenuSection {
 export interface FAQListItem {
   id: string;
   question: string;
-  answer: string[];
+  answer: string | string[];
   bullets?: string[];
   images?: string[];
   clientLogos?: boolean;
@@ -27,7 +27,7 @@ export interface FAQListItem {
 export interface ResourceArticle {
   id: string;
   title: string;
-  body: string[];
+  body: string | string[];
   bullets?: string[];
 }
 

@@ -530,12 +530,12 @@ export default function AdminMenu() {
                           const f = [...activeItem.faqItems!];
                           f.splice(fIndex, 1);
                           updateActiveMenu("faqItems", f);
-                        }} className="absolute top-3 right-3 p-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 rounded-md">
+                        }} className="absolute top-3 right-3 p-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 rounded-md z-10" title="Delete FAQ">
                           <Trash2 className="w-4 h-4" />
                         </button>
 
-                        <div className="mb-3 pr-8">
-                          <label className="block text-xs font-semibold text-slate-500 mb-1">Question</label>
+                        <div className="mb-4 pr-8">
+                          <label className="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Question</label>
                           <input
                             type="text"
                             value={faq.question}
@@ -544,28 +544,28 @@ export default function AdminMenu() {
                               f[fIndex].question = e.target.value;
                               updateActiveMenu("faqItems", f);
                             }}
-                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3.5 py-2.5 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            placeholder="e.g. What areas do you cover?"
                           />
                         </div>
 
-                        <div className="mb-3">
-                          <label className="block text-xs font-semibold text-slate-500 mb-1">Answer Paragraphs (blank line to separate)</label>
-                          <textarea
-                            value={faq.answer.join("\n\n")}
-                            onChange={(e) => {
+                        <div className="mb-4">
+                          <label className="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Answer Content (Rich Text)</label>
+                          <TiptapEditor
+                            content={toHtml(faq.answer)}
+                            onChange={(val) => {
                               const f = [...activeItem.faqItems!];
-                              f[fIndex].answer = e.target.value.split("\n\n");
+                              f[fIndex].answer = val;
                               updateActiveMenu("faqItems", f);
                             }}
-                            rows={3}
-                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none resize-none focus:border-[#818cf8]"
+                            placeholder="Write answer here..."
                           />
                         </div>
 
                         {/* Bullets */}
                         <div className="mb-3">
                           <div className="flex justify-between items-center mb-1">
-                            <label className="block text-xs font-semibold text-slate-500">Bullets (Optional)</label>
+                            <label className="block text-xs font-semibold text-slate-400">Bullets (Optional)</label>
                             <button onClick={() => {
                               const f = [...activeItem.faqItems!];
                               if (!f[fIndex].bullets) f[fIndex].bullets = [];
@@ -595,7 +595,7 @@ export default function AdminMenu() {
                         </div>
 
                         <div className="flex items-center gap-4 mt-4 bg-[#131e35] p-3 rounded-lg border border-[rgba(201,168,76,0.2)]">
-                          <label className="flex items-center gap-2 text-sm font-semibold text-slate-600 cursor-pointer">
+                          <label className="flex items-center gap-2 text-sm font-semibold text-[#cbd5e1] cursor-pointer">
                             <input
                               type="checkbox"
                               checked={!!faq.clientLogos}
@@ -619,12 +619,12 @@ export default function AdminMenu() {
                           const r = [...activeItem.resourceItems!];
                           r.splice(rIndex, 1);
                           updateActiveMenu("resourceItems", r);
-                        }} className="absolute top-3 right-3 p-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 rounded-md">
+                        }} className="absolute top-3 right-3 p-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 hover:text-red-500 rounded-md z-10" title="Delete Article">
                           <Trash2 className="w-4 h-4" />
                         </button>
 
-                        <div className="mb-3 pr-8">
-                          <label className="block text-xs font-semibold text-slate-500 mb-1">Article Title</label>
+                        <div className="mb-4 pr-8">
+                          <label className="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Article Title</label>
                           <input
                             type="text"
                             value={res.title}
@@ -633,21 +633,21 @@ export default function AdminMenu() {
                               r[rIndex].title = e.target.value;
                               updateActiveMenu("resourceItems", r);
                             }}
-                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3.5 py-2.5 text-[#f4f6f8] font-bold text-sm outline-none focus:border-[#818cf8]"
+                            placeholder="Article Title..."
                           />
                         </div>
 
-                        <div className="mb-3">
-                          <label className="block text-xs font-semibold text-slate-500 mb-1">Article Paragraphs (blank line to separate)</label>
-                          <textarea
-                            value={res.body.join("\n\n")}
-                            onChange={(e) => {
+                        <div className="mb-4">
+                          <label className="block text-xs font-semibold text-[#cbd5e1] mb-1.5">Article Body (Rich Text)</label>
+                          <TiptapEditor
+                            content={toHtml(res.body)}
+                            onChange={(val) => {
                               const r = [...activeItem.resourceItems!];
-                              r[rIndex].body = e.target.value.split("\n\n");
+                              r[rIndex].body = val;
                               updateActiveMenu("resourceItems", r);
                             }}
-                            rows={4}
-                            className="w-full bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-lg px-3 py-2 text-[#cbd5e1] text-sm outline-none resize-none focus:border-[#818cf8]"
+                            placeholder="Write article content here..."
                           />
                         </div>
 

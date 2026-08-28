@@ -671,9 +671,30 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                         </button>
                         {isOpen && (
                           <div className="accordion-content">
-                            {faq.answer.map((para: string, pIdx: number) => (
-                              <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
-                            ))}
+                            {typeof faq.answer === "string" ? (
+                              faq.answer.startsWith("<") ? (
+                                <div 
+                                  className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
+                                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                                />
+                              ) : (
+                                faq.answer.split("\n\n").map((para: string, pIdx: number) => (
+                                  <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
+                                ))
+                              )
+                            ) : Array.isArray(faq.answer) ? (
+                              faq.answer.map((para: string, pIdx: number) => (
+                                para.startsWith("<") ? (
+                                  <div 
+                                    key={pIdx}
+                                    className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
+                                    dangerouslySetInnerHTML={{ __html: para }}
+                                  />
+                                ) : (
+                                  <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
+                                )
+                              ))
+                            ) : null}
 
                             {/* Bullet points if any */}
                             {faq.bullets && faq.bullets.length > 0 && (
@@ -719,9 +740,30 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                         </button>
                         {isOpen && (
                           <div className="accordion-content">
-                            {art.body.map((para: string, pIdx: number) => (
-                              <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
-                            ))}
+                            {typeof art.body === "string" ? (
+                              art.body.startsWith("<") ? (
+                                <div 
+                                  className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
+                                  dangerouslySetInnerHTML={{ __html: art.body }}
+                                />
+                              ) : (
+                                art.body.split("\n\n").map((para: string, pIdx: number) => (
+                                  <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
+                                ))
+                              )
+                            ) : Array.isArray(art.body) ? (
+                              art.body.map((para: string, pIdx: number) => (
+                                para.startsWith("<") ? (
+                                  <div 
+                                    key={pIdx}
+                                    className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
+                                    dangerouslySetInnerHTML={{ __html: para }}
+                                  />
+                                ) : (
+                                  <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
+                                )
+                              ))
+                            ) : null}
 
                             {/* Bullet points if any */}
                             {art.bullets && art.bullets.length > 0 && (
