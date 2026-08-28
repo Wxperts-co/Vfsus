@@ -69,8 +69,8 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
 
     const logoSlides = data?.logoSlides || [
         { id: 1, image: "/images/client-1111.jpg", alt: "Client Logo 1" },
-        { id: 2, image: "/images/client-2.jpg", alt: "Client Logo 2" },
-        { id: 3, image: "/images/client-3.jpg", alt: "Client Logo 3" },
+        // { id: 2, image: "/images/client-2.jpg", alt: "Client Logo 2" },
+        // { id: 3, image: "/images/client-3.jpg", alt: "Client Logo 3" },
         { id: 4, image: "/images/client-4.jpg", alt: "Client Logo 4" },
         { id: 5, image: "/images/client-5.jpg", alt: "Client Logo 5" },
         { id: 6, image: "/images/client-6.jpg", alt: "Client Logo 6" },
