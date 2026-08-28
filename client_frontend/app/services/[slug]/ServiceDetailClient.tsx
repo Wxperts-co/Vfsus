@@ -413,7 +413,16 @@ export default function ServiceDetailClient({ service, allServices }: ServiceDet
                         {/* Hero image */}
                         <FadeIn delay={0.05}>
                             <div className="sd-hero">
-                                <img src={service.image} alt={service.title} />
+                                <img
+                                    src={service.image || "/images/services/services-1.jpg"}
+                                    alt={service.title}
+                                    onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        if (!target.src.includes("/images/services/services-1.jpg")) {
+                                            target.src = "/images/services/services-1.jpg";
+                                        }
+                                    }}
+                                />
                                 <div className="sd-hero-overlay" />
                                 <div className="sd-hero-corner tl" />
                                 <div className="sd-hero-corner br" />

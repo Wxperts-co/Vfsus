@@ -81,10 +81,16 @@ function ServiceCard({ item, index }: { item: ServiceData; index: number }) {
         {/* Image */}
         <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#1a2845] shrink-0">
           <img
-            src={item.image}
+            src={item.image || "/images/services/services-1.jpg"}
             alt={item.title}
             className="w-full h-full object-cover transition-transform duration-500"
             style={{ transform: hovered ? "scale(1.08)" : "scale(1)" }}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (!target.src.includes("/images/services/services-1.jpg")) {
+                target.src = "/images/services/services-1.jpg";
+              }
+            }}
           />
           <div
             className="absolute inset-0 bg-gradient-to-br from-[rgba(11,17,32,0.3)] to-[rgba(11,17,32,0.85)] transition-opacity duration-300"

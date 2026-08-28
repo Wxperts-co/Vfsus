@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { ServicesPageData, ServiceData, ServiceSection, extractServicesVideoList } from "@/lib/page-services";
 import TiptapEditor from "../common-components/TiptapEditor";
 import AdminSidebar from "./AdminSidebar";
-import { Save, Plus, Trash2, Edit2, X, MoveUp, MoveDown, Globe, Info, Video, Briefcase, Loader2, CheckCircle2, AlertCircle, Upload } from "lucide-react";
+import { Save, Plus, Trash2, Edit2, X, MoveUp, MoveDown, Globe, Info, Video, Briefcase, Loader2, CheckCircle2, AlertCircle, Upload, Image as ImageIcon, RotateCcw } from "lucide-react";
 
 export default function AdminServices() {
   const [data, setData] = useState<ServicesPageData | null>(null);
@@ -155,11 +155,17 @@ export default function AdminServices() {
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || editingServiceIndex === null) return;
+    if (!file || editingServiceIndex === null || !data) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image size should be less than 5MB.");
+      return;
+    }
 
     setUploadingImage(true);
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("folder", "services");
 
     try {
       const res = await fetch("/api/admin/upload-image", {
@@ -169,15 +175,38 @@ export default function AdminServices() {
 
       if (res.ok) {
         const { url } = await res.json();
-        updateActiveService("image", url);
+        const newServices = [...data.services];
+        newServices[editingServiceIndex] = { ...newServices[editingServiceIndex], image: url };
+        const updatedData = { ...data, services: newServices };
+        setData(updatedData);
+        await handleSave(updatedData);
+        setMessage({ type: 'success', text: "Service image uploaded and saved successfully!" });
+        setTimeout(() => setMessage(null), 3000);
       } else {
-        alert("Failed to upload image");
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to upload image");
       }
-    } catch (err) {
-      console.error(err);
-      alert("Error uploading image");
+    } catch (err: any) {
+      console.error("Upload error, using fallback reader:", err);
+      try {
+        const reader = new FileReader();
+        reader.onload = async () => {
+          const base64 = reader.result as string;
+          const newServices = [...data.services];
+          newServices[editingServiceIndex] = { ...newServices[editingServiceIndex], image: base64 };
+          const updatedData = { ...data, services: newServices };
+          setData(updatedData);
+          await handleSave(updatedData);
+          setMessage({ type: 'success', text: "Service image saved successfully!" });
+          setTimeout(() => setMessage(null), 3000);
+        };
+        reader.readAsDataURL(file);
+      } catch (fallbackErr) {
+        alert("Error uploading image: " + (err.message || "Unknown error"));
+      }
     } finally {
       setUploadingImage(false);
+      if (e.target) e.target.value = "";
     }
   };
 
@@ -726,26 +755,67 @@ export default function AdminServices() {
                     </div>
                     <div>
                       <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Hero Image</label>
-                      <div className="flex items-center gap-3">
-                        <div className="relative overflow-hidden rounded-xl border border-[rgba(201,168,76,0.2)] bg-[#1a2845] flex items-center justify-center h-[42px] px-4 w-full group transition-colors hover:border-[#818cf8]">
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            disabled={uploadingImage}
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed z-10"
-                          />
-                          <div className="flex items-center gap-2 text-sm text-[#cbd5e1] font-medium group-hover:text-[#e8c97a] transition-colors">
-                            {uploadingImage ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                            <span>{uploadingImage ? "Uploading..." : "Click to Upload Image"}</span>
+                      <div className="space-y-3">
+                        {/* Image Preview & Upload Controls */}
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-[#131e35] p-3 rounded-xl border border-[rgba(201,168,76,0.2)]">
+                          {/* Image Thumbnail */}
+                          <div className="relative w-28 h-20 rounded-lg overflow-hidden bg-[#0b1120] border border-[rgba(201,168,76,0.3)] shrink-0 flex items-center justify-center">
+                            {data.services[editingServiceIndex].image ? (
+                              <img
+                                src={data.services[editingServiceIndex].image}
+                                alt="Service Preview"
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src = "/images/services/services-1.jpg";
+                                }}
+                              />
+                            ) : (
+                              <ImageIcon className="w-8 h-8 text-slate-500" />
+                            )}
+                          </div>
+
+                          {/* Upload / Change Button */}
+                          <div className="flex-1 space-y-2 w-full">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <label className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#eab308] to-[#e8c97a] hover:opacity-95 text-[#0b1120] font-bold text-xs rounded-xl cursor-pointer transition-all shadow-sm">
+                                {uploadingImage ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                                <span>{uploadingImage ? "Uploading & Saving..." : "Upload New Image"}</span>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  onChange={handleImageUpload}
+                                  disabled={uploadingImage}
+                                  className="hidden"
+                                />
+                              </label>
+                              
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const defaultImg = `/images/services/services-${Math.min(editingServiceIndex + 1, 16)}.jpg`;
+                                  updateActiveService("image", defaultImg);
+                                }}
+                                className="flex items-center gap-1.5 px-3 py-2 bg-[#1a2845] hover:bg-[#223358] text-[#cbd5e1] border border-[rgba(201,168,76,0.2)] rounded-xl text-xs font-semibold transition-colors"
+                                title="Reset to default service image"
+                              >
+                                <RotateCcw className="w-3.5 h-3.5" />
+                                Reset Default
+                              </button>
+                            </div>
+                            
+                            {/* URL Text input */}
+                            <div>
+                              <input
+                                type="text"
+                                value={data.services[editingServiceIndex].image || ""}
+                                onChange={(e) => updateActiveService("image", e.target.value)}
+                                placeholder="Image URL (e.g. /uploads/services/... or /images/...)"
+                                className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-lg py-1.5 px-3 text-xs outline-none focus:border-[#818cf8]"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
-                      {data.services[editingServiceIndex].image && (
-                        <div className="mt-2 text-xs text-[#8898aa] break-all bg-[#1a2845] p-2 rounded-lg border border-[rgba(201,168,76,0.2)]">
-                          <span className="font-semibold text-[#cbd5e1]">Current:</span> {data.services[editingServiceIndex].image}
-                        </div>
-                      )}
                     </div>
                   </div>
                   <div>
