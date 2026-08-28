@@ -65,25 +65,25 @@ function ServicesSidebar({ currentSlug, services, onServiceClick }: ServicesSide
                 {services
                     .filter((s: ServiceData) => !(s.slug?.startsWith("new-service-") && s.title === "New Service"))
                     .map((s: ServiceData) => {
-                    const active = s.slug === currentSlug;
-                    return (
-                        <Link
-                            key={s.slug}
-                            href={`/services/${s.slug}`}
-                            className={`sidebar-link ${active ? "sidebar-link--active" : ""}`}
-                            scroll={false}
-                            onClick={(e) => {
-                                if (onServiceClick) {
-                                    onServiceClick(s.slug);
-                                }
-                            }}
-                        >
-                            <span className="sidebar-icon">{s.icon}</span>
-                            <span className="sidebar-text">{s.title}</span>
-                            {active && <span className="sidebar-active-dot" />}
-                        </Link>
-                    );
-                })}
+                        const active = s.slug === currentSlug;
+                        return (
+                            <Link
+                                key={s.slug}
+                                href={`/services/${s.slug}`}
+                                className={`sidebar-link ${active ? "sidebar-link--active" : ""}`}
+                                scroll={false}
+                                onClick={(e) => {
+                                    if (onServiceClick) {
+                                        onServiceClick(s.slug);
+                                    }
+                                }}
+                            >
+                                <span className="sidebar-icon">{s.icon}</span>
+                                <span className="sidebar-text">{s.title}</span>
+                                {active && <span className="sidebar-active-dot" />}
+                            </Link>
+                        );
+                    })}
             </nav>
 
             {/* CTA box */}
@@ -212,7 +212,7 @@ export default function ServiceDetailClient({ service, allServices }: ServiceDet
 
         /* Hero image */
         .sd-hero {
-          position: relative; width: 100%; aspect-ratio: 16/7;
+          position: relative; width: 100%;
           border-radius: 8px; overflow: hidden; margin-bottom: 40px;
           box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.2);
         }
