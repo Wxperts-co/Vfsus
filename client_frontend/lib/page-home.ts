@@ -121,7 +121,23 @@ export const defaultHomePageData: HomePageData = {
       { id: 1, image: "/images/client-1111.jpg", alt: "Client Logo 1" },
       { id: 4, image: "/images/client-4.jpg", alt: "Client Logo 4" },
       { id: 5, image: "/images/client-5.jpg", alt: "Client Logo 5" },
-      { id: 6, image: "/images/client-6.jpg", alt: "Client Logo 6" }
+      { id: 6, image: "/images/client-6.jpg", alt: "Client Logo 6" },
+      { id: 7, image: "/images/client-7.jpg", alt: "Client Logo 7" },
+      { id: 8, image: "/images/client-8.jpg", alt: "Client Logo 8" },
+      { id: 9, image: "/images/client-9.jpg", alt: "Client Logo 9" },
+      { id: 10, image: "/images/client-10.jpg", alt: "Client Logo 10" },
+      { id: 11, image: "/images/client-11.jpg", alt: "Client Logo 11" },
+      { id: 12, image: "/images/client-12.jpg", alt: "Client Logo 12" },
+      { id: 13, image: "/images/client-13.jpg", alt: "Client Logo 13" },
+      { id: 14, image: "/images/client-14.jpg", alt: "Client Logo 14" },
+      { id: 15, image: "/images/client-15.jpg", alt: "Client Logo 15" },
+      { id: 16, image: "/images/client-16.jpg", alt: "Client Logo 16" },
+      { id: 20, image: "/images/client-20.png", alt: "Client Logo 20" },
+      { id: 21, image: "/images/client-21.png", alt: "Client Logo 21" },
+      { id: 22, image: "/images/client-22.png", alt: "Client Logo 22" },
+      { id: 23, image: "/images/client-23.png", alt: "Client Logo 23" },
+      { id: 24, image: "/images/client-24.png", alt: "Client Logo 24" },
+      { id: 25, image: "/images/client-25.png", alt: "Client Logo 25" }
     ]
   }
 };

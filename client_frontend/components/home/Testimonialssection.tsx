@@ -81,8 +81,14 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
         { id: 13, image: "/images/client-13.jpg", alt: "Client Logo 13" },
         { id: 14, image: "/images/client-14.jpg", alt: "Client Logo 14" },
         { id: 15, image: "/images/client-15.jpg", alt: "Client Logo 15" },
-        { id: 16, image: "/images/client-16.jpg", alt: "Client Logo 16" }
-    ]).filter((slide) => slide.image !== "/images/client-2.jpg" && slide.image !== "/images/client-3.jpg");
+        { id: 16, image: "/images/client-16.jpg", alt: "Client Logo 16" },
+        { id: 20, image: "/images/client-20.png", alt: "Client Logo 20" },
+        { id: 21, image: "/images/client-21.png", alt: "Client Logo 21" },
+        { id: 22, image: "/images/client-22.png", alt: "Client Logo 22" },
+        { id: 23, image: "/images/client-23.png", alt: "Client Logo 23" },
+        { id: 24, image: "/images/client-24.png", alt: "Client Logo 24" },
+        { id: 25, image: "/images/client-25.png", alt: "Client Logo 25" }
+    ]).filter((slide) => slide.image && slide.image !== "/images/client-2.jpg" && slide.image !== "/images/client-3.jpg");
 
     return (
         <div
