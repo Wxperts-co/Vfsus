@@ -100,3 +100,114 @@ h6,
 .animate-scale-up {
   animation: scale-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ==========================================================================
+   Rich Text / TipTap / Prose Typography Engine
+   ========================================================================== */
+.prose,
+.tiptap-content,
+.rich-text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.prose p,
+.tiptap-content p,
+.rich-text p {
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.85 !important;
+}
+
+.prose p:last-child,
+.tiptap-content p:last-child,
+.rich-text p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.prose p:empty,
+.tiptap-content p:empty,
+.rich-text p:empty,
+.prose p:has(br:only-child) {
+  min-height: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.prose p:empty::before,
+.tiptap-content p:empty::before,
+.rich-text p:empty::before {
+  content: "\00a0";
+  display: inline-block;
+}
+
+.prose ul,
+.tiptap-content ul,
+.rich-text ul {
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  margin-left: 1.75rem !important;
+  padding-left: 0.5rem !important;
+}
+
+.prose ol,
+.tiptap-content ol,
+.rich-text ol {
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  margin-left: 1.75rem !important;
+  padding-left: 0.5rem !important;
+}
+
+.prose li,
+.tiptap-content li,
+.rich-text li {
+  display: list-item !important;
+  margin-bottom: 0.6rem !important;
+  line-height: 1.75 !important;
+  padding-left: 0.25rem !important;
+}
+
+.prose li p,
+.tiptap-content li p,
+.rich-text li p {
+  margin-bottom: 0 !important;
+  display: inline !important;
+}
+
+.prose-invert,
+.prose-invert p,
+.prose-invert li {
+  color: rgba(244, 246, 248, 0.85);
+}
+
+.prose-invert strong {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+.prose strong,
+.tiptap-content strong,
+.rich-text strong {
+  font-weight: 700 !important;
+}
+
+.prose em,
+.tiptap-content em,
+.rich-text em {
+  font-style: italic !important;
+}
+
+.prose blockquote,
+.tiptap-content blockquote,
+.rich-text blockquote {
+  border-left: 4px solid #eab308 !important;
+  padding-left: 1.25rem !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.5rem !important;
+  font-style: italic !important;
+  color: rgba(244, 246, 248, 0.9) !important;
+}

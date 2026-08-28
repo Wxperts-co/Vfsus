@@ -17,25 +17,29 @@ export default function TiptapEditor({
 }) {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        hardBreak: {
+          keepMarks: true,
+        },
+      }),
       Placeholder.configure({
         placeholder,
       }),
     ],
-    content: content,
+    content: content || "",
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
     editorProps: {
       attributes: {
-        class: 'focus:outline-none min-h-[160px] p-4 bg-white border border-[#e2e8f0] rounded-b-lg text-[13px] text-[#1e293b] leading-relaxed [&_ul]:list-disc [&_ul]:ml-4 [&_ol]:list-decimal [&_ol]:ml-4 [&_p]:mb-2 [&_blockquote]:border-l-4 [&_blockquote]:border-slate-300 [&_blockquote]:pl-4 [&_blockquote]:italic',
+        class: 'focus:outline-none min-h-[160px] p-4 bg-white border border-[#e2e8f0] rounded-b-lg text-[13px] text-[#1e293b] leading-relaxed [&_ul]:list-disc [&_ul]:ml-4 [&_ol]:list-decimal [&_ol]:ml-4 [&_p]:mb-2 [&_p]:min-h-[1.5em] [&_blockquote]:border-l-4 [&_blockquote]:border-slate-300 [&_blockquote]:pl-4 [&_blockquote]:italic',
       },
     },
   });
 
   useEffect(() => {
-    if (editor && content !== editor.getHTML()) {
-      editor.commands.setContent(content);
+    if (editor && !editor.isFocused && content !== editor.getHTML()) {
+      editor.commands.setContent(content || "");
     }
   }, [content, editor]);
 
@@ -110,6 +114,14 @@ export default function TiptapEditor({
       <EditorContent editor={editor} />
       
       <style jsx global>{`
+        .tiptap-wrapper .ProseMirror p {
+          min-height: 1.5em;
+        }
+        .tiptap-wrapper .ProseMirror p:empty::before {
+          content: "\u00a0";
+          display: inline-block;
+          pointer-events: none;
+        }
         .tiptap-wrapper .is-editor-empty:first-child::before {
           color: #94a3b8;
           content: attr(data-placeholder);
