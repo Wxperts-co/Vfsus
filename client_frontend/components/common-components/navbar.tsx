@@ -50,6 +50,8 @@ const Navbar = () => {
     { icon: "/images/twitter-img.png", href: settings.socialUrls.twitter, label: 'Twitter' },
     { icon: "/images/linkedin-img.png", href: settings.socialUrls.linkedin, label: 'LinkedIn' },
     { icon: "/images/youtube-img.png", href: settings.socialUrls.youtube, label: 'YouTube' },
+    { icon: "/images/tiktok-img.png", href: settings.socialUrls.tiktok, label: 'TikTok' },
+    { icon: "/images/instagram-img.png", href: settings.socialUrls.instagram, label: 'Instagram' },
   ];
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -173,13 +175,14 @@ const Navbar = () => {
                 <span className="text-gray-300 text-[11px] xl:text-[12px] 2xl:text-[13px]">Mon - Fri: 9AM - 6PM</span>
               </div>
 
-              <ul className="flex items-center gap-2 xl:gap-3 2xl:gap-4">
+              <ul className="flex items-center gap-1.5 xl:gap-2.5 2xl:gap-3">
                 {socialLinks.map((social) => (
                   <li key={social.label}>
                     <a
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={social.label}
                     >
                       <Image
                         src={social.icon}
@@ -416,13 +419,14 @@ const Navbar = () => {
                   </div>
 
                   {/* Mobile Social Links */}
-                  <ul className="flex items-center gap-3 mt-4">
+                  <ul className="flex items-center gap-3 mt-4 flex-wrap">
                     {socialLinks.map((social) => (
                       <li key={social.label}>
                         <a
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={social.label}
                         >
                           <Image
                             src={social.icon}

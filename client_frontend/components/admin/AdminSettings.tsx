@@ -12,6 +12,7 @@ import {
   Twitter,
   Linkedin,
   Youtube,
+  Instagram,
   Image as ImageIcon,
   Loader2,
   CheckCircle2,
@@ -492,6 +493,36 @@ export default function AdminSettings() {
                       value={settings.socialUrls.youtube}
                       onChange={(e) =>
                         handleChange("socialUrls", "youtube", e.target.value)
+                      }
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
+                      <Instagram className="h-3.5 w-3.5 text-[#E1306C]" />{" "}
+                      Instagram
+                    </label>
+                    <input
+                      type="text"
+                      value={settings.socialUrls.instagram || ""}
+                      onChange={(e) =>
+                        handleChange("socialUrls", "instagram", e.target.value)
+                      }
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5 flex items-center gap-1.5">
+                      <svg className="h-3.5 w-3.5 fill-[#25F4EE]" viewBox="0 0 24 24">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .592.042.87.124V9.4a6.33 6.33 0 0 0-.87-.06A6.34 6.34 0 0 0 3.14 15.7a6.34 6.34 0 0 0 10.86 4.43 6.3 6.3 0 0 0 1.93-4.47V8.87a8.28 8.28 0 0 0 4.84 1.55V6.98a4.85 4.85 0 0 1-1.18-.29z"/>
+                      </svg>{" "}
+                      TikTok
+                    </label>
+                    <input
+                      type="text"
+                      value={settings.socialUrls.tiktok || ""}
+                      onChange={(e) =>
+                        handleChange("socialUrls", "tiktok", e.target.value)
                       }
                       className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
                     />

@@ -45,7 +45,15 @@ export async function getGlobalSettings(): Promise<SiteSettings> {
       return defaultSettings;
     }
     
-    const result = { ...defaultSettings, ...settings, _id: settings._id.toString() } as unknown as SiteSettings;
+    const result = {
+      ...defaultSettings,
+      ...settings,
+      socialUrls: {
+        ...defaultSettings.socialUrls,
+        ...(settings.socialUrls || {}),
+      },
+      _id: settings._id.toString(),
+    } as unknown as SiteSettings;
     setToCache(cacheKey, result);
     return result;
   } catch (error) {

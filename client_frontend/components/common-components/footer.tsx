@@ -157,18 +157,21 @@ const Footer = () => {
                                         Follow Us
                                     </h3>
 
-                                    <ul className="flex items-center gap-4">
+                                    <ul className="flex items-center gap-3 xl:gap-4 flex-wrap">
                                         {[
                                             { src: "/images/facebook-img.png", alt: "Facebook", href: settings.socialUrls.facebook },
                                             { src: "/images/twitter-img.png", alt: "Twitter", href: settings.socialUrls.twitter },
                                             { src: "/images/linkedin-img.png", alt: "LinkedIn", href: settings.socialUrls.linkedin },
                                             { src: "/images/youtube-img.png", alt: "YouTube", href: settings.socialUrls.youtube },
+                                            { src: "/images/tiktok-img.png", alt: "TikTok", href: settings.socialUrls.tiktok },
+                                            { src: "/images/instagram-img.png", alt: "Instagram", href: settings.socialUrls.instagram },
                                         ].map((s, idx) => (
                                             <li key={idx}>
                                                 <a
                                                     href={s.href}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
+                                                    aria-label={s.alt}
                                                 >
                                                     <Image
                                                         src={s.src}

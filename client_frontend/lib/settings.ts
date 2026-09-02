@@ -21,6 +21,8 @@ export interface SiteSettings {
     twitter: string;
     linkedin: string;
     youtube: string;
+    tiktok: string;
+    instagram: string;
   };
   seo: {
     title: string;
@@ -41,7 +43,9 @@ export const defaultSettings: SiteSettings = {
     facebook: "https://www.facebook.com/pages/VSF/160758390617323",
     twitter: "https://twitter.com/vsfus",
     linkedin: "https://www.linkedin.com/company/virginia-surveillance-force",
-    youtube: "https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw"
+    youtube: "https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw",
+    tiktok: "https://www.tiktok.com/@surveillance.force",
+    instagram: "https://www.instagram.com/surveillance_force"
   },
   seo: {
     title: "Security Services Washington, DC | Virginia Surveillance Force",
