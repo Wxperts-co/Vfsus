@@ -32,7 +32,7 @@ const ServicesSection = () => {
         {
             id: 1,
             image: '/images/homepage-services-1.jpeg',
-            title: 'Permanent or Temporary Security',
+            title: 'Armed & Unarmed Security',
             description: 'Virginia Surveillance Force understands that We live in a world where the concerns for safety and security are escalating on a daily basis.',
         },
         {

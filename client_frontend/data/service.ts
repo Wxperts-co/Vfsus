@@ -137,10 +137,10 @@ const SERVICES: ServiceData[] = [
       "Contact Virginia Surveillance Force today to discuss a customized vehicle patrol plan for your property.",
   },
 
-  // 4 ── PERMANENT OR TEMPORARY SECURITY ────────────────────────────────────
+  // 4 ── ARMED & UNARMED SECURITY ───────────────────────────────────────────
   {
     slug: "permanent-or-temporary-security",
-    title: "Permanent or Temporary Security",
+    title: "Armed & Unarmed Security",
     icon: "🛡️",
     image: "/images/services/services-4.jpg",
     excerpt:
@@ -497,10 +497,10 @@ const SERVICES: ServiceData[] = [
       "Virginia Surveillance Force delivers world-class executive protection with the discretion your principal deserves.",
   },
 
-  // 16 ── COURIER & DELIVERY ─────────────────────────────────────────────────
+  // 16 ── MEDICAL & LEGAL COURIER AND DELIVERY ───────────────────────────────
   {
     slug: "courier-and-delivery",
-    title: "Courier & Delivery",
+    title: "Medical & Legal Courier and Delivery",
     icon: "📦",
     image: "/images/services/services-16.jpg",
     excerpt:
