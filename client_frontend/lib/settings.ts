@@ -44,9 +44,9 @@ export const defaultSettings: SiteSettings = {
     youtube: "https://www.youtube.com/channel/UCHi7o-he252fKlxkMGloQtw"
   },
   seo: {
-    title: "Virginia Surveillance Force",
-    description: "Get professional, licensed, and trained security services for businesses, events, and residences — with rapid response and 24/7 availability.",
-    keywords: "security, surveillance, guard, patrol, virginia",
+    title: "Security Services Washington, DC | Virginia Surveillance Force",
+    description: "Virginia Surveillance Force offers professional security services across Washington DC, Maryland, and Virginia. Get licensed armed and unarmed security guards—get a free quote today!",
+    keywords: "security services Virginia, security company Maryland, security services Washington DC, private security services Maryland, professional security services, licensed security guards Virginia, armed security services Virginia, armed security guards Maryland, unarmed security services Virginia, security services DC Maryland Virginia , Commercial security services Virginia, Residential security services Virginia,Corporate security services Virginia, Executive protection Virginia , 24/7 security services Virginia , Security patrol services Virginia, Fire watch services Virginia, Security guards Northern Virginia, security guards for hotels, security guards for hospitals ,security guards for schools, security guards for retail stores, security guards Alexandria VA, security services Manassas VA",
     googleSiteVerification: ""
   },
   contactCards: [
