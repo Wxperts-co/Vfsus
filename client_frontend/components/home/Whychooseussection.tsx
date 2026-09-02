@@ -77,7 +77,7 @@ const IndustriesSection = ({ data }: { data?: HomeWhyChooseSection }) => {
   const column3Industries = industries.filter(i => i.column === 3);
 
   return (
-    <div ref={sectionRef} className="sis-industry-we-save-section bg-[#002147] pb-0 section py-[80px] md:py-[100px] relative overflow-hidden">
+    <div ref={sectionRef} className="sis-industry-we-save-section bg-[#002147] py-14 sm:py-20 lg:py-24 relative overflow-hidden">
       
       {/* Background Image */}
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
