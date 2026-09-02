@@ -12,6 +12,14 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
+const fullDescriptionsMap: Record<string, string> = {
+    "Lily Z.": "I initially hired VA. Surveillance Force during thanksgiving on a temporary basis, but the level of service quickly exceeded our expectations. The officers were professional, reliable, and consistently alert, with excellent communication and attention to detail. Their strong presence and proactive approach impressed our board so much that we decided to move forward with a permanent engagement. Highly recommended for dependable, high quality security services.",
+    "Henry Anatsui": "We switched to Virginia Surveillance company after ongoing issues with our previous provider. The difference was immediate. Their officers are professional, alert, and highly disciplined. Management is responsive and actively involved. If you want security done right, this is the company to hire.",
+    "Della Paul": "On July 4th, after residents had finished fireworks and gone to sleep, Virginia Surveillance Force officer noticed smoke on the rooftop around 1:40 AM. He promptly called the fire department and began alerting and evacuating residents. We sincerely appreciate his alertness and quick action in keeping everyone safe and preventing a fire.",
+    "Omid Karimi": "The security team at the entrance struck an ideal balance between ensuring safety and providing warm hospitality. Their ability to maintain a secure environment while creating a welcoming atmosphere was truly appreciated. Thank you to Virginia Surveillance Force management team for the excellent service.",
+    "Hermann E": "I have witnessed the security officers at the private school consistently professional, approachable, and welcoming. Dressed in an authoritative uniform, they greet every child and parent with a warm smile, creating a safe and reassuring environment from the moment you arrive. Their presence is truly valued, Thank you Virginia Surveillance for keeping our children safe and protected."
+};
+
 const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -34,38 +42,51 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
         return () => observer.disconnect();
     }, []);
 
-    const testimonials = data?.testimonials || [
-        {
-            id: 1,
-            description: "I initially hired VA. Surveillance Force during thanksgiving on a temporary basis, but the level of service quickly exceeded our expectations. The officers were professional, reliable, and consistently alert, with excellent communication and attention to detail. Their strong presence and proactive approach impressed our board so much that we decided to move forward with a permanent engagement. Highly recommended for dependable, high quality security services.",
-            rating: 5,
-            name: "Lily Z.",
-        },
-        {
-            id: 2,
-            description: "We switched to Virginia Surveillance company after ongoing issues with our previous provider. The difference was immediate. Their officers are professional, alert, and highly disciplined. Management is responsive and actively involved. If you want security done right, this is the company to hire.",
-            rating: 5,
-            name: "Henry Anatsui",
-        },
-        {
-            id: 3,
-            description: "On July 4th, after residents had finished fireworks and gone to sleep, Virginia Surveillance Force officer noticed smoke on the rooftop around 1:40 AM. He promptly called the fire department and began alerting and evacuating residents. We sincerely appreciate his alertness and quick action in keeping everyone safe and preventing a fire.",
-            rating: 5,
-            name: "Della Paul",
-        },
-        {
-            id: 4,
-            description: "The security team at the entrance struck an ideal balance between ensuring safety and providing warm hospitality. Their ability to maintain a secure environment while creating a welcoming atmosphere was truly appreciated. Thank you to Virginia Surveillance Force management team for the excellent service.",
-            rating: 5,
-            name: "Omid Karimi",
-        },
-        {
-            id: 5,
-            description: "I have witnessed the security officers at the private school consistently professional, approachable, and welcoming. Dressed in an authoritative uniform, they greet every child and parent with a warm smile, creating a safe and reassuring environment from the moment you arrive. Their presence is truly valued, Thank you Virginia Surveillance for keeping our children safe and protected.",
-            rating: 5,
-            name: "Hermann E",
+    const rawTestimonials = data?.testimonials && data.testimonials.length > 0
+        ? data.testimonials
+        : [
+            {
+                id: 1,
+                description: fullDescriptionsMap["Lily Z."],
+                rating: 5,
+                name: "Lily Z.",
+            },
+            {
+                id: 2,
+                description: fullDescriptionsMap["Henry Anatsui"],
+                rating: 5,
+                name: "Henry Anatsui",
+            },
+            {
+                id: 3,
+                description: fullDescriptionsMap["Della Paul"],
+                rating: 5,
+                name: "Della Paul",
+            },
+            {
+                id: 4,
+                description: fullDescriptionsMap["Omid Karimi"],
+                rating: 5,
+                name: "Omid Karimi",
+            },
+            {
+                id: 5,
+                description: fullDescriptionsMap["Hermann E"],
+                rating: 5,
+                name: "Hermann E",
+            }
+        ];
+
+    // Ensure full text is displayed even if truncated data exists in DB
+    const testimonials = rawTestimonials.map((t) => {
+        const fullNameKey = Object.keys(fullDescriptionsMap).find(
+            (k) => k.toLowerCase() === t.name?.trim().toLowerCase()
+        );
+        if (fullNameKey && t.description?.includes("...")) {
+            return { ...t, description: fullDescriptionsMap[fullNameKey] };
         }
-    ];
+        return t;
+    });
 
     const logoSlides = (data?.logoSlides || [
         { id: 1, image: "/images/client-1111.jpg", alt: "Client Logo 1" },
@@ -91,9 +112,10 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
     ]).filter((slide) => slide.image && slide.image !== "/images/client-2.jpg" && slide.image !== "/images/client-3.jpg");
 
     return (
-        <div
+        <section
             ref={sectionRef}
-            className="sis-testimonial-section relative section py-[80px] md:py-[100px] overflow-hidden"
+            className="sis-testimonial-section relative py-14 sm:py-20 lg:py-24 overflow-hidden"
+            aria-label="Client Testimonials and Google Reviews"
         >
             {/* Background Image */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -103,76 +125,161 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                     fill
                     sizes="100vw"
                     priority={false}
-                    className="object-cover"
+                    className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-black/20" />
+                {/* Balanced overlay so the background flag is visible while maintaining contrast */}
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: 'linear-gradient(to bottom, rgba(11, 17, 32, 0.4) 0%, rgba(11, 17, 32, 0.25) 50%, rgba(11, 17, 32, 0.5) 100%)'
+                    }}
+                />
             </div>
 
-            {/* Content */}
-            <div className="sis-testimonial-part relative z-20 pt-[20px]">
-                <div className="container max-w-[1400px] mx-auto px-[15px]">
+            {/* Content Container */}
+            <div className="sis-testimonial-part relative z-20">
+                <div className="container max-w-[1360px] mx-auto px-4 sm:px-6">
 
-                    {/* Section Title */}
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-[58px] text-[#eab308] max-w-4xl mx-auto">
-                            <span className="text-[#002147] heading-font">{data?.titlePart1 || "Our"} </span> {data?.titlePart2 || "Happy Customers"}
+                    {/* Section Header */}
+                    <div className="text-center mb-6 sm:mb-8">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto drop-shadow-md">
+                            <span
+                                className="heading-font font-bold"
+                                style={{
+                                    color: '#002147',
+                                    textShadow: '0 2px 4px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.6)'
+                                }}
+                            >
+                                {data?.titlePart1 || "Our"}{' '}
+                            </span>
+                            <span
+                                className="heading-font font-bold"
+                                style={{
+                                    color: '#eab308',
+                                    textShadow: '0 2px 8px rgba(0,0,0,0.4)'
+                                }}
+                            >
+                                {data?.titlePart2 || "Happy Customers"}
+                            </span>
                         </h2>
                     </div>
 
-                    {/* Rating Section */}
-                    <div className="flex items-center justify-center gap-6 mb-10">
-                        <figure className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl m-0">
+                    {/* Google Reviews Graphic / Badge */}
+                    <div className="flex justify-center items-center mb-8 sm:mb-10">
+                        <div
+                            className="inline-flex items-center justify-center px-6 py-2.5 sm:px-8 sm:py-3 rounded-2xl transition-transform duration-300 hover:scale-105"
+                            style={{
+                                backgroundColor: '#ffffff',
+                                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+                                border: '1px solid rgba(255, 255, 255, 0.9)'
+                            }}
+                        >
                             <Image
                                 src={data?.googleReviewLogo || "/images/google-review-logo.png"}
-                                alt="Google Ratings"
-                                width={180}
-                                height={90}
-                                className="w-auto h-auto max-h-[70px] object-contain"
+                                alt="Google Reviews and 5 Star Rating"
+                                width={175}
+                                height={65}
+                                className="w-auto h-auto max-h-[48px] sm:max-h-[58px] object-contain"
                             />
-                        </figure>
+                        </div>
                     </div>
 
                     {/* Testimonials Slider */}
-                    <Swiper
-                        modules={[Autoplay, Pagination]}
-                        spaceBetween={20}
-                        slidesPerView={1}
-                        loop
-                        autoplay={{ delay: 5000, disableOnInteraction: false }}
-                        pagination={{
-                            clickable: true,
-                            dynamicBullets: true
+                    <div className="relative">
+                        <Swiper
+                            modules={[Autoplay, Pagination]}
+                            spaceBetween={24}
+                            slidesPerView={1}
+                            loop
+                            autoplay={{ delay: 5500, disableOnInteraction: false }}
+                            pagination={{
+                                clickable: true,
+                                dynamicBullets: true
+                            }}
+                            breakpoints={{
+                                640: { slidesPerView: 2, spaceBetween: 20 },
+                                1024: { slidesPerView: 3, spaceBetween: 26 },
+                            }}
+                            className="testimonial-swiper"
+                        >
+                            {testimonials.map((testimonial) => (
+                                <SwiperSlide key={testimonial.id} className="h-auto">
+                                    <div
+                                        className="p-6 sm:p-7 rounded-2xl h-[340px] sm:h-[355px] lg:h-[365px] flex flex-col justify-between transition-all duration-300 hover:scale-[1.01]"
+                                        style={{
+                                            backgroundColor: 'rgba(15, 23, 42, 0.88)',
+                                            backdropFilter: 'blur(16px)',
+                                            WebkitBackdropFilter: 'blur(16px)',
+                                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                                            boxShadow: '0 15px 35px rgba(0, 0, 0, 0.45)'
+                                        }}
+                                    >
+                                        {/* Card Top: Stars & Quote Icon */}
+                                        <div className="flex items-center justify-between mb-3">
+                                            <div className="flex items-center gap-1">
+                                                {Array.from({ length: testimonial.rating || 5 }).map((_, i) => (
+                                                    <span key={i} className="text-[#eab308] text-lg leading-none select-none">
+                                                        ★
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <span className="text-[#eab308] text-3xl font-serif leading-none select-none opacity-90">
+                                                ❝
+                                            </span>
+                                        </div>
+
+                                        {/* Card Body: Review Description */}
+                                        <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 mb-3">
+                                            <p className="text-white text-[14.5px] sm:text-[15.5px] leading-[1.65] font-sans m-0 font-normal">
+                                                “{testimonial.description}”
+                                            </p>
+                                        </div>
+
+                                        {/* Card Footer: Reviewer Info */}
+                                        <div
+                                            className="flex items-center justify-between pt-3.5 mt-auto"
+                                            style={{ borderTop: '1px solid rgba(255, 255, 255, 0.18)' }}
+                                        >
+                                            <div>
+                                                <h4 className="text-white font-bold text-[15px] sm:text-base m-0 tracking-wide">
+                                                    {testimonial.name}
+                                                </h4>
+                                                <span className="text-xs text-slate-300 flex items-center gap-1 mt-0.5 font-medium">
+                                                    <svg className="w-3.5 h-3.5 text-emerald-400 inline" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                    </svg>
+                                                    Verified Review
+                                                </span>
+                                            </div>
+                                            <div
+                                                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-[#eab308]"
+                                                style={{
+                                                    backgroundColor: 'rgba(234, 179, 8, 0.15)',
+                                                    border: '1px solid rgba(234, 179, 8, 0.4)'
+                                                }}
+                                            >
+                                                {testimonial.name ? testimonial.name.charAt(0).toUpperCase() : 'V'}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+
+                    {/* Client Logos Slider */}
+                    <div
+                        className="mt-12 sm:mt-16 py-6 px-4 sm:px-6 rounded-2xl"
+                        style={{
+                            backgroundColor: 'rgba(15, 23, 42, 0.75)',
+                            backdropFilter: 'blur(12px)',
+                            border: '1px solid rgba(255, 255, 255, 0.15)',
+                            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
                         }}
-                        breakpoints={{
-                            640: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3 },
-                        }}
-                        className="testimonial-swiper pb-12"
                     >
-                        {testimonials.map((testimonial) => (
-                            <SwiperSlide key={testimonial.id}>
-                                <div className="p-6 bg-black/60 backdrop-blur-md border border-white/20 rounded-2xl h-[360px] flex flex-col hover:border-[#eab308] transition-colors duration-300">
-                                    <div className="flex-1 overflow-y-auto custom-scrollbar mb-4">
-                                        <p className="text-white text-base leading-relaxed font-sans m-0">
-                                            “{testimonial.description}”
-                                        </p>
-                                    </div>
-
-                                    <div className="flex justify-between items-center border-t border-white/20 pt-4 mt-auto">
-                                        <p className="text-white font-semibold m-0">
-                                            {testimonial.name}
-                                        </p>
-                                        <span className="text-[#eab308] text-3xl opacity-100 leading-none">
-                                            ❝
-                                        </span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-
-                    {/* Logo Slider */}
-                    <div className="mt-14 bg-white/5 backdrop-blur-md py-6 px-4 rounded-3xl">
+                        <p className="text-center text-xs sm:text-sm font-semibold text-slate-200 uppercase tracking-widest mb-4">
+                            Trusted By Leading Businesses & Communities
+                        </p>
                         <Swiper
                             modules={[Autoplay]}
                             spaceBetween={24}
@@ -180,23 +287,25 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                             loop
                             autoplay={{ delay: 3500, disableOnInteraction: false }}
                             breakpoints={{
-                                480: { slidesPerView: 3 },
-                                640: { slidesPerView: 4 },
-                                768: { slidesPerView: 5 },
-                                1024: { slidesPerView: 6 },
+                                480: { slidesPerView: 3, spaceBetween: 20 },
+                                640: { slidesPerView: 4, spaceBetween: 24 },
+                                768: { slidesPerView: 5, spaceBetween: 24 },
+                                1024: { slidesPerView: 6, spaceBetween: 30 },
                             }}
                             className="logo-swiper"
                         >
                             {logoSlides.map((logo) => (
                                 <SwiperSlide key={logo.id} className="flex items-center justify-center">
-                                    <Image
-                                        src={logo.image}
-                                        alt={logo.alt}
-                                        width={140}
-                                        height={55}
-                                        sizes="(max-width: 768px) 30vw, 15vw"
-                                        className="mx-auto max-h-[50px] object-contain opacity-90 hover:opacity-100 transition-opacity"
-                                    />
+                                    <div className="w-full flex items-center justify-center h-14">
+                                        <Image
+                                            src={logo.image}
+                                            alt={logo.alt}
+                                            width={140}
+                                            height={55}
+                                            sizes="(max-width: 768px) 30vw, 15vw"
+                                            className="mx-auto max-h-[46px] object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 filter drop-shadow"
+                                        />
+                                    </div>
                                 </SwiperSlide>
                             ))}
                         </Swiper>
@@ -214,21 +323,31 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                 border-radius: 10px;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb {
-                background: rgba(234, 179, 8, 0.5);
+                background: rgba(234, 179, 8, 0.6);
                 border-radius: 10px;
             }
-            .testimonial-swiper {
-                padding-bottom: 45px !important;
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: rgba(234, 179, 8, 0.9);
+            }
+            :global(.testimonial-swiper) {
+                padding-bottom: 48px !important;
+            }
+            :global(.testimonial-swiper .swiper-pagination) {
+                bottom: 6px !important;
             }
             :global(.testimonial-swiper .swiper-pagination-bullet) {
-                background: rgba(255, 255, 255, 0.5) !important;
-                opacity: 1 !important;
+                background: rgba(255, 255, 255, 0.6) !important;
+                width: 9px !important;
+                height: 9px !important;
+                transition: all 0.3s ease !important;
             }
             :global(.testimonial-swiper .swiper-pagination-bullet-active) {
                 background: #eab308 !important;
+                width: 24px !important;
+                border-radius: 6px !important;
             }
             `}</style>
-        </div>
+        </section>
     );
 };
 
