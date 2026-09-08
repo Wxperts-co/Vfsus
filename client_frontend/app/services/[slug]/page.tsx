@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: service.seo?.title || `${service.title} | Virginia Surveillance Force`,
     description: service.seo?.description || service.excerpt,
     keywords: service.seo?.keywords || "",
+    alternates: {
+      canonical: `https://www.vsfus.com/services/${resolvedParams.slug}`,
+    },
     openGraph: {
       title: service.seo?.title || `${service.title} | VSF`,
       description: service.seo?.description || service.excerpt,

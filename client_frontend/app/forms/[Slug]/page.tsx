@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: FormPageProps): Promise<Metad
     return {
         title: `${form.title || ''} | Virginia Surveillance Force`,
         description: form.description,
+        alternates: {
+            canonical: `https://www.vsfus.com/forms/${slug}`,
+        },
     };
 }
 

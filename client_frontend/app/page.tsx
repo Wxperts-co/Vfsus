@@ -18,6 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: data.seo?.title || "Home | Virginia Surveillance Force",
     description: data.seo?.description || "Virginia Surveillance Force is a premier security and investigative firm.",
     keywords: data.seo?.keywords || "security, investigation, protection",
+    alternates: {
+      canonical: "https://www.vsfus.com/",
+    },
   };
 }
 

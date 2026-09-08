@@ -32,6 +32,9 @@ export async function generateMetadata(): Promise<Metadata> {
       "security guards Alexandria VA",
       "security services Manassas VA",
     ],
+    alternates: {
+      canonical: "https://www.vsfus.com/request-quote",
+    },
   };
 }
 

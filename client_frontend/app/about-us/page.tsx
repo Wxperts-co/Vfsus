@@ -11,6 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: data.seo.title,
     description: data.seo.description,
     keywords: data.seo.keywords,
+    alternates: {
+      canonical: "https://www.vsfus.com/about-us",
+    },
   };
 }
 

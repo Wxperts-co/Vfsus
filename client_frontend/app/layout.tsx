@@ -30,9 +30,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getGlobalSettings();
   
   return {
+    metadataBase: new URL("https://www.vsfus.com"),
     title: settings.seo.title,
     description: settings.seo.description,
     keywords: settings.seo.keywords,
+    alternates: {
+      canonical: "https://www.vsfus.com/",
+    },
     verification: {
       google: settings.seo.googleSiteVerification,
     },
