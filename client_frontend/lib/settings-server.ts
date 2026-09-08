@@ -49,13 +49,16 @@ export async function getGlobalSettings(): Promise<SiteSettings> {
       ...defaultSettings,
       ...settings,
       seo: {
-        ...defaultSettings.seo,
-        ...(settings.seo || {}),
+        title: settings.seo?.title?.trim() || defaultSettings.seo.title,
+        description: settings.seo?.description?.trim() || defaultSettings.seo.description,
+        keywords: settings.seo?.keywords?.trim() || defaultSettings.seo.keywords,
+        googleSiteVerification: settings.seo?.googleSiteVerification || defaultSettings.seo.googleSiteVerification,
       },
       socialUrls: {
         ...defaultSettings.socialUrls,
         ...(settings.socialUrls || {}),
       },
+      contactCards: settings.contactCards || defaultSettings.contactCards,
       _id: settings._id.toString(),
     } as unknown as SiteSettings;
     setToCache(cacheKey, result);
@@ -83,8 +86,9 @@ export async function getTestimonialsPageData(): Promise<TestimonialsPageData> {
         ...defaultTestimonialsData, 
         ...rest,
         seo: {
-          ...defaultTestimonialsData.seo,
-          ...(rest.seo || {}),
+          title: rest.seo?.title?.trim() || defaultTestimonialsData.seo.title,
+          description: rest.seo?.description?.trim() || defaultTestimonialsData.seo.description,
+          keywords: rest.seo?.keywords?.trim() || defaultTestimonialsData.seo.keywords,
         },
       };
       setToCache(cacheKey, result);
@@ -120,8 +124,9 @@ export async function getAboutUsPageData(): Promise<AboutUsPageData> {
         ...defaultAboutUsData, 
         ...rest,
         seo: {
-          ...defaultAboutUsData.seo,
-          ...(rest.seo || {}),
+          title: rest.seo?.title?.trim() || defaultAboutUsData.seo.title,
+          description: rest.seo?.description?.trim() || defaultAboutUsData.seo.description,
+          keywords: rest.seo?.keywords?.trim() || defaultAboutUsData.seo.keywords,
         },
         video: {
           badgeText: dbVideo.badgeText || defaultAboutUsData.video.badgeText,
@@ -163,8 +168,9 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
         ...defaultServicesPageData, 
         ...rest,
         seo: {
-          ...defaultServicesPageData.seo,
-          ...(rest.seo || {}),
+          title: rest.seo?.title?.trim() || defaultServicesPageData.seo.title,
+          description: rest.seo?.description?.trim() || defaultServicesPageData.seo.description,
+          keywords: rest.seo?.keywords?.trim() || defaultServicesPageData.seo.keywords,
         },
         services: (rest.services || defaultServicesPageData.services).map((s: any) => {
           const def = defaultServicesPageData.services.find(d => d.slug === s.slug);
@@ -172,8 +178,9 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
             ...def,
             ...s,
             seo: {
-              ...(def?.seo || {}),
-              ...(s.seo || {}),
+              title: s.seo?.title?.trim() || def?.seo?.title || `${s.title || def?.title} | Virginia Surveillance Force`,
+              description: s.seo?.description?.trim() || def?.seo?.description || s.excerpt || def?.excerpt || "",
+              keywords: s.seo?.keywords?.trim() || def?.seo?.keywords || "",
             },
           };
         }),
@@ -212,8 +219,9 @@ export async function getMenuPageData(): Promise<MenuPageData> {
         ...defaultMenuPageData, 
         ...rest,
         seo: {
-          ...defaultMenuPageData.seo,
-          ...(rest.seo || {}),
+          title: rest.seo?.title?.trim() || defaultMenuPageData.seo.title,
+          description: rest.seo?.description?.trim() || defaultMenuPageData.seo.description,
+          keywords: rest.seo?.keywords?.trim() || defaultMenuPageData.seo.keywords,
         },
         menus: (rest.menus || defaultMenuPageData.menus).map((m: any) => {
           const def = defaultMenuPageData.menus.find(d => d.slug === m.slug);
@@ -221,8 +229,9 @@ export async function getMenuPageData(): Promise<MenuPageData> {
             ...def,
             ...m,
             seo: {
-              ...(def?.seo || {}),
-              ...(m.seo || {}),
+              title: m.seo?.title?.trim() || def?.seo?.title || `${m.title || def?.title} | Virginia Surveillance Force`,
+              description: m.seo?.description?.trim() || def?.seo?.description || "",
+              keywords: m.seo?.keywords?.trim() || def?.seo?.keywords || "",
             },
           };
         }),
@@ -267,8 +276,9 @@ export async function getHomePageData(): Promise<HomePageData> {
           ...(rest.testimonialsSection || {})
         },
         seo: {
-          ...defaultHomePageData.seo,
-          ...(rest.seo || {})
+          title: rest.seo?.title?.trim() || defaultHomePageData.seo.title,
+          description: rest.seo?.description?.trim() || defaultHomePageData.seo.description,
+          keywords: rest.seo?.keywords?.trim() || defaultHomePageData.seo.keywords,
         }
       };
       setToCache(cacheKey, result);

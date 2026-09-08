@@ -275,6 +275,7 @@ export default function AdminHome() {
           {/* Tabs Navigation */}
           <div className="flex gap-2 border-b border-black/10 overflow-x-auto pb-0">
             {[
+              { id: "seo", label: "Page SEO", icon: Globe },
               { id: "about", label: "About Section", icon: PlayCircle },
               { id: "why-choose", label: "Why Choose Us Section", icon: CheckCircle2 },
               { id: "testimonials", label: "Testimonials Section", icon: Star },
@@ -295,7 +296,44 @@ export default function AdminHome() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 pb-20">
-            
+            {/* ── SEO SECTION ── */}
+            {activeTab === "seo" && (
+              <div className="bg-[#131e35] p-6 rounded-2xl border border-[rgba(201,168,76,0.12)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <h3 className="font-bold text-[16px] text-[#f4f6f8] mb-4 flex items-center gap-2">
+                  <Globe className="h-5 w-5 text-emerald-500" /> Home Page SEO
+                </h3>
+                <div className="space-y-5 max-w-3xl">
+                  <div>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Page Title</label>
+                    <input
+                      type="text"
+                      value={data.seo?.title || ""}
+                      onChange={(e) => updateSEO("title", e.target.value)}
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Description</label>
+                    <textarea
+                      value={data.seo?.description || ""}
+                      onChange={(e) => updateSEO("description", e.target.value)}
+                      rows={3}
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8] resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Meta Keywords</label>
+                    <input
+                      type="text"
+                      value={data.seo?.keywords || ""}
+                      onChange={(e) => updateSEO("keywords", e.target.value)}
+                      className="w-full bg-[#1a2845] text-[#f4f6f8] border border-[rgba(201,168,76,0.2)] rounded-xl py-2.5 px-4 text-sm outline-none focus:border-[#818cf8]"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* ── ABOUT SECTION ── */}
             {activeTab === "about" && (
             <div className="space-y-6">

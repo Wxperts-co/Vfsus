@@ -15,9 +15,9 @@ export const revalidate = 60;
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getHomePageData();
   return {
-    title: data.seo?.title || "Home | Virginia Surveillance Force",
-    description: data.seo?.description || "Virginia Surveillance Force is a premier security and investigative firm.",
-    keywords: data.seo?.keywords || "security, investigation, protection",
+    title: data.seo?.title || "Security Services Washington, DC | Virginia Surveillance Force",
+    description: data.seo?.description || "Virginia Surveillance Force offers professional security services across Washington DC, Maryland, and Virginia. Get licensed armed and unarmed security guards—get a free quote today!",
+    keywords: data.seo?.keywords || "security services Virginia, security company Maryland, security services Washington DC",
     alternates: {
       canonical: "https://www.vsfus.com/",
     },

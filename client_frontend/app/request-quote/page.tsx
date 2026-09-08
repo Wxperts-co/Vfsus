@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
+import { getGlobalSettings } from "@/lib/settings-server";
 import QuoteRequestClient from "./QuoteRequestClient";
 
+export const revalidate = 60;
+
 export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getGlobalSettings();
+  const quoteSeo = (settings as any).requestQuoteSeo;
+
   return {
-    title: "Emergency Security Services Maryland | Virginia Surveillance Force",
+    title: quoteSeo?.title?.trim() || "Emergency Security Services Maryland | Virginia Surveillance Force",
     description:
-      "Virginia Surveillance Force provides rapid-response emergency security services across Maryland and Washington DC. Protect your site instantly—request a quote today!",
-    keywords: [
+      quoteSeo?.description?.trim() || "Virginia Surveillance Force provides rapid-response emergency security services across Maryland and Washington DC. Protect your site instantly—request a quote today!",
+    keywords: quoteSeo?.keywords || [
       "Emergency Security Services Maryland",
       "security company Maryland",
       "security services Washington DC",
