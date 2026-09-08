@@ -48,6 +48,10 @@ export async function getGlobalSettings(): Promise<SiteSettings> {
     const result = {
       ...defaultSettings,
       ...settings,
+      seo: {
+        ...defaultSettings.seo,
+        ...(settings.seo || {}),
+      },
       socialUrls: {
         ...defaultSettings.socialUrls,
         ...(settings.socialUrls || {}),
@@ -75,7 +79,14 @@ export async function getTestimonialsPageData(): Promise<TestimonialsPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      const result = { ...defaultTestimonialsData, ...rest };
+      const result: TestimonialsPageData = { 
+        ...defaultTestimonialsData, 
+        ...rest,
+        seo: {
+          ...defaultTestimonialsData.seo,
+          ...(rest.seo || {}),
+        },
+      };
       setToCache(cacheKey, result);
       return result;
     }
@@ -108,6 +119,10 @@ export async function getAboutUsPageData(): Promise<AboutUsPageData> {
       const result: AboutUsPageData = { 
         ...defaultAboutUsData, 
         ...rest,
+        seo: {
+          ...defaultAboutUsData.seo,
+          ...(rest.seo || {}),
+        },
         video: {
           badgeText: dbVideo.badgeText || defaultAboutUsData.video.badgeText,
           videos: videosList,
@@ -147,6 +162,21 @@ export async function getServicesPageData(): Promise<ServicesPageData> {
       const result: ServicesPageData = { 
         ...defaultServicesPageData, 
         ...rest,
+        seo: {
+          ...defaultServicesPageData.seo,
+          ...(rest.seo || {}),
+        },
+        services: (rest.services || defaultServicesPageData.services).map((s: any) => {
+          const def = defaultServicesPageData.services.find(d => d.slug === s.slug);
+          return {
+            ...def,
+            ...s,
+            seo: {
+              ...(def?.seo || {}),
+              ...(s.seo || {}),
+            },
+          };
+        }),
         video: {
           badgeText: dbVideo.badgeText || defaultServicesPageData.video.badgeText,
           videos: videosList,
@@ -178,7 +208,25 @@ export async function getMenuPageData(): Promise<MenuPageData> {
     
     if (settings) {
       const { _id, ...rest } = settings;
-      const result = { ...defaultMenuPageData, ...rest };
+      const result: MenuPageData = { 
+        ...defaultMenuPageData, 
+        ...rest,
+        seo: {
+          ...defaultMenuPageData.seo,
+          ...(rest.seo || {}),
+        },
+        menus: (rest.menus || defaultMenuPageData.menus).map((m: any) => {
+          const def = defaultMenuPageData.menus.find(d => d.slug === m.slug);
+          return {
+            ...def,
+            ...m,
+            seo: {
+              ...(def?.seo || {}),
+              ...(m.seo || {}),
+            },
+          };
+        }),
+      };
       setToCache(cacheKey, result);
       return result;
     }

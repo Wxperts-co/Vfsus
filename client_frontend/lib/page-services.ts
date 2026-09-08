@@ -56,11 +56,13 @@ export function extractServicesVideoList(video?: {
   );
 }
 
+const COMMON_SERVICES_KEYWORDS = "security company Maryland, security services Washington DC, private security services Maryland, professional security services, licensed security guards Virginia, armed security services Virginia, armed security guards Maryland, unarmed security services Virginia, security services DC Maryland Virginia , Commercial security services Virginia, Residential security services Virginia, Corporate security services Virginia, Executive protection Virginia , 24/7 security services Virginia , Security patrol services Virginia, Fire watch services Virginia, Security guards Northern Virginia, security guards for hotels, security guards for hospitals ,security guards for schools, security guards for retail stores, security guards Alexandria VA, security services Manassas VA";
+
 export const defaultServicesPageData: ServicesPageData = {
   seo: {
-    title: "Services | Virginia Surveillance Force",
-    description: "Virginia Surveillance Force provides premium security, concierge, fire watch, and private investigation services across Virginia, Maryland, and Washington DC.",
-    keywords: "security services, concierge, fire watch, vehicle patrol, security guards, DC, Maryland, Virginia",
+    title: "Professional Security Services Maryland, Washington | Virginia Surveillance Force",
+    description: "Virginia Surveillance Force delivers professional armed, unarmed, and patrol security services tailored to protect businesses across Maryland, Washington, and Virginia",
+    keywords: COMMON_SERVICES_KEYWORDS,
   },
   intro: {
     headline: "Our professionals are available to you<br/> 24 hours a day, 7 days a week.",
@@ -83,6 +85,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏢",
       image: "/images/services/services-1.jpg",
       excerpt: "Premium lobby and frontdesk staffing that elevates your property's image and keeps tenants satisfied 24/7.",
+      seo: {
+        title: "Concierge & Front-desk Washington DC | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides professional front-desk concierge security services in Washington DC. Request a quote to secure your facility today.",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force Concierge understands the challenges that it's not enough, just to maintain an appealing building. Building owners and property managers are looking to attract and retain high lease tenants to ensure maximum occupancy and bottom line profitability. Tenants are looking to property managers for personal and professional services that can make their life less hectic.",
         "VSF Concierge Service is the best investment a property manager can make. Whether for a premier hotel, luxury apartments or exclusive corporate office buildings, the concierge will add value and service to your environment.",
@@ -127,6 +134,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🔥",
       image: "/images/services/services-2.jpg",
       excerpt: "Licensed fire watch officers available around the clock to keep your property compliant and safe during system outages.",
+      seo: {
+        title: "Fire Watch Services Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force delivers professional fire watch services to keep Maryland properties safe and code-compliant. Request a quote today",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides certified Fire Watch services to commercial, residential, and industrial properties throughout Virginia, Maryland, and Washington DC.",
         "When a fire alarm or sprinkler system is offline for maintenance, repair, or failure, local fire codes require an immediate fire watch to be posted. Our officers respond quickly, ensuring continuous monitoring and full compliance with local fire department requirements.",
@@ -156,6 +168,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🚔",
       image: "/images/services/services-3.jpg",
       excerpt: "Marked and unmarked vehicle patrols providing visible deterrence and rapid response across large or multi-site properties.",
+      seo: {
+        title: "Security Patrol Service Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides reliable security patrol services to protect Maryland properties and ensure complete safety. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force Vehicle Patrol service provides a highly visible, mobile security presence that deters criminal activity and ensures rapid response across large campuses, parking facilities, retail centers, and multi-building complexes.",
         "Our patrol officers conduct regular, randomized route checks — making it difficult for potential criminals to predict patrol schedules. Each patrol is documented with detailed logs and incident reports delivered directly to property management.",
@@ -184,6 +201,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🛡️",
       image: "/images/services/services-4.jpg",
       excerpt: "Flexible uniformed security staffing for both long-term contracts and short-notice temporary assignments.",
+      seo: {
+        title: "Armed & Unarmed Security Service Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides licensed armed and unarmed security services to protect properties across Maryland. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force offers both permanent and temporary security staffing solutions to meet the ever-changing needs of businesses, property managers, and event organizers throughout Virginia, Maryland, and Washington DC.",
         "Whether you require a dedicated full-time security team or need rapid deployment for a short-term event or emergency coverage, VSF can provide professionally trained, licensed officers on your schedule.",
@@ -212,6 +234,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "💼",
       image: "/images/services/services-5.jpg",
       excerpt: "Discreet, professional security solutions tailored to corporate environments, protecting people, assets, and information.",
+      seo: {
+        title: "Office & Corporate Security Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides professional office and corporate security solutions to safeguard your business assets and personnel. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides comprehensive Office and Corporate Security services designed to protect your employees, visitors, assets, and proprietary information in today's dynamic business environment.",
         "Our corporate security officers are trained to maintain a professional, discreet presence that aligns with your company culture while providing maximum protection. We understand that security in a corporate setting must balance access control with a welcoming atmosphere.",
@@ -240,6 +267,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏬",
       image: "/images/services/services-6.jpg",
       excerpt: "High-traffic retail and industrial security solutions covering loss prevention, crowd control, and perimeter protection.",
+      seo: {
+        title: "Retail & Mall Security Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force delivers professional retail and mall security solutions to safeguard Maryland businesses, staff, and shoppers. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force specializes in security for high-traffic retail environments, shopping centers, warehouses, and industrial facilities. These environments present unique security challenges — from shoplifting and organized retail crime to warehouse theft and industrial safety incidents.",
         "Our officers are trained in loss prevention techniques, crowd management, emergency response, and the specific operational needs of retail and industrial settings.",
@@ -268,6 +300,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏨",
       image: "/images/services/services-7.jpg",
       excerpt: "Hospitality-focused security officers who protect guests and staff while preserving the welcoming atmosphere of your property.",
+      seo: {
+        title: "Hotel, Motel & Resorts Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force delivers premier security solutions for hotels, motels, and resorts across Maryland and Washington DC. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force understands that security in a hospitality setting must be both effective and unobtrusive. Our hotel security officers are trained to protect guests, staff, and property while maintaining the welcoming, professional atmosphere your guests expect.",
         "From resort properties to budget motels, VSF provides customized security programs that address the specific challenges of hospitality security — including unauthorized access, disturbances, theft, and emergency response.",
@@ -296,6 +333,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏘️",
       image: "/images/services/services-8.jpg",
       excerpt: "Community-focused security for apartment complexes and gated neighborhoods that residents can rely on every day.",
+      seo: {
+        title: "Residential & Gated Communities Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force offers professional security services for residential properties and gated communities in Maryland and Washington DC. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force has extensive experience providing security services for residential communities, apartment complexes, condominiums, and gated neighborhoods throughout Northern Virginia, Maryland, and Washington DC.",
         "Our residential security officers are trained to balance enforcement with community relations — building trust with residents while maintaining a secure environment for all. We understand that your residents' sense of safety is paramount.",
@@ -324,6 +366,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏥",
       image: "/images/services/services-9.jpg",
       excerpt: "Specialized healthcare security officers trained to handle the unique and sensitive environment of hospitals and clinics.",
+      seo: {
+        title: "Hospital & Health Care Security Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides specialized hospital and healthcare security solutions to protect medical facilities in Maryland and Washington DC. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides specialized security services for hospitals, medical centers, clinics, and long-term care facilities. Healthcare environments require officers with a unique combination of sensitivity, patience, and decisive action capability.",
         "Our healthcare security officers receive specialized training in de-escalation techniques, patient handling, HIPAA awareness, and the specific emergency response protocols required in medical settings.",
@@ -352,6 +399,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🎓",
       image: "/images/services/services-10.jpg",
       excerpt: "Campus security solutions that create safe learning environments while fostering a positive community atmosphere.",
+      seo: {
+        title: "Schools Colleges & Universities Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides specialized security solutions for schools, colleges, and universities across Maryland and Washington DC. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides professional campus security services for K-12 schools, colleges, and universities. Creating a safe educational environment is one of the most important responsibilities any institution carries.",
         "Our education security officers are trained to build positive relationships with students and faculty while maintaining firm, consistent enforcement of campus security policies. We understand that the tone of a campus security program directly impacts the learning environment.",
@@ -380,6 +432,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏛️",
       image: "/images/services/services-11.jpg",
       excerpt: "Cleared, professional security personnel meeting the elevated standards required for government and diplomatic sites.",
+      seo: {
+        title: "Government & Diplomat Facilities Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides specialized security solutions for government and diplomatic facilities in Maryland and Washington DC. Request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides security services for government buildings, diplomatic facilities, embassies, and federal offices throughout Virginia, Maryland, and Washington DC.",
         "Our government and diplomatic security officers meet the highest standards of professionalism, background screening, and specialized training required for these sensitive environments. VSF understands the unique protocols, clearance requirements, and heightened security posture these facilities demand.",
@@ -408,6 +465,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🚨",
       image: "/images/services/services-12.jpg",
       excerpt: "Rapid alarm response officers dispatched immediately to verify and secure your property when an alarm activates.",
+      seo: {
+        title: "Alarm Response Services Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force delivers rapid alarm response services across Maryland, Washington DC, and Virginia. Protect your assets—request a quote today",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides rapid alarm response services for commercial and residential properties throughout the DC Metro area. When your alarm activates, VSF officers are dispatched immediately to investigate and secure your property.",
         "False alarms are costly and over-reliance on police response is inefficient. VSF alarm response bridges the gap — providing a trained, professional first responder who can assess the situation, secure the property, and coordinate with law enforcement only when truly necessary.",
@@ -436,6 +498,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🏦",
       image: "/images/services/services-13.jpg",
       excerpt: "Armed and unarmed bank security officers and ATM monitoring protecting financial institutions and their customers.",
+      seo: {
+        title: "Bank Security & ATM Service Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides specialized bank security and ATM protection services across Maryland and Washington DC. Secure your financial assets—request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides specialized security services for banks, credit unions, financial centers, and ATM locations throughout Virginia, Maryland, and Washington DC.",
         "Financial institutions face a unique set of security risks requiring officers with specific training in robbery deterrence, customer safety, cash handling observation, and emergency response protocols specific to banking environments.",
@@ -464,6 +531,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🔍",
       image: "/images/services/services-14.jpg",
       excerpt: "Licensed private investigation services covering surveillance, background checks, and corporate intelligence gathering.",
+      seo: {
+        title: "Investigations & Intelligence Maryland | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force offers expert investigation and intelligence services across Maryland and Washington DC. Protect your interests—request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force offers licensed private investigation and intelligence services for businesses, legal professionals, and individuals throughout Virginia, Maryland, and Washington DC.",
         "Our investigators combine years of law enforcement and security experience with advanced surveillance technology to deliver accurate, legally admissible findings. We operate with the utmost discretion, professionalism, and strict adherence to applicable laws.",
@@ -492,6 +564,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "🕴️",
       image: "/images/services/services-15.jpg",
       excerpt: "Discreet, highly trained executive protection specialists securing VIPs, executives, and dignitaries.",
+      seo: {
+        title: "VIP Executive Protection & Body Guard Service | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force offers VIP executive protection and bodyguard services across Maryland and Washington DC. Safeguard your profile—request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides elite executive protection and bodyguard services for corporate executives, dignitaries, celebrities, and high-net-worth individuals throughout Virginia, Maryland, and Washington DC.",
         "Our executive protection specialists are drawn from military, law enforcement, and intelligence backgrounds. They combine advanced threat assessment skills with the discretion and professional polish required in high-profile environments.",
@@ -520,6 +597,11 @@ export const defaultServicesPageData: ServicesPageData = {
       icon: "📦",
       image: "/images/services/services-16.jpg",
       excerpt: "Secure, time-sensitive courier and document delivery services handled with chain-of-custody integrity.",
+      seo: {
+        title: "Medical, Legal Courier & Delivery | Virginia Surveillance Force",
+        description: "Virginia Surveillance Force provides secure medical and legal courier services across Maryland and Washington DC. Safeguard your sensitive deliveries—request a quote today!",
+        keywords: COMMON_SERVICES_KEYWORDS,
+      },
       intro: [
         "Virginia Surveillance Force provides secure courier and delivery services for businesses, law firms, government agencies, and financial institutions throughout Virginia, Maryland, and Washington DC.",
         "When the security and timely delivery of your documents, packages, or sensitive materials is non-negotiable, VSF couriers provide full chain-of-custody documentation and real-time tracking.",

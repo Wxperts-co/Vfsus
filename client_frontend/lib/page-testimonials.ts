@@ -25,9 +25,9 @@ export interface TestimonialsPageData {
 
 export const defaultTestimonialsData: TestimonialsPageData = {
   seo: {
-    title: "Testimonials - Virginia Surveillance Force",
-    description: "Read letters and watch video reviews from our clients. Over the years, Virginia Surveillance Force has served a variety of businesses and residential communities.",
-    keywords: "testimonials, reviews, client feedback, security reviews, virginia surveillance force reviews"
+    title: "Licensed Security Guards Virginia | Virginia Surveillance Force",
+    description: "Virginia Surveillance Force provides licensed security guards across Virginia, Maryland, and Washington DC. Protect your assets today—request a quote!",
+    keywords: "security company Maryland, security services Washington DC, private security services Maryland, professional security services, licensed security guards Virginia, armed security services Virginia, armed security guards Maryland, unarmed security services Virginia, security services DC Maryland Virginia , Commercial security services Virginia, Residential security services Virginia, Corporate security services Virginia, Executive protection Virginia , 24/7 security services Virginia , Security patrol services Virginia, Fire watch services Virginia, Security guards Northern Virginia, security guards for hotels, security guards for hospitals ,security guards for schools, security guards for retail stores, security guards Alexandria VA, security services Manassas VA"
   },
   videos: [
     {

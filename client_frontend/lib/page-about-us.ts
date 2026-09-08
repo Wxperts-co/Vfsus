@@ -60,9 +60,9 @@ export function extractVideoList(video?: {
 
 export const defaultAboutUsData: AboutUsPageData = {
   seo: {
-    title: "About Us | Virginia Surveillance Force",
-    description: "At Virginia Surveillance Force, Inc., we work 24/7/365 to provide business, investigative, and protective services that protect your interests.",
-    keywords: "Virginia Surveillance Force, security, about us",
+    title: "Security Company in Maryland, Washington | Virginia Surveillance Force",
+    description: "Virginia Surveillance Force provides professional armed, unarmed, and patrol security services across Maryland, Washington, D.C., and Virginia",
+    keywords: "security company Maryland, security services Washington DC, private security services Maryland, professional security services, licensed security guards Virginia, armed security services Virginia, armed security guards Maryland, unarmed security services Virginia, security services DC Maryland Virginia , Commercial security services Virginia, Residential security services Virginia, Corporate security services Virginia, Executive protection Virginia , 24/7 security services Virginia , Security patrol services Virginia, Fire watch services Virginia, Security guards Northern Virginia, security guards for hotels, security guards for hospitals ,security guards for schools, security guards for retail stores, security guards Alexandria VA, security services Manassas VA",
   },
   intro: {
     headlineLeft: "Protecting What",

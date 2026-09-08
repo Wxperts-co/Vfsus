@@ -39,6 +39,163 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Virginia Surveillance Force",
+  "image": "https://www.vsfus.com/images/logo.png",
+  "@id": "https://www.vsfus.com/#localbusiness",
+  "url": "https://www.vsfus.com/",
+  "telephone": "+1-800-786-0395",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7544 Diplomat Dr #101",
+    "addressLocality": "Manassas",
+    "addressRegion": "VA",
+    "postalCode": "20109",
+    "addressCountry": "US"
+  },
+  "description": "Virginia Surveillance Force offers professional security services across Washington DC, Maryland, and Virginia. Get licensed armed and unarmed security guards—get a free quote today!.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.4",
+    "reviewCount": "34"
+  },
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Virginia"
+    },
+    {
+      "@type": "State",
+      "name": "Maryland"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Washington DC"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Security & Protective Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Concierge & Frontdesk"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Fire Watch"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Vehicle Patrol"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Armed & Unarmed Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Office & Corporate Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Malls, Retail Shopping Centers, Warehouses & Industrial Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Hotel, Motel & Resorts Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Residential & Gated Communities Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Hospital & Health Care Facilities Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Schools, Colleges & Universities Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Government & Diplomat Facilities Security"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Alarm Response"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bank Security & ATM Service"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Investigations & Intelligence"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "VIP Executive Protection & Body Guard Service"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Medical & Legal Courier and Delivery"
+        }
+      }
+    ]
+  }
+};
+
 export default async function RootLayout({
   children,
 }: {
@@ -48,6 +205,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className={`${bebasNeue.variable} ${barlow.variable}`}>
         {/* Google tag (gtag.js) */}
         <Script

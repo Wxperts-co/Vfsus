@@ -48,6 +48,8 @@ export interface MenuListItem {
   resourceItems?: ResourceArticle[];
 }
 
+const COMMON_MENU_KEYWORDS = "Emergency Security Services Maryland, security company Maryland, security services Washington DC, private security services Maryland, professional security services, licensed security guards Virginia, armed security services Virginia, armed security guards Maryland, unarmed security services Virginia, security services DC Maryland Virginia , Commercial security services Virginia, Residential security services Virginia, Corporate security services Virginia, Executive protection Virginia , 24/7 security services Virginia , Security patrol services Virginia, Fire watch services Virginia, Security guards Northern Virginia, security guards for hotels, security guards for hospitals ,security guards for schools, security guards for retail stores, security guards Alexandria VA, security services Manassas VA";
+
 const MENU_LIST_ITEMS: MenuListItem[] = [
   // 1 ── WHY CHOOSE US ────────────────────────────────────────────────────────
   {
@@ -55,6 +57,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "Why Choose Us?",
     icon: "❓",
     type: "standard",
+    seo: {
+      title: "Why Choose Us Virginia Surveillance Force",
+      description: "Virginia Surveillance Force delivers trusted, professional security solutions across Maryland and Washington DC. Protect your property—request a quote today!",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "Dear Business Owners, Executives & Management Staff",
       "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1987."
@@ -83,6 +90,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "How We Recruit?",
     icon: "🤝",
     type: "standard",
+    seo: {
+      title: "How We Recruit Virginia Surveillance Force",
+      description: "Virginia Surveillance Force rigorously recruits top security talent across Maryland and Washington DC. Partner with the best—request a quote today!",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "Employment Background Screening Hiring The Best; Partner For Success!! Virginia Surveillance Force is An Equal Employment Opportunity Employer.",
       "You can entrust your safety to our staff who often come from either police or military backgrounds. Background screening and employment verification are done on all applicants."
@@ -120,6 +132,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "FAQs",
     icon: "💬",
     type: "faq",
+    seo: {
+      title: "Virginia Surveillance Force FAQs-",
+      description: "Virginia Surveillance Force answers your top security questions across Maryland and Washington DC. Get expert answers—request a quote today!",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "This page covers the most frequently asked questions. Please click on the questions below. If you cannot find what you are looking for, please feel free to contact us — we shall be more than willing to answer any query. We look forward to working with you. Thank you."
     ],
@@ -247,6 +264,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "VSF Resource Library",
     icon: "📚",
     type: "resource",
+    seo: {
+      title: "VSF Resource Library| Virginia Surveillance Force ",
+      description: "The VSF Resource Library offers insightful security guides and expert articles to help you select the ideal protective solutions",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "Click on the articles below to access our library of free resources. These articles will help you select the right business, investigative, and protective services firm for your needs."
     ],
@@ -289,6 +311,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "VSF Three Divisions",
     icon: "🛡️",
     type: "standard",
+    seo: {
+      title: " VSF Three Divisions| Virginia Surveillance Force ",
+      description: "Virginia Surveillance Force features three specialized divisions: Security Guarding, Investigative Intelligence, and Executive Protection. Secure your organization—request a quote today!",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "To provide a complete range of security and business support, Virginia Surveillance Force operates under three specialized divisions.",
       "Each division is staffed by dedicated professionals who bring expertise, reliability, and precision to their roles, guaranteeing comprehensive protection and outstanding service."
@@ -324,6 +351,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "VSF Goes Nationwide!",
     icon: "🇺🇸",
     type: "standard",
+    seo: {
+      title: " VSF Goes Nationwid | Virginia Surveillance Force ",
+      description: "Virginia Surveillance Force now expands coverage nationwide, offering tailored protective services across the United States. Secure your operations today—request a quote!",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "Since 1987, Virginia Surveillance Force has been a trusted regional leader in security.",
       "Today, we are proud to offer nationwide coverage for permanent services, allowing companies with multi-state operations to secure their assets through a single, dependable partner."
@@ -359,6 +391,11 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     title: "Employment",
     icon: "💼",
     type: "standard",
+    seo: {
+      title: " Employment| Virginia Surveillance Force ",
+      description: "Virginia Surveillance Force hires dedicated security professionals across Maryland and Washington DC. Build your career with us—apply today!",
+      keywords: COMMON_MENU_KEYWORDS,
+    },
     intro: [
       "Build a career in security with a company that values professionalism, integrity, and dedication. Virginia Surveillance Force is An Equal Employment Opportunity Employer and a premier place to build your career.",
       "If you are ready to join a premier security team and secure a safer tomorrow, we invite you to apply. We look forward to welcoming you to the VSF family."
@@ -391,9 +428,9 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
 
 export const defaultMenuPageData: MenuPageData = {
   seo: {
-    title: "Menu | Virginia Surveillance Force",
-    description: "Explore the various services and resources offered by Virginia Surveillance Force.",
-    keywords: "security menu, vsf services, why choose us, security resources, security faqs",
+    title: "Emergency Security Services Maryland | Virginia Surveillance Force",
+    description: "Virginia Surveillance Force delivers trusted, professional security solutions across Maryland and Washington DC. Protect your property—request a quote today!",
+    keywords: COMMON_MENU_KEYWORDS,
   },
   menus: MENU_LIST_ITEMS,
 };
