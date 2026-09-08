@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: service.seo?.description || service.excerpt,
     keywords: service.seo?.keywords || "",
     alternates: {
-      canonical: `https://www.vsfus.com/services/${resolvedParams.slug}`,
+      canonical: `https://vsfus.com/services/${resolvedParams.slug}`,
     },
     openGraph: {
       title: service.seo?.title || `${service.title} | VSF`,
@@ -33,9 +33,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const data = await getServicesPageData();
-  
+
   const service = data.services.find(s => s.slug === resolvedParams.slug);
-  
+
   if (!service) {
     notFound();
   }

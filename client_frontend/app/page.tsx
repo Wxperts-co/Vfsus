@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: data.seo?.description || "Virginia Surveillance Force offers professional security services across Washington DC, Maryland, and Virginia. Get licensed armed and unarmed security guards—get a free quote today!",
     keywords: data.seo?.keywords || "security services Virginia, security company Maryland, security services Washington DC",
     alternates: {
-      canonical: "https://www.vsfus.com/",
+      canonical: "https://vsfus.com/",
     },
   };
 }

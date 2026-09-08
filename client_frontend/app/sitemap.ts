@@ -5,7 +5,7 @@ import { formsList } from '@/data/formsdetails';
 export const revalidate = 3600; // 1 hour dynamic revalidation
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.vsfus.com';
+  const baseUrl = 'https://vsfus.com';
 
   // 1. Static & Core Routes
   const staticRoutes: MetadataRoute.Sitemap = [

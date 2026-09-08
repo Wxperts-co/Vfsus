@@ -28,14 +28,14 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getGlobalSettings();
-  
+
   return {
-    metadataBase: new URL("https://www.vsfus.com"),
+    metadataBase: new URL("https://vsfus.com"),
     title: settings.seo.title,
     description: settings.seo.description,
     keywords: settings.seo.keywords,
     alternates: {
-      canonical: "https://www.vsfus.com/",
+      canonical: "https://vsfus.com/",
     },
     verification: {
       google: settings.seo.googleSiteVerification,
@@ -47,9 +47,9 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Virginia Surveillance Force",
-  "image": "https://www.vsfus.com/images/logo.png",
-  "@id": "https://www.vsfus.com/#localbusiness",
-  "url": "https://www.vsfus.com/",
+  "image": "https://vsfus.com/images/logo.png",
+  "@id": "https://vsfus.com/#localbusiness",
+  "url": "https://vsfus.com/",
   "telephone": "+1-800-786-0395",
   "priceRange": "$$",
   "address": {

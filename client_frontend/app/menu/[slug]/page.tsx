@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: seoDescription,
     keywords: seoKeywords,
     alternates: {
-      canonical: `https://www.vsfus.com/menu/${resolvedParams.slug}`,
+      canonical: `https://vsfus.com/menu/${resolvedParams.slug}`,
     },
   };
 }

@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: FormPageProps): Promise<Metad
         title: `${form.title || ''} | Virginia Surveillance Force`,
         description: form.description,
         alternates: {
-            canonical: `https://www.vsfus.com/forms/${slug}`,
+            canonical: `https://vsfus.com/forms/${slug}`,
         },
     };
 }
@@ -51,7 +51,7 @@ export default async function FormPage({ params }: FormPageProps) {
                     <div className="mb-10">
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
                             <div>
-                                
+
                                 <p className="text-[#8898aa]">{form.description}</p>
                                 <p className="text-[#c9a84c] text-sm mt-2">
                                     <span className="text-[#c9a84c]">*</span> Indicates required field

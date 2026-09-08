@@ -6,13 +6,13 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getTestimonialsPageData();
-  
+
   return {
     title: data.seo.title,
     description: data.seo.description,
     keywords: data.seo.keywords,
     alternates: {
-      canonical: "https://www.vsfus.com/testimonials",
+      canonical: "https://vsfus.com/testimonials",
     },
   };
 }
