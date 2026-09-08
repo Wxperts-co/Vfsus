@@ -753,7 +753,7 @@ export default function AdminHome() {
                       />
                     </div>
                     <div>
-                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Part 2 (e.g. Happy Customers)</label>
+                      <label className="block text-[13px] font-semibold text-[#cbd5e1] mb-1.5">Title Part 2 (e.g. Satisfied Clients)</label>
                       <input
                         type="text"
                         value={data.testimonialsSection.titlePart2}

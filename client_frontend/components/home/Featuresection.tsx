@@ -31,23 +31,23 @@ const FeaturesSection = () => {
   const features = [
     {
       icon: '/images/features-icon1.svg',
-      title: '24/7 Security Monitoring',
-      description: 'Continuous monitoring and rapid response to ensure round-the-clock protection.',
+      title: '24/7 Security Services',
+      description: 'Reliable security coverage for your property, personnel, and operations.',
     },
     {
       icon: '/images/features-icon2.svg',
-      title: 'Trained & Certified Officers',
-      description: 'All personnel are professionally trained, licensed, and background-verified.',
+      title: 'Trained & Licensed Officers',
+      description: 'Licensed, trained, and background-verified professionals you can trust.',
     },
     {
       icon: '/images/features-icon3.svg',
-      title: 'Rapid Emergency Response',
-      description: 'Quick deployment teams ready to act during critical situations.',
+      title: 'Professional Security Management',
+      description: 'Experienced supervision, accountability, and consistent service.',
     },
     {
       icon: '/images/features-icon4.svg',
-      title: 'Advanced Surveillance Systems',
-      description: 'Modern CCTV and monitoring technologies for proactive threat prevention.',
+      title: 'Advanced Security Technology',
+      description: 'Modern technology supporting effective, proactive protection.',
     }
   ];
 

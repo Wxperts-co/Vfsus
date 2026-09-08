@@ -30,51 +30,58 @@ const IndustriesSection = ({ data }: { data?: HomeWhyChooseSection }) => {
   const industries = data?.industries || [
     {
       id: 1,
-      icon: '/images/industry-icon1.svg',
-      title: 'Corporate Offices',
-      description: 'Executive protection and facility security',
+      icon: '/images/industry-icon6.svg',
+      title: 'Government & Diplomatic Facilities',
+      description: 'Trusted protection for sensitive facilities and personnel.',
       column: 1 as const
     },
     {
       id: 2,
-      icon: '/images/industry-icon2.svg',
-      title: 'Shopping Malls',
-      description: 'Retail security and loss prevention',
+      icon: '/images/industry-icon5.svg',
+      title: 'Hospitals & Healthcare Facilities',
+      description: 'Protecting patients, staff, visitors, and property.',
       column: 1 as const
     },
     {
       id: 3,
-      icon: '/images/industry-icon3.svg',
-      title: 'Construction Sites',
-      description: 'Asset protection and site monitoring',
-      column: 2 as const
+      icon: '/images/industry-icon1.svg',
+      title: 'Corporate Offices',
+      description: 'Security for people, property, and operations.',
+      column: 1 as const
     },
     {
       id: 4,
       icon: '/images/industry-icon4.svg',
       title: 'Hotels & Resorts',
-      description: 'Guest safety and property protection',
+      description: 'Protecting guests, staff, and property',
       column: 2 as const
     },
     {
       id: 5,
-      icon: '/images/industry-icon5.svg',
-      title: 'Hospitals',
-      description: 'Healthcare facility security services',
-      column: 3 as const
+      icon: '/images/industry-icon-warehouse.svg',
+      title: 'Warehouses & Industrial Facilities',
+      description: 'Securing assets, facilities, and operations.',
+      column: 2 as const
     },
     {
       id: 6,
-      icon: '/images/industry-icon6.svg',
-      title: 'Government Facilities',
-      description: 'High-security government installations',
+      icon: '/images/industry-icon2.svg',
+      title: 'Shopping Centers, Malls & Retail Properties',
+      description: 'Protecting customers, businesses, and assets.',
+      column: 3 as const
+    },
+    {
+      id: 7,
+      icon: '/images/industry-icon-residential.svg',
+      title: 'Residential, HOA & Gated Communities',
+      description: 'Protecting residents. Securing property.',
       column: 3 as const
     }
   ];
 
-  const column1Industries = industries.filter(i => i.column === 1);
-  const column2Industries = industries.filter(i => i.column === 2);
-  const column3Industries = industries.filter(i => i.column === 3);
+  const column1Industries = industries.filter((i, idx) => (i.column ? i.column === 1 : idx % 3 === 0));
+  const column2Industries = industries.filter((i, idx) => (i.column ? i.column === 2 : idx % 3 === 1));
+  const column3Industries = industries.filter((i, idx) => (i.column ? i.column === 3 : idx % 3 === 2));
 
   return (
     <div ref={sectionRef} className="sis-industry-we-save-section bg-[#002147] py-14 sm:py-20 lg:py-24 relative overflow-hidden">

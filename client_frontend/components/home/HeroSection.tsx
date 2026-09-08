@@ -41,7 +41,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg md:text-xl text-white max-w-md sm:max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
-            Our professionals are available to you 24 hours a day, 7 days a week.
+            Trusted. Dependable. Experienced. Peace of Mind.
           </p>
 
           {/* CTA Button */}

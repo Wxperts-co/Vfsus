@@ -159,7 +159,7 @@ const TestimonialsSection = ({ data }: { data?: HomeTestimonialsSection }) => {
                                     textShadow: '0 2px 8px rgba(0,0,0,0.4)'
                                 }}
                             >
-                                {data?.titlePart2 || "Happy Customers"}
+                                {data?.titlePart2 || "Satisfied Clients"}
                             </span>
                         </h2>
                     </div>
