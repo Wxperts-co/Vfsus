@@ -25,8 +25,8 @@ const Footer = () => {
 
                             <div className="sisf-m-text max-w-3xl mx-auto mb-6">
                                 <p className="text-white text-base md:text-lg font-sans">
-                                    Get professional, licensed, and trained security services for businesses, events, and
-                                    residences — with rapid response and 24/7 availability.
+                                    Get professional, licensed, and trained security services for businesses, organizations, facilities, events, and
+                                    communities — with rapid response and 24/7 availability.
                                 </p>
                             </div>
 
@@ -102,13 +102,13 @@ const Footer = () => {
 
                                     <div className="flex justify-start">
                                         <a
-                                            href="https://www.clustrmaps.com/map/vsfus.com"
+                                            href="https://mapmyvisitors.com/map/vsfus.com"
                                             title="Visitor Map for vsfus.com"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <img
-                                                src="https://www.clustrmaps.com/map_v2.png?u=gLr8&d=SF-5JEZtRjxsH38XGDoGr_6z41wKklRWMWGwygl6dQU"
+                                                src="https://mapmyvisitors.com/map.png?d=SF-5JEZtRjxsH38XGDoGr_6z41wKklRWMWGwygl6dQU&cl=ffffff"
                                                 alt="Vsfus Cluster map"
                                                 loading="lazy"
                                                 decoding="async"

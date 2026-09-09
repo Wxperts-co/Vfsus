@@ -86,17 +86,17 @@ export const defaultAboutUsData: AboutUsPageData = {
   },
   stats: [
     { id: "s1", icon: "🕐", label: "24 / 7 / 365 Operations" },
-    { id: "s2", icon: "🛡️", label: "Licensed & Bonded" },
-    { id: "s3", icon: "🎖️", label: "Certified Officers" },
-    { id: "s4", icon: "⭐", label: "High Repeat-Client Rate" },
+    { id: "s2", icon: "🛡️", label: "Licensed, Insured & Bonded" },
+    { id: "s3", icon: "🎖️", label: "Licensed & Certified Officers" },
+    { id: "s4", icon: "⭐", label: "High Client Retention" },
   ],
   promises: {
     headlineLeft: "Our",
     headlineRight: "Commitments",
     items: [
       { id: "p1", title: "Ethics First", body: "We do not compromise services to maximize profits. Honesty and fairness drive every decision we make." },
-      { id: "p2", title: "Premium Standards", body: "We put your mind at ease with top-notch, unsurpassed services — treating clients, vendors, and employees with utmost respect." },
-      { id: "p3", title: "Reasonable Rates", body: "Industry-leading security at competitive pricing. Ongoing or emergency — we have a solution that fits your budget." },
+      { id: "p2", title: "Premium Standards", body: "We put your mind at ease with exceptional security services, treating clients, vendors, and employees with the utmost respect." },
+      { id: "p3", title: "Reasonable Rates", body: "Professional security at competitive pricing, with practical solutions that fit your needs and budget." },
     ],
   },
   training: {

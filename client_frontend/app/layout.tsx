@@ -208,14 +208,14 @@ export default async function RootLayout({
   const settings = await getGlobalSettings();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
-      <body className={`${bebasNeue.variable} ${barlow.variable}`}>
+      <body className={`${bebasNeue.variable} ${barlow.variable}`} suppressHydrationWarning>
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-8VBD9DWJZ5"

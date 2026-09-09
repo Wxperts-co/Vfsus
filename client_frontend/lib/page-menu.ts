@@ -64,7 +64,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     },
     intro: [
       "Dear Business Owners, Executives & Management Staff",
-      "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1987."
+      "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we have worked closely with our clients to develop effective security strategies for their organizations since 1987."
     ],
     sections: [
       {
