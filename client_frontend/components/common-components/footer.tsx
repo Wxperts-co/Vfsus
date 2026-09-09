@@ -102,14 +102,14 @@ const Footer = () => {
 
                                     <div className="flex justify-start">
                                         <a
-                                            href="https://mapmyvisitors.com/map/vsfus.com"
-                                            title="Visitor Map for vsfus.com"
+                                            href="https://mapmyvisitors.com/"
+                                            title="Visitor Map for vfsus.com"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <img
                                                 src="https://mapmyvisitors.com/map.png?d=SF-5JEZtRjxsH38XGDoGr_6z41wKklRWMWGwygl6dQU&cl=ffffff"
-                                                alt="Vsfus Cluster map"
+                                                alt="VFS Cluster map"
                                                 loading="lazy"
                                                 decoding="async"
                                                 width="160"
