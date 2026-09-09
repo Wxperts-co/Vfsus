@@ -70,6 +70,20 @@ h6,
 .animate-scroll-footer:hover {
   animation-play-state: paused;
 }
+
+@keyframes scrollTicker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.animate-scroll-ticker,
+.animate-scroll-x {
+  animation: scrollTicker 25s linear infinite;
+  will-change: transform;
+}
+.animate-scroll-ticker:hover,
+.animate-scroll-x:hover {
+  animation-play-state: paused;
+}
 .animate-float-slow {
   animation: float-slow 15s ease-in-out infinite;
   will-change: transform;

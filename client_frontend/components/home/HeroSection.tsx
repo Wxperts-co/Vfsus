@@ -19,7 +19,6 @@ export default function HeroSection() {
           className="object-cover"
         />
 
-        {/* Video only loaded on desktop via deferred client component */}
         <DesktopHeroVideo />
       </div>
 
@@ -75,7 +74,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+      <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
         <div className="animate-bounce">
           <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-yellow-400 rounded-full flex justify-center">
             <div className="w-1 h-2 sm:h-3 bg-yellow-400 rounded-full mt-2" />
@@ -84,24 +83,44 @@ export default function HeroSection() {
       </div>
 
       {/* Scrolling Text Banner */}
-      <div className="bg-[#eab308] py-3 sm:py-4 w-full overflow-hidden flex items-center whitespace-nowrap relative z-20 -mt-11 sm:-mt-12 md:-mt-14">
-        <div className="flex-shrink-0 flex items-center gap-6 animate-scroll-x">
-          {[...Array(4)].map((_, idx) => (
-            <div key={idx} className="flex items-center gap-6">
-              <h4 className="leading-none flex items-center m-0">
-                <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
-                  Ensuring Safety & Security
-                </span>
-                <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
-              </h4>
-              <h4 className="leading-none flex items-center m-0">
-                <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
-                  Emergency (24/7) Response
-                </span>
-                <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
-              </h4>
-            </div>
-          ))}
+      <div className="bg-[#eab308] py-3 sm:py-4 w-full overflow-hidden flex items-center whitespace-nowrap relative z-20 -mt-11 sm:-mt-12 md:-mt-14 shadow-md select-none">
+        <div className="flex w-max animate-scroll-ticker">
+          <div className="flex items-center gap-6 pr-6">
+            {[...Array(4)].map((_, idx) => (
+              <div key={idx} className="flex items-center gap-6">
+                <h4 className="leading-none flex items-center m-0">
+                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                    Ensuring Safety & Security
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+                </h4>
+                <h4 className="leading-none flex items-center m-0">
+                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                    Emergency (24/7) Response
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+                </h4>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-6 pr-6" aria-hidden="true">
+            {[...Array(4)].map((_, idx) => (
+              <div key={idx} className="flex items-center gap-6">
+                <h4 className="leading-none flex items-center m-0">
+                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                    Ensuring Safety & Security
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+                </h4>
+                <h4 className="leading-none flex items-center m-0">
+                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                    Emergency (24/7) Response
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+                </h4>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
