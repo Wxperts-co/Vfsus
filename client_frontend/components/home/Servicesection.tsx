@@ -31,20 +31,23 @@ const ServicesSection = () => {
     const services = [
         {
             id: 1,
+            slug: 'armed-and-unarmed-security',
             image: '/images/homepage-services-1.jpeg',
             title: 'Armed & Unarmed Security',
             description: 'Virginia Surveillance Force understands that We live in a world where the concerns for safety and security are escalating on a daily basis.',
         },
         {
             id: 2,
+            slug: 'office-and-corporate-security',
             image: '/images/homepage-services-2.jpeg',
             title: 'Office & Corporate Security',
             description: 'Virginia Surveillance Force uniformed and plain clothed officers are experts when it comes to protect office buildings and corporations.',
         },
         {
             id: 3,
+            slug: 'vehicle-patrol-services',
             image: '/images/homepage-services-3.jpeg',
-            title: 'Vehicle Patrol',
+            title: 'Vehicle Patrol Services',
             description: 'Virginia Surveillance Force patrol program include a wide variety of techniques designed to provide effective deterrent agents.',
         }
     ];
@@ -107,7 +110,7 @@ const ServicesSection = () => {
 
                                     {/* Service Image */}
                                     <div className="sisf-e-service-image relative overflow-hidden shrink-0">
-                                        <Link href="/services" className="sisf-sis-page-link block">
+                                        <Link href={`/services/${service.slug}`} className="sisf-sis-page-link block">
                                             <figure className="sis-image-anime relative overflow-hidden m-0">
                                                 <div className="relative overflow-hidden">
                                                     <Image
@@ -132,7 +135,7 @@ const ServicesSection = () => {
                                         <div className="sisf-sis-e-title mb-2 min-h-[2.8rem] flex items-center">
                                             <h4 className="sisf-e-title text-white text-xl font-bold leading-tight line-clamp-2 m-0">
                                                 <Link
-                                                    href="/services"
+                                                    href={`/services/${service.slug}`}
                                                     className="text-white hover:text-[#eab308] transition-colors duration-200"
                                                 >
                                                     {service.title}

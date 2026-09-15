@@ -792,7 +792,7 @@ export default function AdminServices() {
                               <button
                                 type="button"
                                 onClick={() => {
-                                  const defaultImg = `/images/services/services-${Math.min(editingServiceIndex + 1, 16)}.jpg`;
+                                  const defaultImg = `/images/services/services-${Math.min(editingServiceIndex + 1, 18)}.jpg`;
                                   updateActiveService("image", defaultImg);
                                 }}
                                 className="flex items-center gap-1.5 px-3 py-2 bg-[#1a2845] hover:bg-[#223358] text-[#cbd5e1] border border-[rgba(201,168,76,0.2)] rounded-xl text-xs font-semibold transition-colors"
