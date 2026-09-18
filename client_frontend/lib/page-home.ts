@@ -3,7 +3,7 @@
 export interface HomeAboutCounter {
   number: number;
   label: string;
-  symbol: string; // e.g., "+", "%"
+  symbol: string;
 }
 
 export interface HomeAboutSection {
@@ -71,9 +71,9 @@ export interface HomePageData {
 
 export const defaultHomePageData: HomePageData = {
   seo: {
-    title: "Home | Virginia Surveillance Force",
-    description: "Virginia Surveillance Force is a premier security and investigative firm.",
-    keywords: "security, investigation, protection",
+    title: "Security Services Washington, DC | Virginia Surveillance Force",
+    description: "Virginia Surveillance Force offers professional security services across Washington DC, Maryland, and Virginia. Get licensed armed and unarmed security guards—get a free quote today!",
+    keywords: "security services Virginia, security company Maryland, security services Washington DC, private security services Maryland, professional security services, licensed security guards Virginia, armed security services Virginia, armed security guards Maryland, unarmed security services Virginia, security services DC Maryland Virginia , Commercial security services Virginia, Residential security services Virginia,Corporate security services Virginia, Executive protection Virginia , 24/7 security services Virginia , Security patrol services Virginia, Fire watch services Virginia, Security guards Northern Virginia, security guards for hotels, security guards for hospitals ,security guards for schools, security guards for retail stores, security guards Alexandria VA, security services Manassas VA",
   },
   aboutSection: {
     videoUrl: "https://fast.wistia.net/embed/iframe/bukr8v224n",
@@ -93,29 +93,30 @@ export const defaultHomePageData: HomePageData = {
     subtitle: "WHY CHOOSE US",
     titleLine1: "Protecting",
     titleLine2: "Diverse Sectors",
-    description: "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we work closely with our clients to develop the correct security strategy for their organizations since 1987.",
+    description: "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we have worked closely with our clients to develop effective security strategies for their organizations since 1987.",
     backgroundImage: "/images/about-bg-section.webp",
     rightImage: "/images/choose-section.jpg",
     industries: [
-      { id: 1, icon: "/images/industry-icon1.svg", title: "Corporate Offices", description: "Executive protection and facility security", delay: "100", column: 1 },
-      { id: 2, icon: "/images/industry-icon2.svg", title: "Shopping Malls", description: "Retail security and loss prevention", delay: "200", column: 1 },
-      { id: 3, icon: "/images/industry-icon3.svg", title: "Construction Sites", description: "Asset protection and site monitoring", delay: "300", column: 2 },
-      { id: 4, icon: "/images/industry-icon4.svg", title: "Hotels & Resorts", description: "Guest safety and property protection", delay: "400", column: 2 },
-      { id: 5, icon: "/images/industry-icon5.svg", title: "Hospitals", description: "Healthcare facility security services", delay: "500", column: 3 },
-      { id: 6, icon: "/images/industry-icon6.svg", title: "Government Facilities", description: "High-security government installations", delay: "600", column: 3 }
+      { id: 1, icon: "/images/industry-icon6.svg", title: "Government & Diplomatic Facilities", description: "Trusted protection for sensitive facilities and personnel.", delay: "100", column: 1 },
+      { id: 2, icon: "/images/industry-icon5.svg", title: "Hospitals & Healthcare Facilities", description: "Protecting patients, staff, visitors, and property.", delay: "200", column: 1 },
+      { id: 3, icon: "/images/industry-icon1.svg", title: "Corporate Offices", description: "Security for people, property, and operations.", delay: "300", column: 1 },
+      { id: 4, icon: "/images/industry-icon4.svg", title: "Hotels & Resorts", description: "Protecting guests, staff, and property", delay: "400", column: 2 },
+      { id: 5, icon: "/images/industry-icon-warehouse.svg", title: "Warehouses & Industrial Facilities", description: "Securing assets, facilities, and operations.", delay: "500", column: 2 },
+      { id: 6, icon: "/images/industry-icon2.svg", title: "Shopping Centers, Malls & Retail Properties", description: "Protecting customers, businesses, and assets.", delay: "600", column: 3 },
+      { id: 7, icon: "/images/industry-icon-residential.svg", title: "Residential, HOA & Gated Communities", description: "Protecting residents. Securing property.", delay: "700", column: 3 }
     ]
   },
   testimonialsSection: {
     titlePart1: "Our",
-    titlePart2: "Happy Customers",
+    titlePart2: "Satisfied Clients",
     backgroundImage: "/images/about-bg-section.webp",
     googleReviewLogo: "/images/google-review-logo.png",
     testimonials: [
-      { id: 1, description: "I initially hired VA. Surveillance Force during thanksgiving on a temporary basis, but the level of service quickly exceeded our expectations...", rating: 5, name: "Lily Z." },
-      { id: 2, description: "We switched to Virginia Surveillance company after ongoing issues with our previous provider. The difference was immediate...", rating: 5, name: "Henry Anatsui" },
-      { id: 3, description: "On July 4th, after residents had finished fireworks and gone to sleep, Virginia Surveillance Force officer noticed smoke on the rooftop around 1:40 AM...", rating: 5, name: "Della Paul" },
-      { id: 4, description: "The security team at the entrance struck an ideal balance between ensuring safety and providing warm hospitality...", rating: 5, name: "Omid Karimi" },
-      { id: 5, description: "I have witnessed the security officers at the private school consistently professional, approachable, and welcoming...", rating: 5, name: "Hermann E" }
+      { id: 1, description: "I initially hired VA. Surveillance Force during thanksgiving on a temporary basis, but the level of service quickly exceeded our expectations. The officers were professional, reliable, and consistently alert, with excellent communication and attention to detail. Their strong presence and proactive approach impressed our board so much that we decided to move forward with a permanent engagement. Highly recommended for dependable, high quality security services.", rating: 5, name: "Lily Z." },
+      { id: 2, description: "We switched to Virginia Surveillance company after ongoing issues with our previous provider. The difference was immediate. Their officers are professional, alert, and highly disciplined. Management is responsive and actively involved. If you want security done right, this is the company to hire.", rating: 5, name: "Henry Anatsui" },
+      { id: 3, description: "On July 4th, after residents had finished fireworks and gone to sleep, Virginia Surveillance Force officer noticed smoke on the rooftop around 1:40 AM. He promptly called the fire department and began alerting and evacuating residents. We sincerely appreciate his alertness and quick action in keeping everyone safe and preventing a fire.", rating: 5, name: "Della Paul" },
+      { id: 4, description: "The security team at the entrance struck an ideal balance between ensuring safety and providing warm hospitality. Their ability to maintain a secure environment while creating a welcoming atmosphere was truly appreciated. Thank you to Virginia Surveillance Force management team for the excellent service.", rating: 5, name: "Omid Karimi" },
+      { id: 5, description: "I have witnessed the security officers at the private school consistently professional, approachable, and welcoming. Dressed in an authoritative uniform, they greet every child and parent with a warm smile, creating a safe and reassuring environment from the moment you arrive. Their presence is truly valued, Thank you Virginia Surveillance for keeping our children safe and protected.", rating: 5, name: "Hermann E" }
     ],
     logoSlides: [
       { id: 1, image: "/images/client-1111.jpg", alt: "Client Logo 1" },

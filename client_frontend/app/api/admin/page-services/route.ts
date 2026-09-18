@@ -41,6 +41,7 @@ export async function POST(req: Request) {
       invalidateSettingsCache("page_services");
       revalidatePath("/services");
       revalidatePath("/services/[slug]", "page");
+      revalidatePath("/", "layout");
       revalidatePath("/");
     } catch (revalidateErr) {
       console.warn("Revalidation warning:", revalidateErr);

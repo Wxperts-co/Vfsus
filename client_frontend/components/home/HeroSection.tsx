@@ -90,13 +90,19 @@ export default function HeroSection() {
               <div key={idx} className="flex items-center gap-6">
                 <h4 className="leading-none flex items-center m-0">
                   <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
-                    Ensuring Safety & Security
+                    Professional Security
                   </span>
                   <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
                 </h4>
                 <h4 className="leading-none flex items-center m-0">
                   <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
-                    Emergency (24/7) Response
+                    Trusted Protection
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+                </h4>
+                <h4 className="leading-none flex items-center m-0">
+                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                    Since 1987
                   </span>
                   <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
                 </h4>
@@ -108,13 +114,19 @@ export default function HeroSection() {
               <div key={idx} className="flex items-center gap-6">
                 <h4 className="leading-none flex items-center m-0">
                   <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
-                    Ensuring Safety & Security
+                    Professional Security
                   </span>
                   <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
                 </h4>
                 <h4 className="leading-none flex items-center m-0">
                   <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
-                    Emergency (24/7) Response
+                    Trusted Protection
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
+                </h4>
+                <h4 className="leading-none flex items-center m-0">
+                  <span className="heading-font font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase text-[#002147]">
+                    Since 1987
                   </span>
                   <span className="text-xl sm:text-2xl md:text-3xl pl-4 text-[#002147]">★</span>
                 </h4>
