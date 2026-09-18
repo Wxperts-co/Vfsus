@@ -216,7 +216,7 @@ export default function ServiceDetailClient({ service, allServices }: ServiceDet
           border-radius: 8px; overflow: hidden; margin-bottom: 40px;
           box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.2);
         }
-        .sd-hero img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+        .sd-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .sd-hero-overlay {
           position: absolute; inset: 0;
           background: linear-gradient(160deg, rgba(11,17,32,0.2) 0%, rgba(11,17,32,0.2) 100%);
