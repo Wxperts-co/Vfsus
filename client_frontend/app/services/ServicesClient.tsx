@@ -79,11 +79,11 @@ function ServiceCard({ item, index }: { item: ServiceData; index: number }) {
         style={{ textDecoration: "none" }}
       >
         {/* Image */}
-        <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#1a2845] shrink-0">
+        <div className="relative w-full h-[180px] sm:h-[190px] overflow-hidden bg-[#1a2845] shrink-0">
           <img
             src={item.image || "/images/services/services-1.jpg"}
             alt={item.title}
-            className="w-full h-full object-cover transition-transform duration-500"
+            className="w-full h-full object-fill transition-transform duration-500"
             style={{ transform: hovered ? "scale(1.08)" : "scale(1)" }}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
