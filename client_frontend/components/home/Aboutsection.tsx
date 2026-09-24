@@ -95,8 +95,8 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                         {/* Video Section with Facade Pattern for Zero Initial CPU / Network Penalty */}
                         <div className="sisf-sis-about-inner-image relative mb-8">
                             <figure className="sis-image-anime sis-reveal relative overflow-hidden w-full group rounded-[20px] m-0">
-                                <div className="relative overflow-hidden w-full rounded-[20px]">
-                                    <div className="relative w-[87%] aspect-video rounded-[20px] overflow-hidden bg-[#0b1120] shadow-2xl">
+                                <div className="relative overflow-hidden w-full rounded-[20px] flex justify-center">
+                                    <div className="relative w-full aspect-video rounded-[20px] overflow-hidden bg-[#0b1120] shadow-2xl mx-auto">
                                         {!showPlayer ? (
                                             /* High-performance Video Facade */
                                             <div 
@@ -111,7 +111,7 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                                                     src="/images/about-section-1.webp"
                                                     alt="Watch About Us Video"
                                                     fill
-                                                    sizes="(max-width: 768px) 340px, 500px"
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                                                     className="object-cover transition-transform duration-500 group-hover/facade:scale-105 opacity-90"
                                                 />
                                                 <div className="absolute inset-0 bg-black/40 group-hover/facade:bg-black/20 transition-colors" />

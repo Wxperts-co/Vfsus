@@ -48,7 +48,7 @@ const ServicesSection = () => {
             slug: 'vehicle-patrol-services',
             image: '/images/homepage-services-3.jpeg',
             title: 'Vehicle Patrol Services',
-            description: 'Virginia Surveillance Force patrol program include a wide variety of techniques designed to provide effective deterrent agents.',
+            description: 'Virginia Surveillance Force patrol program includes a wide variety of techniques designed to provide effective deterrence.',
         }
     ];
 

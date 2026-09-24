@@ -303,6 +303,10 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
           font-size: 0.98rem; font-weight: 300;
           color: rgba(244,246,248,0.8); line-height: 1.8; margin: 0 0 12px;
         }
+        .menu-section-card strong {
+          color: var(--gold-light);
+          font-weight: 500;
+        }
         .menu-section-card p:last-child { margin-bottom: 0; }
 
         /* Interactive Accordions */

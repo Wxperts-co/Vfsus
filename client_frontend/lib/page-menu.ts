@@ -63,22 +63,80 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       keywords: COMMON_MENU_KEYWORDS,
     },
     intro: [
-      "Dear Business Owners, Executives & Management Staff",
-      "When selecting a security contractor, you're looking for a company that knows its business, has an established reputation and plays on your team. At Virginia Surveillance Force, we have worked closely with our clients to develop effective security strategies for their organizations since 1987."
+      "Experience. Professionalism. Accountability. Protection.",
+      "Since 1987, Virginia Surveillance Force, Inc. has provided professional security solutions tailored to the needs of our clients, their properties, and their organizations.",
+      "When you choose a security company, you need more than someone simply providing personnel. You need a security partner you can rely on.",
+      "That is what VSF is committed to providing."
     ],
     sections: [
       {
-        title: "Quality People & Professional Standards",
+        title: "Established Since 1987",
         body: [
-          "No operation can succeed without quality people. That's why Virginia Surveillance Force provides highly trained, professional officers who can help make your facility safer, more secure, and less vulnerable. We select state-certified or registered personnel to meet your protective needs.",
-          "Our insured officers are your eyes and ears, and they act in your organization's best interest. We provide an authoritative presence and offer a variety of uniform choices that reflect respect and professionalism: from 'hard look' uniforms (police/military style) to 'soft look' uniforms (executive blazers) or business casual wear, bringing ultimate security and peace of mind."
+          "Decades of experience providing professional security and protective services."
         ]
       },
       {
-        title: "A Partnership Focused on Your Satisfaction",
+        title: "Professional Personnel",
         body: [
-          "We would appreciate the opportunity to submit a proposal. Virginia Surveillance Force values your business and the confidence and goodwill you place in us. Customers like you are the foundation of our success, and we want you to know that we value your partnership.",
-          "We are always eager to serve you, and your satisfaction is our top priority. We will do everything possible to ensure your expectations are exceeded. If you are interested in a trusted name in security, protective, and business services, it will be our pleasure serving you. We look forward to being your security partner. We will work with you to secure a safer tomorrow, today."
+          "Qualified and properly trained security professionals held to high standards of conduct, appearance, vigilance, and customer service."
+        ]
+      },
+      {
+        title: "Custom Security Solutions",
+        body: [
+          "Security solutions designed around the client’s property, environment, concerns, and specific needs."
+        ]
+      },
+      {
+        title: "Accountability & Communication",
+        body: [
+          "Communication, reporting, supervision, responsiveness, and consistent performance."
+        ]
+      },
+      {
+        title: "Professional Presence",
+        body: [
+          "A visible, professional security presence representing both VSF and the client organization."
+        ]
+      },
+      {
+        title: "A Security Partner — Not Just A Contractor",
+        body: [
+          "Our goal is to build a professional relationship with our clients and provide security they can confidently rely on."
+        ]
+      },
+      {
+        title: "The VSF Difference",
+        body: [
+          "The right people. The right approach. The right level of protection.",
+          "We bring professional personnel, proper procedures, accountability, supervision, and customized security solutions together to provide protection built around each assignment.",
+          "Your Security Matters. Your Trust Matters. Your Peace of Mind Matters.",
+          "Virginia Surveillance Force, Inc. — Professional Security. Trusted Protection. Protecting What Matters Most."
+        ]
+      },
+      {
+        title: "Quality People & Professional Standards",
+        body: [
+          "Effective security starts with the right people.",
+          "At Virginia Surveillance Force, we understand that the officer assigned to your property represents more than our company — they represent your organization in the eyes of your employees, customers, residents, guests, and visitors.",
+          "That’s why we place a strong emphasis on selecting qualified, professional, and properly trained security personnel. Our officers are expected to meet applicable licensing, registration, certification, and assignment requirements and maintain high standards of professionalism, appearance, discipline, vigilance, communication, reliability, and customer service.",
+          "Our security professionals serve as an extension of your organization, providing a visible, professional, and dependable presence while helping protect your people, property, assets, and interests.",
+          "When appropriate for the assignment, we can provide personnel in traditional uniformed security, business-professional, or executive-style attire to match the environment and level of service required.",
+          "Our goal is simple: put the right people in the right environment, represent your organization professionally, and provide the level of security and service you expect.",
+          "Professional People. Professional Standards. Professional Security."
+        ]
+      },
+      {
+        title: "A Security Partnership Built Around You",
+        body: [
+          "We don’t want to be just another security contractor. We want to be the security partner you can rely on.",
+          "We understand that when you hire a security company, you are trusting us with your people, property, assets, operations, and reputation. We take that responsibility seriously.",
+          "From the beginning of an assignment through ongoing service, we believe in clear communication, accountability, responsiveness, and consistent performance.",
+          "We take the time to understand your expectations, listen to your concerns, and work with you to provide a security solution designed around your needs.",
+          "As your needs change, our approach can adapt with you.",
+          "Our goal is to earn your trust, build a lasting professional relationship, and become the security company you can confidently rely on.",
+          "YOUR SECURITY MATTERS.",
+          "YOUR TRUST MATTERS. YOUR PEACE OF MIND MATTERS."
         ]
       }
     ]

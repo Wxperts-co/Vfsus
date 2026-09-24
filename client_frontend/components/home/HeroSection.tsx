@@ -60,7 +60,7 @@ export default function HeroSection() {
               ['40+', 'Years Experience'],
               ['850+', 'Clients Protected'],
               ['24/7', 'Support'],
-              ['100%', 'Satisfaction'],
+              ['100%', 'Trust'],
             ].map(([value, label]) => (
               <div key={label} className="text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-1">
