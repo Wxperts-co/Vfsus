@@ -25,9 +25,8 @@ const Navbar = () => {
         { name: 'Why Choose Us?', href: '/menu/why-choose-us' },
         { name: 'How We Recruit?', href: '/menu/how-we-recruit' },
         { name: 'FAQs', href: '/menu/faqs' },
-        { name: 'VSF Resource Library', href: '/menu/vsf-resource-library' },
-        { name: 'VSF Three Divisions', href: '/menu/vsf-three-divisions' },
-        { name: 'VSF Goes Nationwide!', href: '/menu/vsf-goes-nationwide' },
+        { name: 'Nationwide Security Services — ASF', href: '/menu/nationwide-security-services-asf' },
+        { name: 'Security Insights', href: '/insights' },
         { name: 'Employment', href: '/menu/employment' },
       ]
     },

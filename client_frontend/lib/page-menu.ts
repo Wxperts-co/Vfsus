@@ -154,31 +154,53 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       keywords: COMMON_MENU_KEYWORDS,
     },
     intro: [
-      "Employment Background Screening Hiring The Best; Partner For Success!! Virginia Surveillance Force is An Equal Employment Opportunity Employer.",
-      "You can entrust your safety to our staff who often come from either police or military backgrounds. Background screening and employment verification are done on all applicants."
+      "The quality of our security service begins with the quality of our people.",
+      "At Virginia Surveillance Force, we take the selection, screening, training, and preparation of our security professionals seriously. We look for individuals who demonstrate professionalism, reliability, responsibility, strong communication, sound judgment, and the ability to meet the demands of the assignment.",
+      "Our goal is to place the right people in the right positions and provide our clients with security professionals who are prepared to represent both VSF and your organization with professionalism and accountability.",
+      "The people we place on your property matter."
     ],
     sections: [
       {
+        title: "Employment Background Screening",
+        body: [
+          "Selecting Professionals You Can Trust",
+          "At Virginia Surveillance Force, we believe the quality of our security service begins with the quality of our hiring process. Before an officer is assigned to a client location, we carefully evaluate qualifications, experience, licensing, reliability, and suitability for the position.",
+          "Our screening process is designed to help ensure that the professionals entrusted with protecting your property, employees, visitors, and assets meet our standards for professionalism and responsibility.",
+          "Many of our security professionals bring valuable experience from law enforcement, military, security, customer service, and other professional backgrounds. Applicants are subject to appropriate employment verification and background screening procedures, consistent with the position and applicable requirements.",
+          "Our goal is simple: carefully select the right people to represent VSF and our clients professionally."
+        ]
+      },
+      {
         title: "Vetting & Screening Protocols",
         body: [
-          "It is our responsibility for every aspect of the security function, which includes hiring, screening, placing, and managing personnel, as well as ensuring site coverage and accountability. As a service provider, we make sure that applicants meet all regulatory hiring and licensing requirements.",
-          "We verify educational backgrounds, work history, employment references, criminal records, Social Security numbers, driver's license validity, and ensure that applicable state licensing procedures are met. Our staff go through criminal history background checks through the Department of Criminal Justice Services (DCJS) and the Federal Bureau of Investigation (FBI). All staff submit fingerprints and register or certify themselves, ensuring safety and peace of mind.",
-          "Virginia Surveillance Force absolutely minimizes the level of exposure to liability. We are dedicated to recruiting and retaining individuals with characteristics of trustworthiness, motivation, and reliability. All prospective employees are screened for alcohol and illegal drugs. Our clients can also request drug screening on an annual or random basis. All candidates are interviewed in person to determine their suitability."
+          "Security is a position of trust. That is why Virginia Surveillance Force takes the selection and vetting of our personnel seriously.",
+          "Our hiring process includes verification of employment history, references, qualifications, licensing or registration requirements, and other information applicable to the position and jurisdiction.",
+          "Where required or appropriate, personnel may undergo criminal history and fingerprint-based background screening through applicable state and federal processes.",
+          "We also evaluate each candidate’s professionalism, communication skills, judgment, reliability, and ability to represent VSF and our clients appropriately.",
+          "Our goal is simple: put the right person in the right position and give our clients confidence in the professionals entrusted with their security."
         ]
       },
       {
-        title: "How We Train Our Staff?",
+        title: "How We Train Our Staff",
         body: [
-          "At Virginia Surveillance Force, we take great pride in our team of capable and extensively trained professionals. Before an assignment is given, all of our staff and officers attend a comprehensive training program. Training is provided to our staff through the Virginia Surveillance Force Academy, State-certified training academies, and through the Department of Criminal Justice Services (DCJS).",
-          "Our staff get trained, pass licensing exams, and possess state-issued registration or certification ID cards. Training is provided for new staff, officers, and new supervisors. Our training programs meet or exceed state-mandated training requirements.",
-          "Management and officers are also given ongoing training, which reduces turnover, improves productivity and morale, and helps minimize liability exposure. Whenever our staff is assigned to a new location, they undergo an On-the-Job Training Program that includes site orientation, site-specific functions, emergency procedures, and public relations. Our staff is also encouraged to continue their education via In-Service Training."
+          "Hiring the right people is only the beginning.",
+          "At Virginia Surveillance Force, we believe professional security personnel must be properly prepared for the responsibilities of their assignment.",
+          "Before assignment, our officers receive training appropriate to their duties and applicable licensing requirements. Training may include security procedures, access control, patrol operations, emergency response, report writing, communication, customer service, de-escalation, and other assignment-specific responsibilities.",
+          "Officers assigned to a new location also receive site-specific orientation and on-the-job training covering the property’s procedures, post orders, emergency protocols, and client expectations.",
+          "Training does not stop after the first day. We emphasize continuing education, in-service training, supervision, and ongoing performance development so our personnel remain prepared to meet the changing needs of our clients.",
+          "A well-trained officer doesn’t simply stand at a post. They understand the assignment, recognize potential problems, communicate effectively, follow established procedures, and know when to take appropriate action."
         ]
       },
       {
-        title: "Peace Of Mind?",
+        title: "Peace of Mind",
         body: [
-          "We provide the peace of mind you are looking for. We have empowered management teams close to all our clients to assure personal attention from an experienced management team that is familiar with your needs, trends, and labor market. It is our goal to deliver value to our clients by commitment and quality to ensure 100% satisfaction. We identify your needs and perform duties to your specifications.",
-          "Virginia Surveillance Force is a stable, American-owned presence with consistent management and a long-term focus that is unmatched in our market. If you want dedication, honor, and focus, you can depend on Virginia Surveillance Force to take the utmost care of you, your business, and its safety."
+          "MANAGEMENT THAT STAYS INVOLVED",
+          "When you hire a security company, you should not have to wonder who is managing your account, who is responsible for your service, or whether your concerns will be addressed.",
+          "At Virginia Surveillance Force, management and supervisors remain actively involved in our security operations and client relationships. We work to understand your property, your expectations, your concerns, and the specific requirements of your environment.",
+          "Our goal is to provide more than a uniform at a post. We provide management oversight, supervision, accountability, communication, and a professional security presence designed around your needs.",
+          "We work with our clients to establish clear expectations, appropriate procedures, effective communication, and a security program that fits their operation.",
+          "When concerns arise, we believe they should be heard, addressed, and followed through.",
+          "Your security is our responsibility. Your confidence in us is something we work to earn every day."
         ]
       }
     ]
@@ -316,128 +338,48 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
     ]
   },
 
-  // 4 ── VSF RESOURCE LIBRARY ─────────────────────────────────────────────────
+  // 4 ── NATIONWIDE SECURITY SERVICES — ASF ───────────────────────────────────
   {
-    slug: "vsf-resource-library",
-    title: "VSF Resource Library",
-    icon: "📚",
-    type: "resource",
-    seo: {
-      title: "VSF Resource Library| Virginia Surveillance Force ",
-      description: "The VSF Resource Library offers insightful security guides and expert articles to help you select the ideal protective solutions",
-      keywords: COMMON_MENU_KEYWORDS,
-    },
-    intro: [
-      "Click on the articles below to access our library of free resources. These articles will help you select the right business, investigative, and protective services firm for your needs."
-    ],
-    resourceItems: [
-      {
-        id: "art-1",
-        title: "How to evaluate Security Officers & Surveillance Cameras",
-        body: [
-          "A common question asked by organizations during security planning is whether to use physical security officers, a CCTV surveillance camera system, or both. The answer depends heavily on the nature of the business.",
-          "Washington DC and its surrounding suburbs in Virginia and Maryland are some of the most watched areas in the country — cameras are everywhere. Emerging developments in camera technology, combined with inexpensive high-speed internet, make CCTV coverage better and less expensive than ever before, while wages for guard services have risen.",
-          "Cameras provide a reliable recording that can be used as evidence later. They are a valuable resource for documenting criminal acts and identifying perpetrators. With modern artificial intelligence, systems can interpret motion, sound alarms, alert remote monitoring stations, play messages, or turn on lights.",
-          "However, there is a major downside. If nobody is monitoring the cameras in real time, you cannot respond effectively to a crime in progress. Security is about reacting to threats in real time. Video recording documents a crime, but it does not stop it from happening or protect people from harm.",
-          "Cameras also lack human intuition. They cannot sense when someone or something 'just isn't right.' A camera cannot escort or ban unauthorized parties, take statements from witnesses, or call law enforcement in real time. A criminal with their face covered will go ahead with their misdeed without concern.",
-          "Importantly, a camera cannot stop a violent act before people are harmed. It does not provide the liability reduction of a uniformed officer. Financial institutions, airports, and major facilities have cameras, yet they still use uniformed officers. Why? Because they need a live person who can respond immediately to protect assets, interest, and life.",
-          "An onsite officer is a game-changer. They observe safety concerns, report risks, and take steps to prevent slip-and-fall liability. Cameras are a valuable tool and serve as an extension of the officer's eyes and ears, but they are not a satisfactory replacement. For complete protection, a live officer on site is indispensable."
-        ]
-      },
-      {
-        id: "art-2",
-        title: "How to Evaluate and Select Companies That Provide Armed Security Guards in Virginia",
-        body: [
-          "Situations that warrant an armed security presence are inherently dangerous. The individuals providing this security must be capable of preventing and quelling breaches of security.",
-          "However, this presence often takes place in professional environments where a 'police state' atmosphere is unacceptable. Armed personnel must provide a powerful yet polite presence. They must appear alert and ready, without interfering with normal business operations.",
-          "When you evaluate firms that provide armed security guards/personnel in Virginia, keep these key criteria in mind:"
-        ],
-        bullets: [
-          "Verify state licensing: Ensure the firm is licensed by the Virginia Department of Criminal Justice Services (DCJS) and that officers carry current registration cards.",
-          "Check training standards: Armed officers should undergo advanced tactical training, firearms qualification, and de-escalation training beyond state minimums.",
-          "Inspect insurance and bonding: Confirm they hold liability insurance and employee dishonesty bonds that protect you from claims and theft.",
-          "Assess supervision: Ask how the firm monitors guards in the field and how they handle supervisor check-ins and client communications.",
-          "Request client references: Speak with other commercial or corporate property managers who have used their armed services on similar sites."
-        ]
-      }
-    ]
-  },
-
-  // 5 ── VSF THREE DIVISIONS ──────────────────────────────────────────────────
-  {
-    slug: "vsf-three-divisions",
-    title: "VSF Three Divisions",
-    icon: "🛡️",
-    type: "standard",
-    seo: {
-      title: " VSF Three Divisions| Virginia Surveillance Force ",
-      description: "Virginia Surveillance Force features three specialized divisions: Security Guarding, Investigative Intelligence, and Executive Protection. Secure your organization—request a quote today!",
-      keywords: COMMON_MENU_KEYWORDS,
-    },
-    intro: [
-      "To provide a complete range of security and business support, Virginia Surveillance Force operates under three specialized divisions.",
-      "Each division is staffed by dedicated professionals who bring expertise, reliability, and precision to their roles, guaranteeing comprehensive protection and outstanding service."
-    ],
-    sections: [
-      {
-        title: "1. Commercial & Corporate Security Division",
-        body: [
-          "Our largest division focuses on protecting businesses, corporate offices, malls, retail centers, warehouses, and industrial facilities. We provide armed and unarmed uniformed officers, concierge services, and frontdesk lobby attendants.",
-          "Our personnel are trained in access control, visitor management, loss prevention, and customer relations, presenting a first-class professional image while maintaining a secure, welcoming environment."
-        ]
-      },
-      {
-        title: "2. Investigative & Intelligence Division",
-        body: [
-          "Licensed and highly confidential, our investigations division serves law firms, corporate entities, and private individuals. We conduct thorough pre-employment screening, background verification, criminal record checks, and covert surveillance for insurance fraud or domestic matters.",
-          "Using advanced tools and seasoned investigators, we deliver actionable intelligence and legally admissible evidence."
-        ]
-      },
-      {
-        title: "3. Protective Services & Special Operations Division",
-        body: [
-          "This division handles high-risk and specialized security needs, including VIP and executive close protection, bodyguards, rapid alarm response, fire watch services, and marked vehicle patrols.",
-          "Staffed largely by former law enforcement and military personnel, this division is equipped to respond swiftly to emergencies and protect high-value assets."
-        ]
-      }
-    ]
-  },
-
-  // 6 ── VSF GOES NATIONWIDE ──────────────────────────────────────────────────
-  {
-    slug: "vsf-goes-nationwide",
-    title: "VSF Goes Nationwide!",
+    slug: "nationwide-security-services-asf",
+    title: "Nationwide Security Services — ASF",
     icon: "🇺🇸",
     type: "standard",
     seo: {
-      title: " VSF Goes Nationwid | Virginia Surveillance Force ",
-      description: "Virginia Surveillance Force now expands coverage nationwide, offering tailored protective services across the United States. Secure your operations today—request a quote!",
+      title: "Nationwide Security Services — ASF | American Surveillance Force",
+      description: "American Surveillance Force (ASF) extends nationwide permanent security services with centralized management and single-source accountability. Request a quote today!",
       keywords: COMMON_MENU_KEYWORDS,
     },
     intro: [
-      "Since 1987, Virginia Surveillance Force has been a trusted regional leader in security.",
-      "Today, we are proud to offer nationwide coverage for permanent services, allowing companies with multi-state operations to secure their assets through a single, dependable partner."
+      "American Surveillance Force (ASF) — Nationwide Security Services",
+      "Established in 1987, Virginia Surveillance Force (VSF) has built decades of experience providing professional security services throughout Virginia, Maryland, and Washington, DC. Through our affiliated company, American Surveillance Force (ASF), we extend our capabilities nationwide to serve organizations with multi-state security requirements.",
+      "ASF is built for permanent security assignments and long-term partnerships, with service agreements typically structured for a minimum of 3–4 years. Our approach provides clients with consistent personnel, centralized management, clear accountability, site-specific security procedures, and dependable coverage across multiple locations.",
+      "Whether you require security for one location or a multi-state operation, ASF provides a centralized approach designed to make managing your security program simpler and more consistent.",
+      "One Partner. One Point of Accountability. Nationwide Security."
     ],
     sections: [
       {
-        title: "National Reach, Local Expertise",
+        title: "National Reach. Local Expertise.",
         body: [
-          "While our specialized, rapid-response services are focused in the Virginia, Washington DC, and Maryland metro areas, our permanent security operations extend nationwide.",
-          "We coordinate national security staffing, licensing, and compliance, ensuring that your facilities across the United States receive the same high level of protection and management oversight."
+          "While our specialized security and rapid-response services are focused in Virginia, Maryland, and Washington, DC, American Surveillance Force (ASF) provides permanent security services nationwide.",
+          "For organizations with facilities across multiple states, ASF provides a single point of contact and centralized management for their security program. We coordinate security staffing, site requirements, licensing, compliance, and operational oversight to help provide consistent standards and dependable protection across every location.",
+          "Whether you need security at one facility or multiple locations nationwide, ASF is built to provide a professional, consistent, and accountable security partnership.",
+          "One Partner. Multiple Locations. Nationwide Security."
         ]
       },
       {
         title: "Single Source of Accountability",
         body: [
-          "Managing multiple security contractors across different states can be inefficient and inconsistent. VSF acts as a single point of contact for your national operations.",
-          "We standardize reporting, billing, and post orders, providing a cohesive security posture and a dedicated account manager who is always available."
+          "Managing multiple security contractors across different states can create unnecessary complexity, inconsistent procedures, and multiple points of contact. American Surveillance Force (ASF) provides a centralized approach for organizations with multi-state security needs.",
+          "We coordinate security operations, reporting, billing, post orders, staffing, and management oversight through one accountable partner. Clients have a dedicated point of contact to help maintain consistent standards and communication across their locations.",
+          "One Account. One Point of Contact. One Nationwide Security Partner."
         ]
       },
       {
         title: "Consistent Quality Assurance",
         body: [
-          "Every guard hired under a VSF national contract undergoes our rigorous screening, vetting, and training guidelines, adapted to meet individual state regulations.",
-          "This ensures consistent quality, reduced liability, and total peace of mind for your business, regardless of where your offices are located."
+          "Every security professional assigned through an ASF nationwide security program is subject to our established screening, vetting, and training standards, along with the applicable licensing and regulatory requirements of the state where services are provided.",
+          "We maintain consistent security procedures, reporting standards, supervision, and management oversight across locations—helping clients maintain a reliable level of service throughout their organization.",
+          "Consistent Standards. Professional Personnel. Nationwide Accountability."
         ]
       }
     ]

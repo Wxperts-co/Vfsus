@@ -126,6 +126,9 @@ const Footer = () => {
                                         <h3 className="text-[#002147] text-2xl font-extrabold font-heading mb-4 heading-font">Quick Links</h3>
                                         <ul className="list-disc pl-5 space-y-2 font-sans">
                                             <li>
+                                                <Link href="/insights" className="text-[#002147] hover:underline font-medium">Security Insights</Link>
+                                            </li>
+                                            <li>
                                                 <Link href="https://www.activitysuite.com/login.aspx?T=AoWqDv4E4WGqBtHsEBEMrg==" className="text-[#002147] hover:underline font-medium" target="_blank" rel="noopener noreferrer">Client / Site Login</Link>
                                             </li>
                                             <li>

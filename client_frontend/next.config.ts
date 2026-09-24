@@ -9,6 +9,30 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 86400,
   },
+  async redirects() {
+    return [
+      {
+        source: "/menu/vsf-goes-nationwide",
+        destination: "/menu/nationwide-security-services-asf",
+        permanent: true,
+      },
+      {
+        source: "/security-insights",
+        destination: "/insights",
+        permanent: true,
+      },
+      {
+        source: "/menu/vsf-resource-library",
+        destination: "/insights",
+        permanent: true,
+      },
+      {
+        source: "/menu/vsf-three-divisions",
+        destination: "/insights",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -5,6 +5,7 @@ import { AboutUsPageData, defaultAboutUsData } from "./page-about-us";
 import { ServicesPageData, defaultServicesPageData } from "./page-services";
 import { MenuPageData, defaultMenuPageData } from "./page-menu";
 import { HomePageData, defaultHomePageData } from "./page-home";
+import { InsightsPageData, DEFAULT_INSIGHTS_PAGE_DATA } from "./page-insights";
 
 // In-memory cache to eliminate document request latency and remote DB round-trips
 const memoryCache = new Map<string, { data: any; expiry: number }>();
@@ -291,3 +292,38 @@ export async function getHomePageData(): Promise<HomePageData> {
   setToCache(cacheKey, defaultHomePageData);
   return defaultHomePageData;
 }
+
+export async function getInsightsPageData(): Promise<InsightsPageData> {
+  const cacheKey = "page_insights";
+  const cached = getFromCache<InsightsPageData>(cacheKey);
+  if (cached) return cached;
+
+  try {
+    const client = await clientPromise;
+    const db = client.db();
+    
+    const settings = await db.collection("settings").findOne({ _id: "page_insights" } as any);
+    
+    if (settings) {
+      const { _id, ...rest } = settings;
+      const result: InsightsPageData = { 
+        ...DEFAULT_INSIGHTS_PAGE_DATA, 
+        ...rest,
+        seo: {
+          title: rest.seo?.title?.trim() || DEFAULT_INSIGHTS_PAGE_DATA.seo.title,
+          description: rest.seo?.description?.trim() || DEFAULT_INSIGHTS_PAGE_DATA.seo.description,
+          keywords: rest.seo?.keywords?.trim() || DEFAULT_INSIGHTS_PAGE_DATA.seo.keywords,
+        },
+        posts: rest.posts && rest.posts.length > 0 ? rest.posts : DEFAULT_INSIGHTS_PAGE_DATA.posts,
+      };
+      setToCache(cacheKey, result);
+      return result;
+    }
+  } catch (error) {
+    console.error("Failed to fetch insights page settings:", error);
+  }
+  
+  setToCache(cacheKey, DEFAULT_INSIGHTS_PAGE_DATA);
+  return DEFAULT_INSIGHTS_PAGE_DATA;
+}
+

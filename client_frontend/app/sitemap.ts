@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getServicesPageData, getMenuPageData } from '@/lib/settings-server';
+import { getServicesPageData, getMenuPageData, getInsightsPageData } from '@/lib/settings-server';
 import { formsList } from '@/data/formsdetails';
 
 export const revalidate = 3600; // 1 hour dynamic revalidation
@@ -51,6 +51,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/insights`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ];
 
   // 2. Dynamic Service Detail Routes (16+ services)
@@ -85,7 +91,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error generating sitemap menu items:', error);
   }
 
-  // 4. Dynamic Form Pages Routes
+  // 4. Dynamic Security Insights Blog Routes
+  let insightRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const insightsData = await getInsightsPageData();
+    if (insightsData?.posts?.length > 0) {
+      insightRoutes = insightsData.posts.map((post) => ({
+        url: `${baseUrl}/insights/${post.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      }));
+    }
+  } catch (error) {
+    console.error('Error generating sitemap insights items:', error);
+  }
+
+  // 5. Dynamic Form Pages Routes
   const formRoutes: MetadataRoute.Sitemap = formsList.map((form) => ({
     url: `${baseUrl}/forms/${form.slug}`,
     lastModified: new Date(),
@@ -97,6 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...serviceRoutes,
     ...menuRoutes,
+    ...insightRoutes,
     ...formRoutes,
   ];
 }
