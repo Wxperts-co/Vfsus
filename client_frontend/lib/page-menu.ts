@@ -277,94 +277,118 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       },
       {
         id: "faq-3",
-        question: "Whom you served? (Gallery)",
+        question: "Clients We Have Served",
         answer: [
-          "Our client list is extensive. We are proud of our valuable clients' past and present and their businesses. They are the foundation of our success!"
+          "Our client portfolio reflects years of experience serving businesses, organizations, and communities across the region. We are proud of the clients we have served and the relationships we have built over the years."
         ],
         clientLogos: true
       },
       {
         id: "faq-4",
-        question: "What is the estimated cost of service?",
+        question: "What is the Estimated Cost of Security Services?",
         answer: [
-          "We provide assistance in protecting your investments and serve as a deterrent to people who would act illegally. Rates differ from area to area depending on threat levels; it costs more if the business or event is located in a high-crime area, or requires high-tech/high-security capabilities.",
-          "Please fill out our Service Quote Request Form to get an accurate estimate tailored to your requirements."
+          "Security is an investment in the protection of your property, people, and operations. Our pricing reflects the professional service, experience, personnel, supervision, and resources required to provide dependable security.",
+          "Costs vary based on the location, property type, coverage hours, staffing requirements, risk level, supervision, patrol requirements, and specific security needs. Assignments may involve low, moderate, or elevated risk levels.",
+          "Serving clients since 1987, VSF provides customized security solutions backed by experienced personnel, professional management, training, licensing, insurance, and bonding.",
+          "Our pricing reflects the quality, experience, and level of service provided by an established security company, rather than competing solely on price.",
+          "Request a Quote to receive a personalized proposal based on your property and security requirements."
         ]
       },
       {
         id: "faq-5",
-        question: "What kind of uniform options are available?",
-        answer: [
-          "Uniforms are determined by site duties and client preference. We can also provide special health and safety work wear for personnel who perform duties in hazardous areas or warehouses.",
-          "Our most popular styles are the 'Hard Approach' (police/military style uniform) and the 'Soft Approach' (executive blazer style uniform). Our staff wear the uniform you feel is most appropriate for your company and assignment."
-        ],
-        bullets: [
-          "Military/Police look ('Hard Approach')",
-          "Soft look blazer & tie ('Soft Approach')",
-          "Executive blazer & slacks",
-          "Business Casual (polo and khakis)",
-          "Plain Clothed / Undercover",
-          "Outdoor Wear / Tactical",
-          "Custom configurations to client specifications"
-        ]
+        question: "What Kind of Uniform Options are Available?",
+        answer: `
+<p>Virginia Surveillance Force provides professional uniform options tailored to the assignment, security role, property environment, and client specifications. Our goal is to ensure every officer presents a professional, disciplined, and appropriate security presence while representing your organization.</p>
+<p>Our uniform options include:</p>
+<ul class="bullet-list" style="margin: 0.75rem 0 1rem;">
+  <li>Traditional Military / Police Style</li>
+  <li>Professional Blazer &amp; Tie</li>
+  <li>Executive Blazer &amp; Dress Trousers</li>
+  <li>Business Casual</li>
+  <li>Plainclothes / Undercover</li>
+  <li>Outdoor / Tactical Duty Wear</li>
+  <li>Custom Configurations to Client Specifications</li>
+</ul>
+<p>From traditional security uniforms to executive and discreet assignments, VSF provides the professional appearance and security presence appropriate for your property and organization.</p>
+`
       },
       {
         id: "faq-6",
-        question: "How do I get a quote & service contract?",
+        question: "How Do I Get a Quote & Service Contract?",
         answer: [
-          "Our rates vary based on location and the nature of the assignment, but they are highly competitive. To get a quote, please fill out the Service Quote Request Form. Upon receipt, we will provide you with an estimate or proposal.",
-          "Once you accept the rate, we provide you with a service contract, which must be signed by both parties. VSF does not provide services without a signed contract.",
-          "PLEASE NOTE: The Service Request Form is for existing clients who need additional or emergency coverage and already have a master contract on file."
+          "Getting started is simple. Contact VSF, submit our Service Quote Request Form, or email us at info@vsfus.com to discuss your security needs.",
+          "When contacting us by email, please include your name, telephone number, property or business location, desired start date, and a brief description of your security requirements.",
+          "We will review your property, location, coverage requirements, staffing needs, risk level, and security objectives and, when appropriate, conduct a site assessment before preparing a customized service proposal with transparent pricing.",
+          "Once the proposal is accepted, we will provide a formal service agreement for review and signature. Security services begin after the agreement is executed by both parties.",
+          "We believe every client deserves a professional security plan built around their specific needs."
         ]
       },
       {
         id: "faq-7",
-        question: "How much experience do you have in the industry?",
+        question: "How Much Experience Do You Have in the Industry?",
         answer: [
-          "Members of our management team have over 15 to 20 years of security industry experience. We are large enough to provide the resources needed to satisfy your requirements, yet small enough to provide the personalized attention you deserve.",
-          "We have serviced just about every industry and have successfully provided access control, foot patrols, vehicle patrols, event security, investigations, executive protection, concierge, courier, fire watch, alarm response, bank ATM protection, and more."
+          "Virginia Surveillance Force, Inc. (VSF), established in 1987, has decades of experience providing professional security and specialized services. Our experience provides the professional personnel, resources, and management expertise required to handle a wide range of assignments.",
+          "Our capabilities include armed and unarmed security, Special Police, Special Conservators of the Peace, investigations and intelligence, VIP and executive protection, bodyguard services, access control, vehicle patrols, event security, concierge and front desk services, parking attendants, fire watch, alarm response, and legal and medical courier services.",
+          "We serve businesses, corporations, government agencies, embassies and diplomatic facilities, religious organizations, schools and universities, healthcare facilities, commercial and retail properties, hotels, residential communities, industrial facilities, and other organizations requiring professional security and specialized support.",
+          "Our management team remains involved in planning, staffing, supervision, quality control, and ongoing client support to help ensure consistent and professional service.",
+          "With decades of experience behind us, clients can choose VSF with confidence knowing they are working with an established security company with the professional personnel, expertise, and resources to handle a wide range of security and specialized assignments."
         ]
       },
       {
         id: "faq-8",
-        question: "What sets Virginia Surveillance apart from its competitors?",
+        question: "What Sets Virginia Surveillance Force Apart?",
         answer: [
-          "Many clients have switched from other companies to Virginia Surveillance Force. Their main reason for changing is usually a lack of responsiveness from management in their previous agency — customers were often left to deal with issues on their own.",
-          "At VSF, we appreciate our clients and actively support them. We keep employee turnover low to ensure compliance with client directives, and we pass as much of the billing rate to our guards as is economically possible. We work hard to ensure 100% satisfaction.",
-          "VSF management is never far, and we will always respond to your call. Whether you are a small business or a large corporation, VSF's presence brings ultimate security and peace of mind. We are flexible, and our goal is to build a long-lasting relationship."
+          "Virginia Surveillance Force, Inc. (VSF), established in 1987, combines decades of security experience with professional personnel, responsive management, and disciplined field operations.",
+          "We believe effective security requires more than simply placing an officer at a location. We focus on proper staffing, professional personnel, clear communication, active supervision, accountability, and responsive management.",
+          "Our management team remains accessible and involved throughout each assignment, from planning and staffing to field supervision and ongoing client support. We work closely with our clients to understand their requirements and provide security solutions tailored to their property, operations, and specific needs.",
+          "Whether you operate a small business, large corporation, government facility, embassy or diplomatic facility, residential community, religious organization, educational institution, healthcare facility, commercial property, or specialized facility, VSF provides professional security solutions tailored to the assignment.",
+          "Our goal is to build long term client relationships through professionalism, reliability, communication, accountability, and consistent service."
         ]
       },
       {
         id: "faq-9",
-        question: "How do you conduct pre-employment screening?",
-        answer: [
-          "To provide the highest level of service, we have developed a strict screening process that meets the specific requirements of each assignment. We carefully select personnel, screening them for:",
-        ],
-        bullets: [
-          "Application review & work history verification",
-          "Comprehensive employment background checks",
-          "FBI fingerprint and criminal history background checks",
-          "State registration and certification validation (DCJS)",
-          "In-house security training and testing exams",
-          "Pre-employment and random drug and alcohol testing"
-        ]
+        question: "How Do You Conduct Pre-Employment Screening?",
+        answer: `
+<p>Virginia Surveillance Force, Inc. (VSF) maintains a structured screening and selection process designed to identify qualified, reliable, and professional personnel for security assignments.</p>
+<p>Depending on the position and applicable requirements, our screening process may include:</p>
+<ul class="bullet-list" style="margin: 0.75rem 0 1rem;">
+  <li>Application and Employment History Review</li>
+  <li>Employment and Reference Verification</li>
+  <li>Criminal History and Background Screening</li>
+  <li>Required License, Registration, and Certification Verification</li>
+  <li>Identity and Credential Verification</li>
+  <li>Security Training and Qualification Review</li>
+  <li>Assignment Specific Screening and Requirements</li>
+</ul>
+<p>Personnel are selected based on their qualifications, licensing requirements, experience, training, and suitability for the assignment.</p>
+<p>Our screening process helps ensure that clients receive professional personnel who meet the requirements of their assigned security responsibilities.</p>
+`
       },
       {
         id: "faq-10",
-        question: "What type of supervision is conducted in the field?",
+        question: "What Type of Supervision is Conducted in the Field?",
         answer: [
-          "Supervision is the key to a successful operation. At VSF, our managers, field inspectors, and mobile supervisors make unannounced site visits to troubleshoot issues and inspect personnel. This ensures compliance with client objectives, maintains guard alertness, and evaluates service quality.",
-          "Our managers also coordinate closely with your management staff to make adjustments to your security program as needed. They have the experience to respond to any situation, protecting client interests and safety."
+          "Professional supervision is a key part of effective security operations. VSF provides active management and field oversight to help maintain accountability, performance, and consistent service at every assignment.",
+          "Our management and supervisory personnel conduct scheduled and unannounced site visits, officer inspections, post checks, performance reviews, and operational assessments. Supervisors also remain available to address concerns, coordinate with client management, and make adjustments when security requirements change.",
+          "For assignments requiring additional on-site oversight, clients may request dedicated Site Supervisors or Shift Supervisors as part of their security program. Dedicated supervisory coverage can be tailored to the size of the assignment, number of officers, operating hours, risk level, and client requirements.",
+          "From routine management oversight to dedicated on-site supervision, VSF provides the level of management involvement appropriate for each assignment.",
+          "Established in 1987, VSF brings decades of experience, professional management, and field accountability to every security program we undertake."
         ]
       },
       {
         id: "faq-11",
-        question: "How do we contact you if we need you?",
-        answer: [
-          "One of our managers will serve as your direct liaison and contact person. Your contact person will provide their cell phone number as well as their assistant's cell phone number. You may call them directly at any time of the day or night.",
-          "Alternatively, you can call toll-free (800) 981-3113 to reach our dispatcher who will deliver the message to on-duty personnel in charge. VSF's main office control center and dispatchers answer phone calls 24/7/365, ensuring immediate availability.",
-          "Existing clients can always call, email, or fill out the service request form online for emergency, temporary, or extra coverage."
-        ]
+        question: "How Do We Contact You If We Need You?",
+        answer: `
+<p>VSF provides clients with direct access to management and responsive communication throughout the assignment. Each client is assigned a designated management contact who remains available for service coordination, questions, concerns, security-related matters, and ongoing support.</p>
+<p>Clients receive the assigned manager’s direct cell phone number and can call or text management directly when needed. Clients may also communicate with management by email for routine requests, documentation, scheduling, service coordination, and other business matters.</p>
+<div style="background: rgba(19, 30, 53, 0.7); border: 1px solid rgba(201, 168, 76, 0.25); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;">
+  <div style="color: #eab308; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">Direct Office Contact:</div>
+  <p style="margin: 0 0 0.25rem 0; font-size: 0.95rem; color: #fff;"><strong>Phone:</strong> <a href="tel:7036316559" style="color: #c9a84c; text-decoration: underline;">703-631-6559</a></p>
+  <p style="margin: 0; font-size: 0.95rem; color: #fff;"><strong>Email:</strong> <a href="mailto:info@vsfus.com" style="color: #c9a84c; text-decoration: underline;">info@vsfus.com</a></p>
+</div>
+<p>Our management team remains accessible and involved because professional security requires more than personnel at the site. It requires dependable communication, responsive management, accountability, and ongoing support.</p>
+<p>Established in 1987, VSF is committed to providing professional security backed by experienced management and responsive client service.</p>
+`
       }
     ]
   },

@@ -89,10 +89,14 @@ const Footer = () => {
                                         />
                                     </div>
                                     <div className="sis-m-text">
-                                        <p className="text-[#002147] text-sm font-bold font-sans">
+                                        <div className="text-[#002147] text-xs uppercase tracking-wider font-extrabold mb-1.5 font-sans">
+                                            LICENSED &amp; REGISTERED
+                                        </div>
+                                        <p className="text-[#002147] text-sm font-bold font-sans leading-relaxed">
                                             Dept. of Criminal Justice PSS # 11-2371<br />
                                             Metropolitan Police SOMB # SAB200504<br />
-                                            Md. State Police # 106-3249
+                                            MD State Police # 106-3249<br />
+                                            D-U-N-S Identification # 06-249-7602
                                         </p>
                                     </div>
 

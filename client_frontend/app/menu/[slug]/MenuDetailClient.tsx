@@ -158,18 +158,124 @@ function DocumentMockupsGrid() {
 }
 
 function ClientGalleryGrid() {
-  const clientIndices = Array.from({ length: 16 }, (_, i) => i + 1);
+  const premierLogos = [
+    { src: "/images/client-dca.png", alt: "Ronald Reagan Washington National Airport - DCA" },
+    { src: "/images/client-hilton.png", alt: "Hilton Hotels" },
+    { src: "/images/client-marriott.png", alt: "Marriott Hotels & Resorts" },
+    { src: "/images/client-7eleven.png", alt: "7-Eleven" },
+    { src: "/images/client-ses.png", alt: "SES Global" },
+    { src: "/images/client-armynavy.png", alt: "Army Navy Country Club" },
+    { src: "/images/client-mason-nova.png", alt: "George Mason University & Northern Virginia Community College" },
+    { src: "/images/client-faith-church.png", alt: "Faith Community Church" },
+  ];
+
+  const regionalLogos = [
+    { src: "/images/client-aberdeen-church.png", alt: "Aberdeen Church of Christ" },
+    { src: "/images/client-20.png", alt: "Valued Commercial Client" },
+    { src: "/images/client-21.png", alt: "Valued Commercial Client" },
+    { src: "/images/client-22.png", alt: "Valued Commercial Client" },
+    { src: "/images/client-23.png", alt: "Valued Client" },
+    { src: "/images/client-24.png", alt: "Valued Client" },
+    { src: "/images/client-25.png", alt: "Valued Client" },
+    { src: "/images/client-4.jpg", alt: "Valued Client" },
+    { src: "/images/client-5.jpg", alt: "Valued Client" },
+    { src: "/images/client-6.jpg", alt: "Valued Client" },
+    { src: "/images/client-7.jpg", alt: "Valued Client" },
+    { src: "/images/client-8.jpg", alt: "Valued Client" },
+    { src: "/images/client-9.jpg", alt: "Valued Client" },
+    { src: "/images/client-10.jpg", alt: "Valued Client" },
+    { src: "/images/client-11.jpg", alt: "Valued Client" },
+    { src: "/images/client-12.jpg", alt: "Valued Client" },
+    { src: "/images/client-13.jpg", alt: "Valued Client" },
+    { src: "/images/client-14.jpg", alt: "Valued Client" },
+    { src: "/images/client-15.jpg", alt: "Valued Client" },
+    { src: "/images/client-16.jpg", alt: "Valued Client" },
+  ];
+
+  const fieldPhotos = [
+    {
+      src: "/images/how-to-evaluate-and-select-security-company.jpg",
+      title: "Mobile Community & Commercial Patrols",
+      desc: "High-visibility patrol fleet and rapid response units across DC, MD, and VA."
+    },
+    {
+      src: "/images/security-officers-vs-surveillance.jpg",
+      title: "Intelligent CCTV & Control Room Monitoring",
+      desc: "Advanced multi-stream video surveillance, access control, and incident reporting."
+    },
+    {
+      src: "/images/homepage-services-1.jpeg",
+      title: "Certified Armed & Unarmed Officer Staffing",
+      desc: "State-licensed security personnel providing deterrence and professional concierge security."
+    },
+    {
+      src: "/images/homepage-services-2.jpeg",
+      title: "Comprehensive Facility Risk Management",
+      desc: "Structured post orders, emergency protocol planning, and supervisory inspections."
+    }
+  ];
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-      {clientIndices.map((idx) => (
-        <div key={idx} className="client-logo-card">
-          <img 
-            src={`/images/client-${idx}.jpg`} 
-            alt={`VSF Valued Client ${idx}`} 
-            className="client-logo-img"
-          />
+    <div className="mt-6 space-y-6">
+      {/* Premier Logos Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {premierLogos.map((item, idx) => (
+          <div key={idx} className="client-logo-card">
+            <img 
+              src={item.src} 
+              alt={item.alt} 
+              className="client-logo-img"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Middle Trust Callout Banner */}
+      <div className="p-6 rounded-xl bg-gradient-to-r from-yellow-500/15 via-[#131e35] to-yellow-500/10 border border-yellow-500/30 text-center my-6">
+        <h4 className="text-base sm:text-lg font-bold text-[#eab308] uppercase tracking-wider mb-1">
+          EXPERIENCE YOU CAN TRUST. SERVICE YOU CAN COUNT ON.
+        </h4>
+        <p className="text-xs sm:text-sm text-gray-300 font-light max-w-2xl mx-auto">
+          Providing dependable, licensed, and insured security solutions across corporate facilities, healthcare, educational institutions, communities, and retail properties since 1987.
+        </p>
+      </div>
+
+      {/* Additional Regional Clients Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {regionalLogos.map((item, idx) => (
+          <div key={idx} className="client-logo-card">
+            <img 
+              src={item.src} 
+              alt={item.alt} 
+              className="client-logo-img"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Business Field Operations Showcase */}
+      <div className="pt-6 border-t border-yellow-500/20">
+        <h5 className="text-xs uppercase tracking-widest text-[#eab308] font-bold mb-4">
+          Operational Excellence in the Field
+        </h5>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {fieldPhotos.map((photo, idx) => (
+            <div key={idx} className="bg-[#131e35] rounded-xl overflow-hidden border border-yellow-500/20 group hover:border-yellow-500/40 transition-all">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
+                <img 
+                  src={photo.src} 
+                  alt={photo.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+              </div>
+              <div className="p-4">
+                <h6 className="text-sm font-bold text-white mb-1 group-hover:text-[#eab308] transition-colors">{photo.title}</h6>
+                <p className="text-xs text-gray-400 font-light leading-relaxed">{photo.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }

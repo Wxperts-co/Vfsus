@@ -138,7 +138,16 @@ export const defaultHomePageData: HomePageData = {
       { id: 22, image: "/images/client-22.png", alt: "Client Logo 22" },
       { id: 23, image: "/images/client-23.png", alt: "Client Logo 23" },
       { id: 24, image: "/images/client-24.png", alt: "Client Logo 24" },
-      { id: 25, image: "/images/client-25.png", alt: "Client Logo 25" }
+      { id: 25, image: "/images/client-25.png", alt: "Client Logo 25" },
+      { id: 26, image: "/images/client-dca.png", alt: "Reagan National Airport DCA" },
+      { id: 27, image: "/images/client-armynavy.png", alt: "Army Navy Country Club" },
+      { id: 28, image: "/images/client-mason-nova.png", alt: "George Mason University & NOVA" },
+      { id: 29, image: "/images/client-hilton.png", alt: "Hilton Hotels" },
+      { id: 30, image: "/images/client-marriott.png", alt: "Marriott Hotels & Resorts" },
+      { id: 31, image: "/images/client-7eleven.png", alt: "7-Eleven" },
+      { id: 32, image: "/images/client-aberdeen-church.png", alt: "Aberdeen Church of Christ" },
+      { id: 33, image: "/images/client-faith-church.png", alt: "Faith Community Church" },
+      { id: 34, image: "/images/client-ses.png", alt: "SES" }
     ]
   }
 };
