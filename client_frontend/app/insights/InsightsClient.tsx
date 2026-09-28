@@ -108,13 +108,13 @@ export default function InsightsClient({ data }: { data: InsightsPageData }) {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-[#eab308] text-xs uppercase tracking-widest font-bold mb-3">
                 <TrendingUp className="w-3.5 h-3.5" />
-                Industry Analysis & Best Practices
+                Industry Insights &amp; Best Practices
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white heading-font">
-                Security Insights & Analysis
+                Professional Insights. Smarter Protection.
               </h1>
               <p className="mt-2 text-gray-300 max-w-2xl text-base sm:text-lg font-light leading-relaxed">
-                Expert perspectives, facility protection strategies, DCJS compliance guidance, and physical security intelligence from Virginia Surveillance Force.
+                Discover trusted security knowledge and proven protection strategies from Virginia Surveillance Force, backed by decades of experience helping businesses, organizations, facilities, and communities protect what matters most.
               </p>
             </div>
 
@@ -313,10 +313,10 @@ export default function InsightsClient({ data }: { data: InsightsPageData }) {
             <div className="relative z-10 max-w-3xl mx-auto">
               <ShieldCheck className="w-12 h-12 text-[#eab308] mx-auto mb-4" />
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white heading-font mb-4">
-                Need Professional Security Guidance For Your Property?
+                Need Professional Security for Your Property?
               </h2>
               <p className="text-gray-300 text-base sm:text-lg font-light mb-8 leading-relaxed">
-                Connect with Virginia Surveillance Force for a customized site risk evaluation, certified officer placement, or comprehensive facility security consulting.
+                Virginia Surveillance Force provides professional security, protective, and specialized services throughout Virginia, Maryland, and Washington, DC.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <Link

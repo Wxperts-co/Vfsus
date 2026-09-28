@@ -94,45 +94,65 @@ function MenuSidebar({ currentSlug, menus }: MenuSidebarProps) {
 function DocumentMockupsGrid() {
   const documents = [
     {
-      title: "Liability Insurance Certificate",
-      desc: "Commercial General Liability coverage protecting clients up to millions.",
+      title: "LIABILITY INSURANCE CERTIFICATE",
+      desc: "Commercial General Liability coverage maintained to protect our clients and business operations, subject to applicable policy terms and limits.",
       tag: "ACTIVE & VERIFIED",
       icon: <ShieldCheck className="doc-icon text-[#c9a84c] w-10 h-10" />
     },
     {
       title: "Virginia DCJS Licensing",
-      desc: "Fully registered and compliant private security services contractor license.",
-      tag: "DCJS REG #11-4122",
+      desc: "Licensed private security services business serving clients throughout Virginia.",
+      tag: "VIRGINIA LICENSED • DCJS #11-2371",
       icon: <FileCheck className="doc-icon text-[#c9a84c] w-10 h-10" />
     },
     {
-      title: "Maryland State Security License",
-      desc: "Licensed and authorized to provide armed and unarmed security guards in Maryland.",
-      tag: "MD LICENSED",
+      title: "Metropolitan Police Department — Security Officers Management Branch",
+      desc: "Registered for security officer operations in Washington, DC.",
+      tag: "WASHINGTON, DC REGISTERED • MPD SOMB #SAB200504",
       icon: <FileCheck className="doc-icon text-[#c9a84c] w-10 h-10" />
     },
     {
-      title: "Employee Dishonesty Bond",
-      desc: "Fidelity bond protection guaranteeing ultimate integrity and peace of mind.",
+      title: "Maryland State Police",
+      desc: "Licensed and authorized to provide security services in Maryland.",
+      tag: "MARYLAND LICENSED • MD STATE POLICE #106-3249",
+      icon: <FileCheck className="doc-icon text-[#c9a84c] w-10 h-10" />
+    },
+    {
+      title: "EMPLOYEE DISHONESTY / FIDELITY BOND",
+      desc: "Bond coverage designed to provide additional protection against qualifying employee dishonesty risks.",
       tag: "FULLY BONDED",
       icon: <ShieldCheck className="doc-icon text-[#c9a84c] w-10 h-10" />
     }
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-      {documents.map((doc, idx) => (
-        <div key={idx} className="doc-mockup-card">
-          <div className="flex items-start gap-4">
-            <div className="doc-icon-container">{doc.icon}</div>
-            <div className="flex-1">
-              <span className="doc-tag">{doc.tag}</span>
-              <h4 className="doc-title">{doc.title}</h4>
-              <p className="doc-desc">{doc.desc}</p>
+    <div className="mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {documents.map((doc, idx) => (
+          <div key={idx} className="doc-mockup-card">
+            <div className="flex items-start gap-4">
+              <div className="doc-icon-container">{doc.icon}</div>
+              <div className="flex-1">
+                <span className="doc-tag">{doc.tag}</span>
+                <h4 className="doc-title">{doc.title}</h4>
+                <p className="doc-desc">{doc.desc}</p>
+              </div>
             </div>
           </div>
+        ))}
+      </div>
+
+      <div className="mt-6 p-5 rounded-lg bg-gradient-to-r from-yellow-500/10 via-[#131e35] to-transparent border border-yellow-500/25">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#eab308] mb-1.5">
+          LICENSED. INSURED. BONDED. TRUSTED SINCE 1987.
         </div>
-      ))}
+        <p className="text-sm font-bold text-white mb-1">
+          Serving Virginia, Washington, DC, and Maryland since 1987.
+        </p>
+        <p className="text-xs text-gray-300 font-light leading-relaxed">
+          Professional security backed by established licensing, insurance, bonding, and decades of industry experience.
+        </p>
+      </div>
     </div>
   );
 }

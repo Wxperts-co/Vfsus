@@ -8,7 +8,9 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const data = await getInsightsPageData();
-  const post = data.posts.find((p) => p.slug === resolvedParams.slug);
+  const post = data.posts.find(
+    (p) => p.slug === resolvedParams.slug || (resolvedParams.slug === "how-to-evaluate-and-select-armed-security-guard-companies-in-virginia" && p.id === "insight-2")
+  );
 
   if (!post) {
     return { title: "Article Not Found | Virginia Surveillance Force" };
@@ -47,7 +49,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function InsightPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const data = await getInsightsPageData();
-  const post = data.posts.find((p) => p.slug === resolvedParams.slug);
+  const post = data.posts.find(
+    (p) => p.slug === resolvedParams.slug || (resolvedParams.slug === "how-to-evaluate-and-select-armed-security-guard-companies-in-virginia" && p.id === "insight-2")
+  );
 
   if (!post) {
     notFound();

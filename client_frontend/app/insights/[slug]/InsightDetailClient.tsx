@@ -256,7 +256,7 @@ export default function InsightDetailClient({
           {/* Share & Copy Bar */}
           <div className="bg-[#131e35] border border-yellow-500/20 rounded-xl p-5 flex flex-wrap items-center justify-between gap-4 mb-14">
             <div className="flex items-center gap-2 text-sm text-gray-300 font-medium">
-              <Share2 className="w-4 h-4 text-[#eab308]" /> Share this security insight:
+              <Share2 className="w-4 h-4 text-[#eab308]" /> Share this article:
             </div>
 
             <div className="flex items-center gap-3">
@@ -279,7 +279,7 @@ export default function InsightDetailClient({
               <div className="text-xs uppercase tracking-wider text-[#eab308] font-bold mb-1">Published By</div>
               <h4 className="text-xl font-bold text-white">{post.author.name}</h4>
               <p className="text-sm text-gray-300 font-light mt-1 leading-relaxed">
-                Virginia Surveillance Force has provided licensed security officer staffing, corporate facility protection, and customized protective operations across Washington DC, Maryland, and Virginia since 1987.
+                Virginia Surveillance Force has provided professional security officer services, facility protection, and customized security solutions throughout Virginia, Maryland, and Washington, DC since 1987.
               </p>
             </div>
           </div>
@@ -321,7 +321,7 @@ export default function InsightDetailClient({
               Looking for a Trusted Security Partner?
             </h3>
             <p className="text-gray-300 text-sm sm:text-base font-light max-w-xl mx-auto mb-6 leading-relaxed">
-              Connect with our licensed security leadership to evaluate your site requirements and receive a comprehensive security proposal.
+              Partner with Virginia Surveillance Force for professional security backed by experience, trained personnel, and a commitment to protecting what matters most. We provide customized security solutions for businesses, organizations, facilities, communities, and events throughout Virginia, Maryland, and Washington, DC.
             </p>
             <Link
               href="/request-quote"

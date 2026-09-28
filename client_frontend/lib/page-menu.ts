@@ -218,24 +218,55 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       keywords: COMMON_MENU_KEYWORDS,
     },
     intro: [
-      "This page covers the most frequently asked questions. Please click on the questions below. If you cannot find what you are looking for, please feel free to contact us — we shall be more than willing to answer any query. We look forward to working with you. Thank you."
+      "Find answers to some of the questions we receive most often about our security services. If you don’t see the information you’re looking for, contact us. Our team is ready to answer your questions and discuss your security needs. We look forward to serving you."
     ],
     faqItems: [
       {
         id: "faq-1",
-        question: "What areas do you cover?",
-        answer: [
-          "We serve nationwide with permanent services. However, rapid-response specialized services are primarily provided in Virginia, Washington DC, and Maryland.",
-          "VIRGINIA: Arlington, Alexandria, Annandale, Ashburn, Arcola, Burke, Bristow, Centreville, Clifton, Chantilly, Catharpin, Culpeper, Dunn Loring, Dulles, Dale City, Dumfries, Fairfax County, Fairfax City, Falls Church, Fredericksburg, Great Falls, Fort Belvoir, Gainesville, Herndon, Hamilton, Hillsboro, Loudoun County, Leesburg, Lorton, Lake Ridge, Oakton, Occoquan, Mclean, Merrifield, Manassas, Manassas park, Middleburg, Nokesville, Prince William County, Purceville, Paeonian Springs, Quantico, Reston, Round Hill, Sterling, Springfield, Stafford, Spotsylvania, Triangle, Vienna, Woodbridge, Warrenton, Winchester, Washington DC.",
-          "MARYLAND: Accokeek, Annapolis, Bethesda, Bowie, Brandywine, Bladensburg, Burtonsville, Capitol Heights, College Park, Chevy Chase, Clinton, Columbia, Cheverly, Catonsville, Cheltenham, Cabin John, Clarksville, District Heights, Derwood, Elkridge, Ellicott City, Fort washington, Forest Heights, Fairmount Heights, Fulton, Gaithersburg, Glenarden, Glen Echo, Glenn Dale, Glen burnie, Howard County, Hanover, Hyattsville, Harmans, Halethorpe, Jessup, Kensington, Laurel, Lanham, Montgomery County, Morning Side, Mt. Rainner, New Carrolton, Oxon Hill, Odenton, Potomac, Prince George's County, Rockville, Silver Spring, Suitland, Seat Pleasant, Takoma park, Temple Hills, University Park, Upper Marlboro, Woodlawn."
-        ]
+        question: "What Areas Do You Cover?",
+        answer: `
+<p>Virginia Surveillance Force, Inc. (VSF) has been serving clients since 1987, with a strong regional presence throughout Virginia, Washington, DC, and Maryland. Through our affiliated company, American Surveillance Force (ASF), we also provide permanent, long-term security services nationwide.</p>
+
+<h4 style="color:#eab308; margin-top: 1.25rem; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.5px;">Virginia, Maryland &amp; Washington, DC</h4>
+<p>Our primary regional service area includes Virginia, Maryland, and Washington, DC, with a strong local presence, experienced personnel, and responsive security capabilities throughout the region. See below for the specific cities and communities we serve.</p>
+
+<h4 style="color:#eab308; margin-top: 1.25rem; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.5px;">Nationwide Security Services</h4>
+<p>For organizations with locations outside our primary regional service area, American Surveillance Force (ASF) provides permanent security services nationwide, allowing businesses and organizations to work with an established security partner across multiple states.</p>
+<p>ASF nationwide permanent security assignments are typically structured with a 3–4 year service agreement, subject to applicable licensing, regulatory, staffing, and assignment requirements.</p>
+
+<div style="background: rgba(19, 30, 53, 0.7); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 8px; padding: 1.25rem; margin-top: 1.25rem;">
+  <h5 style="color: #eab308; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Virginia Service Area</h5>
+  <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(244, 246, 248, 0.85); margin: 0;">
+    Arlington • Alexandria • Annandale • Ashburn • Arcola • Burke • Bristow • Centreville • Chantilly • Clifton • Culpeper • Dale City • Dumfries • Fairfax • Fairfax County • Fairfax City • Falls Church • Fredericksburg • Great Falls • Herndon • Leesburg • Loudoun County • Lorton • McLean • Manassas • Manassas Park • Merrifield • Oakton • Occoquan • Prince William County • Quantico • Reston • Springfield • Stafford • Sterling • Vienna • Woodbridge • Warrenton • Winchester • and surrounding communities.
+  </p>
+</div>
+
+<div style="background: rgba(19, 30, 53, 0.7); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 8px; padding: 1.25rem; margin-top: 1rem;">
+  <h5 style="color: #eab308; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Maryland Service Area</h5>
+  <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(244, 246, 248, 0.85); margin: 0;">
+    Accokeek • Annapolis • Bethesda • Bowie • Brandywine • Bladensburg • Burtonsville • Capitol Heights • College Park • Chevy Chase • Clinton • Columbia • District Heights • Elkridge • Ellicott City • Fort Washington • Forest Heights • Gaithersburg • Glen Burnie • Hyattsville • Kensington • Lanham • Laurel • Montgomery County • Morningside • Mount Rainier • New Carrollton • Oxon Hill • Odenton • Potomac • Prince George’s County • Rockville • Silver Spring • Suitland • Takoma Park • Temple Hills • Upper Marlboro • and surrounding communities.
+  </p>
+</div>
+
+<div style="background: rgba(19, 30, 53, 0.7); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 8px; padding: 1.25rem; margin-top: 1rem;">
+  <h5 style="color: #eab308; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Washington, DC</h5>
+  <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(244, 246, 248, 0.85); margin: 0;">
+    We provide security services throughout Washington, DC, with coverage tailored to the type of assignment, location, staffing requirements, and applicable regulations.
+  </p>
+</div>
+
+<div style="background: rgba(201, 168, 76, 0.08); border: 1px dashed rgba(201, 168, 76, 0.35); border-radius: 8px; padding: 1rem; margin-top: 1.25rem;">
+  <strong style="color: #eab308; display: block; font-size: 0.95rem; margin-bottom: 0.25rem;">Don’t See Your Location?</strong>
+  <span style="font-size: 0.9rem; color: rgba(244, 246, 248, 0.85);">Contact us. Our service capabilities may extend beyond the locations listed above.</span>
+</div>
+`
       },
       {
         id: "faq-2",
-        question: "Are you licensed, Insured & bonded?",
+        question: "Are you licensed, insured & bonded?",
         answer: [
-          "Virginia Surveillance Force is a fully licensed, insured, and bonded agency. We are insured in millions, well beyond the limits required by DCJS.",
-          "VSF carries Commercial General Liability, Commercial Auto, Employee Dishonesty Bond, Workers' Compensation, and Employers' Liability. Regardless of the service you need, we deliver the safety and peace of mind you are looking for."
+          "Virginia Surveillance Force, Inc. (VSF) is a licensed, insured, and bonded private security services company serving Virginia, Washington, DC, and Maryland.",
+          "We maintain the required licensing, commercial insurance, and bonding coverage applicable to our operations. Our coverage includes Commercial General Liability, Commercial Auto, Workers’ Compensation, Employers’ Liability, and Employee Dishonesty/Fidelity Bond coverage."
         ],
         images: [
           "VSF-Insurance",

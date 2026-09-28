@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/images/homepage-services-2.jpeg",
+          url: "/images/security-officers-vs-surveillance.jpg",
           width: 1200,
           height: 630,
           alt: "Virginia Surveillance Force Security Insights",
