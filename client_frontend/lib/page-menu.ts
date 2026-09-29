@@ -305,7 +305,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
         question: "What Kind of Uniform Options are Available?",
         answer: `
 <p>Virginia Surveillance Force provides professional uniform options tailored to the assignment, security role, property environment, and client specifications. Our goal is to ensure every officer presents a professional, disciplined, and appropriate security presence while representing your organization.</p>
-<p>Our uniform options include:</p>
+<p><strong>Our uniform options include:</strong></p>
 <ul class="bullet-list" style="margin: 0.75rem 0 1rem;">
   <li>Traditional Military / Police Style</li>
   <li>Professional Blazer &amp; Tie</li>
@@ -320,35 +320,83 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       },
       {
         id: "faq-6",
-        question: "How Do I Get a Quote & Service Contract?",
+        question: "Do You Provide Armed and Unarmed Security Services?",
         answer: [
-          "Getting started is simple. Contact VSF, submit our Service Quote Request Form, or email us at info@vsfus.com to discuss your security needs.",
-          "When contacting us by email, please include your name, telephone number, property or business location, desired start date, and a brief description of your security requirements.",
-          "We will review your property, location, coverage requirements, staffing needs, risk level, and security objectives and, when appropriate, conduct a site assessment before preparing a customized service proposal with transparent pricing.",
-          "Once the proposal is accepted, we will provide a formal service agreement for review and signature. Security services begin after the agreement is executed by both parties.",
-          "We believe every client deserves a professional security plan built around their specific needs."
+          "Yes. Virginia Surveillance Force provides both armed and unarmed security services based on the client’s security requirements, property type, risk level, and operational environment.",
+          "Armed security personnel maintain the required state licensing, firearms endorsements, and training certifications applicable to the jurisdiction where services are provided.",
+          "During our initial consultation, we assist clients in determining whether armed or unarmed security personnel are appropriate for their specific property and security needs."
         ]
       },
       {
         id: "faq-7",
-        question: "How Much Experience Do You Have in the Industry?",
-        answer: [
-          "Virginia Surveillance Force, Inc. (VSF), established in 1987, has decades of experience providing professional security and specialized services. Our experience provides the professional personnel, resources, and management expertise required to handle a wide range of assignments.",
-          "Our capabilities include armed and unarmed security, Special Police, Special Conservators of the Peace, investigations and intelligence, VIP and executive protection, bodyguard services, access control, vehicle patrols, event security, concierge and front desk services, parking attendants, fire watch, alarm response, and legal and medical courier services.",
-          "We serve businesses, corporations, government agencies, embassies and diplomatic facilities, religious organizations, schools and universities, healthcare facilities, commercial and retail properties, hotels, residential communities, industrial facilities, and other organizations requiring professional security and specialized support.",
-          "Our management team remains involved in planning, staffing, supervision, quality control, and ongoing client support to help ensure consistent and professional service.",
-          "With decades of experience behind us, clients can choose VSF with confidence knowing they are working with an established security company with the professional personnel, expertise, and resources to handle a wide range of security and specialized assignments."
-        ]
+        question: "What Industries and Property Types Do You Serve?",
+        answer: `
+<p>Virginia Surveillance Force provides security services across a wide range of industries and property types, including:</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-top: 1rem; margin-bottom: 1.25rem;">
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏢</span>
+    <span style="font-size: 0.88rem; color: #fff;">Commercial Properties &amp; Office Buildings</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏙️</span>
+    <span style="font-size: 0.88rem; color: #fff;">Residential Communities, Condominiums &amp; HOAs</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🛍️</span>
+    <span style="font-size: 0.88rem; color: #fff;">Retail Centers &amp; Shopping Plazas</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏗️</span>
+    <span style="font-size: 0.88rem; color: #fff;">Construction Sites &amp; Development Projects</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏭</span>
+    <span style="font-size: 0.88rem; color: #fff;">Industrial Facilities &amp; Warehouses</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏨</span>
+    <span style="font-size: 0.88rem; color: #fff;">Hotels &amp; Hospitality Venues</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏥</span>
+    <span style="font-size: 0.88rem; color: #fff;">Healthcare Facilities &amp; Medical Centers</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🎓</span>
+    <span style="font-size: 0.88rem; color: #fff;">Educational Facilities &amp; Campuses</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🏛️</span>
+    <span style="font-size: 0.88rem; color: #fff;">Houses of Worship &amp; Faith-Based Organizations</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🎟️</span>
+    <span style="font-size: 0.88rem; color: #fff;">Special Events &amp; Private Gatherings</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">🅿️</span>
+    <span style="font-size: 0.88rem; color: #fff;">Parking Garages &amp; Parking Facilities</span>
+  </div>
+  <div style="background: rgba(19, 30, 53, 0.6); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem;">
+    <span style="color:#eab308; font-weight: bold;">💼</span>
+    <span style="font-size: 0.88rem; color: #fff;">Corporate Facilities &amp; Executive Locations</span>
+  </div>
+</div>
+
+<p style="font-size: 0.9rem; color: rgba(244, 246, 248, 0.85); font-style: italic;">
+  Our security programs are customized to the operating environment, risk profile, and procedures required for each facility.
+</p>
+`
       },
       {
         id: "faq-8",
-        question: "What Sets Virginia Surveillance Force Apart?",
+        question: "How Quickly Can Security Coverage Begin?",
         answer: [
-          "Virginia Surveillance Force, Inc. (VSF), established in 1987, combines decades of security experience with professional personnel, responsive management, and disciplined field operations.",
-          "We believe effective security requires more than simply placing an officer at a location. We focus on proper staffing, professional personnel, clear communication, active supervision, accountability, and responsive management.",
-          "Our management team remains accessible and involved throughout each assignment, from planning and staffing to field supervision and ongoing client support. We work closely with our clients to understand their requirements and provide security solutions tailored to their property, operations, and specific needs.",
-          "Whether you operate a small business, large corporation, government facility, embassy or diplomatic facility, residential community, religious organization, educational institution, healthcare facility, commercial property, or specialized facility, VSF provides professional security solutions tailored to the assignment.",
-          "Our goal is to build long term client relationships through professionalism, reliability, communication, accountability, and consistent service."
+          "Startup times depend on the scope of service, staffing requirements, location, and assignment specifics.",
+          "For standard security assignments, coverage can often be implemented within a few days following consultation, agreement, and site post orders.",
+          "For urgent or short-notice security needs, we work diligently to accommodate immediate staffing requests whenever operationally feasible.",
+          "Contact us to discuss your timeline and coverage requirements."
         ]
       },
       {
@@ -356,7 +404,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
         question: "How Do You Conduct Pre-Employment Screening?",
         answer: `
 <p>Virginia Surveillance Force, Inc. (VSF) maintains a structured screening and selection process designed to identify qualified, reliable, and professional personnel for security assignments.</p>
-<p>Depending on the position and applicable requirements, our screening process may include:</p>
+<p><strong>Depending on the position and applicable requirements, our screening process may include:</strong></p>
 <ul class="bullet-list" style="margin: 0.75rem 0 1rem;">
   <li>Application and Employment History Review</li>
   <li>Employment and Reference Verification</li>
@@ -372,6 +420,15 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       },
       {
         id: "faq-10",
+        question: "How Do You Supervise Security Officers On Site?",
+        answer: [
+          "Supervision, accountability, and communication are essential components of dependable security service.",
+          "VSF uses a combination of field supervision, scheduled post inspections, unannounced supervisory visits, electronic checkpoint verification, daily activity reporting, and direct management oversight to ensure officers remain alert, professional, and compliant with site instructions.",
+          "Our management team remains accessible to clients to address questions, review reports, and ensure consistent service quality."
+        ]
+      },
+      {
+        id: "faq-11",
         question: "What Type of Supervision is Conducted in the Field?",
         answer: [
           "Professional supervision is a key part of effective security operations. VSF provides active management and field oversight to help maintain accountability, performance, and consistent service at every assignment.",
@@ -382,7 +439,54 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
         ]
       },
       {
-        id: "faq-11",
+        id: "faq-12",
+        question: "Do You Provide 24/7 Security Coverage?",
+        answer: [
+          "Yes. Virginia Surveillance Force provides 24 hours a day, 7 days a week, 365 days a year security capabilities.",
+          "Whether your facility requires 24-hour dedicated security personnel, overnight coverage, weekend security, after-hours access control, or specific shift schedules, we can design a coverage plan that meets your operational requirements."
+        ]
+      },
+      {
+        id: "faq-13",
+        question: "How Do I Get a Quote & Service Contract?",
+        answer: `
+<p>Getting started is simple. Contact VSF, submit our Service Quote Request Form, or email us at <a href="mailto:info@vsfus.com" style="color: #c9a84c; text-decoration: underline;">info@vsfus.com</a> to discuss your security needs.</p>
+<p>When contacting us by email, please include your name, telephone number, property or business location, desired start date, and a brief description of your security requirements.</p>
+<p>We will review your property, location, coverage requirements, staffing needs, risk level, and security objectives and, when appropriate, conduct a site assessment before preparing a customized service proposal with transparent pricing.</p>
+<p>Once the proposal is accepted, we will provide a formal service agreement for review and signature. Security services begin after the agreement is executed by both parties.</p>
+<div style="background: rgba(201, 168, 76, 0.08); border: 1px dashed rgba(201, 168, 76, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+  <div>
+    <strong style="color: #eab308; display: block; font-size: 0.95rem; margin-bottom: 0.25rem;">Customized Security Plan</strong>
+    <span style="font-size: 0.9rem; color: rgba(244, 246, 248, 0.85);">We believe every client deserves a professional security plan built around their specific needs.</span>
+  </div>
+  <a href="/request-quote" style="background: #eab308; color: #0b1120; font-weight: 700; font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;">Request Quote →</a>
+</div>
+`
+      },
+      {
+        id: "faq-14",
+        question: "How Much Experience Do You Have in the Industry?",
+        answer: `
+<p>Virginia Surveillance Force, Inc. (VSF), established in 1987, has decades of experience providing professional security and specialized services. Our experience provides the professional personnel, resources, and management expertise required to handle a wide range of assignments.</p>
+<p>Our capabilities include armed and unarmed security, Special Police, Special Conservators of the Peace, investigations and intelligence, VIP and executive protection, bodyguard services, access control, vehicle patrols, event security, concierge and front desk services, parking attendants, fire watch, alarm response, and legal and medical courier services.</p>
+<p>We serve businesses, corporations, government agencies, embassies and diplomatic facilities, religious organizations, schools and universities, healthcare facilities, commercial and retail properties, hotels, residential communities, industrial facilities, and other organizations requiring professional security and specialized support.</p>
+<p>Our management team remains involved in planning, staffing, supervision, quality control, and ongoing client support to help ensure consistent and professional service.</p>
+<p>With decades of experience behind us, clients can choose VSF with confidence knowing they are working with an established security company with the professional personnel, expertise, and resources to handle a wide range of security and specialized assignments.</p>
+`
+      },
+      {
+        id: "faq-15",
+        question: "What Sets Virginia Surveillance Force Apart?",
+        answer: [
+          "Virginia Surveillance Force, Inc. (VSF), established in 1987, combines decades of security experience with professional personnel, responsive management, and disciplined field operations.",
+          "We believe effective security requires more than simply placing an officer at a location. We focus on proper staffing, professional personnel, clear communication, active supervision, accountability, and responsive management.",
+          "Our management team remains accessible and involved throughout each assignment, from planning and staffing to field supervision and ongoing client support. We work closely with our clients to understand their requirements and provide security solutions tailored to their property, operations, and specific needs.",
+          "Whether you operate a small business, large corporation, government facility, embassy or diplomatic facility, residential community, religious organization, educational institution, healthcare facility, commercial property, or specialized facility, VSF provides professional security solutions tailored to the assignment.",
+          "Our goal is to build long term client relationships through professionalism, reliability, communication, accountability, and consistent service."
+        ]
+      },
+      {
+        id: "faq-16",
         question: "How Do We Contact You If We Need You?",
         answer: `
 <p>VSF provides clients with direct access to management and responsive communication throughout the assignment. Each client is assigned a designated management contact who remains available for service coordination, questions, concerns, security-related matters, and ongoing support.</p>
