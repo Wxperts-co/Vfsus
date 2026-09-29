@@ -10,7 +10,7 @@ const toHtml = (val: string | string[] | undefined): string => {
   if (!val) return "";
   if (typeof val === "string") return val;
   if (Array.isArray(val)) {
-    return val.map((p) => (p.startsWith("<") ? p : `<p>${p}</p>`)).join("");
+    return val.map((p) => (p.trim().startsWith("<") ? p : `<p>${p}</p>`)).join("");
   }
   return "";
 };

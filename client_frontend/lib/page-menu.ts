@@ -286,13 +286,19 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       {
         id: "faq-4",
         question: "What is the Estimated Cost of Security Services?",
-        answer: [
-          "Security is an investment in the protection of your property, people, and operations. Our pricing reflects the professional service, experience, personnel, supervision, and resources required to provide dependable security.",
-          "Costs vary based on the location, property type, coverage hours, staffing requirements, risk level, supervision, patrol requirements, and specific security needs. Assignments may involve low, moderate, or elevated risk levels.",
-          "Serving clients since 1987, VSF provides customized security solutions backed by experienced personnel, professional management, training, licensing, insurance, and bonding.",
-          "Our pricing reflects the quality, experience, and level of service provided by an established security company, rather than competing solely on price.",
-          "Request a Quote to receive a personalized proposal based on your property and security requirements."
-        ]
+        answer: `
+<p>Security is an investment in the protection of your property, people, and operations. Our pricing reflects the professional service, experience, personnel, supervision, and resources required to provide dependable security.</p>
+<p>Costs vary based on the location, property type, coverage hours, staffing requirements, risk level, supervision, patrol requirements, and specific security needs. Assignments may involve low, moderate, or elevated risk levels.</p>
+<p>Serving clients since 1987, VSF provides customized security solutions backed by experienced personnel, professional management, training, licensing, insurance, and bonding.</p>
+<p>Our pricing reflects the quality, experience, and level of service provided by an established security company, rather than competing solely on price.</p>
+<div style="background: rgba(201, 168, 76, 0.08); border: 1px dashed rgba(201, 168, 76, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+  <div>
+    <strong style="color: #eab308; display: block; font-size: 0.95rem; margin-bottom: 0.25rem;">Request a Quote</strong>
+    <span style="font-size: 0.9rem; color: rgba(244, 246, 248, 0.85);">Receive a personalized proposal based on your property and security requirements.</span>
+  </div>
+  <a href="/request-quote" style="background: #eab308; color: #0b1120; font-weight: 700; font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;">Request Quote →</a>
+</div>
+`
       },
       {
         id: "faq-5",

@@ -205,7 +205,7 @@ function ClientGalleryGrid() {
     },
     {
       src: "/images/homepage-services-1.jpeg",
-      title: "Certified Armed & Unarmed Officer Staffing",
+      title: "Armed & Unarmed Officer Staffing",
       desc: "State-licensed security personnel providing deterrence and professional concierge security."
     },
     {
@@ -306,6 +306,12 @@ function PrevNextMenuNav({ currentSlug, menus }: { currentSlug: string, menus: M
     </FadeIn>
   );
 }
+
+const isHtmlContent = (str: string): boolean => {
+  if (!str || typeof str !== "string") return false;
+  const trimmed = str.trim();
+  return trimmed.startsWith("<") || /<[a-z][\s\S]*>/i.test(trimmed);
+};
 
 export default function MenuDetailClient({ data, menuItem }: { data: MenuPageData, menuItem: MenuListItem }) {
   const [openAccordionId, setOpenAccordionId] = useState<string | null>(null);
@@ -695,7 +701,7 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
               <div className="menu-breadcrumb">
                 <Link href="/">Home</Link>
                 <span>›</span>
-                <span>Menu List</span>
+                <Link href="/menu">Menu List</Link>
                 <span>›</span>
                 <span style={{ color: "#c9a84c" }}>{menuItem.title}</span>
               </div>
@@ -705,13 +711,17 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
             <FadeIn delay={0.05}>
               <div className="gold-bar" />
               {typeof menuItem.intro === "string" ? (
-                <div 
-                  className="prose prose-invert max-w-none text-[1.05rem] font-light leading-[1.85] text-[rgba(244,246,248,0.85)] mb-6"
-                  dangerouslySetInnerHTML={{ __html: menuItem.intro }} 
-                />
+                isHtmlContent(menuItem.intro) ? (
+                  <div 
+                    className="prose prose-invert max-w-none text-[1.05rem] font-light leading-[1.85] text-[rgba(244,246,248,0.85)] mb-6"
+                    dangerouslySetInnerHTML={{ __html: menuItem.intro }} 
+                  />
+                ) : (
+                  <p className="menu-body">{menuItem.intro}</p>
+                )
               ) : Array.isArray(menuItem.intro) ? (
                 menuItem.intro.map((para: string, idx: number) => (
-                  para.startsWith("<") ? (
+                  isHtmlContent(para) ? (
                     <div 
                       key={idx}
                       className="prose prose-invert max-w-none text-[1.05rem] font-light leading-[1.85] text-[rgba(244,246,248,0.85)] mb-6"
@@ -732,7 +742,7 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                     <div className="menu-section-card">
                       <h3>{section.title}</h3>
                       {typeof section.body === "string" ? (
-                        section.body.startsWith("<") ? (
+                        isHtmlContent(section.body) ? (
                           <div 
                             className="prose prose-invert max-w-none text-[0.98rem] font-light leading-[1.8] text-[rgba(244,246,248,0.8)]"
                             dangerouslySetInnerHTML={{ __html: section.body }} 
@@ -744,7 +754,7 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                         )
                       ) : Array.isArray(section.body) ? (
                         section.body.map((pText: string, pIdx: number) => (
-                          pText.startsWith("<") ? (
+                          isHtmlContent(pText) ? (
                             <div 
                               key={pIdx}
                               className="prose prose-invert max-w-none text-[0.98rem] font-light leading-[1.8] text-[rgba(244,246,248,0.8)]"
@@ -802,7 +812,7 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                         {isOpen && (
                           <div className="accordion-content">
                             {typeof faq.answer === "string" ? (
-                              faq.answer.startsWith("<") ? (
+                              isHtmlContent(faq.answer) ? (
                                 <div 
                                   className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
                                   dangerouslySetInnerHTML={{ __html: faq.answer }}
@@ -814,11 +824,11 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                               )
                             ) : Array.isArray(faq.answer) ? (
                               faq.answer.map((para: string, pIdx: number) => (
-                                para.startsWith("<") ? (
+                                isHtmlContent(para) ? (
                                   <div 
                                     key={pIdx}
                                     className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
-                                    dangerouslySetInnerHTML={{ __html: para }}
+                                    dangerouslySetInnerHTML={{ __html: para }} 
                                   />
                                 ) : (
                                   <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
@@ -871,7 +881,7 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                         {isOpen && (
                           <div className="accordion-content">
                             {typeof art.body === "string" ? (
-                              art.body.startsWith("<") ? (
+                              isHtmlContent(art.body) ? (
                                 <div 
                                   className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
                                   dangerouslySetInnerHTML={{ __html: art.body }}
@@ -883,11 +893,11 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                               )
                             ) : Array.isArray(art.body) ? (
                               art.body.map((para: string, pIdx: number) => (
-                                para.startsWith("<") ? (
+                                isHtmlContent(para) ? (
                                   <div 
                                     key={pIdx}
                                     className="prose prose-invert max-w-none text-[0.96rem] font-light leading-[1.8] text-[rgba(244,246,248,0.85)] mb-4"
-                                    dangerouslySetInnerHTML={{ __html: para }}
+                                    dangerouslySetInnerHTML={{ __html: para }} 
                                   />
                                 ) : (
                                   <p key={pIdx} className="menu-body" style={{ fontSize: "0.96rem" }}>{para}</p>
