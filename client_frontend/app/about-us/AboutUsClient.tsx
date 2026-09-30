@@ -80,7 +80,7 @@ function StatCard({ icon, label, delay }: StatCardProps) {
 export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
   return (
     <>
-      <PageBanner title="About Us" />
+      <PageBanner title="About Us" headingTag="h2" />
 
       <div className="about-wrapper bg-[#0b1120] text-[#f4f6f8] overflow-x-hidden">
         {/* ── MAIN CONTENT ──────────────────────────── */}
@@ -90,10 +90,10 @@ export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
             {/* Intro two-col */}
             <div className="intro-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 py-16 border-b border-[rgba(201,168,76,0.15)]">
               <AnimatedSection delay={0}>
-                <div className="section-headline text-4xl sm:text-5xl lg:text-[3.2rem] tracking-wide leading-tight font-extrabold mb-5">
+                <h1 className="section-headline text-4xl sm:text-5xl lg:text-[3.2rem] tracking-wide leading-tight font-extrabold mb-5">
                   {data.intro.headlineLeft}<br />
                   <span className="section-headline text-[#eab308]">{data.intro.headlineRight}</span>
-                </div>
+                </h1>
                 <div className="gold-bar w-14 h-[3px] bg-gradient-to-r from-[#eab308] to-[#eab308] rounded-sm mb-7" />
                 <div 
                   className="prose prose-invert max-w-none prose-p:font-light prose-p:text-[1.05rem] prose-p:leading-[1.85] prose-p:text-[rgba(244,246,248,0.8)] prose-p:mb-5"

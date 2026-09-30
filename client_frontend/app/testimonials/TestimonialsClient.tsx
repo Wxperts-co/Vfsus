@@ -168,7 +168,7 @@ export default function TestimonialsClient({ data }: { data: TestimonialsPageDat
 
   return (
     <>
-      <PageBanner title="Testimonials" />
+      <PageBanner title="Testimonials" headingTag="h2" />
 
       <div className="testi-wrapper bg-[#0b1120] text-[#f4f6f8] overflow-x-hidden min-h-screen">
         {/* Intro */}
@@ -180,9 +180,9 @@ export default function TestimonialsClient({ data }: { data: TestimonialsPageDat
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <h2 className="testi-h2 font-['Bebas_Neue',sans-serif] font-extrabold text-[clamp(2.8rem,6vw,5rem)] tracking-[3px] leading-none mb-6 text-white">
+              <h1 className="testi-h2 font-['Bebas_Neue',sans-serif] font-extrabold text-[clamp(2.8rem,6vw,5rem)] tracking-[3px] leading-none mb-6 text-white">
                 What They Say <span className=" testi-h2 text-[#eab308] heading-font">About Us</span>
-              </h2>
+              </h1>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
               <p className="testi-lead max-w-[740px] mx-auto text-[1.05rem] font-light leading-[1.85] text-[rgba(244,246,248,0.75)]">

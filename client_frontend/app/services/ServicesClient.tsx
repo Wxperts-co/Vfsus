@@ -151,7 +151,7 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
         }
       `}</style>
 
-      <PageBanner title="Services" />
+      <PageBanner title="Services" headingTag="h2" />
 
       <div className="bg-[#0b1120] text-[#f4f6f8] overflow-x-hidden min-h-screen font-['Barlow',sans-serif]">
         <div className="container mx-auto px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8">
@@ -160,7 +160,7 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
             <div className="container mx-auto px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8">
               <AnimatedSection delay={0} className="flex flex-col items-center text-center">
 
-                <h3 
+                <h1 
                   className="section-headline text-4xl sm:text-5xl lg:text-[3.2rem] tracking-wide leading-tight font-extrabold mb-5"
                   dangerouslySetInnerHTML={{ __html: data.intro.headline }}
                 />

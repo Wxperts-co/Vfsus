@@ -267,7 +267,7 @@ function ClientGalleryGrid() {
                   alt={photo.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
-              </div>
+              </div>y
               <div className="p-4">
                 <h6 className="text-sm font-bold text-white mb-1 group-hover:text-[#eab308] transition-colors">{photo.title}</h6>
                 <p className="text-xs text-gray-400 font-light leading-relaxed">{photo.desc}</p>
