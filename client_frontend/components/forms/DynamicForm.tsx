@@ -347,7 +347,7 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
 
       {formData.disclaimer && (
         <div className="mt-8 p-4 bg-[rgba(201,168,76,0.05)] border-l-4 border-[#c9a84c] rounded">
-          <p className="text-[#8898aa] text-sm leading-relaxed">{formData.disclaimer}</p>
+          <p className="text-[#8898aa] text-sm leading-relaxed whitespace-pre-line">{formData.disclaimer}</p>
         </div>
       )}
     </form>

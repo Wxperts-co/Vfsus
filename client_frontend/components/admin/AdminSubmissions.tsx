@@ -42,15 +42,22 @@ interface Submission {
   Start_Day?: string;
   End_Month?: string;
   End_Day?: string;
+  startDate?: string;
   hours_service?: string;
   perweek?: string;
+  days_per_week?: string;
+  service_term?: string;
   duties_perform?: string;
   svctype1?: string;
   svctype2?: string;
+  appearance_other?: string;
   serNeededOthers?: string;
   services?: string[];
   serviceOthers?: string;
   guards_needed?: string;
+  supervisor_needed?: string;
+  start_time?: string;
+  end_time?: string;
   permanent?: string;
   workHours?: string;
   workDurationOthers?: string;
@@ -589,28 +596,58 @@ export default function AdminSubmissions() {
                 </ModalSection>
               </div>
 
-              {(selectedSubmission.Start_Month ||
-                selectedSubmission.hours_service) && (
+              {(selectedSubmission.startDate ||
+                selectedSubmission.Start_Month ||
+                selectedSubmission.hours_service ||
+                selectedSubmission.service_term) && (
                 <div className="mt-5">
-                  <ModalSection title="Schedule">
-                    <div className="grid grid-cols-4 gap-2.5">
+                  <ModalSection title="Schedule & Staffing">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                       <DetailRow
-                        label="Start"
-                        value={`${selectedSubmission.Start_Month} ${selectedSubmission.Start_Day}`}
+                        label="Start Date"
+                        value={
+                          selectedSubmission.startDate ||
+                          `${selectedSubmission.Start_Month || ""} ${selectedSubmission.Start_Day || ""}`.trim() ||
+                          "N/A"
+                        }
                       />
                       <DetailRow
-                        label="End"
-                        value={`${selectedSubmission.End_Month} ${selectedSubmission.End_Day}`}
+                        label="Service Term"
+                        value={
+                          selectedSubmission.service_term ||
+                          selectedSubmission.permanent ||
+                          "N/A"
+                        }
                       />
                       <DetailRow
-                        label="Daily Hrs"
+                        label="Daily Hours"
                         value={selectedSubmission.hours_service || "N/A"}
                       />
                       <DetailRow
-                        label="Weekly"
-                        value={selectedSubmission.perweek || "N/A"}
+                        label="Days / Week"
+                        value={
+                          selectedSubmission.days_per_week ||
+                          selectedSubmission.perweek ||
+                          "N/A"
+                        }
                       />
                     </div>
+                    {(selectedSubmission.start_time || selectedSubmission.supervisor_needed) && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-2.5 pt-2.5 border-t border-[rgba(201,168,76,0.15)]">
+                        {selectedSubmission.start_time && (
+                          <DetailRow
+                            label="Shift Hours"
+                            value={`${selectedSubmission.start_time} - ${selectedSubmission.end_time || ""}`}
+                          />
+                        )}
+                        {selectedSubmission.supervisor_needed && (
+                          <DetailRow
+                            label="Supervisor Required"
+                            value={selectedSubmission.supervisor_needed}
+                          />
+                        )}
+                      </div>
+                    )}
                   </ModalSection>
                 </div>
               )}

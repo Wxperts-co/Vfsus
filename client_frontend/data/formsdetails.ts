@@ -8,7 +8,9 @@ export const serviceRequestForm: FormData = {
   trustImage: '/images/trust.gif',
   submitEndpoint: '/api/process-service-request',
   submitMethod: 'POST',
-  disclaimer: `By submitting the service request form, you as customer hereby acknowledge, that payment for the service rendered will be paid in full to us the agency within 15 days of the date of invoice. If payment is not made, then you the customer acknowledge full responsibility for late fee(s), Interest(s), any and all legal, court(s) & attorney(s) fee(s). For nonpayment, we the Agency will have no alternative but to exercise whatever rights and remedies we the agency have under the law to enforce such payments including but not limited to institution of legal proceedings against you to recover the amount, together with interest and legal expenses`,
+  disclaimer: `By submitting this Service Request Form, you, the customer, acknowledge and agree that payment for services rendered is due in full to the Agency within five (5) days from the date of invoice. If payment is not received when due, you acknowledge responsibility for any applicable late fees, interest, and reasonable legal, court, and attorney fees to the extent permitted by law.
+
+In the event of nonpayment, the Agency reserves all rights and remedies available under applicable law to enforce payment, including, but not limited to, pursuing legal proceedings to recover the outstanding amount, together with any applicable interest and recoverable legal expenses.`,
   
   sections: [
     {
@@ -166,14 +168,6 @@ export const serviceRequestForm: FormData = {
           type: 'tel',
           required: true,
           placeholder: '(000) 000-0000'
-        },
-        {
-          id: 'fax',
-          name: 'fax',
-          label: 'Fax',
-          type: 'tel',
-          required: true,
-          placeholder: 'Fax number'
         },
         {
           id: 'fromemail',
@@ -359,13 +353,6 @@ export const contractingOpportunityForm: FormData = {
           type: 'tel',
           required: true,
           placeholder: 'Office phone number'
-        },
-        {
-          id: 'fax',
-          name: 'fax',
-          label: 'Fax',
-          type: 'tel',
-          placeholder: 'Fax number'
         },
         {
           id: 'fromemail',

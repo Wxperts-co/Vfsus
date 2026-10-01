@@ -68,12 +68,21 @@ export const defaultAboutUsData: AboutUsPageData = {
     headlineLeft: "Protecting What",
     headlineRight: "Matters Most",
     contentLeftHtml: `
-      <p>At <strong>Virginia Surveillance Force, Inc.</strong>, we work 24/7/365 to provide business, investigative, and protective services that protect your interests. VSF is a professional, licensed, insured, and bonded company serving business communities across Virginia.</p>
-      <p>Virginia Surveillance Force strongly advocates honesty and fairness. Our entire team is committed to meeting your needs — which is why a high percentage of our business comes from repeat customers and referrals.</p>
+      <p>At <strong>Virginia Surveillance Force, Inc. (VSF)</strong>, Established Since 1987, we provide professional security, investigative, protective, and specialized support services <strong>24 hours a day, 7 days a week</strong>, <strong>365 days a year</strong>. We proudly serve businesses, organizations, and communities throughout Virginia, Maryland, and Washington, DC, with integrity, professionalism, and dependable service.</p>
+      <p>We are a licensed, insured, and bonded security company committed to providing reliable protection while maintaining the highest standards of professionalism, ethics, and accountability.</p>
+      <p>We understand that every client, property, and organization has unique needs. We take the time to understand your objectives, identify potential risks, and develop customized security solutions designed specifically for your environment.</p>
+      <p>At VSF, we believe honesty, fairness, and trust are the foundation of every successful client relationship. We believe security should never be compromised, and we are committed to doing the job right while maintaining the highest standards of quality and service.</p>
     `,
     contentRightHtml: `
-      <p>We are an equal opportunity company committed to serving you at the highest standard of professionalism and ethics. We do not believe in compromising services to maximize company profits.</p>
-      <p>Our staff &amp; officers are fully insured and bonded beyond the limits required by Virginia — and that translates to more security and peace of mind for you. They are trained for success, serving as your eyes and ears around the clock.</p>
+      <p>Our commitment to excellence has helped us build lasting relationships with clients through repeat business, long-term contracts, and referrals. We take pride in earning our clients’ trust and becoming a security partner they can depend on.</p>
+      <p>Our highly trained professionals provide a disciplined, visible, and dependable security presence designed to help deter threats, reduce risk, and protect the people and property entrusted to us.</p>
+      <p>Our goal is not simply to provide security personnel. It is to provide confidence, safety, and peace of mind while protecting what matters most.</p>
+      <ul>
+        <li><p><strong>Virginia Surveillance Force, Inc.</strong></p></li>
+        <li><p><strong>Established Since 1987</strong></p></li>
+        <li><p><strong>Professional Security. Trusted Protection.</strong></p></li>
+        <li><p><strong>Protecting What Matters Most.</strong></p></li>
+      </ul>
     `,
   },
   video: {

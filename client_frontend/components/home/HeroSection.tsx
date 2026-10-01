@@ -50,7 +50,7 @@ export default function HeroSection() {
               aria-label="Get Free Security Quote"
               className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-all duration-200 hover:shadow-2xl hover:shadow-yellow-500/30 transform hover:-translate-y-1"
             >
-              Get Free Quote
+              Request a Quote
             </Link>
           </div>
 

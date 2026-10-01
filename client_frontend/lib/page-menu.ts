@@ -583,8 +583,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
       {
         title: "Apply Today",
         body: [
-          "To apply for a position with Virginia Surveillance Force, please complete our Employment Application form.",
-          "You can fill out the application securely online by clicking the link in the navbar under 'Forms > Employment Application' or click below to open the application in a new window."
+          "To begin your career with Virginia Surveillance Force, please complete our Employment Application. We welcome motivated, reliable, and professional individuals who are ready to join a respected security team and grow with our company."
         ]
       }
     ]

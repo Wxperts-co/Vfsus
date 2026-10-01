@@ -100,27 +100,13 @@ const Footer = () => {
                                         </p>
                                     </div>
 
-                                    <strong className="block text-base text-[#002147] mb-2 mt-3 font-sans">
-                                        Total Visitors
-                                    </strong>
-
-                                    <div className="flex justify-start">
-                                        <a
-                                            href="https://mapmyvisitors.com/"
-                                            title="Visitor Map for vfsus.com"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <img
-                                                src="https://mapmyvisitors.com/map.png?d=SF-5JEZtRjxsH38XGDoGr_6z41wKklRWMWGwygl6dQU&cl=ffffff"
-                                                alt="VFS Cluster map"
-                                                loading="lazy"
-                                                decoding="async"
-                                                width="160"
-                                                height="100"
-                                                className="max-w-full h-auto"
-                                            />
-                                        </a>
+                                    <div className="mt-4">
+                                        <p className="text-[#002147] text-sm font-bold font-sans leading-relaxed">
+                                            Serving Virginia, Maryland &amp; Washington, DC Since 1987
+                                        </p>
+                                        <p className="text-[#002147] text-xs font-semibold font-sans mt-1 tracking-wide">
+                                            Licensed • Insured • Bonded • 24/7/365
+                                        </p>
                                     </div>
                                 </div>
 

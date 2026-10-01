@@ -35,7 +35,7 @@ const Navbar = () => {
       href: '#',
       submenu: [
         { name: 'Service Request (For Existing Clients)', href: '/forms/service-request' },
-        { name: 'Contracting Oppertunities', href: '/forms/contracting-opportunity' },
+        { name: 'Contracting Opportunities', href: '/forms/contracting-opportunity' },
         { name: 'Employment Application', href: 'https://jetsign.com/f/u3s6PFUR', target: '_blank' },
       ]
     },
