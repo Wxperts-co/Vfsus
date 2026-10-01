@@ -140,3 +140,229 @@ export function userGenericFormEmail(title: string, data: any, nameField: string
     html: wrapper("Thanks for contacting us", body),
   };
 }
+
+export function adminEmploymentApplicationEmail(data: any, files: { fieldName: string; originalName: string; url: string; size?: number }[]) {
+  const applicantName = `${data.firstName || ""} ${data.middleName ? data.middleName + " " : ""}${data.lastName || ""}`.trim() || "Applicant";
+  const positions = Array.isArray(data.positions) && data.positions.length > 0 
+    ? data.positions.join(", ") 
+    : (data.otherPosition || data.positionApplied || "Security Officer");
+  const otherPos = data.otherPosition ? ` (Other: ${escapeHtml(data.otherPosition)})` : "";
+
+  const sectionHeader = (title: string) => `
+    <tr>
+      <td colspan="2" style="padding:16px 0 8px;border-bottom:2px solid #eab308;font-size:14px;font-weight:bold;color:#eab308;letter-spacing:1.5px;text-transform:uppercase;">
+        ${title}
+      </td>
+    </tr>
+  `;
+
+  // Education rows
+  let educationHtml = "";
+  if (data.highSchool?.schoolName) {
+    educationHtml += `
+      ${row("High School", escapeHtml(data.highSchool.schoolName))}
+      ${row("HS Graduation", escapeHtml(data.highSchool.graduationDate || "—"))}
+      ${row("HS Proof Available", escapeHtml(data.highSchool.canProvideProof || "—"))}
+      ${data.highSchool.website ? row("HS Website", escapeHtml(data.highSchool.website)) : ""}
+    `;
+  }
+  if (Array.isArray(data.collegeEducation) && data.collegeEducation.length > 0) {
+    data.collegeEducation.forEach((c: any, i: number) => {
+      educationHtml += `
+        ${row(`College/School #${i + 1}`, `${escapeHtml(c.school || "—")} — ${escapeHtml(c.degree || "")} (${escapeHtml(c.major || "")}) [${escapeHtml(c.yearsCompleted || "")} completed]`)}
+      `;
+    });
+  }
+
+  // Licenses rows
+  let licensesHtml = "";
+  if (Array.isArray(data.licensesAndCertificates) && data.licensesAndCertificates.length > 0) {
+    data.licensesAndCertificates.forEach((l: any, i: number) => {
+      licensesHtml += `
+        ${row(`License #${i + 1}`, `${escapeHtml(l.description || "—")} | Issued by: ${escapeHtml(l.issuedBy || "—")} | ID: ${escapeHtml(l.idNum || "—")} | Exp: ${escapeHtml(l.expirationDate || "—")}`)}
+      `;
+    });
+  } else {
+    licensesHtml = row("Licenses/Certs", "None listed");
+  }
+
+  // Questionnaire rows
+  const questionnaireMap: Record<string, string> = {
+    q1_firearm: "1. Own/Possess Firearm",
+    q2_citizen: "2. US Citizen / Alien Authorized",
+    q3_military: "3. US Military Service",
+    q4_police_federal: "4. Police / Federal / National Guard",
+    q5_drug_testing: "5. Drug Testing Consent",
+    q6_field_experience: "6. Security Field Experience",
+    q7_arrest_conviction: "7. Arrest / Conviction History",
+    q8_polygraph: "8. Polygraph Willingness",
+    q9_conflict_interest: "9. Security Firm Affiliation Conflict",
+    q10_currently_employed_security: "10. Currently Employed with Security Firm",
+    q11_contact_employer: "11. May Contact Present Employer",
+    q12_driving_criminal_record: "12. Provide Driving/Criminal Record",
+  };
+
+  let questionnaireHtml = "";
+  if (data.questionnaire && typeof data.questionnaire === "object") {
+    Object.entries(questionnaireMap).forEach(([k, label]) => {
+      const val = data.questionnaire[k] || "—";
+      const color = val === "Yes" ? "#10dc60" : val === "No" ? "#e8c97a" : "#8898aa";
+      questionnaireHtml += `
+        <tr>
+          <td style="padding:6px 0;font-size:13px;color:#8898aa;width:240px;vertical-align:top;">${label}</td>
+          <td style="padding:6px 0;font-size:13px;font-weight:bold;color:${color};vertical-align:top;">${escapeHtml(val)}</td>
+        </tr>
+      `;
+    });
+  }
+
+  // Work History rows
+  let workHistoryHtml = "";
+  if (Array.isArray(data.workHistory) && data.workHistory.length > 0) {
+    data.workHistory.forEach((w: any, i: number) => {
+      workHistoryHtml += `
+        <tr>
+          <td colspan="2" style="padding:10px 0 4px;font-size:13px;font-weight:bold;color:#e8c97a;">Employer #${i + 1}: ${escapeHtml(w.company || "—")} (${escapeHtml(w.jobTitle || "Security Officer")})</td>
+        </tr>
+        ${row("Dates Employed", `${escapeHtml(w.startDate || "—")} to ${escapeHtml(w.endDate || "—")}`)}
+        ${row("Address / Phone", `${escapeHtml(w.address || "—")} | Phone: ${escapeHtml(w.phone || "—")}`)}
+        ${row("Supervisor", `${escapeHtml(w.supervisor || "—")} (Phone: ${escapeHtml(w.supervisorPhone || "—")}, Email: ${escapeHtml(w.supervisorEmail || "—")})`)}
+        ${row("Pay Rates", `Starting: ${escapeHtml(w.startingRate ? "$" + w.startingRate : "—")} | Ending: ${escapeHtml(w.endingRate ? "$" + w.endingRate : "—")}`)}
+        ${row("Reason for Leaving", escapeHtml(w.reasonForLeaving || "—"))}
+        ${w.jobDuties ? row("Job Duties", escapeHtml(w.jobDuties)) : ""}
+      `;
+    });
+  } else {
+    workHistoryHtml = row("Work History", "None provided");
+  }
+
+  // References rows
+  let referencesHtml = "";
+  if (Array.isArray(data.references) && data.references.length > 0) {
+    data.references.forEach((r: any, i: number) => {
+      if (r.name || r.phone) {
+        referencesHtml += `
+          ${row(`Reference #${i + 1}`, `${escapeHtml(r.name || "—")} | Phone: ${escapeHtml(r.phone || "—")} | Email: ${escapeHtml(r.email || "—")} | Known: ${escapeHtml(r.yearsKnown || "—")} | ${escapeHtml(r.address || "")}`)}
+        `;
+      }
+    });
+  }
+
+  // Availability rows
+  const avail = data.availability || {};
+  const availabilityHtml = `
+    ${row("Currently Employed", escapeHtml(avail.currentlyEmployed || data.currentlyEmployed || "—"))}
+    ${avail.currentEmploymentShifts ? row("Current Shifts/Days", escapeHtml(avail.currentEmploymentShifts)) : ""}
+    ${row("Available for VSF", escapeHtml(avail.vsfAvailability || data.vsfAvailability || "—"))}
+    ${row("Travel Distance", escapeHtml(avail.travelDistance || data.travelDistance || "—"))}
+    ${row("Best Time to Contact", escapeHtml(avail.bestTimeToContact || data.bestTimeToContact || "—"))}
+    ${row("Interview Days", escapeHtml(avail.interviewDays || data.interviewDays || "—"))}
+  `;
+
+  // Attached files list
+  const filesListHtml = files.length > 0 
+    ? `<ul style="margin:8px 0;padding-left:20px;color:#f4f6f8;line-height:1.8;">
+        ${files.map(f => `<li style="margin-bottom:6px;">
+            <strong style="color:#e8c97a;">${escapeHtml(f.fieldName)}:</strong> ${escapeHtml(f.originalName)} 
+            <a href="https://vsfus.com${f.url}" target="_blank" style="color:#eab308;text-decoration:underline;margin-left:8px;">[Download / View]</a>
+          </li>`).join("")}
+       </ul>`
+    : `<p style="margin:0;color:#8898aa;">No files uploaded.</p>`;
+
+  const body = `
+    <p style="margin:0 0 16px;font-size:20px;color:#eab308;font-weight:700;letter-spacing:1px;">
+      New Employment Application Received
+    </p>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+      ${sectionHeader("1. Position & Schedule Preferences")}
+      ${row("Position Applied", escapeHtml(positions) + otherPos)}
+      ${row("Desired Rate", escapeHtml(data.desiredRate ? `$${data.desiredRate}/hr` : "—"))}
+      ${row("Desired Status", escapeHtml(Array.isArray(data.statusDesired) ? data.statusDesired.join(", ") : (data.statusDesired || "—")))}
+      ${row("Shifts", escapeHtml(Array.isArray(data.shifts) ? data.shifts.join(", ") : (data.shifts || "—")))}
+      ${row("Jurisdictions", escapeHtml(Array.isArray(data.locations) ? data.locations.join(", ") : (data.locations || "—")) + (data.otherLocation ? ` (${escapeHtml(data.otherLocation)})` : ""))}
+      ${row("Application Date", escapeHtml(data.appDate || new Date().toLocaleDateString()))}
+
+      ${sectionHeader("2. Personal Information")}
+      ${row("Applicant Name", escapeHtml(applicantName))}
+      ${row("Email", `<a href="mailto:${escapeHtml(data.email || "")}" style="color:#e8c97a;">${escapeHtml(data.email || "")}</a>`)}
+      ${row("Cell Phone", escapeHtml(data.cellPhone || data.phone || "—"))}
+      ${row("Home Phone", escapeHtml(data.homePhone || "—"))}
+      ${row("Address", escapeHtml(`${data.address || ""}, ${data.city || ""} ${data.state || ""} ${data.zip || ""}`.trim()))}
+      ${row("Nicknames / Aliases", escapeHtml(data.nicknames || "—"))}
+      ${row("Eligible in USA", escapeHtml(data.eligibleUSA || "—"))}
+      ${row("Social Security #", escapeHtml(data.ssn || "—"))}
+      ${row("18+ Years Old", escapeHtml(data.is18OrOlder || "—"))}
+      ${row("Driver's License", escapeHtml(data.hasDriversLicense === "Yes" ? `Yes (Number: ${data.driversLicenseNum || "—"})` : (data.hasDriversLicense || "—")))}
+      ${row("High School Diploma", escapeHtml(data.hasHighSchoolDiploma || "—"))}
+
+      ${sectionHeader("3. High School & Higher Education")}
+      ${educationHtml}
+
+      ${sectionHeader("4. Licenses, Registrations & Certifications")}
+      ${licensesHtml}
+
+      ${sectionHeader("5. Employment Questionnaire")}
+      ${questionnaireHtml}
+
+      ${sectionHeader("6. Work Experience & History (Past 5 Years)")}
+      ${workHistoryHtml}
+
+      ${sectionHeader("7. Professional & Personal References")}
+      ${referencesHtml}
+
+      ${sectionHeader("8. Availability & Travel")}
+      ${availabilityHtml}
+
+      ${sectionHeader("9. Verification & Electronic Signature")}
+      ${row("Legal Consent Agreed", data.agreedToTerms ? "YES (Verified & Certified)" : "NO")}
+      ${row("Applicant Signature", escapeHtml(data.applicantSignature || "—"))}
+      ${row("Date Signed", escapeHtml(data.signatureDate || "—"))}
+    </table>
+
+    <div style="margin-top:24px;padding:16px;background-color:#0b1120;border-left:3px solid #eab308;border-radius:4px;">
+      <p style="margin:0 0 8px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#eab308;font-weight:bold;">
+        Attached Applicant Documents (${files.length})
+      </p>
+      ${filesListHtml}
+    </div>
+
+    <div style="margin-top:16px;padding:14px 16px;background-color:#0b1120;border-radius:4px;text-align:center;">
+      <a href="https://vsfus.com/admin/employment-applications" style="display:inline-block;padding:10px 20px;background-color:#eab308;color:#0b1120;font-weight:bold;text-decoration:none;border-radius:4px;font-size:14px;letter-spacing:1px;text-transform:uppercase;">
+        View in Admin Portal
+      </a>
+    </div>
+  `;
+
+  return {
+    subject: `New Employment Application: ${applicantName} - ${positions}`,
+    html: wrapper("New Employment Application", body),
+    replyTo: data.email,
+  };
+}
+
+export function userEmploymentApplicationEmail(data: any) {
+  const applicantName = `${data.firstName || ""} ${data.lastName || ""}`.trim() || "Applicant";
+  
+  const body = `
+    <p style="margin:0 0 16px;font-size:18px;color:#eab308;font-weight:700;letter-spacing:1px;">Thank You for Applying, ${escapeHtml(applicantName)}!</p>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:rgba(244,246,248,0.85);">
+      We have received your Employment Application with <strong>Virginia Surveillance Force, Inc.</strong>
+    </p>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.7;color:rgba(244,246,248,0.85);">
+      Our recruiting and human resources team will review your qualifications, background details, and attached documents. If your application meets our current requirements, we will contact you directly regarding the next steps in our hiring process.
+    </p>
+    <div style="margin-top:16px;padding:16px;background-color:#0b1120;border-left:3px solid #eab308;border-radius:4px;">
+      <p style="margin:0 0 6px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8898aa;">Important Information</p>
+      <p style="margin:0;font-size:13px;line-height:1.6;color:#f4f6f8;">
+        Virginia Surveillance Force is an Equal Opportunity Employer. All applicants are subject to pre-employment background checks and state licensing verifications.
+      </p>
+    </div>
+    <p style="margin:20px 0 0;font-size:13px;color:#8898aa;">If you did not submit this application, please contact our office at (800) 786-0395 or info@vsfus.com.</p>
+  `;
+
+  return {
+    subject: `Employment Application Received - Virginia Surveillance Force`,
+    html: wrapper("Application Received", body),
+  };
+}

@@ -8,9 +8,9 @@ import {
   ChevronDown, 
   FileCheck, 
   ShieldCheck, 
-  ExternalLink,
-  HelpCircle,
-  BookOpen
+  HelpCircle, 
+  BookOpen,
+  FileText
 } from "lucide-react";
 
 interface FadeInProps {
@@ -776,14 +776,12 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                       <p className="menu-body">
                         Start your security career journey with VSF today. Complete our secure online application.
                       </p>
-                      <a 
-                        href="https://jetsign.com/f/u3s6PFUR" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <Link 
+                        href="/forms/employment-application" 
                         className="apply-btn"
                       >
-                        Employment Application <ExternalLink className="w-5 h-5" />
-                      </a>
+                        Employment Application <FileText className="w-5 h-5" />
+                      </Link>
                     </div>
                   </FadeIn>
                 )}

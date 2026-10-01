@@ -12,6 +12,7 @@ import {
   LogOut,
   Settings,
   List,
+  UserCheck,
   CreditCard,
 } from "lucide-react";
 
@@ -37,6 +38,7 @@ export default function AdminSidebar() {
       items: [
         { id: "dashboard", label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
         { id: "submissions", label: "Quote Requests", href: "/admin/submissions", icon: FileText },
+        { id: "employment-applications", label: "Employment Applications", href: "/admin/employment-applications", icon: UserCheck },
         { id: "contracts", label: "Contracts", href: "/admin/contracts", icon: FileText },
         { id: "service-requests", label: "Service Requests", href: "/admin/service-requests", icon: Briefcase },
         { id: "payments", label: "Payments", href: "/admin/payments", icon: CreditCard },

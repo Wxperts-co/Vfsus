@@ -7,13 +7,25 @@ import Image from 'next/image';
 import { Menu, X, MapPin, Phone, Clock, ChevronDown, ChevronRight, Target } from 'lucide-react';
 import { useSettings } from '@/components/common-components/SettingsProvider';
 
+interface SubmenuItem {
+  name: string;
+  href: string;
+  target?: string;
+}
+
+interface MenuItem {
+  name: string;
+  href: string;
+  submenu?: SubmenuItem[];
+}
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpenSubmenu, setMobileOpenSubmenu] = useState<string | null>(null);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about-us' },
     { name: 'Services', href: '/services' },
@@ -36,7 +48,7 @@ const Navbar = () => {
       submenu: [
         { name: 'Service Request (For Existing Clients)', href: '/forms/service-request' },
         { name: 'Contracting Opportunities', href: '/forms/contracting-opportunity' },
-        { name: 'Employment Application', href: 'https://jetsign.com/f/u3s6PFUR', target: '_blank' },
+        { name: 'Employment Application', href: '/forms/employment-application' },
       ]
     },
     { name: 'Contact Us', href: '/contact-us' },

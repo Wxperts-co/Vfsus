@@ -632,8 +632,50 @@ export const creditReferences = {
   ]
 };
 
-export const formsList = [serviceRequestForm, contractingOpportunityForm];
+export const employmentApplicationForm: FormData = {
+  id: '3',
+  slug: 'employment-application',
+  title: 'EMPLOYMENT APPLICATION',
+  trustImage: '/images/trust.gif',
+  submitEndpoint: '/api/process-employment-application',
+  submitMethod: 'POST',
+  description: 'Virginia Surveillance Force is An Equal Employment Opportunity Employer. Please complete all sections to be considered, even if a resume is submitted.',
+  disclaimer: `By signing and submitting this application, you certify that all the information provided on this employment application and any resume or exhibit attached is true, correct, and complete.`,
+  sections: [
+    {
+      title: 'APPLICATION DETAILS',
+      fields: [
+        {
+          id: 'pos_armed',
+          name: 'position',
+          label: 'Armed Security Officer',
+          type: 'checkbox',
+          value: 'Armed'
+        },
+        {
+          id: 'pos_unarmed',
+          name: 'position',
+          label: 'Unarmed Security Officer',
+          type: 'checkbox',
+          value: 'Unarmed'
+        },
+        {
+          id: 'pos_concierge',
+          name: 'position',
+          label: 'Concierge / Front Desk',
+          type: 'checkbox',
+          value: 'Concierge'
+        }
+      ]
+    }
+  ]
+};
+
+export const formsList = [serviceRequestForm, contractingOpportunityForm, employmentApplicationForm];
 
 export const getFormBySlug = (slug: string): FormData | undefined => {
+  if (slug === 'employment' || slug === 'employment-application') {
+    return employmentApplicationForm;
+  }
   return formsList.find(form => form.slug === slug);
-};
+};
