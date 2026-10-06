@@ -53,10 +53,12 @@ interface ContractSubmission {
   voilation: string;
   judgment: string;
   recruiting: string;
-  payarmed: string;
-  payunarmed: string;
-  expectarmed: string;
-  expectunarmed: string;
+  payarmed?: string;
+  payunarmed?: string;
+  expectarmed?: string;
+  expectunarmed?: string;
+  expectother?: string;
+  willnegotiate?: string;
   manname: string;
   addlcomm?: string;
   status: string;
@@ -522,12 +524,26 @@ export default function AdminContracts() {
               </div>
 
               <div className="mt-6">
-                <ModalSection title="Rates">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <DetailRow label="Pay (Armed)" value={selectedContract.payarmed} />
-                    <DetailRow label="Pay (Unarmed)" value={selectedContract.payunarmed} />
-                    <DetailRow label="Expect (Armed)" value={selectedContract.expectarmed} />
-                    <DetailRow label="Expect (Unarmed)" value={selectedContract.expectunarmed} />
+                <ModalSection title="Requested Rates & Negotiation">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    {selectedContract.expectarmed && (
+                      <DetailRow label="Armed Security Rate" value={selectedContract.expectarmed} />
+                    )}
+                    {selectedContract.expectunarmed && (
+                      <DetailRow label="Unarmed Security Rate" value={selectedContract.expectunarmed} />
+                    )}
+                    {selectedContract.expectother && (
+                      <DetailRow label="Other Services Rate" value={selectedContract.expectother} />
+                    )}
+                    {selectedContract.willnegotiate && (
+                      <DetailRow label="Willing to Negotiate?" value={selectedContract.willnegotiate} />
+                    )}
+                    {selectedContract.payarmed && (
+                      <DetailRow label="Pay (Armed - Legacy)" value={selectedContract.payarmed} />
+                    )}
+                    {selectedContract.payunarmed && (
+                      <DetailRow label="Pay (Unarmed - Legacy)" value={selectedContract.payunarmed} />
+                    )}
                   </div>
                 </ModalSection>
               </div>

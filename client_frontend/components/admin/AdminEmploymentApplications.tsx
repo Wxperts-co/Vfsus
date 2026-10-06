@@ -61,7 +61,6 @@ interface ApplicationSubmission {
   otherLocation?: string;
   nicknames?: string;
   eligibleUSA?: string;
-  ssn?: string;
   hasHighSchoolDiploma?: string;
   is18OrOlder?: string;
   hasDriversLicense?: string;
@@ -98,8 +97,6 @@ interface ApplicationSubmission {
     supervisorEmail: string;
     supervisorPhone: string;
     reasonForLeaving: string;
-    startingRate: string;
-    endingRate: string;
     jobTitle: string;
     jobDuties: string;
   }[];
@@ -617,8 +614,7 @@ export default function AdminEmploymentApplications() {
                   <DetailRow label="Home Phone" value={selectedApp.homePhone} />
                   <DetailRow label="Street Address" value={`${selectedApp.address || ""}, ${selectedApp.city || ""} ${selectedApp.state || ""} ${selectedApp.zip || ""}`} />
                   <DetailRow label="Nicknames / Aliases" value={selectedApp.nicknames} />
-                  <DetailRow label="Eligible to work in USA" value={selectedApp.eligibleUSA} />
-                  <DetailRow label="Social Security #" value={selectedApp.ssn} />
+                  <DetailRow label="Authorized to work in USA" value={selectedApp.eligibleUSA} />
                   <DetailRow label="Driver's License" value={selectedApp.hasDriversLicense === 'Yes' ? `Yes (${selectedApp.driversLicenseNum || "No #"})` : selectedApp.hasDriversLicense} />
                   <DetailRow label="18 Years or Older" value={selectedApp.is18OrOlder} />
                   <DetailRow label="High School Diploma/GED" value={selectedApp.hasHighSchoolDiploma} />
@@ -652,17 +648,14 @@ export default function AdminEmploymentApplications() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                     {[
                       { key: 'q1_firearm', label: '1. Own or possess a firearm?' },
-                      { key: 'q2_citizen', label: '2. US Citizen / Alien Authorized to work?' },
-                      { key: 'q3_military', label: '3. US Military Service?' },
-                      { key: 'q4_police_federal', label: '4. Police / Fed Agency / National Guard?' },
-                      { key: 'q5_drug_testing', label: '5. Drug testing consent?' },
-                      { key: 'q6_field_experience', label: '6. Security field experience?' },
-                      { key: 'q7_arrest_conviction', label: '7. Arrest / conviction history?' },
-                      { key: 'q8_polygraph', label: '8. Polygraph willingness?' },
-                      { key: 'q9_conflict_interest', label: '9. Security firm conflict of interest?' },
-                      { key: 'q10_currently_employed_security', label: '10. Currently employed with security firm?' },
-                      { key: 'q11_contact_employer', label: '11. May contact present employer?' },
-                      { key: 'q12_driving_criminal_record', label: '12. Can provide driving/criminal record?' },
+                      { key: 'q3_military', label: '2. US Military Service?' },
+                      { key: 'q4_police_federal', label: '3. Police / Fed Agency / National Guard?' },
+                      { key: 'q5_drug_testing', label: '4. Drug testing consent (law/policy/position)?' },
+                      { key: 'q6_field_experience', label: '5. Security field experience?' },
+                      { key: 'q9_conflict_interest', label: '6. Security firm conflict of interest?' },
+                      { key: 'q10_currently_employed_security', label: '7. Currently employed with security firm?' },
+                      { key: 'q11_contact_employer', label: '8. May contact present employer?' },
+                      { key: 'q12_driving_criminal_record', label: '9. Can provide driving/criminal record?' },
                     ].map((item) => {
                       const ans = selectedApp.questionnaire?.[item.key];
                       return (
@@ -742,7 +735,7 @@ export default function AdminEmploymentApplications() {
                           Supervisor: {w.supervisor} ({w.supervisorPhone || w.supervisorEmail || "—"})
                         </div>
                         <div className="text-[#8898aa]">
-                          Rates: Start {w.startingRate ? `$${w.startingRate}` : "—"} / End {w.endingRate ? `$${w.endingRate}` : "—"} &bull; Reason for leaving: {w.reasonForLeaving || "—"}
+                          Reason for leaving: {w.reasonForLeaving || "—"}
                         </div>
                         {w.jobDuties && (
                           <div className="p-2 bg-[#0b1120] rounded text-[#cbd5e1] mt-1">

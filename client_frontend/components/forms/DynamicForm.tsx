@@ -18,6 +18,7 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
 
   const [captchaAnswer, setCaptchaAnswer] = useState("");
   const [captcha, setCaptcha] = useState({ question: "", token: "", loading: true });
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const fetchCaptcha = async () => {
     setCaptcha((c) => ({ ...c, loading: true }));
@@ -99,6 +100,10 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
       });
     });
 
+    if (formData.disclaimer && !agreedToTerms) {
+      newErrors.agreedToTerms = "You must review and agree to the Acknowledgement statement.";
+    }
+
     if (!captchaAnswer) {
       newErrors.captchaAnswer = "Please answer the security question";
     }
@@ -120,6 +125,7 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
       if (formData.submitEndpoint) {
         const payload = {
           ...formValues,
+          agreedToTerms,
           captchaAnswer,
           captchaToken: captcha.token
         };
@@ -156,6 +162,7 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
       setTimeout(() => {
         setSubmitted(false);
         setFormValues({});
+        setAgreedToTerms(false);
         setCaptchaAnswer("");
         fetchCaptcha();
       }, 3000);
@@ -168,6 +175,7 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
 
   const handleReset = () => {
     setFormValues({});
+    setAgreedToTerms(false);
     setErrors({});
   };
 
@@ -196,30 +204,32 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
         );
 
       case 'checkbox':
-        if (field.name === 'services') {
-          return (
+        const isChecked = field.value !== undefined
+          ? (formValues[field.name] || []).includes(field.value)
+          : !!formValues[field.name];
+        return (
+          <div className="space-y-2">
             <label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
-                checked={formValues[field.name]?.includes(field.value) || false}
-                onChange={() => handleChange(field, field.value)}
+                name={field.name}
+                checked={isChecked}
+                onChange={() => handleChange(field, field.value !== undefined ? field.value : true)}
                 className="w-4 h-4 text-[#c9a84c] rounded focus:ring-[#c9a84c]"
               />
               <span className="text-[#f4f6f8]">{field.label}</span>
             </label>
-          );
-        }
-        return (
-          <label className="flex items-center gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              name={field.name}
-              checked={!!formValues[field.name]}
-              onChange={(e) => handleChange(field, e.target.checked)}
-              className="w-4 h-4 text-[#c9a84c] rounded focus:ring-[#c9a84c]"
-            />
-            <span className="text-[#f4f6f8]">{field.label}</span>
-          </label>
+            {field.hasOtherText && isChecked && (
+              <input
+                type="text"
+                name={`${field.name}_other`}
+                value={formValues[`${field.name}_other`] || ''}
+                onChange={(e) => setFormValues({ ...formValues, [`${field.name}_other`]: e.target.value })}
+                placeholder="Please specify..."
+                className="w-full mt-2 px-4 py-2 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded-md text-[#f4f6f8] focus:border-[#c9a84c] focus:outline-none text-sm"
+              />
+            )}
+          </div>
         );
 
       case 'select':
@@ -286,10 +296,12 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {section.fields.map((field) => (
               <div key={field.id} className={field.colSpan === 2 ? 'md:col-span-2' : ''}>
-                <label className="block text-[#8898aa] text-sm mb-2">
-                  {field.required && <span className="text-[#c9a84c] mr-1">*</span>}
-                  {field.label}
-                </label>
+                {field.type !== 'checkbox' && (
+                  <label className="block text-[#8898aa] text-sm mb-2">
+                    {field.required && <span className="text-[#c9a84c] mr-1">*</span>}
+                    {field.label}
+                  </label>
+                )}
                 {renderField(field)}
                 {errors[field.name] && (
                   <p className="text-red-500 text-xs mt-1">{errors[field.name]}</p>
@@ -299,6 +311,44 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
           </div>
         </div>
       ))}
+
+      {/* Acknowledgement / Disclaimer Section */}
+      {formData.disclaimer && (
+        <div className="bg-[#131e35] rounded-xl p-6 md:p-8 border border-[rgba(201,168,76,0.2)] mb-[30px] space-y-4 shadow-xl">
+          <h3 className="text-xl font-['Bebas_Neue',sans-serif] text-[#eab308] tracking-wide">
+            ACKNOWLEDGEMENT & TERMS
+          </h3>
+          
+          <div className="p-4 bg-[rgba(11,17,32,0.6)] border border-[rgba(201,168,76,0.15)] rounded-lg max-h-72 overflow-y-auto">
+            <p className="text-[#8898aa] text-sm leading-relaxed whitespace-pre-line">
+              {formData.disclaimer}
+            </p>
+          </div>
+
+          <div className="pt-2">
+            <label className="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={agreedToTerms}
+                onChange={(e) => {
+                  setAgreedToTerms(e.target.checked);
+                  if (errors.agreedToTerms) {
+                    setErrors((prev) => ({ ...prev, agreedToTerms: '' }));
+                  }
+                }}
+                className="w-5 h-5 mt-0.5 text-[#c9a84c] rounded focus:ring-0 cursor-pointer accent-[#c9a84c]"
+              />
+              <span className="text-sm text-[#f4f6f8] font-medium leading-tight">
+                <span className="text-[#c9a84c] mr-1">*</span>
+                I have read, understood, and agree to the Acknowledgement statement above.
+              </span>
+            </label>
+            {errors.agreedToTerms && (
+              <p className="text-red-400 text-xs mt-2 ml-8">{errors.agreedToTerms}</p>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Captcha */}
       <div className="bg-[rgba(19,30,53,0.5)] rounded-lg p-6 md:p-8 border border-[rgba(201,168,76,0.1)] mb-[30px]">
@@ -344,12 +394,6 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
           {isSubmitting ? 'Submitting...' : 'SEND'}
         </button>
       </div>
-
-      {formData.disclaimer && (
-        <div className="mt-8 p-4 bg-[rgba(201,168,76,0.05)] border-l-4 border-[#c9a84c] rounded">
-          <p className="text-[#8898aa] text-sm leading-relaxed whitespace-pre-line">{formData.disclaimer}</p>
-        </div>
-      )}
     </form>
   );
 }

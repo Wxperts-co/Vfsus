@@ -4,7 +4,7 @@ import { FormData } from '@/types/form';
 export const serviceRequestForm: FormData = {
   id: '1',
   slug: 'service-request',
-  title: 'Service Request',
+  title: 'SERVICE REQUEST — FOR EXISTING CLIENTS',
   trustImage: '/images/trust.gif',
   submitEndpoint: '/api/process-service-request',
   submitMethod: 'POST',
@@ -24,7 +24,8 @@ In the event of nonpayment, the Agency reserves all rights and remedies availabl
           required: true,
           options: [
             { value: 'Armed', label: 'Armed' },
-            { value: 'Unarmed', label: 'Unarmed' }
+            { value: 'Unarmed', label: 'Unarmed' },
+            { value: 'Not Applicable', label: 'Not Applicable' }
           ]
         },
         {
@@ -58,46 +59,25 @@ In the event of nonpayment, the Agency reserves all rights and remedies availabl
           value: 'Fire Watch Service'
         },
         {
-          id: 'svcdet05',
+          id: 'svcdet08',
           name: 'services',
-          label: 'Concierge',
+          label: 'VIP Executive Protection',
           type: 'checkbox',
-          value: 'Concierge'
+          value: 'VIP Executive Protection'
         },
         {
           id: 'svcdet06',
           name: 'services',
-          label: 'Courier Service',
+          label: 'Medical & Legal Courier & Delivery Services',
           type: 'checkbox',
-          value: 'Courier Service'
-        },
-        {
-          id: 'svcdet07',
-          name: 'services',
-          label: 'Investigations',
-          type: 'checkbox',
-          value: 'Investigations'
-        },
-        {
-          id: 'svcdet08',
-          name: 'services',
-          label: 'Executive/VIP Protection',
-          type: 'checkbox',
-          value: 'Executive/VIP Protection'
-        },
-        {
-          id: 'svcdet09',
-          name: 'services',
-          label: 'Bodyguard',
-          type: 'checkbox',
-          value: 'Bodyguard'
+          value: 'Medical & Legal Courier & Delivery Services'
         },
         {
           id: 'svcdet12',
           name: 'services',
-          label: 'Others',
+          label: 'Other — Please Specify',
           type: 'checkbox',
-          value: 'Others',
+          value: 'Other — Please Specify',
           hasOtherText: true
         }
       ]
@@ -238,15 +218,15 @@ In the event of nonpayment, the Agency reserves all rights and remedies availabl
         {
           id: 'job_site_duties',
           name: 'job_site_duties',
-          label: 'Job Site Duties',
+          label: 'Service Duties and Requirements',
           type: 'textarea',
           rows: 4,
-          placeholder: 'Describe the job site duties'
+          placeholder: 'Describe service duties and requirements'
         },
         {
           id: 'guards-needed',
           name: 'guards-needed',
-          label: 'Number of Guards Needed',
+          label: 'Number of Personnel Needed',
           type: 'select',
           options: [
             { value: '1', label: '1' },
@@ -280,11 +260,20 @@ In the event of nonpayment, the Agency reserves all rights and remedies availabl
 export const contractingOpportunityForm: FormData = {
   id: '2',
   slug: 'contracting-opportunity',
-  title: 'CONTRACTING OPPORTUNITY',
+  title: 'CONTRACTING OPPORTUNITIES',
   trustImage: '/images/trust.gif',
   submitEndpoint: '/api/process-contract',
   submitMethod: 'POST',
-  disclaimer: '',
+  description: 'Virginia Surveillance Force, Inc. works with qualified and licensed security professionals and service providers to support client requirements throughout our service areas. If your company is interested in partnering with VSF, please complete the form below with your company information, service capabilities, coverage areas, and requested rates for consideration.',
+  disclaimer: `ACKNOWLEDGEMENT
+
+• The information provided to Virginia Surveillance Force, Inc. is truthful and accurate to the best of my knowledge.
+• I understand that submitting this form does not create a contract, subcontractor relationship, employment relationship, or obligation for Virginia Surveillance Force, Inc. to enter into an agreement.
+• I understand that any subcontracting arrangement with Virginia Surveillance Force, Inc. is subject to a separate written agreement signed by the appropriate parties.
+• I authorize Virginia Surveillance Force, Inc. to verify the information provided in this form and to conduct reasonable business, licensing, insurance, and background inquiries as permitted by applicable law.
+• I understand that Virginia Surveillance Force, Inc. may request additional documentation or information before considering or approving a subcontracting relationship.
+• I understand that submission of this form does not guarantee approval, assignment of work, or payment by Virginia Surveillance Force, Inc.
+• I understand that Virginia Surveillance Force, Inc. will maintain the confidentiality of the information provided, subject to applicable law and legitimate business requirements.`,
   
   sections: [
     {
@@ -377,18 +366,18 @@ export const contractingOpportunityForm: FormData = {
         {
           id: 'stservice',
           name: 'stservice',
-          label: 'States where service is required',
+          label: 'States where you are licensed to provide services',
           type: 'text',
           required: true,
-          placeholder: 'States'
+          placeholder: 'States where you are licensed to provide services'
         },
         {
           id: 'coservice',
           name: 'coservice',
-          label: 'Counties where service is required',
+          label: 'Counties or areas you serve',
           type: 'text',
           required: true,
-          placeholder: 'Counties'
+          placeholder: 'Counties or areas you serve'
         },
         {
           id: 'bcbackground',
@@ -565,44 +554,46 @@ export const contractingOpportunityForm: FormData = {
           placeholder: 'Describe your protocols'
         },
         {
-          id: 'payarmed',
-          name: 'payarmed',
-          label: 'Hourly rate for Armed Guards',
-          type: 'text',
-          required: true,
-          placeholder: 'Rate for armed guards'
-        },
-        {
-          id: 'payunarmed',
-          name: 'payunarmed',
-          label: 'Hourly rate for Unarmed Guards',
-          type: 'text',
-          required: true,
-          placeholder: 'Rate for unarmed guards'
-        },
-        {
           id: 'expectarmed',
           name: 'expectarmed',
-          label: 'Expected rate from VSF - Armed',
+          label: 'Hourly rate you are requesting from VSF for armed security',
           type: 'text',
           required: true,
-          placeholder: 'Expected rate for armed'
+          placeholder: 'Hourly rate for armed security'
         },
         {
           id: 'expectunarmed',
           name: 'expectunarmed',
-          label: 'Expected rate from VSF - Unarmed',
+          label: 'Hourly rate you are requesting from VSF for unarmed security',
           type: 'text',
           required: true,
-          placeholder: 'Expected rate for unarmed'
+          placeholder: 'Hourly rate for unarmed security'
+        },
+        {
+          id: 'expectother',
+          name: 'expectother',
+          label: 'Rate you are requesting from VSF for other services',
+          type: 'text',
+          placeholder: 'Rate requested for other services'
+        },
+        {
+          id: 'willnegotiate',
+          name: 'willnegotiate',
+          label: 'Are you willing to negotiate the requested rate from VSF?',
+          type: 'radio',
+          required: true,
+          options: [
+            { value: 'Yes', label: 'Yes' },
+            { value: 'No', label: 'No' }
+          ]
         },
         {
           id: 'manname',
           name: 'manname',
-          label: 'Managers names/phone numbers',
+          label: 'Manager or Supervisor Name, Phone Number, and Email Address',
           type: 'text',
           required: true,
-          placeholder: 'Manager names and phone numbers'
+          placeholder: 'Manager or supervisor name, phone number, and email address'
         }
       ]
     },
@@ -648,23 +639,30 @@ export const employmentApplicationForm: FormData = {
         {
           id: 'pos_armed',
           name: 'position',
-          label: 'Armed Security Officer',
+          label: 'Armed',
           type: 'checkbox',
           value: 'Armed'
         },
         {
           id: 'pos_unarmed',
           name: 'position',
-          label: 'Unarmed Security Officer',
+          label: 'Unarmed',
           type: 'checkbox',
           value: 'Unarmed'
         },
         {
-          id: 'pos_concierge',
+          id: 'pos_front_desk_concierge',
           name: 'position',
-          label: 'Concierge / Front Desk',
+          label: 'Front Desk & Concierge',
           type: 'checkbox',
-          value: 'Concierge'
+          value: 'Front Desk & Concierge'
+        },
+        {
+          id: 'pos_other',
+          name: 'position',
+          label: 'Other Position',
+          type: 'checkbox',
+          value: 'Other Position'
         }
       ]
     }

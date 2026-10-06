@@ -78,26 +78,6 @@ export default async function FormPage({ params }: FormPageProps) {
                             </div>
                         </>
                     )}
-
-                    {/* Additional Info for Contract Form */}
-                    {form.slug === 'contracting-opportunity' && (
-                        <div className="mt-8 p-6 bg-[#131e35] rounded-lg border border-[rgba(201,168,76,0.1)]">
-                            <ul className="space-y-2 text-[#8898aa]">
-                                <li className="flex items-start gap-2">
-                                    <span className="text-[#c9a84c]">•</span>
-                                    The Information provided to Virginia Surveillance Force is presented as truthful and accurate.
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-[#c9a84c]">•</span>
-                                    It is Understood that Virginia Surveillance Force will service after receiving a signed contract.
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-[#c9a84c]">•</span>
-                                    It is Understood that Virginia Surveillance Force will maintain this information confidential.
-                                </li>
-                            </ul>
-                        </div>
-                    )}
                 </div>
             </div>
         </>

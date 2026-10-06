@@ -189,17 +189,14 @@ export function adminEmploymentApplicationEmail(data: any, files: { fieldName: s
   // Questionnaire rows
   const questionnaireMap: Record<string, string> = {
     q1_firearm: "1. Own/Possess Firearm",
-    q2_citizen: "2. US Citizen / Alien Authorized",
-    q3_military: "3. US Military Service",
-    q4_police_federal: "4. Police / Federal / National Guard",
-    q5_drug_testing: "5. Drug Testing Consent",
-    q6_field_experience: "6. Security Field Experience",
-    q7_arrest_conviction: "7. Arrest / Conviction History",
-    q8_polygraph: "8. Polygraph Willingness",
-    q9_conflict_interest: "9. Security Firm Affiliation Conflict",
-    q10_currently_employed_security: "10. Currently Employed with Security Firm",
-    q11_contact_employer: "11. May Contact Present Employer",
-    q12_driving_criminal_record: "12. Provide Driving/Criminal Record",
+    q3_military: "2. US Military Service",
+    q4_police_federal: "3. Police / Federal / National Guard",
+    q5_drug_testing: "4. Drug Testing Consent (Law / Policy / Position)",
+    q6_field_experience: "5. Security Field Experience",
+    q9_conflict_interest: "6. Security Firm Affiliation Conflict",
+    q10_currently_employed_security: "7. Currently Employed with Security Firm",
+    q11_contact_employer: "8. May Contact Present Employer",
+    q12_driving_criminal_record: "9. Provide Driving/Criminal Record",
   };
 
   let questionnaireHtml = "";
@@ -227,7 +224,6 @@ export function adminEmploymentApplicationEmail(data: any, files: { fieldName: s
         ${row("Dates Employed", `${escapeHtml(w.startDate || "—")} to ${escapeHtml(w.endDate || "—")}`)}
         ${row("Address / Phone", `${escapeHtml(w.address || "—")} | Phone: ${escapeHtml(w.phone || "—")}`)}
         ${row("Supervisor", `${escapeHtml(w.supervisor || "—")} (Phone: ${escapeHtml(w.supervisorPhone || "—")}, Email: ${escapeHtml(w.supervisorEmail || "—")})`)}
-        ${row("Pay Rates", `Starting: ${escapeHtml(w.startingRate ? "$" + w.startingRate : "—")} | Ending: ${escapeHtml(w.endingRate ? "$" + w.endingRate : "—")}`)}
         ${row("Reason for Leaving", escapeHtml(w.reasonForLeaving || "—"))}
         ${w.jobDuties ? row("Job Duties", escapeHtml(w.jobDuties)) : ""}
       `;
@@ -290,8 +286,7 @@ export function adminEmploymentApplicationEmail(data: any, files: { fieldName: s
       ${row("Home Phone", escapeHtml(data.homePhone || "—"))}
       ${row("Address", escapeHtml(`${data.address || ""}, ${data.city || ""} ${data.state || ""} ${data.zip || ""}`.trim()))}
       ${row("Nicknames / Aliases", escapeHtml(data.nicknames || "—"))}
-      ${row("Eligible in USA", escapeHtml(data.eligibleUSA || "—"))}
-      ${row("Social Security #", escapeHtml(data.ssn || "—"))}
+      ${row("Authorized to work in USA", escapeHtml(data.eligibleUSA || "—"))}
       ${row("18+ Years Old", escapeHtml(data.is18OrOlder || "—"))}
       ${row("Driver's License", escapeHtml(data.hasDriversLicense === "Yes" ? `Yes (Number: ${data.driversLicenseNum || "—"})` : (data.hasDriversLicense || "—")))}
       ${row("High School Diploma", escapeHtml(data.hasHighSchoolDiploma || "—"))}

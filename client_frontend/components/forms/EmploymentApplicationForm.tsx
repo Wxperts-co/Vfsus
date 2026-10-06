@@ -44,8 +44,6 @@ interface WorkHistoryRow {
   supervisorEmail: string;
   supervisorPhone: string;
   reasonForLeaving: string;
-  startingRate: string;
-  endingRate: string;
   jobTitle: string;
   jobDuties: string;
 }
@@ -82,7 +80,6 @@ export default function EmploymentApplicationForm() {
   const [email, setEmail] = useState('');
   const [nicknames, setNicknames] = useState('');
   const [eligibleUSA, setEligibleUSA] = useState<'Yes' | 'No' | ''>('');
-  const [ssn, setSsn] = useState('');
   const [hasHighSchoolDiploma, setHasHighSchoolDiploma] = useState<'Yes' | 'No' | ''>('');
   const [is18OrOlder, setIs18OrOlder] = useState<'Yes' | 'No' | ''>('');
   const [hasDriversLicense, setHasDriversLicense] = useState<'Yes' | 'No' | ''>('');
@@ -105,16 +102,13 @@ export default function EmploymentApplicationForm() {
     { description: '', issuedBy: '', idNum: '', expirationDate: '' }
   ]);
 
-  // Questionnaire (12 Questions)
+  // Questionnaire
   const [answers, setAnswers] = useState<Record<string, 'Yes' | 'No' | ''>>({
     q1_firearm: '',
-    q2_citizen: '',
     q3_military: '',
     q4_police_federal: '',
     q5_drug_testing: '',
     q6_field_experience: '',
-    q7_arrest_conviction: '',
-    q8_polygraph: '',
     q9_conflict_interest: '',
     q10_currently_employed_security: '',
     q11_contact_employer: '',
@@ -134,8 +128,6 @@ export default function EmploymentApplicationForm() {
       supervisorEmail: '',
       supervisorPhone: '',
       reasonForLeaving: '',
-      startingRate: '',
-      endingRate: '',
       jobTitle: '',
       jobDuties: ''
     }
@@ -160,14 +152,12 @@ export default function EmploymentApplicationForm() {
   const [files, setFiles] = useState<{
     resume: File | null;
     driversLicense: File | null;
-    socialSecurityCard: File | null;
     guardLicense: File | null;
     certifications: File | null;
     otherDocs: File[];
   }>({
     resume: null,
     driversLicense: null,
-    socialSecurityCard: null,
     guardLicense: null,
     certifications: null,
     otherDocs: []
@@ -220,7 +210,7 @@ export default function EmploymentApplicationForm() {
   };
 
   const handleFileUpload = (
-    key: 'resume' | 'driversLicense' | 'socialSecurityCard' | 'guardLicense' | 'certifications',
+    key: 'resume' | 'driversLicense' | 'guardLicense' | 'certifications',
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (e.target.files && e.target.files[0]) {
@@ -236,7 +226,7 @@ export default function EmploymentApplicationForm() {
     }
   };
 
-  const removeFile = (key: 'resume' | 'driversLicense' | 'socialSecurityCard' | 'guardLicense' | 'certifications') => {
+  const removeFile = (key: 'resume' | 'driversLicense' | 'guardLicense' | 'certifications') => {
     setFiles(prev => ({ ...prev, [key]: null }));
   };
 
@@ -291,8 +281,6 @@ export default function EmploymentApplicationForm() {
           supervisorEmail: '',
           supervisorPhone: '',
           reasonForLeaving: '',
-          startingRate: '',
-          endingRate: '',
           jobTitle: '',
           jobDuties: ''
         }
@@ -381,7 +369,6 @@ export default function EmploymentApplicationForm() {
         email,
         nicknames,
         eligibleUSA,
-        ssn,
         hasHighSchoolDiploma,
         is18OrOlder,
         hasDriversLicense,
@@ -420,7 +407,6 @@ export default function EmploymentApplicationForm() {
 
       if (files.resume) formData.append('resume', files.resume);
       if (files.driversLicense) formData.append('driversLicense', files.driversLicense);
-      if (files.socialSecurityCard) formData.append('socialSecurityCard', files.socialSecurityCard);
       if (files.guardLicense) formData.append('guardLicense', files.guardLicense);
       if (files.certifications) formData.append('certifications', files.certifications);
       
@@ -573,8 +559,8 @@ export default function EmploymentApplicationForm() {
           <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2.5">
             <span className="text-[#eab308]">*</span> Position Applied For (Check all that apply)
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {['Armed', 'Un-Armed', 'Concierge', 'Front Desk'].map((pos) => (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            {['Armed', 'Unarmed', 'Front Desk & Concierge', 'Other Position'].map((pos) => (
               <label
                 key={pos}
                 className={`flex items-center gap-2.5 p-3 rounded-lg border cursor-pointer transition-all ${
@@ -592,16 +578,18 @@ export default function EmploymentApplicationForm() {
                 <span className="text-sm">{pos}</span>
               </label>
             ))}
-            <div className="col-span-2 sm:col-span-1 md:col-span-1">
+          </div>
+          {positions.includes('Other Position') && (
+            <div className="mt-3">
               <input
                 type="text"
-                placeholder="Other position..."
+                placeholder="Specify other position applied for..."
                 value={otherPosition}
                 onChange={(e) => setOtherPosition(e.target.value)}
                 className="w-full p-2.5 bg-[#0b1120] border border-[rgba(201,168,76,0.2)] rounded-lg text-sm text-[#f4f6f8] focus:border-[#eab308] outline-none"
               />
             </div>
-          </div>
+          )}
           {formErrors.positions && (
             <p className="text-red-400 text-xs mt-1.5">{formErrors.positions}</p>
           )}
@@ -613,7 +601,7 @@ export default function EmploymentApplicationForm() {
             Status Desired
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {['Full Time', 'Part Time', 'On Call / Temporary'].map((st) => (
+            {['Full-Time', 'Part-Time', 'On-Call Floater'].map((st) => (
               <label
                 key={st}
                 className={`flex items-center gap-2.5 p-3 rounded-lg border cursor-pointer transition-all ${
@@ -639,8 +627,8 @@ export default function EmploymentApplicationForm() {
           <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2.5">
             Shifts
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {['Day', 'Evening', 'Graveyard', 'Weekend', 'Regular'].map((sh) => (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            {['Day', 'Evening', 'Overnight', 'Any Shift'].map((sh) => (
               <label
                 key={sh}
                 className={`flex items-center gap-2.5 p-3 rounded-lg border cursor-pointer transition-all ${
@@ -875,36 +863,28 @@ export default function EmploymentApplicationForm() {
           />
         </div>
 
-        {/* Eligibility & SSN & ID Checks */}
+        {/* Eligibility & ID Checks */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-          <div className="p-4 bg-[#0b1120] rounded-lg border border-[rgba(201,168,76,0.15)] space-y-3">
-            <label className="block text-xs font-semibold text-[#f4f6f8]">
-              Are you legally eligible for employment in the USA?
-            </label>
-            <div className="flex gap-6">
-              {['Yes', 'No'].map((opt) => (
-                <label key={opt} className="flex items-center gap-2 cursor-pointer text-sm text-[#cbd5e1]">
-                  <input
-                    type="radio"
-                    name="eligibleUSA"
-                    value={opt}
-                    checked={eligibleUSA === opt}
-                    onChange={() => setEligibleUSA(opt as any)}
-                    className="w-4 h-4 text-[#eab308]"
-                  />
-                  <span>{opt}</span>
-                </label>
-              ))}
-            </div>
+          <div className="p-4 bg-[#0b1120] rounded-lg border border-[rgba(201,168,76,0.15)] space-y-3 flex flex-col justify-between">
             <div>
-              <label className="block text-xs text-[#8898aa] mb-1">Social Security Number</label>
-              <input
-                type="text"
-                placeholder="XXX-XX-XXXX"
-                value={ssn}
-                onChange={(e) => setSsn(e.target.value)}
-                className="w-full px-3 py-2 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded text-sm text-[#f4f6f8] outline-none"
-              />
+              <label className="block text-xs font-semibold text-[#f4f6f8] mb-2">
+                Are you legally authorized to work in the United States?
+              </label>
+              <div className="flex gap-6 pt-1">
+                {['Yes', 'No'].map((opt) => (
+                  <label key={opt} className="flex items-center gap-2 cursor-pointer text-sm text-[#cbd5e1]">
+                    <input
+                      type="radio"
+                      name="eligibleUSA"
+                      value={opt}
+                      checked={eligibleUSA === opt}
+                      onChange={() => setEligibleUSA(opt as any)}
+                      className="w-4 h-4 text-[#eab308]"
+                    />
+                    <span>{opt}</span>
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -1228,13 +1208,10 @@ export default function EmploymentApplicationForm() {
         <div className="divide-y divide-[rgba(201,168,76,0.1)]">
           {[
             { id: 'q1_firearm', q: 'Do you own or possess a firearm?' },
-            { id: 'q2_citizen', q: 'Are you a United States Citizen, Resident or an alien authorized to work?' },
             { id: 'q3_military', q: 'Did you serve in the United States Military? (Army, Navy, Air Force or Marines)' },
             { id: 'q4_police_federal', q: 'Did you serve in the Police Department, Federal Agency or National Guard?' },
-            { id: 'q5_drug_testing', q: 'Are you willing to visit medical facility for drug testing without any prior notice?' },
+            { id: 'q5_drug_testing', q: 'Are you willing to submit to drug testing when required by applicable law, company policy, or the requirements of the position?' },
             { id: 'q6_field_experience', q: 'Do you have any experience in the field you are applying for?' },
-            { id: 'q7_arrest_conviction', q: 'Have you ever been arrested, or convicted of a felony or a misdemeanor?' },
-            { id: 'q8_polygraph', q: 'If job requires, are you willing to take a polygraph test?' },
             { id: 'q9_conflict_interest', q: 'Are you currently affiliated with any Security, staffing or an Investigation Firm (Conflict of Interest)?' },
             { id: 'q10_currently_employed_security', q: 'Are you currently employed with a security or Investigative firm?' },
             { id: 'q11_contact_employer', q: 'May we contact your present employer?' },
@@ -1400,27 +1377,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
 
-              <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Starting Rate</label>
-                <input
-                  type="text"
-                  placeholder="$ / hr"
-                  value={emp.startingRate}
-                  onChange={(e) => updateWorkHistoryRow(idx, 'startingRate', e.target.value)}
-                  className="w-full px-3 py-2 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded text-xs text-[#f4f6f8] outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Ending Rate</label>
-                <input
-                  type="text"
-                  placeholder="$ / hr"
-                  value={emp.endingRate}
-                  onChange={(e) => updateWorkHistoryRow(idx, 'endingRate', e.target.value)}
-                  className="w-full px-3 py-2 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded text-xs text-[#f4f6f8] outline-none"
-                />
-              </div>
-              <div>
+              <div className="sm:col-span-2 md:col-span-3">
                 <label className="block text-[11px] text-[#8898aa] mb-1">Reason for Leaving</label>
                 <input
                   type="text"
@@ -1633,13 +1590,13 @@ export default function EmploymentApplicationForm() {
                 9. Attach Supporting Documents
               </h3>
               <p className="text-xs text-[#8898aa]">
-                Attach your Driver’s License, Social Security Card, Security Guard ID / License, certifications, and resume.
+                Attach your Driver’s License, Security Guard ID / License, certifications, and resume.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
           {/* Resume Upload */}
           <div className="p-4 bg-[#0b1120] border border-[rgba(201,168,76,0.2)] rounded-xl flex flex-col justify-between space-y-3">
             <div>
@@ -1710,44 +1667,6 @@ export default function EmploymentApplicationForm() {
                   type="file"
                   accept="image/*,.pdf"
                   onChange={(e) => handleFileUpload('driversLicense', e)}
-                  className="hidden"
-                />
-              </label>
-            )}
-          </div>
-
-          {/* Social Security Card */}
-          <div className="p-4 bg-[#0b1120] border border-[rgba(201,168,76,0.2)] rounded-xl flex flex-col justify-between space-y-3">
-            <div>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-bold text-[#e8c97a] uppercase tracking-wider">Social Security Card</span>
-                <Paperclip className="w-4 h-4 text-[#8898aa]" />
-              </div>
-              <p className="text-[11px] text-[#8898aa]">Image or PDF copy</p>
-            </div>
-
-            {files.socialSecurityCard ? (
-              <div className="flex items-center justify-between p-2.5 bg-[#1a2845] rounded-lg border border-[#eab308]/40">
-                <div className="truncate pr-2">
-                  <p className="text-xs text-white font-medium truncate">{files.socialSecurityCard.name}</p>
-                  <p className="text-[10px] text-[#8898aa]">{(files.socialSecurityCard.size / 1024).toFixed(0)} KB</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => removeFile('socialSecurityCard')}
-                  className="text-red-400 hover:text-red-300 p-1"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            ) : (
-              <label className="flex flex-col items-center justify-center p-4 border border-dashed border-[rgba(201,168,76,0.3)] hover:border-[#eab308] bg-[#131e35]/50 hover:bg-[#131e35] rounded-lg cursor-pointer transition-all">
-                <Upload className="w-5 h-5 text-[#eab308] mb-1" />
-                <span className="text-xs text-[#f4f6f8] font-medium">Upload SSN Card</span>
-                <input
-                  type="file"
-                  accept="image/*,.pdf"
-                  onChange={(e) => handleFileUpload('socialSecurityCard', e)}
                   className="hidden"
                 />
               </label>
