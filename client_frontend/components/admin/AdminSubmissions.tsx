@@ -670,11 +670,11 @@ export default function AdminSubmissions() {
                   </div>
                 )}
 
-              {selectedSubmission.duties_perform && (
+              {(selectedSubmission.jobsite_specification || selectedSubmission.duties_perform) && (
                 <div className="mt-5">
-                  <ModalSection title="Duties">
+                  <ModalSection title="Description of Security Needs & Requirements">
                     <div className="p-3.5 bg-[#1a2845] rounded-[10px] border border-[rgba(201,168,76,0.2)] text-[13px] text-[#e2e8f0] leading-relaxed whitespace-pre-wrap">
-                      {selectedSubmission.duties_perform}
+                      {selectedSubmission.jobsite_specification || selectedSubmission.duties_perform}
                     </div>
                   </ModalSection>
                 </div>

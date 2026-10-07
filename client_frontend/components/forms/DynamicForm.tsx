@@ -297,7 +297,7 @@ export default function DynamicForm({ formData, onSubmit }: DynamicFormProps) {
             {section.fields.map((field) => (
               <div key={field.id} className={field.colSpan === 2 ? 'md:col-span-2' : ''}>
                 {field.type !== 'checkbox' && (
-                  <label className="block text-[#8898aa] text-sm mb-2">
+                  <label className="block text-white text-sm mb-2">
                     {field.required && <span className="text-[#c9a84c] mr-1">*</span>}
                     {field.label}
                   </label>

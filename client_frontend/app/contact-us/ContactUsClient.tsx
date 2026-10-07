@@ -289,7 +289,7 @@ export default function ContactUsClient() {
                                 <form className="ct-form flex flex-col" onSubmit={handleSubmit} onReset={handleReset}>
                                     {FORM_FIELDS.map((f) => (
                                         <div key={f.id} className="form-group flex flex-col gap-1.5 mb-4">
-                                            <label htmlFor={f.id} className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                                            <label htmlFor={f.id} className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                                 {f.required && <span className="req text-[#eab308] text-[0.9rem]">*</span>} {f.label}
                                             </label>
                                             <input
@@ -311,7 +311,7 @@ export default function ContactUsClient() {
                                     {/* Comments */}
                                     <div className="form-group flex flex-col gap-1.5 mb-4">
                                         <div className="flex items-center justify-between">
-                                            <label htmlFor="comments" className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                                            <label htmlFor="comments" className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                                 <span className="req text-[#c9a84c] text-[0.9rem]">*</span> Comments
                                             </label>
                                             <span className={`text-[0.75rem] ${overWordLimit ? "text-[#e25555]" : "text-[#8898aa]"}`}>
@@ -334,7 +334,7 @@ export default function ContactUsClient() {
 
                                     {/* File upload */}
                                     <div className="form-group flex flex-col gap-1.5 mb-4">
-                                        <label className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa]">Attach File</label>
+                                        <label className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-white">Attach File</label>
                                         <label className="file-input-wrap p-3 bg-[#131e35] border border-dashed border-[rgba(201,168,76,0.25)] rounded text-[0.88rem] font-light text-[#8898aa] cursor-pointer transition-all duration-250 hover:border-[#c9a84c] hover:bg-[#1a2845]">
                                             <input type="file" name="my_file" onChange={handleFile} className="hidden" />
                                             <span>
@@ -347,7 +347,7 @@ export default function ContactUsClient() {
 
                                     {/* Captcha */}
                                     <div className="form-group flex flex-col gap-1.5 mb-4">
-                                        <label htmlFor="captcha" className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                                        <label htmlFor="captcha" className="form-label text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                             <span className="req text-[#eab308] text-[0.9rem]">*</span> Verify You&apos;re Human
                                         </label>
                                         <div className="flex items-center gap-3">

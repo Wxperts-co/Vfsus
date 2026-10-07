@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
       filename: string;
       url: string;
       size: number;
-      mimeType: string;
+      mimeType: string;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
     }[] = [];
 
     const emailAttachments: {

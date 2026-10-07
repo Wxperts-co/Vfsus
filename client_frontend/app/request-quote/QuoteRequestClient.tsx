@@ -218,7 +218,7 @@ export default function QuoteRequestClient() {
     }
     if (!formData.toO.trim()) newErrors.toO = "Type of Organization is required";
     if (!formData.jobsite_specification.trim()) {
-      newErrors.jobsite_specification = "Job site duties / security needs description is required";
+      newErrors.jobsite_specification = "Description of security needs and service requirements is required";
     }
 
     // 3. Service Schedule
@@ -242,7 +242,7 @@ export default function QuoteRequestClient() {
       newErrors.serviceOthers = "Please specify other service details";
     }
     if (!formData.guards_needed.trim()) {
-      newErrors.guards_needed = "Please specify number of officers needed per shift";
+      newErrors.guards_needed = "Please specify number of personnel needed per shift";
     }
 
     // 6. Staffing & Hours
@@ -405,7 +405,7 @@ export default function QuoteRequestClient() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Full Name
                   </label>
                   <input
@@ -424,7 +424,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Job Title
                   </label>
                   <input
@@ -443,7 +443,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Company / Organization
                   </label>
                   <input
@@ -462,7 +462,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     Web Address
                   </label>
                   <input
@@ -476,7 +476,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Address
                   </label>
                   <input
@@ -495,7 +495,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> City
                   </label>
                   <input
@@ -514,7 +514,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> State &amp; ZIP
                   </label>
                   <input
@@ -533,7 +533,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Email Address
                   </label>
                   <input
@@ -552,7 +552,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Phone Number
                   </label>
                   <input
@@ -629,7 +629,7 @@ export default function QuoteRequestClient() {
               {formData.isSameAddress === "No" && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6 p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/20 animate-fade-in">
                   <div className="md:col-span-2">
-                    <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                    <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                       <span className="text-yellow-400">*</span> Service Address
                     </label>
                     <input
@@ -652,7 +652,7 @@ export default function QuoteRequestClient() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                    <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                       <span className="text-yellow-400">*</span> City
                     </label>
                     <input
@@ -675,7 +675,7 @@ export default function QuoteRequestClient() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                    <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                       <span className="text-yellow-400">*</span> State
                     </label>
                     <input
@@ -698,7 +698,7 @@ export default function QuoteRequestClient() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                    <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                       <span className="text-yellow-400">*</span> ZIP
                     </label>
                     <input
@@ -722,7 +722,7 @@ export default function QuoteRequestClient() {
 
               <div className="space-y-5">
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Type of Organization
                   </label>
                   <select
@@ -752,8 +752,8 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
-                    <span className="text-yellow-400">*</span> Job Site Duties / Description of Security Needs
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
+                    <span className="text-yellow-400">*</span> Description of Security Needs and Service Requirements
                   </label>
                   <textarea
                     name="jobsite_specification"
@@ -789,7 +789,7 @@ export default function QuoteRequestClient() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-6">
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Starting Date of Service
                   </label>
                   <input
@@ -807,7 +807,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Service Hours Per Day
                   </label>
                   <input
@@ -826,7 +826,7 @@ export default function QuoteRequestClient() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Days Per Week
                   </label>
                   <select
@@ -854,7 +854,7 @@ export default function QuoteRequestClient() {
 
               {/* Service Term */}
               <div>
-                <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-3">
+                <label className="block text-white text-xs font-bold uppercase tracking-wider mb-3">
                   <span className="text-yellow-400">*</span> Service Term
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -895,25 +895,25 @@ export default function QuoteRequestClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Officer Type */}
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-3">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-3">
                     <span className="text-yellow-400">*</span> Officer Type
                   </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {["Armed", "Unarmed"].map((type) => (
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    {["Armed", "Unarmed", "Not Applicable"].map((type) => (
                       <button
                         key={type}
                         type="button"
                         onClick={() =>
                           setFormData((prev) => ({ ...prev, svctype1: type }))
                         }
-                        className={`p-3.5 rounded-xl border text-sm font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                        className={`p-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                           formData.svctype1 === type
-                            ? "bg-yellow-500/20 border-yellow-400 text-yellow-400"
+                            ? "bg-yellow-500/20 border-yellow-400 text-yellow-400 font-bold"
                             : "bg-[#0b1120] border-white/10 text-gray-300 hover:border-white/30"
                         }`}
                       >
                         {formData.svctype1 === type && (
-                          <Check className="w-4 h-4 text-yellow-400 shrink-0" />
+                          <Check className="w-3.5 h-3.5 text-yellow-400 shrink-0" />
                         )}
                         <span>{type}</span>
                       </button>
@@ -923,7 +923,7 @@ export default function QuoteRequestClient() {
 
                 {/* Appearance */}
                 <div>
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-3">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-3">
                     <span className="text-yellow-400">*</span> Appearance
                   </label>
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -1040,7 +1040,7 @@ export default function QuoteRequestClient() {
               {/* Other service input */}
               {formData.services.includes("Other — Please Specify") && (
                 <div className="mb-6 p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/20 animate-fade-in">
-                  <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                     <span className="text-yellow-400">*</span> Other Service Details
                   </label>
                   <input
@@ -1063,8 +1063,8 @@ export default function QuoteRequestClient() {
 
               {/* How Many Security Officers Needed */}
               <div className="pt-4 border-t border-white/10">
-                <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
-                  <span className="text-yellow-400">*</span> How Many Security Officers / VSF Personnel Are Needed Per Shift?
+                <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
+                  <span className="text-yellow-400">*</span> How Many Personnel Are Needed per Shift?
                 </label>
                 <select
                   name="guards_needed"
@@ -1104,7 +1104,7 @@ export default function QuoteRequestClient() {
 
               {/* Supervisor Needed */}
               <div className="mb-6">
-                <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-3">
+                <label className="block text-white text-xs font-bold uppercase tracking-wider mb-3">
                   Is a Shift Supervisor or Site Supervisor Required?
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
@@ -1135,12 +1135,12 @@ export default function QuoteRequestClient() {
 
               {/* Hours needed */}
               <div>
-                <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-3">
-                  What Hours Will Security Services Be Needed?
+                <label className="block text-white text-xs font-bold uppercase tracking-wider mb-3">
+                  Approximately What Hours Will Services Be Required?
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-gray-400 text-xs font-medium mb-1.5">
+                    <label className="block text-white text-xs font-medium mb-1.5">
                       <span className="text-yellow-400">*</span> Start Time
                     </label>
                     <input
@@ -1161,7 +1161,7 @@ export default function QuoteRequestClient() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-400 text-xs font-medium mb-1.5">
+                    <label className="block text-white text-xs font-medium mb-1.5">
                       <span className="text-yellow-400">*</span> End Time
                     </label>
                     <input
@@ -1202,7 +1202,7 @@ export default function QuoteRequestClient() {
               </div>
 
               <div>
-                <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-2">
+                <label className="block text-white text-xs font-bold uppercase tracking-wider mb-2">
                   Additional Comments or Special Requirements
                 </label>
                 <textarea
@@ -1218,7 +1218,7 @@ export default function QuoteRequestClient() {
 
             {/* ── SECURITY CHECK / CAPTCHA ── */}
             <div className="bg-[#131e35] rounded-2xl p-6 md:p-8 border border-yellow-500/20 shadow-lg">
-              <label className="block text-gray-300 text-xs font-bold uppercase tracking-wider mb-3">
+              <label className="block text-white text-xs font-bold uppercase tracking-wider mb-3">
                 <span className="text-yellow-400">*</span> Security Verification
               </label>
               <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">

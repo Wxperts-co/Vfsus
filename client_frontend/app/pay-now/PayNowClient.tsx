@@ -191,7 +191,7 @@ export default function PayNowClient() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="flex flex-col gap-1.5">
-                                <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                                <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                     <span className="text-[#eab308] text-[0.9rem]">*</span> First Name
                                 </label>
                                 <input
@@ -210,7 +210,7 @@ export default function PayNowClient() {
                             </div>
                             
                             <div className="flex flex-col gap-1.5">
-                                <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                                <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                     <span className="text-[#eab308] text-[0.9rem]">*</span> Last Name
                                 </label>
                                 <input
@@ -230,7 +230,7 @@ export default function PayNowClient() {
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                            <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                 <span className="text-[#eab308] text-[0.9rem]">*</span> Email Address
                             </label>
                             <input
@@ -249,7 +249,7 @@ export default function PayNowClient() {
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                            <label className="text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                 <span className="text-[#eab308] text-[0.9rem]">*</span> Amount (USD)
                             </label>
                             <div className="relative">
@@ -275,7 +275,7 @@ export default function PayNowClient() {
 
                         {/* Numeric Captcha Verification */}
                         <div className="flex flex-col gap-1.5 mt-1">
-                            <label htmlFor="pay-captcha" className="text-[0.82rem] font-medium tracking-[1px] uppercase text-[#8898aa] flex items-center gap-1">
+                            <label htmlFor="pay-captcha" className="text-[0.82rem] font-medium tracking-[1px] uppercase text-white flex items-center gap-1">
                                 <span className="text-[#eab308] text-[0.9rem]">*</span> Verify You&apos;re Human
                             </label>
                             <div className="flex items-center gap-3">

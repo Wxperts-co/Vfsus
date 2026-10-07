@@ -526,7 +526,7 @@ export default function EmploymentApplicationForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               <span className="text-[#eab308]">*</span> Date of Application
             </label>
             <input
@@ -538,7 +538,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               Desired Hourly Rate ($ / Hour)
             </label>
             <div className="relative">
@@ -556,7 +556,7 @@ export default function EmploymentApplicationForm() {
 
         {/* Position Applied For */}
         <div>
-          <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2.5">
+          <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2.5">
             <span className="text-[#eab308]">*</span> Position Applied For (Check all that apply)
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
@@ -597,7 +597,7 @@ export default function EmploymentApplicationForm() {
 
         {/* Status Desired */}
         <div>
-          <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2.5">
+          <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2.5">
             Status Desired
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -624,7 +624,7 @@ export default function EmploymentApplicationForm() {
 
         {/* Shifts */}
         <div>
-          <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2.5">
+          <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2.5">
             Shifts
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
@@ -651,7 +651,7 @@ export default function EmploymentApplicationForm() {
 
         {/* Locations */}
         <div>
-          <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2.5">
+          <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2.5">
             Location / Jurisdiction
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
@@ -697,7 +697,7 @@ export default function EmploymentApplicationForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               <span className="text-[#eab308]">*</span> First Name
             </label>
             <input
@@ -714,7 +714,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               Middle Name
             </label>
             <input
@@ -727,7 +727,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               <span className="text-[#eab308]">*</span> Last Name
             </label>
             <input
@@ -747,7 +747,7 @@ export default function EmploymentApplicationForm() {
         {/* Address */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-5">
           <div className="sm:col-span-2">
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               Street Address
             </label>
             <input
@@ -760,7 +760,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               City
             </label>
             <input
@@ -774,7 +774,7 @@ export default function EmploymentApplicationForm() {
 
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+              <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
                 State
               </label>
               <input
@@ -786,7 +786,7 @@ export default function EmploymentApplicationForm() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+              <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
                 Zip
               </label>
               <input
@@ -803,7 +803,7 @@ export default function EmploymentApplicationForm() {
         {/* Contact Numbers & Email */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               Home Phone
             </label>
             <input
@@ -816,7 +816,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               <span className="text-[#eab308]">*</span> Cell Phone
             </label>
             <input
@@ -833,7 +833,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               <span className="text-[#eab308]">*</span> Email Address
             </label>
             <input
@@ -851,7 +851,7 @@ export default function EmploymentApplicationForm() {
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+          <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
             Nick Names / Other Names known by
           </label>
           <input
@@ -908,7 +908,7 @@ export default function EmploymentApplicationForm() {
               ))}
             </div>
             <div>
-              <label className="block text-xs text-[#8898aa] mb-1">Driver’s License Number & State</label>
+              <label className="block text-xs text-white mb-1">Driver’s License Number & State</label>
               <input
                 type="text"
                 placeholder="License #, State"
@@ -975,7 +975,7 @@ export default function EmploymentApplicationForm() {
           <h4 className="text-sm font-bold tracking-wider text-[#e8c97a] uppercase">High School Education</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs text-[#8898aa] mb-1">School Name</label>
+              <label className="block text-xs text-white mb-1">School Name</label>
               <input
                 type="text"
                 placeholder="High School Name"
@@ -985,7 +985,7 @@ export default function EmploymentApplicationForm() {
               />
             </div>
             <div>
-              <label className="block text-xs text-[#8898aa] mb-1">Website (Optional)</label>
+              <label className="block text-xs text-white mb-1">Website (Optional)</label>
               <input
                 type="text"
                 placeholder="www.school.edu"
@@ -995,7 +995,7 @@ export default function EmploymentApplicationForm() {
               />
             </div>
             <div>
-              <label className="block text-xs text-[#8898aa] mb-1">Address (City / State / Zip)</label>
+              <label className="block text-xs text-white mb-1">Address (City / State / Zip)</label>
               <input
                 type="text"
                 placeholder="City, State, Zip"
@@ -1006,7 +1006,7 @@ export default function EmploymentApplicationForm() {
             </div>
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="block text-xs text-[#8898aa] mb-1">Graduation Date</label>
+                <label className="block text-xs text-white mb-1">Graduation Date</label>
                 <input
                   type="text"
                   placeholder="MM/YYYY"
@@ -1016,7 +1016,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs text-[#8898aa] mb-1">Can provide copy?</label>
+                <label className="block text-xs text-white mb-1">Can provide copy?</label>
                 <div className="flex gap-3 pt-2">
                   {['Yes', 'No'].map((opt) => (
                     <label key={opt} className="flex items-center gap-1 cursor-pointer text-xs text-[#cbd5e1]">
@@ -1071,7 +1071,7 @@ export default function EmploymentApplicationForm() {
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
                 <div className="md:col-span-2">
-                  <label className="block text-[11px] text-[#8898aa] mb-1">College or Training School</label>
+                  <label className="block text-[11px] text-white mb-1">College or Training School</label>
                   <input
                     type="text"
                     placeholder="Institution Name"
@@ -1081,7 +1081,7 @@ export default function EmploymentApplicationForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-[#8898aa] mb-1">Major / Subject</label>
+                  <label className="block text-[11px] text-white mb-1">Major / Subject</label>
                   <input
                     type="text"
                     placeholder="Criminal Justice, etc."
@@ -1091,7 +1091,7 @@ export default function EmploymentApplicationForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-[#8898aa] mb-1">Degree / Cert</label>
+                  <label className="block text-[11px] text-white mb-1">Degree / Cert</label>
                   <input
                     type="text"
                     placeholder="BS, Associate, Cert"
@@ -1101,7 +1101,7 @@ export default function EmploymentApplicationForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-[#8898aa] mb-1">Years Completed</label>
+                  <label className="block text-[11px] text-white mb-1">Years Completed</label>
                   <input
                     type="text"
                     placeholder="e.g. 4 Years"
@@ -1152,7 +1152,7 @@ export default function EmploymentApplicationForm() {
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Description (e.g. DCJS #, Armed)</label>
+                <label className="block text-[11px] text-white mb-1">Description (e.g. DCJS #, Armed)</label>
                 <input
                   type="text"
                   placeholder="Security License / Endorsement"
@@ -1162,7 +1162,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Issued By</label>
+                <label className="block text-[11px] text-white mb-1">Issued By</label>
                 <input
                   type="text"
                   placeholder="State DCJS / Authority"
@@ -1172,7 +1172,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">ID / Registration #</label>
+                <label className="block text-[11px] text-white mb-1">ID / Registration #</label>
                 <input
                   type="text"
                   placeholder="99-XXXXXX"
@@ -1182,7 +1182,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Expiration Date</label>
+                <label className="block text-[11px] text-white mb-1">Expiration Date</label>
                 <input
                   type="text"
                   placeholder="MM/YYYY or Date"
@@ -1285,7 +1285,7 @@ export default function EmploymentApplicationForm() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Company Name</label>
+                <label className="block text-[11px] text-white mb-1">Company Name</label>
                 <input
                   type="text"
                   placeholder="Company Name"
@@ -1295,7 +1295,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Address, City, State</label>
+                <label className="block text-[11px] text-white mb-1">Address, City, State</label>
                 <input
                   type="text"
                   placeholder="Address, City, State"
@@ -1305,7 +1305,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Business Phone</label>
+                <label className="block text-[11px] text-white mb-1">Business Phone</label>
                 <input
                   type="tel"
                   placeholder="Phone"
@@ -1316,7 +1316,7 @@ export default function EmploymentApplicationForm() {
               </div>
 
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Job Title / Position</label>
+                <label className="block text-[11px] text-white mb-1">Job Title / Position</label>
                 <input
                   type="text"
                   placeholder="Job Title"
@@ -1326,7 +1326,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Start Date (MM/YYYY)</label>
+                <label className="block text-[11px] text-white mb-1">Start Date (MM/YYYY)</label>
                 <input
                   type="text"
                   placeholder="MM/YYYY"
@@ -1336,7 +1336,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">End Date (or Present)</label>
+                <label className="block text-[11px] text-white mb-1">End Date (or Present)</label>
                 <input
                   type="text"
                   placeholder="MM/YYYY or Present"
@@ -1347,7 +1347,7 @@ export default function EmploymentApplicationForm() {
               </div>
 
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Supervisor Name</label>
+                <label className="block text-[11px] text-white mb-1">Supervisor Name</label>
                 <input
                   type="text"
                   placeholder="Supervisor Name"
@@ -1357,7 +1357,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Supervisor Phone</label>
+                <label className="block text-[11px] text-white mb-1">Supervisor Phone</label>
                 <input
                   type="tel"
                   placeholder="Supervisor Phone"
@@ -1367,7 +1367,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Supervisor Email</label>
+                <label className="block text-[11px] text-white mb-1">Supervisor Email</label>
                 <input
                   type="email"
                   placeholder="supervisor@example.com"
@@ -1378,7 +1378,7 @@ export default function EmploymentApplicationForm() {
               </div>
 
               <div className="sm:col-span-2 md:col-span-3">
-                <label className="block text-[11px] text-[#8898aa] mb-1">Reason for Leaving</label>
+                <label className="block text-[11px] text-white mb-1">Reason for Leaving</label>
                 <input
                   type="text"
                   placeholder="Reason for leaving"
@@ -1390,7 +1390,7 @@ export default function EmploymentApplicationForm() {
             </div>
 
             <div>
-              <label className="block text-[11px] text-[#8898aa] mb-1">Job Duties & Responsibilities</label>
+              <label className="block text-[11px] text-white mb-1">Job Duties & Responsibilities</label>
               <textarea
                 rows={2}
                 placeholder="Describe your security duties, site patrol, or customer service responsibilities..."
@@ -1423,7 +1423,7 @@ export default function EmploymentApplicationForm() {
                 Reference {idx + 1}
               </span>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Full Name</label>
+                <label className="block text-[11px] text-white mb-1">Full Name</label>
                 <input
                   type="text"
                   placeholder="Complete Name"
@@ -1433,7 +1433,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Phone Number</label>
+                <label className="block text-[11px] text-white mb-1">Phone Number</label>
                 <input
                   type="tel"
                   placeholder="Phone"
@@ -1443,7 +1443,7 @@ export default function EmploymentApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-[#8898aa] mb-1">Address (City/State/Zip)</label>
+                <label className="block text-[11px] text-white mb-1">Address (City/State/Zip)</label>
                 <input
                   type="text"
                   placeholder="City, State, Zip"
@@ -1454,7 +1454,7 @@ export default function EmploymentApplicationForm() {
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-[11px] text-[#8898aa] mb-1">Years Known</label>
+                  <label className="block text-[11px] text-white mb-1">Years Known</label>
                   <input
                     type="text"
                     placeholder="e.g. 5 yrs"
@@ -1464,7 +1464,7 @@ export default function EmploymentApplicationForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-[#8898aa] mb-1">Email</label>
+                  <label className="block text-[11px] text-white mb-1">Email</label>
                   <input
                     type="email"
                     placeholder="Email"
@@ -1509,7 +1509,7 @@ export default function EmploymentApplicationForm() {
               </div>
             </div>
             <div>
-              <label className="block text-[11px] text-[#8898aa] mb-1">
+              <label className="block text-[11px] text-white mb-1">
                 If yes, which shifts, days & time do you work with your current employer?
               </label>
               <textarea
@@ -1524,7 +1524,7 @@ export default function EmploymentApplicationForm() {
 
           <div className="p-4 bg-[#0b1120] rounded-lg border border-[rgba(201,168,76,0.15)] space-y-3">
             <div>
-              <label className="block text-xs text-[#f4f6f8] font-semibold mb-1">
+              <label className="block text-xs text-white font-semibold mb-1">
                 Which days and time are you available to work with Virginia Surveillance Force?
               </label>
               <textarea
@@ -1540,7 +1540,7 @@ export default function EmploymentApplicationForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           <div>
-            <label className="block text-xs text-[#8898aa] mb-1 font-medium">
+            <label className="block text-xs text-white mb-1 font-medium">
               How far are you willing to travel to perform duties?
             </label>
             <input
@@ -1553,7 +1553,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs text-[#8898aa] mb-1 font-medium">
+            <label className="block text-xs text-white mb-1 font-medium">
               Best time to contact you?
             </label>
             <input
@@ -1566,7 +1566,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs text-[#8898aa] mb-1 font-medium">
+            <label className="block text-xs text-white mb-1 font-medium">
               Days available for an Interview?
             </label>
             <input
@@ -1776,7 +1776,7 @@ export default function EmploymentApplicationForm() {
         {/* Additional Files List */}
         {files.otherDocs.length > 0 && (
           <div className="pt-2 space-y-2">
-            <span className="text-xs font-semibold text-[#8898aa] uppercase tracking-wider">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider">
               Other Uploaded Files ({files.otherDocs.length})
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -1844,7 +1844,7 @@ export default function EmploymentApplicationForm() {
         {/* Signature & Date */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               <span className="text-[#eab308]">*</span> Electronic Signature of Applicant (Type Full Legal Name)
             </label>
             <input
@@ -1863,7 +1863,7 @@ export default function EmploymentApplicationForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-white uppercase tracking-wider mb-2">
               Date Signed
             </label>
             <input
@@ -1878,7 +1878,7 @@ export default function EmploymentApplicationForm() {
 
       {/* SECURITY CAPTCHA & SUBMISSION */}
       <div className="bg-[#131e35] rounded-xl p-6 md:p-8 border border-[rgba(201,168,76,0.2)] space-y-6 shadow-xl">
-        <label className="block text-xs font-semibold text-[#8898aa] uppercase tracking-wider">
+        <label className="block text-xs font-semibold text-white uppercase tracking-wider">
           <span className="text-[#eab308]">*</span> Security Verification
         </label>
         <div className="flex gap-3 items-center max-w-md">
