@@ -189,11 +189,11 @@ const AboutSection = ({ data }: { data?: HomeAboutSection }) => {
                         <div className="sisf-m-button pt-6 leading-none">
                             <Link
                                 href={data?.buttonLink || "/about-us"}
-                                aria-label="Read More About Virginia Surveillance Force"
+                                aria-label="Learn More About Virginia Surveillance Force"
                                 className="sis-btn-default relative inline-flex items-center gap-2 text-lg font-extrabold leading-6 bg-[#eab308] text-[#002147] rounded-[50px] px-7 py-3 border border-[#eab308] overflow-hidden group z-10 transition-all duration-300 hover:text-white shadow-lg hover:shadow-yellow-500/30"
                             >
                                 <span className="relative z-20 flex items-center gap-2">
-                                    {data?.buttonText || "Read More"}
+                                    {data?.buttonText && data.buttonText.toLowerCase() !== "read more" ? data.buttonText : "Learn More About Us"}
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                                 </span>
                                 <span className="absolute left-[-15px] bottom-[-2px] w-0 h-[106%] bg-[#002147] transform skew-[30deg] group-hover:w-[120%] transition-all duration-300 z-0" />

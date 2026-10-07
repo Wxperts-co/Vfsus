@@ -86,7 +86,7 @@ export const defaultHomePageData: HomePageData = {
     titleLine1: "Delivering Protection",
     titleLine2: "That Builds Trust & Peace of Mind",
     image: "/images/about-section-2.jpg",
-    buttonText: "Read More",
+    buttonText: "Learn More About Us",
     buttonLink: "/about-us"
   },
   whyChooseUsSection: {
