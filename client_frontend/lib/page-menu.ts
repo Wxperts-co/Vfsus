@@ -577,7 +577,7 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
         title: "Who We Hire & Requirements",
         body: [
           "We recruit motivated, reliable individuals who exhibit a high degree of integrity and professionalism. Candidates with background experience in the military or law enforcement are highly encouraged to apply.",
-          "All applicants must meet state licensing criteria, pass criminal history background checks (including DCJS and FBI fingerprinting), and pass pre-employment drug and alcohol screening."
+          "All applicants must meet state licensing criteria, pass criminal history background checks (including state licensing board and FBI fingerprinting), and pass pre-employment drug and alcohol screening."
         ]
       },
       {

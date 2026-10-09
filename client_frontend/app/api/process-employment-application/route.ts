@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
           : key === "socialSecurityCard"
           ? "Social Security Card"
           : key === "guardLicense"
-          ? "Security Guard ID / License"
+          ? "Security Credential (ID / License / Registration / Certification)"
           : key === "certifications"
           ? "Certifications / Training"
           : key === "otherDocs"

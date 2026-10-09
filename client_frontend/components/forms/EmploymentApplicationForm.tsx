@@ -1135,7 +1135,7 @@ export default function EmploymentApplicationForm() {
         </div>
 
         <p className="text-xs text-[#8898aa]">
-          Please list DCJS registrations, security licenses, concealed carry endorsements, CPR/First Aid, or any military certifications.
+          Please list security credentials (ID / License / Registration / Certification), concealed carry endorsements, CPR/First Aid, or any military certifications.
         </p>
 
         {licenseList.map((row, idx) => (
@@ -1152,7 +1152,7 @@ export default function EmploymentApplicationForm() {
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               <div>
-                <label className="block text-[11px] text-white mb-1">Description (e.g. DCJS #, Armed)</label>
+                <label className="block text-[11px] text-white mb-1">Description (e.g. License / Reg #, Armed)</label>
                 <input
                   type="text"
                   placeholder="Security License / Endorsement"
@@ -1165,7 +1165,7 @@ export default function EmploymentApplicationForm() {
                 <label className="block text-[11px] text-white mb-1">Issued By</label>
                 <input
                   type="text"
-                  placeholder="State DCJS / Authority"
+                  placeholder="Issuing State / Authority"
                   value={row.issuedBy}
                   onChange={(e) => updateLicenseRow(idx, 'issuedBy', e.target.value)}
                   className="w-full px-3 py-2 bg-[#131e35] border border-[rgba(201,168,76,0.2)] rounded text-xs text-[#f4f6f8] outline-none"
@@ -1590,7 +1590,7 @@ export default function EmploymentApplicationForm() {
                 9. Attach Supporting Documents
               </h3>
               <p className="text-xs text-[#8898aa]">
-                Attach your Driver’s License, Security Guard ID / License, certifications, and resume.
+                Attach your Driver’s License, Security Credential (ID / License / Registration / Certification), certifications, and resume.
               </p>
             </div>
           </div>
@@ -1673,14 +1673,14 @@ export default function EmploymentApplicationForm() {
             )}
           </div>
 
-          {/* Security Guard ID / License */}
+          {/* Security Credential (ID / License / Registration / Certification) */}
           <div className="p-4 bg-[#0b1120] border border-[rgba(201,168,76,0.2)] rounded-xl flex flex-col justify-between space-y-3">
             <div>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-bold text-[#e8c97a] uppercase tracking-wider">Security Guard ID / License</span>
+                <span className="text-xs font-bold text-[#e8c97a] uppercase tracking-wider">Security Credential (ID / License / Registration / Certification)</span>
                 <Paperclip className="w-4 h-4 text-[#8898aa]" />
               </div>
-              <p className="text-[11px] text-[#8898aa]">DCJS / State Security Guard Card</p>
+              <p className="text-[11px] text-[#8898aa]">State Security ID, License, Registration, or Certification Card</p>
             </div>
 
             {files.guardLicense ? (
@@ -1700,7 +1700,7 @@ export default function EmploymentApplicationForm() {
             ) : (
               <label className="flex flex-col items-center justify-center p-4 border border-dashed border-[rgba(201,168,76,0.3)] hover:border-[#eab308] bg-[#131e35]/50 hover:bg-[#131e35] rounded-lg cursor-pointer transition-all">
                 <Upload className="w-5 h-5 text-[#eab308] mb-1" />
-                <span className="text-xs text-[#f4f6f8] font-medium">Upload Guard ID / License</span>
+                <span className="text-xs text-[#f4f6f8] font-medium">Upload Security Credential</span>
                 <input
                   type="file"
                   accept="image/*,.pdf"
