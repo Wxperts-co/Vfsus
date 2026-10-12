@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import PageBanner from "@/components/common-components/innerbanner";
+import TestimonialsAnswerSnippet from "@/components/testimonials/TestimonialsAnswerSnippet";
+import TestimonialsSemanticKeynotes from "@/components/testimonials/TestimonialsSemanticKeynotes";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface AnimatedSectionProps {
@@ -169,6 +171,7 @@ export default function TestimonialsClient({ data }: { data: TestimonialsPageDat
   return (
     <>
       <PageBanner title="Testimonials" headingTag="h2" />
+      <TestimonialsAnswerSnippet />
 
       <div className="testi-wrapper bg-[#0b1120] text-[#f4f6f8] overflow-x-hidden min-h-screen">
         {/* Intro */}
@@ -240,6 +243,8 @@ export default function TestimonialsClient({ data }: { data: TestimonialsPageDat
             </div>
           </div>
         </section>
+
+        <TestimonialsSemanticKeynotes />
       </div>
     </>
   );

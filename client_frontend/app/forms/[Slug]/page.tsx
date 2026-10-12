@@ -5,6 +5,12 @@ import { getFormBySlug } from '@/data/formsdetails';
 import PageBanner from '@/components/common-components/innerbanner';
 import DynamicForm from '@/components/forms/DynamicForm';
 import EmploymentApplicationForm from '@/components/forms/EmploymentApplicationForm';
+import ServiceRequestAnswerSnippet from '@/components/forms/service-request/ServiceRequestAnswerSnippet';
+import ServiceRequestSemanticKeynotes from '@/components/forms/service-request/ServiceRequestSemanticKeynotes';
+import ContractingOpportunityAnswerSnippet from '@/components/forms/contracting-opportunity/ContractingOpportunityAnswerSnippet';
+import ContractingOpportunitySemanticKeynotes from '@/components/forms/contracting-opportunity/ContractingOpportunitySemanticKeynotes';
+import EmploymentApplicationAnswerSnippet from '@/components/forms/employment-application/EmploymentApplicationAnswerSnippet';
+import EmploymentApplicationSemanticKeynotes from '@/components/forms/employment-application/EmploymentApplicationSemanticKeynotes';
 
 interface FormPageProps {
     params: Promise<{
@@ -48,6 +54,9 @@ export default async function FormPage({ params }: FormPageProps) {
     return (
         <>
             <PageBanner title={form.title || 'EMPLOYMENT APPLICATION'} />
+            {slug === 'service-request' && <ServiceRequestAnswerSnippet />}
+            {slug === 'contracting-opportunity' && <ContractingOpportunityAnswerSnippet />}
+            {isEmploymentApp && <EmploymentApplicationAnswerSnippet />}
 
             <div className="bg-[#0b1120] min-h-screen py-12 md:py-16">
                 <div className="container mx-auto px-4 max-w-5xl">
@@ -79,6 +88,24 @@ export default async function FormPage({ params }: FormPageProps) {
                         </>
                     )}
                 </div>
+
+                {slug === 'service-request' && (
+                    <div className="mt-12">
+                        <ServiceRequestSemanticKeynotes />
+                    </div>
+                )}
+
+                {slug === 'contracting-opportunity' && (
+                    <div className="mt-12">
+                        <ContractingOpportunitySemanticKeynotes />
+                    </div>
+                )}
+
+                {isEmploymentApp && (
+                    <div className="mt-12">
+                        <EmploymentApplicationSemanticKeynotes />
+                    </div>
+                )}
             </div>
         </>
     );

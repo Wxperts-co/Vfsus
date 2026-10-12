@@ -12,6 +12,16 @@ import {
   BookOpen,
   FileText
 } from "lucide-react";
+import WhyChooseUsAnswerSnippet from "@/components/why-choose-us/WhyChooseUsAnswerSnippet";
+import WhyChooseUsSemanticKeynotes from "@/components/why-choose-us/WhyChooseUsSemanticKeynotes";
+import HowWeRecruitAnswerSnippet from "@/components/how-we-recruit/HowWeRecruitAnswerSnippet";
+import HowWeRecruitSemanticKeynotes from "@/components/how-we-recruit/HowWeRecruitSemanticKeynotes";
+import FaqAnswerSnippet from "@/components/faqs/FaqAnswerSnippet";
+import FaqSemanticKeynotes from "@/components/faqs/FaqSemanticKeynotes";
+import NationwideAnswerSnippet from "@/components/nationwide/NationwideAnswerSnippet";
+import NationwideSemanticKeynotes from "@/components/nationwide/NationwideSemanticKeynotes";
+import EmploymentAnswerSnippet from "@/components/employment/EmploymentAnswerSnippet";
+import EmploymentSemanticKeynotes from "@/components/employment/EmploymentSemanticKeynotes";
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -684,6 +694,11 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
       `}</style>
 
       <PageBanner title={menuItem.title} breadcrumb="Menu" />
+      {menuItem.slug === "why-choose-us" && <WhyChooseUsAnswerSnippet />}
+      {menuItem.slug === "how-we-recruit" && <HowWeRecruitAnswerSnippet />}
+      {menuItem.slug === "faqs" && <FaqAnswerSnippet />}
+      {menuItem.slug === "nationwide-security-services-asf" && <NationwideAnswerSnippet />}
+      {menuItem.slug === "employment" && <EmploymentAnswerSnippet />}
 
       <div className="menu-page">
         <div className="menu-layout">
@@ -925,6 +940,12 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
 
           </main>
         </div>
+
+        {menuItem.slug === "why-choose-us" && <WhyChooseUsSemanticKeynotes />}
+        {menuItem.slug === "how-we-recruit" && <HowWeRecruitSemanticKeynotes />}
+        {menuItem.slug === "faqs" && <FaqSemanticKeynotes />}
+        {menuItem.slug === "nationwide-security-services-asf" && <NationwideSemanticKeynotes />}
+        {menuItem.slug === "employment" && <EmploymentSemanticKeynotes />}
       </div>
     </>
   );

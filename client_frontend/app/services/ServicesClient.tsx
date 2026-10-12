@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Video } from "lucide-react";
 import PageBanner from "@/components/common-components/innerbanner";
 import { ServiceData, ServicesPageData, extractServicesVideoList } from "@/lib/page-services";
+import ServicesAnswerSnippet from "@/components/services/ServicesAnswerSnippet";
+import ServicesSemanticKeynotes from "@/components/services/ServicesSemanticKeynotes";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface AnimatedSectionProps {
@@ -152,6 +154,7 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
       `}</style>
 
       <PageBanner title="Services" headingTag="h2" />
+      <ServicesAnswerSnippet />
 
       <div className="bg-[#0b1120] text-[#f4f6f8] overflow-x-hidden min-h-screen font-['Barlow',sans-serif]">
         <div className="container mx-auto px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8">
@@ -257,6 +260,8 @@ export default function ServicesClient({ data }: { data: ServicesPageData }) {
               </div>
             </div>
           </section>
+
+          <ServicesSemanticKeynotes />
 
         </div>
       </div>

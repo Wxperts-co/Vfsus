@@ -12,6 +12,36 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/why-choose-us",
+        destination: "/menu/why-choose-us",
+        permanent: true,
+      },
+      {
+        source: "/how-we-recruit",
+        destination: "/menu/how-we-recruit",
+        permanent: true,
+      },
+      {
+        source: "/faqs",
+        destination: "/menu/faqs",
+        permanent: true,
+      },
+      {
+        source: "/faq",
+        destination: "/menu/faqs",
+        permanent: true,
+      },
+      {
+        source: "/nationwide-security-services-asf",
+        destination: "/menu/nationwide-security-services-asf",
+        permanent: true,
+      },
+      {
+        source: "/employment",
+        destination: "/menu/employment",
+        permanent: true,
+      },
+      {
         source: "/menu/vsf-goes-nationwide",
         destination: "/menu/nationwide-security-services-asf",
         permanent: true,

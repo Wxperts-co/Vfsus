@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import PageBanner from "@/components/common-components/innerbanner";
 import { AboutUsPageData, extractVideoList } from "@/lib/page-about-us";
 import { Video } from "lucide-react";
+import AboutAnswerSnippet from "@/components/about-us/AboutAnswerSnippet";
+import AboutSemanticKeynotes from "@/components/about-us/AboutSemanticKeynotes";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface AnimatedSectionProps {
@@ -81,6 +83,7 @@ export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
   return (
     <>
       <PageBanner title="About Us" headingTag="h2" />
+      <AboutAnswerSnippet />
 
       <div className="about-wrapper bg-[#0b1120] text-[#f4f6f8] overflow-x-hidden">
         {/* ── MAIN CONTENT ──────────────────────────── */}
@@ -236,6 +239,8 @@ export default function AboutUsClient({ data }: { data: AboutUsPageData }) {
 
           </div>
         </section>
+
+        <AboutSemanticKeynotes />
       </div>
 
       <style jsx>{`

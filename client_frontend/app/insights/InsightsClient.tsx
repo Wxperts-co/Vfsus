@@ -16,6 +16,8 @@ import {
   ChevronRight,
   TrendingUp
 } from "lucide-react";
+import InsightsAnswerSnippet from "@/components/insights/InsightsAnswerSnippet";
+import InsightsSemanticKeynotes from "@/components/insights/InsightsSemanticKeynotes";
 
 export default function InsightsClient({ data }: { data: InsightsPageData }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -99,6 +101,7 @@ export default function InsightsClient({ data }: { data: InsightsPageData }) {
       />
 
       <PageBanner title="Security Insights" breadcrumb="Blog" />
+      <InsightsAnswerSnippet />
 
       <div className="insights-page py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -334,6 +337,8 @@ export default function InsightsClient({ data }: { data: InsightsPageData }) {
               </div>
             </div>
           </div>
+
+          <InsightsSemanticKeynotes />
 
         </div>
       </div>

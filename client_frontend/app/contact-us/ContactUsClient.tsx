@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, ChangeEvent, FormEvent } from "react";
 import PageBanner from "@/components/common-components/innerbanner";
 import { useSettings } from "@/components/common-components/SettingsProvider";
 import { contactFormSchema, MAX_COMMENT_WORDS, countWords } from "@/lib/validations/contact";
+import ContactAnswerSnippet from "@/components/contact-us/ContactAnswerSnippet";
+import ContactSemanticKeynotes from "@/components/contact-us/ContactSemanticKeynotes";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface FadeInProps {
@@ -229,6 +231,7 @@ export default function ContactUsClient() {
       `}</style>
 
             <PageBanner title="Contact Us" />
+            <ContactAnswerSnippet />
 
             <div className="ct-page bg-[#0b1120] text-[#f4f6f8] min-h-screen overflow-x-hidden relative before:content-[''] before:fixed before:inset-0 before:pointer-events-none before:z-0 before:bg-[repeating-linear-gradient(0deg,transparent,transparent_39px,rgba(201,168,76,0.025)_39px,rgba(201,168,76,0.025)_40px),repeating-linear-gradient(90deg,transparent,transparent_39px,rgba(201,168,76,0.025)_39px,rgba(201,168,76,0.025)_40px)]">
                 <div className="ct-inner relative z-[1] max-w-[1160px] mx-auto px-7">
@@ -414,6 +417,8 @@ export default function ContactUsClient() {
                         </div>
                     </section>
                 </div>
+
+                <ContactSemanticKeynotes />
             </div>
 
             <style jsx>{`

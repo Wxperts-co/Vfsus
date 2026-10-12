@@ -18,6 +18,67 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.vsfus.com/#organization",
+      "name": "Virginia Surveillance Force, Inc.",
+      "alternateName": "VSF",
+      "url": "https://www.vsfus.com/",
+      "telephone": "+1-703-631-6559",
+      "email": "info@vsfus.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7544 Diplomat Drive, Suite 101",
+        "addressLocality": "Manassas",
+        "addressRegion": "VA",
+        "postalCode": "20109",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.vsfus.com/#website",
+      "url": "https://www.vsfus.com/",
+      "name": "Virginia Surveillance Force",
+      "publisher": {
+        "@id": "https://www.vsfus.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://www.vsfus.com/contact-us#webpage",
+      "url": "https://www.vsfus.com/contact-us",
+      "name": "Contact Virginia Surveillance Force",
+      "description": "Contact Virginia Surveillance Force to inquire about professional security, protective, patrol, and investigative services serving Virginia, Maryland, and Washington, DC.",
+      "isPartOf": {
+        "@id": "https://www.vsfus.com/#website"
+      },
+      "about": {
+        "@id": "https://www.vsfus.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://www.vsfus.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://www.vsfus.com/#organization"
+      },
+      "inLanguage": "en-US"
+    }
+  ]
+};
+
 export default function ContactUsPage() {
-  return <ContactUsClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
+      <ContactUsClient />
+    </>
+  );
 }
