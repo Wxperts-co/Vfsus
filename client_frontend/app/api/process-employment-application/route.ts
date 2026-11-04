@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 import { promises as fs } from "fs";
 import clientPromise from "@/lib/mongodb";
-import { getTransporter } from "@/lib/validations/mailer";
+import { getTransporter, getBccEmails } from "@/lib/validations/mailer";
 import { adminEmploymentApplicationEmail, userEmploymentApplicationEmail } from "@/lib/validations/emailTemplates";
 import { verifyCaptcha } from "@/lib/validations/captcha";
 
@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
     // 1. Send Email Notifications
     const adminEmail = process.env.ADMIN_EMAIL;
     if (adminEmail) {
-      const bcc = [process.env.BCC_EMAIL_1, process.env.BCC_EMAIL_2].filter(Boolean) as string[];
+      const bcc = getBccEmails();
       const fromAddress = process.env.SMTP_FROM || (process.env.SMTP_USER as string);
       const transporter = getTransporter();
 

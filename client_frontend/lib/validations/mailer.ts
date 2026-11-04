@@ -27,3 +27,13 @@ export function getTransporter(): nodemailer.Transporter {
 
   return transporter;
 }
+
+/**
+ * Returns an array of BCC email addresses from BCC_EMAILS env variable.
+ */
+export function getBccEmails(): string[] {
+  if (!process.env.BCC_EMAILS) return [];
+  return process.env.BCC_EMAILS.split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+}

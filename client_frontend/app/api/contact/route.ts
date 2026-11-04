@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validations/contact";
 import { verifyCaptcha } from "@/lib/validations/captcha";
-import { getTransporter } from "@/lib/validations/mailer";
+import { getTransporter, getBccEmails } from "@/lib/validations/mailer";
 import { adminNotificationEmail, userConfirmationEmail } from "@/lib/validations/emailTemplates";
 import clientPromise from "@/lib/mongodb";
 
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Server email is not configured" }, { status: 500 });
     }
 
-    const bcc = [process.env.BCC_EMAIL_1, process.env.BCC_EMAIL_2].filter(Boolean) as string[];
+    const bcc = getBccEmails();
     const fromAddress = process.env.SMTP_FROM || (process.env.SMTP_USER as string);
 
     const transporter = getTransporter();
