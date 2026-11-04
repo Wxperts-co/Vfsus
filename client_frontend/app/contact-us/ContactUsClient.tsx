@@ -47,7 +47,7 @@ interface CaptchaState {
 // ── Hook ───────────────────────────────────────────────────────────────────
 function useInView(threshold = 0.1): [React.RefObject<HTMLDivElement | null>, boolean] {
     const ref = useRef<HTMLDivElement>(null);
-    const [inView, setInView] = useState(false); 
+    const [inView, setInView] = useState(false);
     useEffect(() => {
         const obs = new IntersectionObserver(
             ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
@@ -244,22 +244,37 @@ export default function ContactUsClient() {
                             </h3>
                             <div className="gold-bar w-11 h-[3px] bg-gradient-to-r from-[#eab308] to-[#eab308] rounded mb-7" />
                         </FadeIn>
- 
-                        <div className="loc-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                        <div className="loc-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
                             {settings.contactCards?.map((loc, i) => (
-                                <FadeIn key={loc.id || loc.label} delay={i * 0.08}>
-                                    <div className="loc-card bg-[#131e35] border border-[rgba(201,168,76,0.15)] rounded p-6 transition-all duration-300 hover:border-[rgba(201,168,76,0.5)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.45),0_0_20px_rgba(201,168,76,0.06)]">
-                                        <div className="loc-badge inline-flex items-center gap-1.5 text-[16px] tracking-[2px] text-[#eab308] bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)] rounded py-0.5 px-2.5 mb-3.5">
+                                <FadeIn key={loc.id || loc.label} delay={i * 0.08} className="h-full">
+                                    <div className="loc-card bg-[#131e35] border border-[rgba(201,168,76,0.15)] rounded p-6 transition-all duration-300 hover:border-[rgba(201,168,76,0.5)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.45),0_0_20px_rgba(201,168,76,0.06)] h-full flex flex-col">
+                                        <div className="loc-badge inline-flex items-center gap-1.5 text-[16px] tracking-[2px] text-[#eab308] bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)] rounded py-0.5 px-2.5 mb-3.5 w-fit">
                                             {loc.icon} {loc.label}
                                         </div>
                                         <p className="loc-name text-base tracking-[1.5px] text-white mb-2.5">{loc.name}</p>
-                                        <div className="loc-text text-[0.88rem] font-light text-[rgba(244,246,248,0.72)] leading-relaxed">
-                                            {loc.address.map((line, j) => (
-                                                <span key={j}>{line}<br /></span>
-                                            ))}
-                                            <hr className="loc-divider border-t border-[rgba(201,168,76,0.1)] my-2.5" />
-                                            Tel: <span className="loc-tel text-[#e8c97a] font-normal">{loc.tel}</span><br />
-                                            {loc.extraLabel}: <span className="loc-tel text-[#e8c97a] font-normal">{loc.extra}</span>
+                                        <div className="loc-text text-[0.88rem] font-light text-[rgba(244,246,248,0.72)] leading-relaxed flex-1 flex flex-col justify-between">
+                                            <div>
+                                                {loc.address.map((line, j) => (
+                                                    <span key={j}>{line}<br /></span>
+                                                ))}
+                                            </div>
+                                            {i !== (settings.contactCards?.length ?? 0) - 1 && (loc.tel || loc.extra) && (
+                                                <div className="mt-auto pt-2.5">
+                                                    <hr className="loc-divider border-t border-[rgba(201,168,76,0.1)] mb-2.5" />
+                                                    {loc.tel && (
+                                                        <>
+                                                            Tel: <span className="loc-tel text-[#e8c97a] font-normal">{loc.tel}</span>
+                                                            {loc.extra ? <br /> : null}
+                                                        </>
+                                                    )}
+                                                    {loc.extra && (
+                                                        <>
+                                                            {loc.extraLabel ? `${loc.extraLabel} ` : ""}<span className="loc-tel text-[#e8c97a] font-normal">{loc.extra}</span>
+                                                        </>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </FadeIn>

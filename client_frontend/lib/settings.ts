@@ -89,9 +89,9 @@ export const defaultSettings: SiteSettings = {
         label: "Mailing",
         name: "Mailing Address",
         address: ["Po Box #1876", "Centreville, VA 20122"],
-        tel: "(786) 540-0666",
-        extra: "(800) 570-8290",
-        extraLabel: "Fax",
+        tel: "",
+        extra: "",
+        extraLabel: "",
         icon: "✉️",
     },
   ]
