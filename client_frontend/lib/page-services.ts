@@ -474,7 +474,7 @@ export const defaultServicesPageData: ServicesPageData = {
 
     // 10 ── HEALTHCARE & HOSPITAL SECURITY ───────────────────────────────────
     {
-      slug: "healthcare-and-hospital-security",
+      slug: "hospital-and-health-care-facilities",
       title: "Healthcare & Hospital Security",
       icon: "🏥",
       image: "/uploads/services/service-hospital-and-health-care-facilities-1787851469655.jpg",
@@ -558,7 +558,7 @@ export const defaultServicesPageData: ServicesPageData = {
 
     // 12 ── VIP EXECUTIVE PROTECTION & BODYGUARD SERVICES ────────────────────
     {
-      slug: "vip-executive-protection-and-bodyguard-services",
+      slug: "vip-executive-protection-and-body-guard-service",
       title: "VIP Executive Protection & Bodyguard Services",
       icon: "🕴️",
       image: "/images/services/services-15.jpg",
