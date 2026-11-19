@@ -444,7 +444,7 @@ export default function AdminContacts() {
                 <ModalSection title="Sender Info">
                   <DetailRow label="Name" value={selectedContact.name} />
                   <DetailRow label="Email" value={selectedContact.email} isLink />
-                  <DetailRow label="Phone" value={selectedContact.phone} />
+                  <DetailRow label="Phone" value={selectedContact.phone} isTel />
                 </ModalSection>
                 <ModalSection title="Location">
                   <DetailRow label="Address" value={selectedContact.address || "N/A"} />
@@ -492,7 +492,7 @@ function ModalSection({ title, children }: { title: string; children: React.Reac
   );
 }
 
-function DetailRow({ label, value, isLink }: { label: string; value: string; isLink?: boolean }) {
+function DetailRow({ label, value, isLink, isTel }: { label: string; value: string; isLink?: boolean; isTel?: boolean }) {
   return (
     <div>
       <div className="text-[10px] font-bold tracking-[0.5px] uppercase text-[#94a3b8] mb-0.5">
@@ -501,6 +501,13 @@ function DetailRow({ label, value, isLink }: { label: string; value: string; isL
       {isLink && value && value !== "N/A" ? (
         <a
           href={`mailto:${value}`}
+          className="text-[13px] font-medium text-[#e8c97a] no-underline hover:underline"
+        >
+          {value}
+        </a>
+      ) : isTel && value && value !== "N/A" ? (
+        <a
+          href={`tel:${value.replace(/[^0-9+]/g, "")}`}
           className="text-[13px] font-medium text-[#e8c97a] no-underline hover:underline"
         >
           {value}

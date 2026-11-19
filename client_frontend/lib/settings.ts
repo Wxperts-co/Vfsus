@@ -60,8 +60,8 @@ export const defaultSettings: SiteSettings = {
         name: "Virginia Surveillance Force",
         address: ["7544 Diplomat Drive; Suite 101", "Manassas, VA 20109"],
         tel: "(703) 631-6559",
-        extra: "(800) 786-0395",
-        extraLabel: "Toll Free",
+        extra: "",
+        extraLabel: "",
         icon: "📍",
     },
     {
@@ -90,8 +90,8 @@ export const defaultSettings: SiteSettings = {
         name: "Mailing Address",
         address: ["Po Box #1876", "Centreville, VA 20122"],
         tel: "",
-        extra: "",
-        extraLabel: "",
+        extra: "1-800-786-0395",
+        extraLabel: "Toll Free",
         icon: "✉️",
     },
   ]

@@ -234,6 +234,12 @@ const MENU_LIST_ITEMS: MenuListItem[] = [
 <p>For organizations with locations outside our primary regional service area, American Surveillance Force (ASF) provides permanent security services nationwide, allowing businesses and organizations to work with an established security partner across multiple states.</p>
 <p>ASF nationwide permanent security assignments are typically structured with a 3–4 year service agreement, subject to applicable licensing, regulatory, staffing, and assignment requirements.</p>
 
+<div class="not-prose" style="margin-top: 1.25rem; margin-bottom: 1.5rem;">
+  <a href="https://ASFus.com" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-flex; align-items: center; gap: 8px; background: #eab308; color: #0b1120; font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 1.5px; padding: 12px 28px; border-radius: 4px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(234,179,8,0.2);">
+    EXPLORE AMERICAN SURVEILLANCE FORCE
+  </a>
+</div>
+
 <div style="background: rgba(19, 30, 53, 0.7); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 8px; padding: 1.25rem; margin-top: 1.25rem;">
   <h5 style="color: #eab308; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Virginia Service Area</h5>
   <p style="font-size: 0.9rem; line-height: 1.7; color: rgba(244, 246, 248, 0.85); margin: 0;">

@@ -462,7 +462,7 @@ export default function AdminContracts() {
                 <ModalSection title="Contact Person">
                   <DetailRow label="Name" value={selectedContract.contactpreson} />
                   <DetailRow label="Email" value={selectedContract.fromemail} isLink />
-                  <DetailRow label="Phone" value={selectedContract.ophone} />
+                  <DetailRow label="Phone" value={selectedContract.ophone} isTel />
                   {selectedContract.fax && <DetailRow label="Fax" value={selectedContract.fax} />}
                 </ModalSection>
               </div>
@@ -509,7 +509,7 @@ export default function AdminContracts() {
                   {selectedContract.ssle && <DetailRow label="State License" value={selectedContract.ssle} />}
                   {selectedContract.inscarrier && <DetailRow label="Carrier" value={selectedContract.inscarrier} />}
                   {selectedContract.insagent && <DetailRow label="Agent Name" value={selectedContract.insagent} />}
-                  {selectedContract.insphone && <DetailRow label="Agent Phone" value={selectedContract.insphone} />}
+                  {selectedContract.insphone && <DetailRow label="Agent Phone" value={selectedContract.insphone} isTel />}
                   {selectedContract.comliab && <DetailRow label="Liability Limit" value={selectedContract.comliab} />}
                 </ModalSection>
               </div>
@@ -585,7 +585,7 @@ function ModalSection({ title, children }: { title: string; children: React.Reac
   );
 }
 
-function DetailRow({ label, value, isLink }: { label: string; value: string; isLink?: boolean }) {
+function DetailRow({ label, value, isLink, isTel }: { label: string; value: string; isLink?: boolean; isTel?: boolean }) {
   if (!value) return null;
   return (
     <div>
@@ -594,6 +594,10 @@ function DetailRow({ label, value, isLink }: { label: string; value: string; isL
       </div>
       {isLink ? (
         <a href={label.includes("Email") ? `mailto:${value}` : value.startsWith("http") ? value : `https://${value}`} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-[#e8c97a] hover:underline">
+          {value}
+        </a>
+      ) : isTel ? (
+        <a href={`tel:${value.replace(/[^0-9+]/g, "")}`} className="text-[13px] font-medium text-[#e8c97a] hover:underline">
           {value}
         </a>
       ) : (

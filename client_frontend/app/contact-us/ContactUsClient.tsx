@@ -259,19 +259,30 @@ export default function ContactUsClient() {
                                                     <span key={j}>{line}<br /></span>
                                                 ))}
                                             </div>
-                                            {i !== (settings.contactCards?.length ?? 0) - 1 && (loc.tel || loc.extra) && (
+                                            {(loc.tel || loc.extra) && (
                                                 <div className="mt-auto pt-2.5">
                                                     <hr className="loc-divider border-t border-[rgba(201,168,76,0.1)] mb-2.5" />
                                                     {loc.tel && (
-                                                        <>
-                                                            Tel: <span className="loc-tel text-[#e8c97a] font-normal">{loc.tel}</span>
-                                                            {loc.extra ? <br /> : null}
-                                                        </>
+                                                        <div>
+                                                            Tel:{" "}
+                                                            <a
+                                                                href={`tel:${loc.tel.replace(/[^0-9+]/g, "")}`}
+                                                                className="loc-tel text-[#e8c97a] font-normal hover:underline"
+                                                            >
+                                                                {loc.tel}
+                                                            </a>
+                                                        </div>
                                                     )}
                                                     {loc.extra && (
-                                                        <>
-                                                            {loc.extraLabel ? `${loc.extraLabel} ` : ""}<span className="loc-tel text-[#e8c97a] font-normal">{loc.extra}</span>
-                                                        </>
+                                                        <div className={loc.tel ? "mt-0.5" : ""}>
+                                                            {loc.extraLabel ? `${loc.extraLabel.replace(/:?\s*$/, "")}: ` : ""}
+                                                            <a
+                                                                href={`tel:${loc.extra.replace(/[^0-9+]/g, "")}`}
+                                                                className="loc-tel text-[#e8c97a] font-normal hover:underline"
+                                                            >
+                                                                {loc.extra}
+                                                            </a>
+                                                        </div>
                                                     )}
                                                 </div>
                                             )}

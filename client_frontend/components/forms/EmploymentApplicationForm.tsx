@@ -486,7 +486,7 @@ export default function EmploymentApplicationForm() {
               Virginia Surveillance Force, Inc.
             </h2>
             <p className="text-xs text-[#8898aa] tracking-widest uppercase mt-1">
-              DCJS# 11-2371 &bull; SAB200504 &bull; MDSP# 106-3249 &bull; (800) 786-0395 &bull; info@vsfus.com
+              DCJS# 11-2371 &bull; SAB200504 &bull; MDSP# 106-3249 &bull; <a href="tel:18007860395" className="hover:text-[#eab308] hover:underline">(800) 786-0395</a> &bull; <a href="mailto:info@vsfus.com" className="hover:text-[#eab308] hover:underline">info@vsfus.com</a>
             </p>
           </div>
           <div className="shrink-0 bg-[#0b1120] px-4 py-2 rounded-lg border border-[rgba(201,168,76,0.2)] text-center">

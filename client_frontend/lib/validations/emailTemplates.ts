@@ -353,7 +353,7 @@ export function userEmploymentApplicationEmail(data: any) {
         Virginia Surveillance Force is an Equal Opportunity Employer. All applicants are subject to pre-employment background checks and state licensing verifications.
       </p>
     </div>
-    <p style="margin:20px 0 0;font-size:13px;color:#8898aa;">If you did not submit this application, please contact our office at (800) 786-0395 or info@vsfus.com.</p>
+    <p style="margin:20px 0 0;font-size:13px;color:#8898aa;">If you did not submit this application, please contact our office at <a href="tel:18007860395" style="color:#eab308;text-decoration:underline;">(800) 786-0395</a> or <a href="mailto:info@vsfus.com" style="color:#eab308;text-decoration:underline;">info@vsfus.com</a>.</p>
   `;
 
   return {

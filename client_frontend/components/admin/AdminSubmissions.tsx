@@ -554,7 +554,7 @@ export default function AdminSubmissions() {
                     value={selectedSubmission.email}
                     isLink
                   />
-                  <DetailRow label="Phone" value={selectedSubmission.phone} />
+                  <DetailRow label="Phone" value={selectedSubmission.phone} isTel />
                   {selectedSubmission.address && (
                     <DetailRow
                       label="Address"
@@ -728,10 +728,12 @@ function DetailRow({
   label,
   value,
   isLink,
+  isTel,
 }: {
   label: string;
   value: string;
   isLink?: boolean;
+  isTel?: boolean;
 }) {
   return (
     <div>
@@ -741,6 +743,13 @@ function DetailRow({
       {isLink ? (
         <a
           href={`mailto:${value}`}
+          className="text-[13px] font-medium text-[#e8c97a] no-underline hover:underline"
+        >
+          {value}
+        </a>
+      ) : isTel && value && value !== "—" ? (
+        <a
+          href={`tel:${value.replace(/[^0-9+]/g, "")}`}
           className="text-[13px] font-medium text-[#e8c97a] no-underline hover:underline"
         >
           {value}

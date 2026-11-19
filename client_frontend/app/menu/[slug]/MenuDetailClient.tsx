@@ -800,6 +800,22 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                     </div>
                   </FadeIn>
                 )}
+
+                {/* Additional CTA card for Nationwide Security Services — ASF */}
+                {menuItem.slug === "nationwide-security-services-asf" && (
+                  <FadeIn delay={0.25}>
+                    <div className="apply-cta-box">
+                      <a 
+                        href="https://ASFus.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="apply-btn"
+                      >
+                        EXPLORE AMERICAN SURVEILLANCE FORCE
+                      </a>
+                    </div>
+                  </FadeIn>
+                )}
               </div>
             )}
 
@@ -869,6 +885,20 @@ export default function MenuDetailClient({ data, menuItem }: { data: MenuPageDat
                     </FadeIn>
                   );
                 })}
+
+                {/* CTA card for FAQ Section */}
+                <FadeIn delay={0.25}>
+                  <div className="apply-cta-box">
+                    <a 
+                      href="https://ASFus.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="apply-btn"
+                    >
+                      EXPLORE AMERICAN SURVEILLANCE FORCE
+                    </a>
+                  </div>
+                </FadeIn>
               </div>
             )}
 

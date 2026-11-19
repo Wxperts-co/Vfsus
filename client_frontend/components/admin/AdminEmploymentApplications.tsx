@@ -610,8 +610,8 @@ export default function AdminEmploymentApplications() {
                   </h4>
                   <DetailRow label="Full Legal Name" value={`${selectedApp.firstName} ${selectedApp.middleName || ""} ${selectedApp.lastName}`} />
                   <DetailRow label="Email" value={selectedApp.email} isLink />
-                  <DetailRow label="Cell Phone" value={selectedApp.cellPhone} />
-                  <DetailRow label="Home Phone" value={selectedApp.homePhone} />
+                  <DetailRow label="Cell Phone" value={selectedApp.cellPhone} isTel />
+                  <DetailRow label="Home Phone" value={selectedApp.homePhone} isTel />
                   <DetailRow label="Street Address" value={`${selectedApp.address || ""}, ${selectedApp.city || ""} ${selectedApp.state || ""} ${selectedApp.zip || ""}`} />
                   <DetailRow label="Nicknames / Aliases" value={selectedApp.nicknames} />
                   <DetailRow label="Authorized to work in USA" value={selectedApp.eligibleUSA} />
@@ -732,7 +732,15 @@ export default function AdminEmploymentApplications() {
                           </span>
                         </div>
                         <div className="text-[#cbd5e1]">
-                          Supervisor: {w.supervisor} ({w.supervisorPhone || w.supervisorEmail || "—"})
+                          Supervisor: {w.supervisor} (
+                          {w.supervisorPhone ? (
+                            <a href={`tel:${w.supervisorPhone.replace(/[^0-9+]/g, "")}`} className="text-[#e8c97a] hover:underline">
+                              {w.supervisorPhone}
+                            </a>
+                          ) : (
+                            w.supervisorEmail || "—"
+                          )}
+                          )
                         </div>
                         <div className="text-[#8898aa]">
                           Reason for leaving: {w.reasonForLeaving || "—"}
@@ -758,7 +766,15 @@ export default function AdminEmploymentApplications() {
                     {selectedApp.references.map((r, idx) => (
                       <div key={idx} className="p-3 bg-[#131e35] rounded border border-[rgba(201,168,76,0.1)] text-xs space-y-1">
                         <div className="font-bold text-white">{r.name}</div>
-                        <div className="text-[#e8c97a]">{r.phone}</div>
+                        <div className="text-[#e8c97a]">
+                          {r.phone ? (
+                            <a href={`tel:${r.phone.replace(/[^0-9+]/g, "")}`} className="hover:underline">
+                              {r.phone}
+                            </a>
+                          ) : (
+                            "—"
+                          )}
+                        </div>
                         <div className="text-[#8898aa]">{r.email}</div>
                         <div className="text-[#8898aa]">Known: {r.yearsKnown}</div>
                       </div>
@@ -828,13 +844,17 @@ export default function AdminEmploymentApplications() {
   );
 }
 
-function DetailRow({ label, value, isLink }: { label: string; value?: string; isLink?: boolean }) {
+function DetailRow({ label, value, isLink, isTel }: { label: string; value?: string; isLink?: boolean; isTel?: boolean }) {
   if (!value) return null;
   return (
     <div>
       <div className="text-[10px] font-bold tracking-[0.5px] uppercase text-[#8898aa] mb-0.5">{label}</div>
       {isLink ? (
         <a href={`mailto:${value}`} className="text-xs font-medium text-[#e8c97a] hover:underline">
+          {value}
+        </a>
+      ) : isTel ? (
+        <a href={`tel:${value.replace(/[^0-9+]/g, "")}`} className="text-xs font-medium text-[#e8c97a] hover:underline">
           {value}
         </a>
       ) : (

@@ -76,7 +76,17 @@ const nerTags = [
   },
   {
     label: 'CONTACT INFORMATION',
-    value: '703-631-6559; info@vsfus.com',
+    value: (
+      <span>
+        <a href="tel:7036316559" className="text-[#eab308] hover:underline font-semibold">
+          703-631-6559
+        </a>
+        {'; '}
+        <a href="mailto:info@vsfus.com" className="text-[#eab308] hover:underline font-semibold">
+          info@vsfus.com
+        </a>
+      </span>
+    ),
   },
 ];
 
