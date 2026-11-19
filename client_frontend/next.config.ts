@@ -61,6 +61,57 @@ const nextConfig: NextConfig = {
         destination: "/insights",
         permanent: true,
       },
+      {
+        source: "/_next/static/media/6c98c9fb873995d2-s.p.4a6499bc.woff2",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/_next/static/media/0595f7052377a1a2-s.p.0de08f1e.woff2",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/vehicle-patrol.php",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/index.php/post/167",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/index.php/why-choose-us.php",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/vsf-goes-nationwide.php",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/why-choose-us.php",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/how-we-recruit.php",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/favicon.ico",
+        has: [
+          {
+            type: "query",
+            key: "favicon.6fdfc723.ico",
+          },
+        ],
+        destination: "/",
+        statusCode: 301,
+      },
     ];
   },
   async headers() {
