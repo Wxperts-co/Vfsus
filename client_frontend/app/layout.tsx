@@ -34,6 +34,12 @@ export async function generateMetadata(): Promise<Metadata> {
     title: settings.seo.title,
     description: settings.seo.description,
     keywords: settings.seo.keywords,
+    formatDetection: {
+      telephone: false,
+      date: false,
+      address: false,
+      email: false,
+    },
     alternates: {
       canonical: "https://vsfus.com/",
     },
@@ -210,6 +216,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

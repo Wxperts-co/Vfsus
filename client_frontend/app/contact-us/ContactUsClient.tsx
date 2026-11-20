@@ -267,6 +267,7 @@ export default function ContactUsClient() {
                                                             Tel:{" "}
                                                             <a
                                                                 href={`tel:${loc.tel.replace(/[^0-9+]/g, "")}`}
+                                                                rel="nofollow"
                                                                 className="loc-tel text-[#e8c97a] font-normal hover:underline"
                                                             >
                                                                 {loc.tel}
@@ -278,6 +279,7 @@ export default function ContactUsClient() {
                                                             {loc.extraLabel ? `${loc.extraLabel.replace(/:?\s*$/, "")}: ` : ""}
                                                             <a
                                                                 href={`tel:${loc.extra.replace(/[^0-9+]/g, "")}`}
+                                                                rel="nofollow"
                                                                 className="loc-tel text-[#e8c97a] font-normal hover:underline"
                                                             >
                                                                 {loc.extra}
